@@ -1,0 +1,282 @@
+:: Residential alleyways
+
+<<set $outside to 1>><<set $location to "alley">><<effects>><<set $bus to "residential">><<getTarget true>>
+You are in an alleyway in the residential district.
+<<if $daystate is "day">>
+	There are a lot of people around.
+<<elseif $daystate is "dusk">>
+	You hear children playing.
+<<elseif $daystate is "night">>
+	You hear a dog barking.
+<<elseif $daystate is "dawn">>
+	There are many people around.
+<</if>>
+Your home is nearby.
+<<streeteffects>>
+<br><br>
+<<if $exposed gte 1>>
+	<<exhibitionism "alley">>
+<</if>>
+<<if $arousal gte $arousalmax>>
+	<<orgasmstreet>>
+<</if>>
+<<if $stress gte $stressmax and !$possessed>>
+	<<passoutalley>>
+<<else>>
+	<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+	<<if ($danger gte (9900 - $allure) or $eventforced) and $eventskip is 0>>
+		<<eventsstreet>>
+	<<else>>
+		<<if $map.top is true>>
+			<<map "residential">>
+			<br>
+		<</if>>
+		Places of interest
+		<br>
+		<<if $exposed gte 1>>
+			<<homeicon>><<link [[Go home (0:02)->Home Fence]]>><<if $fenceclimb isnot 1>><<set $fenceclimb to 1>><<transform cat 1>><</if>><<pass 2>><</link>>
+			<br>
+		<<else>>
+			<<homeicon>><<link [[Go home (0:02)->Garden]]>><<if $fenceclimb isnot 1>><<set $fenceclimb to 1>><<transform cat 1>><</if>><<pass 2>><</link>>
+			<br>
+		<</if>>
+		<<if $cat gte 6 and $daystate is "night">>
+			<<link [[Meow (0:30)|Residential Meow]]>><<pass 30>><<stress -3>><</link>><<cat>><<lstress>>
+			<br>
+		<</if>>
+		<<if $daystate isnot "night">>
+			<<if $exposed gte 2>>
+				<<if $exhibitionism gte 75>>
+					<<link [[Cross Connudatus Street (0:05)|Road Ex]]>><</link>><<if $ex_road is undefined>><<exhibitionist5>><</if>>
+					<br>
+				<</if>>
+			<<elseif $exposed is 1>>
+				<<if $exhibitionism gte 35>>
+					<<link [[Cross Connudatus Street (0:05)|Road Ex]]>><</link>><<if $ex_road is undefined>><<exhibitionist3>><</if>>
+					<br>
+				<</if>>
+			<</if>>
+		<</if>>
+		<br>
+		<<if $exposed gte 1 and $daystate isnot "night">>
+		<<else>>
+			<<add_link "Travel<br>">><<hideDisplay>>
+			<<domus>>
+			<<barb>>
+			<<danube>>
+			<<connudatus>>
+			<<loiter>>
+		<</if>>
+		<<add_link "<br>Alternate routes<br>">><<hideDisplay>>
+		<<if $exposed gte 1 and $daystate isnot "night">>
+		<<else>>
+			<<commercial>>
+		<</if>>
+		<<stormdrain>>
+		<<displayLinks>>
+		<<if $map.top isnot true>>
+			<br>
+			<<map "residential">>
+		<</if>>
+	<</if>>
+<</if>>
+<<set $eventskip to 0>>
+
+:: Residential Meow
+
+<<set $outside to 1>><<set $location to "town">><<effects>>
+<<if $weather is "rain">>
+	You meow into the night, competing with the rain.
+<<elseif $weather is "snow">>
+	You meow into the snowy night.
+<<else>>
+	You meow into the night.
+<</if>>
+<br><br>
+<<if $rng gte 76>>
+	<<beastNEWinit 1 cat>>
+	Another meow answers, and a small <<beasttype>> approaches. <<if $monster is 1>><<bHe>> looks up at you with innocent eyes.<</if>>
+	<br><br>
+	<<link [[Pet|Residential Pet]]>><<stress -6>><</link>><<lstress>>
+	<br>
+	<!-- Modified for Monster People -->
+	<<if $monster is 1 or $bestialitydisable is "f">>
+		<<link [[Tease|Residential Tease]]>><</link>><<deviant1>>
+		<br>
+	<</if>>
+<<elseif $rng gte 51>>
+	Nothing answers but the breeze, and a distant horn.
+	<br><br>
+	<<link [[Next|Residential alleyways]]>><</link>>
+	<br>
+<<elseif $rng gte 26>>
+	<<beastNEWinit 1 cat>>
+	A growl answers. A giant <<beasttype>> prowls from the dark, and regards you with a level stare.
+	<br><br>
+	<<link [[Pet|Residential Big Pet]]>><<stress 6>><<trauma -6>><</link>><<gstress>><<ltrauma>>
+	<br>
+	<<if $monster is 1 or $bestialitydisable is "f">><!-- Modified for Monster People -->
+		<<link [[Tease|Residential Big Tease]]>><</link>><<deviant1>>
+		<br>
+	<</if>>
+<<else>>
+	A light turns on inside an upper story room. A silhouette appears behind the curtains, and the window is thrown open. A <<generate1>><<person1>><<person>> leans out. "Stupid cat," <<he>> shouts. "Shut the fuck up." <<He>> hurls something at you, which you dodge with a hiss. "Finally," <<he>> sighs as <<he>> closes the window.
+	<br><br>
+	<<if random(1, 2) is 2>>
+		Light glints off the object <<he>> threw. It's a watch. It might be worth something, if you could find a buyer.
+		<br><br>
+		<<set $blackmoney += 20>>
+	<</if>>
+	<<link [[Next|Residential alleyways]]>><<endevent>><</link>>
+	<br>
+<</if>>
+
+:: Residential Pet
+
+<<set $outside to 1>><<set $location to "town">><<effects>>
+You crouch and rub the <<beasttype>>'s head.
+<<if $monster is 1>>
+	<<bHe>> purrs, rubbing <<bhis>> head against your chest. <<bHe>> flicks you with <<bhis>> hand and then <<bhis>> tail,
+<<else>>
+	<<bHe>> purrs and rubs against you, before flicking you with <<bhis>> tail,
+<</if>>
+and leaping onto a nearby wall. <<bHe>> disappears behind it.
+<br><br>
+<<link [[Next|Residential alleyways]]>><<endevent>><</link>>
+<br>
+
+:: Residential Tease
+
+<<set $outside to 1>><<set $location to "town">><<effects>>
+Purring seductively, you drop to the ground and assume a mating posture.
+<<if $monster is 1>>
+	The <<beasttypes>> eyes light up, eager to follow your lead. <<bHe>> purrs back. "Thank you for choosing me," <<bhe>> says.
+	<<bHe>> climbs on top of you and humps as <<bhe>> struggles to find purchase. You grab <<bhis>> arm, pulling <<bhim>> away from your body. You have <<bhim>> roll onto <<bhis>> back before rubbing <<bhis>> belly.
+<<else>>
+	 Eager, it leaps on top of you and humps as it struggles to find purchase. You grab it by the scruff and pull it away from your body, lay it on its back, and rub its belly.
+<</if>>
+<<bHe>> meows in frustration as <<bhe>> struggles free, and leaps onto a nearby wall before disappearing behind it.
+<<deviancy1>>
+<<link [[Next|Residential alleyways]]>><<endevent>><</link>>
+<br>
+
+:: Residential Big Pet
+
+<<set $outside to 1>><<set $location to "town">><<effects>>
+<<if $monster is 1>>
+	You reach towards <<bhis>> head. <<bHe>> easily towers over you, so <<bhe>> hunches over you to give you a chance of reaching <<bhim>>. <<bHe>> doesn't move as you stroke <<bhis>> head, but you hear a low rumble from <<bhis>> throat.
+	"Thank you," <<bhe>> purrs. <<bHe>> licks your hand, turns, and bounds into the night.
+<<else>>
+	You reach towards <<bhis>> head. <<bHe>> doesn't move as you touch <<bhim>>, but you hear a low rumble from <<bhis>> throat. <<bHe>> licks your hand, turns, and bounds into the night.
+<</if>>
+<br><br>
+<<link [[Next|Residential alleyways]]>><<endevent>><</link>>
+<br>
+
+:: Residential Big Tease
+
+<<set $outside to 1>><<set $location to "town">><<effects>>
+
+You drop to the ground and assume a mating posture. The <<beasttype>> steps toward you, until you push a hand against <<bhis>> nose and give it a teasing wiggle.
+<<deviancy1>>
+<<if $monster is 1>>
+	The look on <<bhis>> face tells you that <<bhe>>'s annoyed by your teasing, but seems to be amused by it nonetheless.
+<<else>>
+	The <<beasttype>> growls, annoyed but amused.
+<</if>>
+<br><br>
+<!-- Modified for Beast People -->
+<<if $deviancy gte 15>>
+	<<link [[Seduce|Residential Beast]]>><<set $sexstart to 1>><</link>><<deviant2>>
+	<br>
+<</if>>
+<<link [[Shoo|Residential Shoo]]>><</link>>
+<br>
+
+:: Residential Shoo
+
+<<set $outside to 1>><<set $location to "town">><<effects>>
+
+You push the <<beasttype>>'s head away from you. <<bHe>> growls harder and nips the air in front of your hand, but then turns and bounds into the dark.
+<br><br>
+
+<<link [[Next|Residential alleyways]]>><<endevent>><</link>>
+<br>
+
+:: Residential Beast
+<<if $sexstart is 1>>
+<<set $sexstart to 0>>
+<<consensual>>
+<<set $consensual to 1>>
+<<neutral 1>>
+	<<beastCombatInit>>
+
+You let go of the <<beasttype>>'s face and stretch. <<if $monster is 1>>"Good enough for me," <<bhe>> states firmly.<</if>> It's all the prompting <<bhe>> needs. <<bHe>> pounces on you.
+<<deviancy2>>
+<</if>>
+
+<<effects>>
+<<effectsman>>
+<br>
+<<beast $enemyno>>
+<br><br>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $finish is 1>>
+	<span id="next"><<link [[Next|Residential Beast Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Residential Beast Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Residential Beast Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Residential Beast]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Residential Beast Finish
+<<effects>>
+
+<<if $enemyarousal gte $enemyarousalmax>>
+
+<<beastejaculation>>
+
+<<tearful>> you gather yourself. The <<beasttype>> seems satisfied, and bounds into the dark.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Residential alleyways]]>><</link>>
+<br>
+
+<<elseif $enemyhealth lte 0>>
+
+The <<beasttype>> hisses and flees into the dark. <<if $monster is 1>>"No fun."<</if>>
+<br><br>
+
+<<tearful>> you gather yourself.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Residential alleyways]]>><</link>>
+<br>
+
+<<else>>
+
+The <<beasttype>> growls, but relents in <<bhis>> attempt to breed. <<if $monster is 1>>Should have known better," <<bhe>> mutters to <<bhimself>>.<</if>> <<bHe>> bounds away into the dark.
+<br><br>
+
+<<tearful>> you gather yourself.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Residential alleyways]]>><</link>>
+<br>
+
+<</if>>

@@ -1,0 +1,61 @@
+:: Industrial alleyways
+
+<<set $outside to 1>><<set $location to "alley">><<effects>><<set $bus to "industrial">><<getTarget true>>
+You are in an alleyway in the industrial district.
+<<if $daystate is "day">>
+	You hear machines operating in the buildings around you.
+<<elseif $daystate is "night">>
+<<else>>
+	You hear the engines of heavy vehicles.
+<</if>>
+There's a ladder to your right, you think it will take you to the rooftops. The rear of the school protrudes into this area, separated by a spiked fence.
+<<streeteffects>>
+<br><br>
+<<if $exposed gte 1>>
+	<<exhibitionism "alley">>
+<</if>>
+<<if $arousal gte $arousalmax>>
+	<<orgasmstreet>>
+<</if>>
+<<if $stress gte $stressmax and !$possessed>>
+	<<passoutalley>>
+<<else>>
+	<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+	<<if ($danger gte (9900 - $allure) or $eventforced) and $eventskip is 0>>
+		<<eventsstreet>>
+	<<else>>
+		<<if $map.top is true>>
+			<<map "industrial">>
+			<br>
+		<</if>>
+		Points of interest
+		<br>
+		<<link [[Climb the ladder (0:02)->Industrial rooftops]]>><<pass 2>><</link>>
+		<br>
+		<<link [[Back door to bus station (0:02)|Bus Station Back Entrance]]>><<pass 2>><</link>>
+		<br>
+		<<link [[Climb over the fence into the school grounds (0:05)|School Rear Fence]]>><<pass 5>><</link>>
+		<br><br>
+		<<if $exposed gte 1 and $daystate isnot "night">>
+		<<else>>
+			<<add_link "Travel<br>">><<hideDisplay>>
+			<<oxford>>
+			<<mer>>
+			<<elk>>
+			<<harvest>>
+			<<loiter>>
+		<</if>>
+		<<add_link "<br>Alternate routes<br>">><<hideDisplay>>
+		<<if $exposed gte 1 and $daystate isnot "night">>
+		<<else>>
+			<<park>>
+		<</if>>
+		<<stormdrain>>
+		<<displayLinks>>
+		<<if $map.top isnot true>>
+			<br>
+			<<map "industrial">>
+		<</if>>
+	<</if>>
+<</if>>
+<<set $eventskip to 0>>

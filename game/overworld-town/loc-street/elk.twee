@@ -1,0 +1,82 @@
+:: Elk Street
+
+<<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "elk">><<getTarget true>>
+You are on Elk Street. There are roads leading to several large industrial complexes.
+<<if $daystate is "day">>
+	<<if $weather is "rain">>
+		The sound of water hitting metal is constant.
+	<<else>>
+		You hear the sound of machinery all around.
+	<</if>>
+<<elseif $daystate is "dawn">>
+	You hear the sound of machinery all around.
+<<elseif $daystate is "dusk">>
+	You hear the sound of machinery all around.
+<<elseif $daystate is "night">>
+	You hear the sound of machinery even at this hour.
+<</if>>
+<<streeteffects>>
+<br><br>
+<<if $exposed gte 1>>
+	<<exhibitionism "street">>
+<</if>>
+<<if $arousal gte $arousalmax>>
+	<<orgasmstreet>>
+<</if>>
+<<if $stress gte $stressmax and !$possessed>>
+	<<passoutstreet>>
+<<else>>
+	<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+	<<if ($danger gte (9900 - $allure) or $eventforced) and $eventskip is 0>>
+		<<eventsstreet>>
+	<<else>>
+		<<if $map.top is true>>
+			<<map "elk">>
+			<br>
+		<</if>>
+		Places of interest
+		<br>
+		<<if $trash_unlocked is 1>>
+			<<landfillicon>><<link [[Landfill (0:10)|Trash]]>><<pass 10>><<set $trash to 0>><</link>>
+			<br>
+		<<else>>
+			<<landfillicon>><<link [[Landfill (0:05)|Trash Gate Enter]]>><<pass 5>><</link>>
+			<br>
+		<</if>>
+		<<if $compoundstate is 1>>
+			<span class="blue">The compound is prowled by guards.</span> They'll be less agitated tomorrow.
+			<br>
+		<<elseif $compoundstate is 0>>
+			<<link [[Sneak into the compound|Elk Compound]]>><<crimeup 1>><</link>><<crime>>
+			<br>
+			<<if $farm_stage gte 9 and $phials_held gte 1 and $exposed lte 0>>
+				<<link [[Approach the compound|Elk Compound Approach]]>><</link>>
+				<br>
+			<</if>>
+		<<elseif ($compoundcard is 1 or $farm_stage gte 9) and $exposed lte 0>>
+			<<link [[Approach strange compound|Elk Compound Approach]]>><</link>>
+			<br>
+		<</if>>
+		<br>
+		<<if $exposed gte 1 and $daystate isnot "night">>
+		<<else>>
+			<<add_link "Travel<br>">><<hideDisplay>>
+			<<nightingale>>
+			<<oxford>>
+			<<harvest>>
+			<<if $exposed lte 0>>
+				<<buswait>>
+			<</if>>
+			<<loiter>>
+		<</if>>
+		<<add_link "<br>Alternate routes<br>">><<hideDisplay>>
+		<<industrial>>
+		<<stormdrain>>
+		<<displayLinks>>
+		<<if $map.top isnot true>>
+			<br>
+			<<map "elk">>
+		<</if>>
+	<</if>>
+<</if>>
+<<set $eventskip to 0>>

@@ -1,0 +1,333 @@
+:: Widgets Clothing Init [widget]
+
+<<widget "clothing_data">>
+<<set setup.clothes to {}>>
+<<set setup.moddedClothes to {}>>
+<<init_over_upper>>
+<<init_over_lower>>
+<<init_upper>>
+<<init_lower>>
+<<init_under_upper>>
+<<init_under_lower>>
+<<init_genitals>>
+<<init_over_head>>
+<<init_head>>
+<<init_face>>
+<<init_neck>>
+<<init_hands>>
+<<init_legs>>
+<<init_feet>>
+<<set setup.clothes_all_slots to ["over_upper", "over_lower", "upper", "lower", "under_upper", "under_lower","over_head", "head", "face", "neck", "hands", "legs", "feet", "genitals"]>>
+
+<!-- Throw an error if any clothing item has an index which is not correct for its position in its array. -->
+<<run Object.keys(setup.clothes).forEach(slot => setup.clothes[slot].forEach((item, i) => {if (item.index !== i) throw new Error("The index of "+item.name+" should be "+i+", not "+item.index)}))>>
+
+<!-- Find all unique traits (types) clothes can have -->
+<<set setup.clothingTraits = [...new Set(Object.keys(setup.clothes).flatMap(x => setup.clothes[x]).flatMap(x => x.type))]>>
+
+<</widget>>
+
+<<widget "clothing_arrays">>
+
+<<set $clothes to {}>>
+<<set $worn to {}>>
+<<set $wardrobe to {}>>
+<<wardrobesUpdate>>
+<<set $store to {}>>
+<<set $outfit to []>>
+<<set $carried to {}>>
+
+<<set $worn.over_upper to clone(setup.clothes.over_upper[0])>>
+<<set $worn.over_lower to clone(setup.clothes.over_lower[0])>>
+<<set $worn.upper to clone(setup.clothes.upper[0])>>
+<<set $worn.lower to clone(setup.clothes.lower[0])>>
+<<set $worn.under_upper to clone(setup.clothes.under_upper[0])>>
+<<set $worn.under_lower to clone(setup.clothes.under_lower[0])>>
+<<set $worn.genitals to clone(setup.clothes.genitals[0])>>
+<<set $worn.over_head to clone(setup.clothes.over_head[0])>>
+<<set $worn.head to clone(setup.clothes.head[0])>>
+<<set $worn.face to clone(setup.clothes.face[0])>>
+<<set $worn.neck to clone(setup.clothes.head[0])>>
+<<set $worn.hands to clone(setup.clothes.hands[0])>>
+<<set $worn.legs to clone(setup.clothes.legs[0])>>
+<<set $worn.feet to clone(setup.clothes.feet[0])>>
+
+<<set $wardrobe.over_upper to []>>
+<<set $wardrobe.over_lower to []>>
+<<set $wardrobe.upper to []>>
+<<set $wardrobe.lower to []>>
+<<set $wardrobe.under_upper to []>>
+<<set $wardrobe.under_lower to []>>
+<<set $wardrobe.over_head to []>>
+<<set $wardrobe.head to []>>
+<<set $wardrobe.face to []>>
+<<set $wardrobe.neck to []>>
+<<set $wardrobe.hands to []>>
+<<set $wardrobe.legs to []>>
+<<set $wardrobe.feet to []>>
+<<set $wardrobe.space to 40>>
+
+<<set $outfit to [{
+	index: 0,
+	name: "Pyjamas",
+	over_upper: "naked",
+	over_lower: "naked",
+	upper: "pyjama shirt",
+	lower: "pyjama bottoms",
+	under_upper: "naked",
+	under_lower: "naked",
+	over_head: "naked",
+	head: "naked",
+	face: "naked",
+	neck: "naked",
+	hands: "naked",
+	legs: "naked",
+	feet: "naked",
+	type: ["sleep"]
+}]>>
+
+<<set $carried.over_upper to clone(setup.clothes.over_upper[0])>>
+<<set $carried.over_lower to clone(setup.clothes.over_lower[0])>>
+<<set $carried.upper to clone(setup.clothes.upper[0])>>
+<<set $carried.lower to clone(setup.clothes.lower[0])>>
+<<set $carried.under_upper to clone(setup.clothes.under_upper[0])>>
+<<set $carried.under_lower to clone(setup.clothes.under_lower[0])>>
+<<set $carried.genitals to clone(setup.clothes.genitals[0])>>
+<<set $carried.over_head to clone(setup.clothes.over_head[0])>>
+<<set $carried.head to clone(setup.clothes.head[0])>>
+<<set $carried.face to clone(setup.clothes.face[0])>>
+<<set $carried.neck to clone(setup.clothes.neck[0])>>
+<<set $carried.hands to clone(setup.clothes.hands[0])>>
+<<set $carried.legs to clone(setup.clothes.legs[0])>>
+<<set $carried.feet to clone(setup.clothes.feet[0])>>
+
+<<set $store.over_upper to []>>
+<<set $store.over_lower to []>>
+<<set $store.upper to []>>
+<<set $store.lower to []>>
+<<set $store.under_upper to []>>
+<<set $store.under_lower to []>>
+<<set $store.over_head to []>>
+<<set $store.head to []>>
+<<set $store.face to []>>
+<<set $store.neck to []>>
+<<set $store.hands to []>>
+<<set $store.legs to []>>
+<<set $store.feet to []>>
+
+<</widget>>
+
+<<widget "clothinginit">>
+	<<clothing_arrays>>
+	<<set $upperoff to 0>>
+	<<set $loweroff to 0>>
+	<<set $underloweroff to 0>>
+	<<set $underupperoff to 0>>
+	<<set $upperwet to 0>>
+	<<set $lowerwet to 0>>
+	<<set $underlowerwet to 0>>
+	<<set $underupperwet to 0>>
+	<<set $upperwetstage to 0>>
+	<<set $lowerwetstage to 0>>
+	<<set $underupperwetstage to 0>>
+	<<set $underlowerwetstage to 0>>
+	<<set $waterwash to 0>>
+	<<set $wear_over_upper to "none">>
+	<<set $wear_over_lower to "none">>
+	<<set $wear_upper to "none">>
+	<<set $wear_lower to "none">>
+	<<set $wear_under_upper to "none">>
+	<<set $wear_under_lower to "none">>
+	<<set $wear_over_head to "none">>
+	<<set $wear_head to "none">>
+	<<set $wear_face to "none">>
+	<<set $wear_neck to "none">>
+	<<set $wear_hands to "none">>
+	<<set $wear_legs to "none">>
+	<<set $wear_feet to "none">>
+	<<set $wear_outfit to "none">>
+<</widget>>
+
+<<widget "givestartclothing">>
+
+<<set $worn.over_upper to clone(setup.clothes.over_upper[0])>>
+<<set $worn.over_lower to clone(setup.clothes.over_lower[0])>>
+<<set $worn.upper to clone(setup.clothes.upper[0])>>
+<<set $worn.lower to clone(setup.clothes.lower[0])>>
+<<set $worn.under_upper to clone(setup.clothes.under_upper[0])>>
+<<set $worn.under_lower to clone(setup.clothes.under_lower[0])>>
+<<set $worn.over_head to clone(setup.clothes.over_head[0])>>
+<<set $worn.head to clone(setup.clothes.head[0])>>
+<<set $worn.face to clone(setup.clothes.face[0])>>
+<<set $worn.neck to clone(setup.clothes.neck[0])>>
+<<set $worn.hands to clone(setup.clothes.neck[0])>>
+<<set $worn.legs to clone(setup.clothes.legs[0])>>
+<<set $worn.feet to clone(setup.clothes.feet[0])>>
+
+
+
+<<if ($player.gender is "f" and $background isnot "crossdresser") or
+	($player.gender is "m" and $background is "crossdresser") or
+	($player.gender is "h" and
+		(
+			(($player.gender_body is "m" or ($player.gender_body is "a" and $breastsize lte 3)) and $background is "crossdresser") or
+			(($player.gender_body is "f" or ($player.gender_body is "a" and $breastsize gt 3)) and $background isnot "crossdresser")
+		)
+	)>>
+	<<set $outfit.push(
+		{index: $outfit.length,
+		name: "Everyday",
+		over_upper: "naked",
+		over_lower: "naked",
+		upper: "sundress",
+		lower: "sundress skirt",
+		under_upper: "naked",
+		under_lower: "plain panties",
+		over_head: "naked",
+		head: "naked",
+		face: "naked",
+		neck: "naked",
+		legs: "girl's gym socks",
+		feet: "school shoes",
+		type: ["normal"]
+		},
+		{index: $outfit.length,
+		name: "School",
+		over_upper: "naked",
+		over_lower: "naked",
+		upper: "school shirt",
+		lower: "school skirt",
+		under_upper: "naked",
+		under_lower: "plain panties",
+		over_head: "naked",
+		head: "hairpin",
+		face: "naked",
+		neck: "naked",
+		legs: "girl's gym socks",
+		feet: "school shoes",
+		type: ["school"]
+		},
+		{index: $outfit.length,
+		name: "Swimwear",
+		over_upper: "naked",
+		over_lower: "naked",
+		upper: "naked",
+		lower: "naked",
+		under_upper: "school swimsuit",
+		under_lower: "school swimsuit bottom",
+		over_head: "naked",
+		head: "naked",
+		face: "naked",
+		neck: "naked",
+		legs: "naked",
+		feet: "naked",
+		type: ["swim"]
+		}
+	)>>
+
+	<<set $worn.upper to clone(setup.clothes.upper[1])>>
+	<<set $worn.upper.colour to "white">>
+	<<set $worn.lower to clone(setup.clothes.lower[1])>>
+	<<set $worn.lower.colour to "white">>
+	<<set $worn.under_lower to clone(setup.clothes.under_lower[1])>>
+	<<set $worn.under_lower.colour to "pale white">>
+	<<set $worn.legs to clone(setup.clothes.legs[3])>>
+	<<set $worn.head = clone(setup.clothes.head[1])>>
+	<<set $worn.feet = clone(setup.clothes.feet[1])>>
+
+	<<if $breastsize lte 3>>
+		<<set $wardrobe.under_upper.push(clone(setup.clothes.under_upper[12]))>>
+		<<set $wardrobe.under_upper.last().colour to "pale white">>
+	<<else>>
+		<<set $worn.under_upper = clone(setup.clothes.under_upper[12])>>
+		<<set $worn.under_upper.colour to "pale white">>
+		<<set $outfit[1].under_upper = "plain bra">>
+		<<set $outfit[2].under_upper = "plain bra">>
+	<</if>>
+
+	<<set $wardrobe.upper.push(clone(setup.clothes.upper[5]))>>
+	<<set $wardrobe.upper.last().colour to "white">>
+	<<set $wardrobe.lower.push(clone(setup.clothes.lower[7]))>>
+	<<set $wardrobe.lower.last().colour to "black">>
+	<<set $wardrobe.upper.push(clone(setup.clothes.upper[2]))>>
+	<<set $wardrobe.upper.last().colour to "blue">>
+	<<set $wardrobe.lower.push(clone(setup.clothes.lower[2]))>>
+	<<set $wardrobe.lower.last().colour to "blue">>
+	<<set $wardrobe.under_upper.push(clone(setup.clothes.under_upper[2]))>>
+	<<set $wardrobe.under_upper.last().colour to "blue">>
+	<<set $wardrobe.under_lower.push(clone(setup.clothes.under_lower[6]))>>
+	<<set $wardrobe.under_lower.last().colour to "blue">>
+<<else>>
+	<<set $outfit.push(
+		{index: $outfit.length,
+		name: "Everyday",
+		over_upper: "naked",
+		over_lower: "naked",
+		upper: "t-shirt",
+		lower: "shorts",
+		under_upper: "naked",
+		under_lower: "briefs",
+		over_head: "naked",
+		head: "naked",
+		face: "naked",
+		neck: "naked",
+		legs: "boy's gym socks",
+		feet: "school shoes",
+		type: ["normal"]
+		},
+		{index: $outfit.length,
+		name: "School",
+		over_upper: "naked",
+		over_lower: "naked",
+		upper: "school shirt",
+		lower: "school shorts",
+		under_upper: "naked",
+		under_lower: "briefs",
+		over_head: "naked",
+		head: "naked",
+		face: "naked",
+		neck: "naked",
+		legs: "boy's gym socks",
+		feet: "school shoes",
+		type: ["school"]
+		},
+		{index: $outfit.length,
+		name: "Swimwear",
+		over_upper: "naked",
+		over_lower: "naked",
+		upper: "naked",
+		lower: "naked",
+		under_upper: "naked",
+		under_lower: "school swim shorts",
+		over_head: "naked",
+		head: "naked",
+		face: "naked",
+		neck: "naked",
+		legs: "naked",
+		feet: "naked",
+		type: ["swim"]
+		}
+	)>>
+
+	<<set $worn.upper to clone(setup.clothes.upper[4])>>
+	<<set $worn.upper.colour to "tangerine">>
+	<<set $worn.lower to clone(setup.clothes.lower[5])>>
+	<<set $worn.lower.colour to "blue">>
+	<<set $worn.under_lower to clone(setup.clothes.under_lower[4])>>
+	<<set $worn.under_lower.colour to "black">>
+	<<set $worn.legs to clone(setup.clothes.legs[2])>>
+	<<set $worn.feet = clone(setup.clothes.feet[1])>>
+
+	<<set $wardrobe.upper.push(clone(setup.clothes.upper[5]))>>
+	<<set $wardrobe.upper.last().colour to "white">>
+	<<set $wardrobe.lower.push(clone(setup.clothes.lower[6]))>>
+	<<set $wardrobe.lower.last().colour to "black">>
+	<<set $wardrobe.upper.push(clone(setup.clothes.upper[2]))>>
+	<<set $wardrobe.upper.last().colour to "blue">>
+	<<set $wardrobe.lower.push(clone(setup.clothes.lower[2]))>>
+	<<set $wardrobe.lower.last().colour to "blue">>
+	<<set $wardrobe.under_lower.push(clone(setup.clothes.under_lower[7]))>>
+	<<set $wardrobe.under_lower.last().colour to "blue">>
+	<<set $wardrobe.head.push(clone(setup.clothes.head[1]))>>
+<</if>>
+<</widget>>

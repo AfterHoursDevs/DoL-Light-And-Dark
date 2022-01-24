@@ -1,0 +1,990 @@
+:: Lake Shore
+<<set $outside to 1>><<set $location to "lake">><<effects>><<lakeeffects>>
+<<set $forest to 30>><<set $bus to "lakeshore">>
+
+<<if $season is "winter">>
+	<<if $laketeenspresent is 1>>
+	You are at the shore of the frozen lake. Teens hang out nearby, while others practise ice skating.
+	<<elseif $daystate is "night">>
+		<<if $weekday is 7 or $weekday is 1>>
+		You are at the shore of the frozen lake. You can see faint light from a fire at the campsite across the water.
+		<<else>>
+		You are at the shore of the frozen lake. Dark waters ripple unseen beneath the surface.
+		<</if>>
+	<<elseif $daystate is "dusk" or $daystate is "dawn">>
+		You are at the shore of the frozen lake. The sun reflects off the ice.
+	<<else>>
+		You are at the shore of the frozen lake. You can see your reflection in its surface. You could walk out to the swimmers docks if you wanted.
+	<</if>>
+	<<if $weather is "snow">>
+		Snow settles on its surface.
+	<<else>>
+		The ice is serene.
+	<</if>>
+<<else>>
+	<<if $laketeenspresent is 1>>
+		You are at the shore of the lake. There are several people playing in the water. You can see the Swimmers Dock with a few teens sitting on it.
+	<<elseif $daystate is "night">>
+		<<if $weekday is 7 or $weekday is 1>>
+			You are at the shore of the lake. You can see faint light from a fire at the campsite across the water.
+		<<else>>
+			You are at the shore of the lake. Dark water ripples unseen.
+		<</if>>
+	<<elseif $daystate is "dusk" or $daystate is "dawn">>
+		You are at the shore of the lake. Undulating waves splash against the sand and rocks. A bear eats fish on the opposite bank.
+	<<else>>
+		You are at the shore of the lake. You can see your reflection in its surface. The Swimmers Dock sits idle out on the water.
+	<</if>>
+	<<if $weather is "rain">>
+		The water is alive with motion as rain breaks its surface.
+	<<else>>
+		The water is calm.
+	<</if>>
+<</if>>
+<br><br>
+
+<<if $exposed gte 1 and $laketeenspresent is 1>>
+You keep low and stay among the trees to keep your <<lewdness>> hidden.
+<br><br>
+<</if>>
+
+<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+<<if $stress gte $stressmax and !$possessed>>
+<<passoutlake>>
+<<elseif $foresthunt gte 10>>
+<<foresthunt>>
+<<elseif $danger gte (9900 - $allure) and $eventskip is 0 and $laketeenspresent isnot 1>>
+<<eventlake>>
+<<else>>
+
+<<eventlakesafe>>
+<<lakereturnjourney>>
+
+There's a rocky alcove where you could store your clothes.
+<br>
+<<lakeclothes>>
+
+	<<if $laketeenspresent is 1 and $exposed lte 0 and $hour isnot 20 and $season isnot "winter">>
+		<<ind>><<link [[Hang out (0:30)|Lake Hang]]>><<pass 30>><<stress -6>><<status 1>><</link>><<gcool>><<lstress>>
+		<br>
+	<</if>>
+	<<if $season is "winter">>
+		<<if $nextPassageCheck is "Lake Shallows Ice">>
+			<span class="nextLink"><<ind>><<link [[Walk.|Lake Shallows Ice]]>><<pass 2>><</link>></span>
+		<<else>>
+			<<ind>><<link [[Walk onto the ice (0:02)|Lake Shallows Ice]]>><<pass 2>><</link>>
+		<</if>>
+		<br>
+	<<else>>
+		<<if $nextPassageCheck is "Lake Shallows">>
+			<span class="nextLink"><<swimicon>><<link [[Swim.|Lake Shallows]]>><<pass 2>><</link>></span>
+		<<else>>
+			<<swimicon>><<link [[Swim (0:02)|Lake Shallows]]>><<pass 2>><</link>>
+		<</if>>
+		<br>
+	<</if>>
+	<<if $season isnot "winter" and !($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 6)>>
+		<<if $exposed gte 2>>
+			<<if $exhibitionism gte 75 and $laketeenspresent is 1>>
+				<<ind>><<link [[Take a stroll (1:00)|Lake Stroll]]>><<pass 60>><<stress -6>><<arousal 1000>><<set $rng to random(1, 100)>><<set $phase to 2>><</link>><<exhibitionist5>><<garousal>><<lstress>>
+				<br>
+			<<elseif $exhibitionism gte 55 and $laketeenspresent isnot 1>>
+				<<ind>><<link [[Take a stroll (1:00)|Lake Stroll]]>><<pass 60>><<stress -6>><<arousal 1000>><<set $rng to random(1, 100)>><<set $phase to 3>><</link>><<exhibitionist4>><<garousal>><<lstress>>
+				<br>
+			<</if>>
+		<<else>>
+			<<ind>><<link [[Take a stroll (1:00)|Lake Stroll]]>><<pass 60>><<stress -6>><<set $phase to 1>><</link>><<lstress>>
+			<br>
+		<</if>>
+	<</if>>
+	
+	<<if $dev is 1>>
+		<<ind>><<link [[North to firepit (0:10)|Lake Firepit]]>><<pass 10>><</link>>
+		<br>
+	<</if>>
+<<if $nextPassageCheck is "Lake Waterfall">>
+	<span class="nextLink"><<ind>><<link [[South to waterfall (0:10)|Lake Waterfall]]>><<pass 10>><</link>></span>
+<<else>>
+	<<ind>><<link [[South to waterfall (0:10)|Lake Waterfall]]>><<pass 10>><</link>>
+<</if>>
+<br><br>
+<<foresticon>><<link [[Forest (0:10)|Forest]]>><<pass 10>><</link>>
+<br>
+<<set $eventskip to 0>>
+<</if>>
+
+:: Lake Waterfall
+
+<<set $outside to 1>><<set $location to "lake">><<effects>><<lakeeffects>>
+<<set $forest to 40>><<set $bus to "lakewaterfall">>
+<<if $season is "winter">>
+	<<if $daystate is "night">>
+		You are at the waterfall. A curtain of silver in the moonlight.
+	<<else>>
+		You are at the Waterfall. It feeds the lake through a gap in the ice.
+	<</if>>
+	<<if $weather is "snow">>
+		Snow settles on its surface.
+	<<else>>
+		The ice is serene.
+	<</if>>
+<<else>>
+	<<if $laketeenspresent is 1>>
+		You are at the Waterfall. Some of the younger students are playing in the falling water. Teens sit in the pond above.
+	<<elseif $daystate is "night">>
+		You are at the waterfall. A curtain of silver in the moonlight.
+	<<else>>
+		You are at the Waterfall. Water is flowing down from the pond up on the rocks. A refreshing mist rolls out.
+	<</if>>
+	<<if $weather is "rain">>
+		The water is alive with motion as rain breaks its surface.
+	<<else>>
+		The water is calm.
+	<</if>>
+<</if>>
+<br><br>
+<<if $exposed gte 1 and $laketeenspresent is 1>>
+	<<if $exhibitionism gte 75>>
+	You keep low and stay among the trees. You really wish to show your <<lewdness>>, but you restrain yourself from doing so.
+	<<else>>
+	You keep low and stay among the trees to keep your <<lewdness>> from being seen.
+	<</if>>
+	<br><br>
+<</if>>
+<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+<<if $stress gte $stressmax and !$possessed>>
+	<<passoutlake>>
+<<elseif $foresthunt gte 10>>
+	<<foresthunt>>
+<<elseif $danger gte (9900 - $allure) and $eventskip is 0 and $laketeenspresent isnot 1>>
+	<<eventlake>>
+<<else>>
+	<<eventlakesafe>>
+	<<lakereturnjourney>>
+	<<if $sexStats.anus.pregnancy.seenDoctor gte 2>>
+		<<set $container.lastLocation to $location>>
+		<<if $nextPassageCheck is "Containers">>
+			<<print '<span class="nextLink"><<link [[Check ' + $container[$location].name + ' (0:05)|Containers]]>><<pass 5>><</link>></span>'>>
+		<<else>>
+			<<print '<<link [[Check ' + $container[$location].name + ' (0:05)|Containers]]>><<pass 5>><</link>>'>>
+		<</if>>
+		<br>
+	<</if>>
+	<<if $mason_count gte 2 and $season isnot "winter">>
+		<<link [[Mason's pond (0:05)|Mason Pond]]>><<pass 5>><</link>>
+		<br>
+	<</if>>
+	<<if $nextPassageCheck is "Lake Shore">>
+		<span class="nextLink"><<link [[The lake.|Lake Shore]]>><<pass 10>><</link>></span>
+	<<else>>
+		<<link [[North to shore (0:10)|Lake Shore]]>><<pass 10>><</link>>
+	<</if>>
+	<br>
+	<<link [[South to fishing rock (0:10)|Lake Fishing Rock]]>><<pass 10>><</link>>
+	<br>
+	<br>
+	<<link [[Forest (0:10)|Forest]]>><<pass 10>><</link>>
+	<br>
+	<<set $eventskip to 0>>
+<</if>>
+
+:: Lake Fishing Rock
+
+<<set $outside to 1>><<set $location to "lake">><<effects>><<lakeeffects>>
+<<set $forest to 50>><<set $bus to "lakefishingrock">>
+<<if $season is "winter">>
+	<<if $laketeenspresent is 1>>
+		You are on the Fishing Rock. You see people on the other side of the frozen lake.
+	<<elseif $daystate is "night">>
+		You are on the Fishing Rock. Dark water ripples unseen beneath the ice.
+	<<elseif $daystate is "dusk" or $daystate is "dawn">>
+		You are on the Fishing Rock. It's peaceful, though the nearby trees are foreboding.
+	<<else>>
+		You are on the Fishing Rock. From here you have a clear view of the entire lake.
+	<</if>>
+	<<if $weather is "snow">>
+		Snow settles on the ice.
+	<<else>>
+		The ice is serene.
+	<</if>>
+<<else>>
+	<<if $laketeenspresent is 1>>
+		You are on the Fishing Rock. You see people on the other side of the lake. Fish splash up to eat insects. It's peaceful, though the nearby trees are foreboding.
+	<<elseif $daystate is "night">>
+		You are on the Fishing Rock. Dark water ripples unseen.
+	<<elseif $daystate is "dusk" or $daystate is "dawn">>
+		You are on the Fishing Rock. Fish splash up to eat insects. It's peaceful, though the nearby trees are foreboding.
+	<<else>>
+		You are on the Fishing Rock. From here you have a clear view of the entire lake. You see fish swimming in the water.
+	<</if>>
+	<<if $weather is "rain">>
+		The water is alive with motion as rain breaks its surface.
+	<<else>>
+		The water is calm.
+	<</if>>
+<</if>>
+<br><br>
+<<if $exposed gte 1 and $laketeenspresent is 1>>
+		<<if $exhibitionism gte 75>>
+	You keep low and stay among the trees. You really wish to show your <<lewdness>>, but you restrain yourself from doing so.
+	<<else>>
+	You keep low and stay among the trees to keep your <<lewdness>> from being seen.
+	<</if>>
+	<br><br>
+<</if>>
+<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+<<if $stress gte $stressmax and !$possessed>>
+	<<passoutlake>>
+<<elseif $foresthunt gte 10>>
+	<<foresthunt>>
+<<elseif $danger gte (9900 - $allure) and $eventskip is 0 and $laketeenspresent isnot 1>>
+	<<eventlake>>
+<<else>>
+	<<eventlakesafe>>
+	<<lakereturnjourney>>
+	<<link [[Meditate|Lake Meditate]]>><<set $phase to 1>><</link>>
+	<br>
+	<<if $nextPassageCheck is "Lake Waterfall">>
+		<span class="nextLink"><<link [[The lake.|Lake Waterfall]]>><<pass 10>><</link>></span>
+	<<else>>
+		<<link [[North to waterfall (0:10)|Lake Waterfall]]>><<pass 10>><</link>>
+	<</if>>
+	<br>
+	<<link [[South to campsite (0:20)|Lake Campsite]]>><<pass 20>><</link>>
+	<br><br>
+	<<foresticon>><<link [[Forest (0:10)|Forest]]>><<pass 10>><</link>>
+	<br>
+	<<set $eventskip to 0>>
+<</if>>
+
+:: Lake Firepit
+
+<<set $outside to 1>><<set $location to "lake">><<effects>><<lakeeffects>>
+<<set $forest to 30>><<set $bus to "lakefirepit">>
+<<if $season is "winter">>
+	<<if $laketeenspresent is 1>>
+		You are at the Firepit. Several teens sit on a circle of stone benches. Others try to skate on the nearby ice.
+	<<elseif $daystate is "night">>
+		<<if $laketeensfire is 1>>
+			You are at the Firepit. People are sitting around the fire as it burns, talking and drinking. The reflection of the fire on the lake's surface is almost mesmerising.
+		<<else>>
+			You are at the Firepit. Dark water ripples unseen beneath the ice.
+		<</if>>
+	<<elseif $daystate is "dusk" or $daystate is "dawn">>
+		You are at the Firepit. There are stone benches circling the pit.
+	<<else>>
+		You are at the Firepit. There are stone benches circling the pit.
+	<</if>>
+	<<if $weather is "snow">>
+		Snow settles on the ice below.
+	<<else>>
+		The ice is serene.
+	<</if>>
+<<else>>
+	<<if $laketeenspresent is 1>>
+		You are at the Firepit. Several teens sit on a circle of stone benches. You can see several people splashing in the water down on the shore.
+	<<elseif $daystate is "night">>
+		<<if $laketeensfire is 1>>
+			You are at the Firepit. People are sitting around the fire as it burns, talking and drinking. The reflection of the fire on the lake's surface is almost mesmerising.
+		<<else>>
+			You are at the Firepit. Dark water ripples unseen.
+		<</if>>
+	<<elseif $daystate is "dusk" or $daystate is "dawn">>
+		You are at the Firepit. There are stone benches circling the pit.
+	<<else>>
+		You are at the Firepit. There are stone benches circling the pit.
+	<</if>>
+	<<if $weather is "rain">>
+		The water is alive with motion as rain breaks its surface.
+	<<else>>
+		The water is calm.
+	<</if>>
+<</if>>
+<br><br>
+<<if $exposed gte 1 and $laketeenspresent is 1 or $laketeensfire is 1>>
+	<<if $exhibitionism gte 75>>
+	You keep low and stay among the trees. You really wish to show your <<lewdness>>, but you restrain yourself from doing so.
+	<<else>>
+	You keep low and stay among the trees to keep your <<lewdness>> from being seen.
+	<</if>>
+	<br><br>
+<</if>>
+<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+<<if $stress gte $stressmax and !$possessed>>
+	<<passoutlake>>
+<<elseif $foresthunt gte 10>>
+	<<foresthunt>>
+<<elseif $danger gte (9900 - $allure) and $eventskip is 0 and $laketeenspresent isnot 1>>
+	<<eventlake>>
+<<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "lake" `$laketeenspresent isnot 1`>>
+	<</if>>
+	<<eventlakesafe>>
+	<<lakereturnjourney>>
+	<<link [[South to shore (0:10)|Lake Shore]]>><<pass 10>><</link>>
+	<br><br>
+	<<foresticon>><<link [[Forest (0:10)|Forest]]>><<pass 10>><</link>>
+	<br>
+	<<set $eventskip to 0>>
+<</if>>
+
+:: Lake Campsite
+
+<<set $outside to 1>><<set $location to "lake">><<effects>><<lakeeffects>>
+<<set $forest to 50>><<set $bus to "lakecampsite">>
+<<if $season is "winter">>
+	<<if $daystate is "night">>
+		<<if $weather isnot "rain" and $weather isnot "snow" and $hour gte 18 and $lakecouple isnot 1>>
+			You are at the Campsite. A couple cuddle beside a small fire. There is a tent set up nearby.
+		<<elseif $weather isnot "snow" and $hour lte 18>>
+			You are at the Campsite. Embers burn beside a tent.
+		<<else>>
+			You are at the Campsite. An unlit fireplace sits in the centre of the clearing. The snow may have driven off campers.
+		<</if>>
+	<<elseif $daystate is "dawn">>
+		You are at the Campsite. It looks like it was used recently.
+	<<else>>
+		You are at the Campsite. An unlit fireplace sits in the centre of the clearing.
+	<</if>>
+	<br><br>
+<<else>>
+	<<if $daystate is "night">>
+		<<if $weather isnot "rain" and $weather isnot "snow" and $hour gte 18 and $lakecouple isnot 1>>
+			You are at the Campsite. A couple cuddle beside a small fire. There is a tent set up nearby.
+		<<elseif $weather isnot "rain" and $hour lte 18>>
+			You are at the Campsite. Embers burn beside a tent.
+		<<else>>
+			You are at the Campsite. An unlit fireplace sits in the centre of the clearing. The rain may have driven off campers.
+		<</if>>
+	<<elseif $daystate is "dawn">>
+		You are at the Campsite. It looks like it was used recently.
+	<<else>>
+		You are at the Campsite. An unlit fireplace sits in the centre of the clearing.
+	<</if>>
+	<br><br>
+<</if>>
+<<if $weather isnot "rain" and $weather isnot "snow" and $hour gte 18 and $exposed gte 1 and $lakecouple isnot 1>>
+	<<if $exhibitionism gte 75>>
+	You keep low and stay among the trees. You really wish to show your <<lewdness>>, but you restrain yourself from doing so.
+	<<else>>
+	You keep low and stay among the trees to keep your <<lewdness>> from being seen.
+	<</if>>
+	<br><br>
+<</if>>
+<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+<<if $stress gte $stressmax and !$possessed>>
+	<<passoutlake>>
+<<elseif $foresthunt gte 10>>
+	<<foresthunt>>
+<<elseif $danger gte (9900 - $allure) and $eventskip is 0 and $laketeenspresent isnot 1>>
+	<<eventlake>>
+<<else>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasmLocation "campsite">>
+	<</if>>
+	<<eventlakesafe>>
+	<<lakereturnjourney>>
+	<<if $weather isnot "rain" and $weather isnot "snow" and $hour gte 18 and $exposed lte 0 and $lakecouple isnot 1>>
+		<<link [[Approach the couple|Lake Couple]]>><</link>>
+		<br>
+	<</if>>
+	<<if $nextPassageCheck is "Lake Fishing Rock">>
+		<span class="nextLink"><<link [[The lake.|Lake Fishing Rock]]>><</link>></span>
+	<<else>>
+		<<link [[North to fishing rock (0:10)|Lake Fishing Rock]]>><<pass 10>><</link>>
+	<</if>>
+	<br><br>
+	<<foresticon>><<link [[Forest (0:10)|Forest]]>><<pass 10>><</link>>
+	<br>
+	<<set $eventskip to 0>>
+<</if>>
+
+:: Lake Shallows
+
+<<set $outside to 1>><<set $location to "lake">><<set $bus to "lakeshallows">><<water>><<effects>><<lakeeffects>>
+<<if $laketeenspresent is 1>>
+	You are swimming in the lake near the shore. The beach is alive with activity. People play in the sand and water.
+<<else>>
+	<<if $weather is "rain">>
+		You are swimming in the lake near the shore. The rain drowns out the sounds of the forest.
+	<<else>>
+		You are swimming in the lake near the shore. There is no one at the beach today. The sound of the forest fills the air.
+	<</if>>
+<</if>>
+<<if $schoolday isnot 1 and $weather is "rain" and $daystate is "day">>
+	Someone is swimming further out, past the dock.
+<</if>>
+<<if $sciencetrait gte 2 and !$plants_known.includes("lotus")>>
+	Lotus flowers float by you.
+<</if>>
+<br><br>
+<<if $laketeenspresent is 1 and $exposed gte 1>>
+
+	<<if $exhibitionism gte 75>>
+	You keep low beneath the water. You really wish to show your <<lewdness>>, but you restrain yourself from doing so and probably should find something to cover yourself with.
+	<<else>>
+	You keep low beneath the water to keep your <<lewdness>> from being seen. You'll need to find something to cover with.
+	<</if>>
+	<br><br>
+<</if>>
+<<if $lakeswim is 1>>
+	<<set $lakeswim to 0>>
+	You practise swimming in the lake.
+	<<if $daystate is "night">>
+		<<if $weather is "rain">>
+			The dark water dances with the rain. It's exhilarating, if scary.
+		<<else>>
+			The black water is gentle.
+		<</if>>
+	<<elseif $daystate is "dusk">>
+		<<if $weather is "rain">>
+			Rain agitates the cool water.
+		<<else>>
+			The sun falls over the trees, casting its double in the water.
+		<</if>>
+	<<elseif $daystate is "dawn">>
+		<<if $weather is "rain">>
+			Rain agitates the cool water.
+		<<else>>
+			The morning sun rises over the trees, casting its double in the water.
+		<</if>>
+	<<else>>
+		<<if $weather is "rain">>
+			Rain agitates the warm water.
+		<<else>>
+			The water is warm and gentle.
+		<</if>>
+	<</if>>
+	<<physique 3>><<swimmingskilluse>>
+	<br><br>
+<</if>>
+<<if $phase is 1>>
+	<<set $phase to 0>>
+	You improvise a garment made from reeds and lilies and tie it around your chest. It's fragile and revealing, and you don't think you could take it off without breaking it, but it's better than nothing.
+	<<plantupper>>
+	<br><br>
+	<<if $rng gte 91 and $parasite.nipples.name is undefined and $parasitedisable is "f">>
+		Your satisfaction is interrupted by a pinching sensation on your <<nipples>>. Shocked, you pull down your top to find the culprit. Two small and soft invertebrates have latched to your chest. They massage and suck your nipples as if trying to nurse. They don't hurt at all, but the sensations are arousing you. You tug them in a bid to be free of their molestation, but they cling too tightly. What's more, touching them with any amount of force makes them suck more intensely. You'll need help to remove them.
+		<<parasite nipples urchin>><<garousal>><<arousal 600>>
+		<br><br>
+	<</if>>
+<</if>>
+<<if $phase is 2>>
+	<<set $phase to 0>>
+	You improvise a garment made from reeds and lilies and tie it around your waist. It's fragile and revealing, and you don't think you could take it off without breaking it, but it's better than nothing.
+	<<plantlower>>
+	<br><br>
+	<<if $rng gte 91 and $parasite.penis.name is undefined and $player.penisExist and $parasitedisable is "f" and !$worn.genitals.type.includes("chastity")>>
+		Your satisfaction is interrupted by a pinching sensation on your <<penis>>. Shocked, you lift your skirt to find the culprit. A small and soft invertebrate has latched on. It massages and sucks as if trying to nurse. It doesn't hurt at all, but the sensations are making you feel shamefully aroused. You tug it in a bid to be free of its molestation, but it clings too tightly. What's more, touching it with any amount of force makes it suck more intensely. You'll need help to remove it.
+		<<parasite penis urchin>><<garousal>><<arousal 600>>
+		<br><br>
+	<<elseif $rng gte 91 and $parasite.clit.name is undefined and $player.vaginaExist and $parasitedisable is "f" and !$worn.genitals.type.includes("chastity") and !$player.penisExist>>
+		Your satisfaction is interrupted by a pinching sensation on your <<pussy>>. Shocked, you lift your skirt to find the culprit. A small and soft invertebrate has latched onto your clit. It massages and sucks as if trying to nurse. It doesn't hurt at all, but the sensations are making you feel shamefully aroused. You tug it in a bid to be free of its molestation, but it clings too tightly. What's more, touching it with any amount of force makes it suck more intensely. You'll need help to remove it.
+		<<parasite clit urchin>><<garousal>><<arousal 600>>
+		<br><br>
+	<</if>>
+<</if>>
+<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+<<if $stress gte $stressmax and !$possessed>>
+	<<passoutlake>>
+<<elseif $foresthunt gte 10>>
+	<<foresthunt>>
+<<elseif $danger gte (9900 - ($allure / 2)) and $eventskip is 0>>
+	<<eventlakewater>>
+<<else>>
+	<<link [[Practise swimming (0:30)|Lake Shallows]]>><<pass 30>><<stress -6>><<tiredness 6>><<set $lakeswim to 1>><<slimeEventEnd>><</link>><<gswimming>><<lstress>><<gtiredness>>
+	<br>
+	<<if $worn.upper.exposed gte 2 and $worn.under_upper.exposed gte 1
+	or $worn.upper.exposed gte 2 and $underupperwetstage gte 3
+	or $upperwetstage gte 3 and $worn.under_upper.exposed gte 1
+	or $upperwetstage gte 3 and $underupperwetstage gte 3>>
+		<<link [[Make a top out of plants (0:20)|Lake Shallows]]>><<pass 20>><<set $phase to 1>><</link>>
+		<br>
+	<</if>>
+	<<if $worn.lower.exposed gte 2 and $worn.under_lower.exposed gte 1
+	or $worn.lower.exposed gte 2 and $underlowerwetstage gte 3
+	or $lowerwetstage gte 3 and $worn.under_lower.exposed gte 1
+	or $lowerwetstage gte 3 and $underlowerwetstage gte 3>>
+		<<link [[Make a skirt out of plants (0:20)|Lake Shallows]]>><<pass 20>><<set $phase to 2>><</link>>
+		<br>
+	<</if>>
+	<<if $sciencetrait gte 2 and !$plants_known.includes("lotus")>>
+		<<link [[Search for seeds (0:30)|Lake Lotus]]>><<set $plants_known.push("lotus")>><<pass 30>><<tending 6>><</link>><<gtending>>
+		<br>
+	<</if>>
+	<<if $exposed gte 1 and $laketeenspresent is 1>>
+		<br>
+	<<elseif $dev is 1>>
+		<<link [[Swim to dock (0:10)|Lake Dock]]>><<pass 10>><</link>>
+		<br>
+	<</if>>
+	<<if $nextPassageCheck is "Lake Depths">>
+		<span class="nextLink"><<link [[Further.|Lake Depths]]>><<pass 12>><</link>></span>
+	<<else>>
+		<<link [[Swim further out (0:12)|Lake Depths]]>><<pass 12>><</link>>
+	<</if>>
+	<br>
+	<<if $exposed gte 1 and $laketeenspresent is 1>>
+		<<if $exposed gte 2 and $exhibitionism gte 75>>
+			<<link [[Leave the water exposed (0:02)|Lake Shore Exposed]]>><<set $phase to 0>><<pass 2>><</link>><<exhibitionist5>>
+		<<elseif $exposed gte 1 and $exhibitionism gte 55>>
+			<<link [[Leave the water exposed (0:02)|Lake Shore Exposed]]>><<set $phase to 1>><<pass 2>><</link>><<exhibitionist4>>
+		<</if>>
+	<<else>>
+		<<link [[Shore (0:02)|Lake Shore]]>><<pass 2>><</link>>
+		<br>
+	<</if>>
+	<<set $eventskip to 0>>
+<</if>>
+
+:: Lake Shore Exposed
+<<effects>>
+<<fameschoolex 5>>
+<<generatey1>><<generatey2>>
+<<if ($phase is 0 and ($uncomfortable.nude is false) or ($phase is 1 and $uncomfortable.underwear is false))>>
+	In a moment of daring, you casually emerge from the lake despite your <<lewdness>>. <<flaunting>> you stroll right past a group of teens.
+	It takes a moment for anyone to notice, but eventually a <<person1>><<person>> gasps and points at you, drawing the attention of several more.
+	<br><br>
+	A few avert their eyes in embarrassment, but many more have their eyes glued to you as you stride over to the rocky alcove.
+	A <<person2>><<person>> especially takes an interest in you, but seems to hesitate before doing anything. You decide to increase your pace.
+	<br><br>
+	You sit by the rocky alcove, just out of sight. You wonder how many are still looking in your direction.
+<<else>>
+	In a moment of daring, you emerge from the lake despite your <<lewdness>>. You run right past a group of teens, attempting to cover yourself however you can.
+	A <<person1>><<person>> points and laughs as you run, drawing the attention of several more. <<status -10>><<lcool>>
+	<br><br>
+	A few avert their eyes in embarrassment, but many more have their eyes glued to you as you stride over to the rocky alcove.
+	A <<person2>><<person>> especially takes an interest in you, and for a moment, you think <<hes>> going to chase you. You increase your pace.
+	<br><br>
+	You sit by the rocky alcove, just out of sight. You wonder how many are still looking in your direction.
+<</if>>
+<<if $phase is 0>>
+	<<exhibitionism5>>
+<<else>>
+	<<exhibitionism4>>
+<</if>>
+<<link [[Next|Lake Shore]]>><<endevent>><<set $eventskip to 1>><</link>>
+<br>
+
+:: Lake Shallows Ice
+<<effects>>
+
+<<set $outside to 1>><<set $location to "lake">><<set $bus to "lakeshallows">><<effects>><<lakeeffects>>
+<<if $laketeenspresent is 1>>
+	You are stood on the frozen lake near the shore. Teens practise ice skating nearby.
+<<else>>
+	<<if $weather is "snow">>
+		You are stood on the frozen lake near the shore. Snow blankets the ice, softening your footsteps.
+	<<else>>
+		You are stood alone on the frozen lake near the shore. The sound of the forest fills the air.
+	<</if>>
+<</if>>
+<<if $sciencetrait gte 2 and !$plants_known.includes("lotus")>>
+	You see lotus flowers trapped within the ice.
+<</if>>
+<br><br>
+<<if $laketeenspresent is 1 and $exposed gte 1>>
+	There's nowhere to hide. <<covered>>
+	<br><br>
+<</if>>
+
+<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+<<if $stress gte $stressmax and !$possessed>>
+	<<passoutlake>>
+<<elseif $foresthunt gte 10>>
+	<<foresthunt>>
+<<elseif $danger gte (9900 - ($allure / 2)) and $eventskip is 0>>
+	<<eventlakeice>>
+<<else>>
+
+	<<eventlakesafe>>
+	<<lakereturnjourney>>
+
+	<<link [[Ice skate (0:30)|Lake Skate]]>><<pass 30>><<tiredness 5>><<danceskill 5>><</link>><<gtiredness>> | <span class="green">+ Dancing Skill</span>
+	<br>
+	<<if $sciencetrait gte 2 and !$plants_known.includes("lotus")>>
+		<<link [[Search for seeds (0:30)|Lake Lotus Ice]]>><<set $plants_known.push("lotus")>><<pass 30>><<tending 6>><</link>><<gtending>>
+		<br>
+	<</if>>
+	<<if $nextPassageCheck is "Lake Depths Ice">>
+		<span class="nextLink"><<link [[Further.|Lake Depths Ice]]>><<pass 12>><</link>></span>
+	<<else>>
+		<<link [[Walk further out (0:12)|Lake Depths Ice]]>><<pass 12>><</link>>
+	<</if>>
+	<br>
+	<<link [[Shore (0:02)|Lake Shore]]>><<pass 2>><</link>>
+	<br>
+	<<set $eventskip to 0>>
+<</if>>
+
+
+
+:: Lake Lotus
+<<effects>>
+
+You swim among the lotus flowers, gathering seeds. <span class="gold">You can now grow lotus.</span> <i>Lotus are valuable, but need a special environment to grow.</i>
+<br><br>
+
+<<link [[Next|Lake Shallows]]>><</link>>
+<br>
+
+:: Lake Lotus Ice
+<<effects>>
+
+You free the lotus flowers from the ice, gathering the seeds. <span class="gold">You can now grow lotus.</span> <i>Lotus are valuable, but need a special environment to grow.</i>
+<br><br>
+
+<<link [[Next|Lake Shallows Ice]]>><</link>>
+<br>
+
+:: Lake Depths
+
+<<set $outside to 1>><<set $location to "lake">><<set $bus to "lakedepths">><<water>><<effects>><<lakeeffects>>
+<<if $laketeenspresent is 1>>
+	You are swimming in the middle of the lake near the dock. You see several teens hanging out on and around it.
+<<else>>
+	<<if $weather is "rain">>
+		You are swimming in the lake near the shore. The rain is so thick you can't see the shore. An endless deluge surrounds you in all directions.
+	<<else>>
+		You are swimming in the middle of the lake near the dock.
+	<</if>>
+<</if>>
+<<if $schoolday isnot 1 and $weather is "rain" and $daystate is "day">>
+	<span class="lblue">Mason swims nearby.</span>
+<</if>>
+<br><br>
+<<if $laketeenspresent is 1 and $exposed gte 1>>
+	<<if $exhibitionism gte 75>>
+	You keep low beneath the water. You really wish to show your <<lewdness>>, but you restrain yourself from doing so and probably should find something to cover yourself with.
+	<<else>>
+	You keep low beneath the water to keep your <<lewdness>> from being seen. You'll need to find something to cover with.
+	<</if>>
+	<br><br>
+<</if>>
+<<if $lakeswim is 1>>
+	<<set $lakeswim to 0>>
+	You practise swimming in the lake.
+	<<if $daystate is "night">>
+		<<if $weather is "rain">>
+			The dark water dances with the rain. It's exhilarating, if scary.
+		<<else>>
+			The black water is gentle.
+		<</if>>
+	<<elseif $daystate is "dusk">>
+		<<if $weather is "rain">>
+			Rain agitates the cool water.
+		<<else>>
+			The falls over the trees, casting its double in the water.
+		<</if>>
+	<<elseif $daystate is "dawn">>
+		<<if $weather is "rain">>
+			Rain agitates the cool water.
+		<<else>>
+			The morning sun rises over the trees, casting its double in the water.
+		<</if>>
+	<<else>>
+		<<if $weather is "rain">>
+			Rain agitates the warm water.
+		<<else>>
+			The water is warm and gentle.
+		<</if>>
+	<</if>>
+	<<physique 3>><<swimmingskilluse>>
+	<br><br>
+<</if>>
+<<if $phase is 1>>
+	<<set $phase to 0>>
+	You improvise a garment made from reeds and lilies and tie it around your chest. It's fragile and revealing, and you don't think you could take it off without breaking it, but it's better than nothing.
+	<<plantupper>>
+	<br><br>
+	<<if $rng gte 91 and $parasite.nipples.name is undefined and $parasitedisable is "f">>
+		Your satisfaction is interrupted by a pinching sensation on your <<nipples>>. Shocked, you pull down your top to find the culprit. Two small and soft invertebrates have latched to your chest. They massage and suck your nipples as if trying to nurse. They don't hurt at all, but the sensations are arousing you. You tug them in a bid to be free of their molestation, but they cling too tightly. What's more, touching them with any amount of force makes them suck more intensely. You'll need help to remove them.
+		<<parasite nipples urchin>><<garousal>><<arousal 600>>
+		<br><br>
+	<</if>>
+<</if>>
+<<if $phase is 2>>
+	<<set $phase to 0>>
+	You improvise a garment made from reeds and lilies and tie it around your waist. It's fragile and revealing, and you don't think you could take it off without breaking it, but it's better than nothing.
+	<<plantlower>>
+	<br><br>
+	<<if $rng gte 91 and $parasite.penis.name is undefined and $player.penisExist and $parasitedisable is "f" and !$worn.genitals.type.includes("chastity")>>
+		Your satisfaction is interrupted by a pinching sensation on your <<penis>>. Shocked, you lift your skirt to find the culprit. A small and soft invertebrate has latched on. It massages and sucks as if trying to nurse. It doesn't hurt at all, but the sensations are making you feel shamefully aroused. You tug it in a bid to be free of its molestation, but it clings too tightly. What's more, touching it with any amount of force makes it suck more intensely. You'll need help to remove it.
+		<<parasite penis urchin>><<garousal>><<arousal 600>>
+		<br><br>
+	<<elseif $rng gte 91 and $parasite.clit.name is undefined and $player.vaginaExist and $parasitedisable is "f" and !$worn.genitals.type.includes("chastity")>>
+		Your satisfaction is interrupted by a pinching sensation on your <<pussy>>. Shocked, you lift your skirt to find the culprit. A small and soft invertebrate has latched onto your clit. It massages and sucks as if trying to nurse. It doesn't hurt at all, but the sensations are making you feel shamefully aroused. You tug it in a bid to be free of its molestation, but it clings too tightly. What's more, touching it with any amount of force makes it suck more intensely. You'll need help to remove it.
+		<<parasite clit urchin>><<garousal>><<arousal 600>>
+		<br><br>
+	<</if>>
+<</if>>
+<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+<<if $stress gte $stressmax and !$possessed>>
+	<<passoutlake>>
+<<elseif $foresthunt gte 10>>
+	<<foresthunt>>
+<<elseif $danger gte (9900 - ($allure + 1000)) and $eventskip is 0 and $lakesurface is 1>>
+	<span class="purple">Something followed you from the depths.</span> <<eventlakewater>>
+<<elseif $danger gte (9900 - ($allure / 2)) and $eventskip is 0>>
+	<<eventlakewater>>
+<<else>>
+	<<link [[Practise swimming (0:30)|Lake Depths]]>><<pass 30>><<stress -6>><<tiredness 6>><<set $lakeswim to 1>><<slimeEventEnd>><</link>><<gswimming>><<lstress>><<gtiredness>>
+	<br>
+	<<if $schoolday isnot 1 and $weather is "rain" and $daystate is "day" and $mason_spoken isnot 1 and !$possessed>>
+		<<if $mason_count gte 1>>
+			<<link [[Swim out to Mason (0:05)|Lake Mason]]>><<pass 5>><<set $mason_spoken to 1>><</link>>
+			<br>
+		<<else>>
+			<<link [[Swim out to Mason (0:05)|Lake Mason Intro]]>><<pass 5>><</link>>
+			<br>
+		<</if>>
+	<</if>>
+	<<if $worn.upper.exposed gte 2 and $worn.under_upper.exposed gte 1
+	or $worn.upper.exposed gte 2 and $underupperwetstage gte 3
+	or $upperwetstage gte 3 and $worn.under_upper.exposed gte 1
+	or $upperwetstage gte 3 and $underupperwetstage gte 3>>
+		<<link [[Make a top out of plants (0:20)|Lake Depths]]>><<pass 20>><<set $phase to 1>><</link>>
+		<br>
+	<</if>>
+	<<if $worn.lower.exposed gte 2 and $worn.under_lower.exposed gte 1
+	or $worn.lower.exposed gte 2 and $underlowerwetstage gte 3
+	or $lowerwetstage gte 3 and $worn.under_lower.exposed gte 1
+	or $lowerwetstage gte 3 and $underlowerwetstage gte 3>>
+		<<link [[Make a skirt out of plants (0:20)|Lake Depths]]>><<pass 20>><<set $phase to 2>><</link>>
+		<br>
+	<</if>>
+	<<if $nextPassageCheck is "Lake Underwater">>
+		<span class="nextLink"><<link [[Down.|Lake Underwater]]>><<pass 1>><</link>></span>
+	<<else>>
+		<<link [[Dive (0:01)|Lake Underwater]]>><<pass 1>><</link>>
+	<</if>>
+	<br>
+	<<link [[Swim towards shore (0:12)|Lake Shallows]]>><<pass 12>><</link>>
+	<br><br>
+
+	<<if $exposed gte 1 and $laketeenspresent is 1>>
+	<<elseif $dev is 1>>
+		<<link [[Swim to dock (0:02)|Lake Dock]]>><<pass 2>><</link>>
+		<br>
+	<</if>>
+	<<set $eventskip to 0>>
+<</if>>
+<<set $lakesurface to 0>>
+
+
+:: Lake Depths Ice
+
+<<set $outside to 1>><<set $location to "lake">><<set $bus to "lakedepths">><<effects>><<lakeeffects>>
+<<if $laketeenspresent is 1>>
+	You are in the middle of the frozen lake, near the swimming dock.
+<<else>>
+	<<if $weather is "snow">>
+		You are in the middle of the frozen lake, near the swimming dock. Thick snow makes it difficult to see the surrounding forest.
+	<<else>>
+		You are in the middle of the frozen lake, near the swimming dock.
+	<</if>>
+<</if>>
+<br><br>
+<<if $schoolday isnot 1 and $weather is "snow" and $daystate is "day">>
+	Someone's dug through the ice beside the swimming dock.
+	<br><br>
+<<else>>
+	<<if $lake_ice_broken is undefined>>
+		Someone left equipment on the swimming dock, including a shovel. The ice is thin here. You could break through, with some effort.
+		<br><br>
+	<<else>>
+		There's a hole in the ice, allowing access to the water below.
+		<br><br>
+	<</if>>
+<</if>>
+<<if $exposed gte 1>>
+		<<covered>> There's nowhere to hide out here.
+		<br><br>
+	<</if>>
+
+<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+<<if $stress gte $stressmax and !$possessed>>
+	<<passoutlake>>
+<<elseif $foresthunt gte 10>>
+	<<foresthunt>>
+<<elseif $danger gte (9900 - ($allure + 1000)) and $eventskip is 0 and $lakesurface is 1>>
+	<span class="purple">Something followed you from the depths.</span> <<eventlakewater>>
+<<elseif $danger gte (9900 - ($allure / 2)) and $eventskip is 0>>
+	<<eventlakeice>>
+<<else>>
+	<<if $schoolday isnot 1 and $weather is "snow" and $daystate is "day">>
+		<<set $lake_ice_broken to 1>>
+	<</if>>
+	<<if $nextPassageCheck is "Lake Depths Ice Break">>
+		<span class="nextLink"><<link [[Down.|Lake Depths Ice Break]]>><<pass 12>><</link>></span>
+		<br>
+	<<elseif $lake_ice_broken is undefined>>
+		<<link [[Break the ice (0:30)|Lake Ice Break]]>><<pass 30>><<set $lake_ice_broken to 2>><<tiredness 3>><</link>><<gtiredness>>
+		<br>
+	<<else>>
+		<<link [[Dive (0:01)|Lake Underwater]]>><<pass 1>><</link>>
+		<br>
+	<</if>>
+
+	<<link [[Walk towards shore (0:12)|Lake Shallows Ice]]>><<pass 12>><</link>>
+	<br><br>
+
+	<<set $eventskip to 0>>
+<</if>>
+<<set $lakesurface to 0>>
+
+
+:: Lake Ice Break
+<<effects>>
+
+You lift the shovel, and thrust it into the ice. It's hard work, but you manage to make a sizable hole.
+<br><br>
+
+<<link [[Next|Lake Depths Ice]]>><</link>>
+<br>
+
+
+:: Lake Dock
+
+<<set $outside to 1>><<set $location to "lake">><<effects>><<lakeeffects>>
+<<if $laketeenspresent is 1>>
+	You are on the swimming dock. Several teens accompany you on the dock. There is a bikini sitting on the edge with no signs of its owner.
+<<elseif $weather is "rain">>
+	You are on the swimming dock. The sound of the rain hitting the water surrounding you is almost deafening. <<if $hallucinations gte 1>>You can't see far, yet you feel like something watches you.<</if>>
+<<elseif $daystate is "day">>
+	You are on the swimming dock. The lake looks placid. You feel like the only person in the entire world.
+<<elseif $daystate is "night">>
+	<<if $laketeensfire is 1>>
+		You are on the swimming dock. You can see the fire from the party a little ways in the distance. Stars dot the water. You feel like you are floating among them.
+	<<else>>
+		You are on the swimming dock. Stars dot the water. You feel like you are floating among them. <<if $hallucinations gte 1>>You feel like you are being watched.<</if>>
+	<</if>>
+<<else>>
+	You are on the swimming dock. The only sounds you hear are waves crashing upon the sides of the dock.
+<</if>>
+<<link [[Go swimming|Lake Depths]]>><</link>>
+<br>
+
+:: Lake Meditate
+
+<<set $outside to 1>><<set $location to "lake">><<effects>><<lakeeffects>>
+<<if $phase is 1>>
+	<<set $phase to 0>>
+	You sit on the rock and look out at the lake.
+	<<if $season is "winter">>
+		<<if $daystate is "night">>
+			<<if $weather is "rain">>
+				The violent darkness roils before you.
+			<<else>>
+				The blackness stretches before you.
+			<</if>>
+		<<else>>
+			<<if $weather is "rain">>
+				The water dances with raindrops.
+			<<else>>
+				The water is almost perfect in its stillness.
+			<</if>>
+		<</if>>
+	<<else>>
+		<<if $daystate is "night">>
+			<<if $weather is "snow">>
+				Silent snow settles in darkness.
+			<<else>>
+				The blackness stretches before you.
+			<</if>>
+		<<else>>
+			<<if $weather is "snow">>
+				Snow blankets the ice.
+			<<else>>
+				The ice reflects the world.
+			<</if>>
+		<</if>>
+	<</if>>
+	<i>Meditation effectiveness depends on willpower.</i>
+	<br><br>
+<<elseif $phase is 2>>
+	<<set $phase to 0>>
+	With some effort you quiet your thoughts until they still.
+	<br><br>
+	An hour passes, and you feel less burdened.
+	<br><br>
+<<elseif $phase is 3>>
+	<<set $phase to 0>>
+	You detach yourself from your thoughts. You witness them come and go, as if summoned by something else.
+	<br><br>
+	<<if $awareness gte 400>>
+		The <<if $season is "winter">>ice<<else>>water<</if>> parts, revealing a gaping abyss. Terror shivers up your spine, and breaks your concentration.
+		<<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
+		<br><br>
+	<</if>>
+<<elseif $phase is 4>>
+	<<set $phase to 0>>
+	Your thoughts turn to your <<penis>>, and the mocking way people regard it. The torment returns. You try to remain detached.
+	<br><br>
+	An hour passes, and for a few moments the weight of scrutiny lifts.
+	<br><br>
+	<<if $acceptance_penis_tiny gte 1000>>
+		Realisation dawns as you lean back. Your <<penis>> is beautiful. Why should you care what other people say about it? You've gained the <span class="green">Acceptance: Tiny Penis</span> trait.
+		<br><br>
+	<</if>>
+<<elseif $phase is 5>>
+	<<set $phase to 0>>
+	Your thoughts turn to your <<penis>>, and the mocking way people regard it. The torment returns. You try to remain detached.
+	<br><br>
+	An hour passes, and for a few moments the weight of scrutiny lifts.
+	<br><br>
+	<<if $acceptance_penis_small gte 1000>>
+		Realisation dawns as you lean back. Your <<penis>> is beautiful. Why should you care what other people say about it? You've gained the <span class="green">Acceptance: Small Penis</span> trait.
+		<br><br>
+	<</if>>
+<<elseif $phase is 6>>
+	<<set $phase to 0>>
+	Your thoughts turn to your <<penis>>, and the mocking way people regard it. The torment returns. You try to remain detached.
+	<br><br>
+	An hour passes, and for a few moments the weight of scrutiny lifts.
+	<br><br>
+	<<if $acceptance_penis_big gte 1000>>
+		Realisation dawns as you lean back. Your <<penis>> is beautiful. Why should you care what other people say about it? You've gained the <span class="green">Acceptance: Big Penis</span> trait.
+		<br><br>
+	<</if>>
+<<elseif $phase is 7>>
+	<<set $phase to 0>>
+	Your thoughts turn to your flat chest, and the mocking way people regard it. The torment returns. You try to remain detached.
+	<br><br>
+	An hour passes, and for a few moments the weight of scrutiny lifts.
+	<br><br>
+	<<if $acceptance_breasts_tiny gte 1000>>
+		Realisation dawns as you lean back. Your chest is beautiful. Why should you care what other people say about it? You've gained the <span class="green">Acceptance: Tiny Breasts</span> trait.
+		<br><br>
+	<</if>>
+<<elseif $phase is 8>>
+	<<set $phase to 0>>
+	Your thoughts turn to your <<breasts>>, and the mocking way people regard them. The torment returns. You try to remain detached.
+	<br><br>
+	An hour passes, and for a few moments the weight of scrutiny lifts.
+	<br><br>
+	<<if $acceptance_breasts_small gte 1000>>
+		Realisation dawns as you lean back. Your <<breasts>> are beautiful. Why should you care what other people say about them? You've gained the <span class="green">Acceptance: Small Breasts</span> trait.
+		<br><br>
+	<</if>>
+<<elseif $phase is 9>>
+	<<set $phase to 0>>
+	Your thoughts turn to your <<breasts>>, and the mocking way people regard them. The torment returns. You try to remain detached.
+	<br><br>
+	An hour passes, and for a few moments the weight of scrutiny lifts.
+	<br><br>
+	<<if $acceptance_breasts_big gte 1000>>
+		Realisation dawns as you lean back. Your <<breasts>> are beautiful. Why should you care what other people say about them? You've gained the <span class="green">Acceptance: Big Breasts</span> trait.
+		<br><br>
+	<</if>>
+<</if>>
+<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+<<if $stress gte $stressmax and !$possessed>>
+	<<passoutlake>>
+<<elseif $foresthunt gte 10>>
+	<<foresthunt>>
+<<else>>
+	<<meditateoptions>>
+<</if>>
+<<set $eventskip to 0>>

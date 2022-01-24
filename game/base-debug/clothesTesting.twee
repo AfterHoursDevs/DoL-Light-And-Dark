@@ -1,0 +1,945 @@
+:: Clothes Testing
+<h3>Character Viewer</h3>
+<<if $images is 1>>
+	<<if $debugClothesEquipped is undefined>>
+		<<set $debugClothesEquipped to {
+			head:0,
+			face:0,
+			neck:0,
+			hands:0,
+			upper:0,
+			lower:0,
+			under_upper:0,
+			under_lower:0,
+			legs:0,
+			feet:0,
+		}>>
+		<<set $debugBodyState to {
+			charactersToShow: 1,
+			hairStage: "none",
+			hairType: "default",
+			fringeType: "default",
+			fringeStage: "short",
+			breastSize: 0,
+			penisSize: -2,
+			penisVirgin: true,
+			vaginaCum:"none",
+			anusCum:"none",
+			mouthCum:"none",
+			angelHalo:"hidden",
+			angelWings:"hidden",
+			angelWingsLeftType:"leftwing",
+			angelWingsRightType:"rightwing",
+			fallenAngelHalo:"hidden",
+			fallenAngelWings:"hidden",
+			fallenAngelWingsLeftType:"leftwing",
+			fallenAngelWingsRightType:"rightwing",
+			demonHorns:"hidden",
+			demonTail:"hidden",
+			demonTailType:"tail",
+			demonWings:"hidden",
+			demonWingsType:"wings",
+			wolfEars:"hidden",
+			wolfTail:"hidden",
+			wolfPits:"hidden",
+			wolfPubes:"hidden",
+			catEars:"hidden",
+			catTail:"hidden",
+			cowHorns:"hidden",
+			cowEars:"hidden",
+			cowTail:"hidden",
+			birdEyes:"hidden",
+			birdMalar:"hidden",
+			birdPlumage:"hidden",
+			birdPubes:"hidden",
+			birdWings:"hidden",
+			birdWingsLeftType:"leftwing",
+			birdWingsRightType:"rightwing",
+			birdTail:"hidden",
+		}>>
+		<<set $debugSelectedColors to {
+			hair: "red",
+			eyes: "none",
+			head:["Range", "Range"],
+			face:["Range", "Range"],
+			neck:["Range", "Range"],
+			hands:["Range", "Range"],
+			upper:["Range", "Range"],
+			lower:["Range", "Range"],
+			under_upper:["Range", "Range"],
+			under_lower:["Range", "Range"],
+			legs:["Range", "Range"],
+			feet:["Range", "Range"],
+		}>>
+		<<set $debugSkinColor to {
+			style:"",
+			type: "light",
+			range: 0,
+		}>>
+	<</if>>
+	<<clothesTestingGenerateClothes>>
+	<<set _clothesColorOptions to ["Range", "Inversed Range", "black", "blue", "brown", "green", "pink", "purple", "red", "tangerine", "teal", "white", "yellow"]>>
+	<div id="images">
+		<<clothesTestingImageGenerateAll>>
+	</div>
+	<div style="clear:both;"></div>
+	<div id="controlsNav">
+		<br>
+		<a onclick="wikifier('clothesTestingImageUpdate')">Refresh</a>
+		<br><br>
+		<<link Body>>
+			<<replace #controls>><<clothesTestingBodyControls>><</replace>>
+		<</link>> |
+		<<link Transformations>>
+			<<replace #controls>><<clothesTestingTransformationsControls>><</replace>>
+		<</link>> |
+		<<link Clothes>>
+			<<replace #controls>><<clothesTestingClothesControls>><</replace>>
+		<</link>>
+		<br>
+	</div>
+	<div id="controls">
+		<<clothesTestingBodyControls>>
+	</div>
+	<br>
+	<<link [["Temp Save"|$passage]]>><</link>>
+	<br>
+	<<link "Expand">>
+		<<addclass "#passages" "debugPassages">>
+	<</link>>
+	<br><br>
+	<<link [["Reset"|$passage]]>>
+		<<unset $debugClothesEquipped>>
+		<<unset $debugBodyState>>
+		<<unset $debugSelectedColors>>
+		<<unset $debugSkinColor>>
+	<</link>>
+<<else>>
+	images disabled
+<</if>>
+
+<br><br>
+<<link [[Return|$lastPassage]]>>
+	<<unset $lastPassage>>
+	<<removeclass "#passages" "debugPassages">>
+	<<set $skinColor.tanImgEnabled to clone($gameTanImgSetting)>>
+	<<unset $gameTanImgSetting>>
+	<<tanned 0 "ignoreCoverage">>
+<</link>>
+
+:: clothesTestingImageGenerate [widget]
+<<widget "clothesTestingImageUpdate">>
+<<set $debugSkinColor.style to {
+	body:skinColor($skinColor.tanImgEnabled, $debugSkinColor.range,setup.skinColor[$debugSkinColor.type]),
+	mouth:skinColor($skinColor.tanImgEnabled, $debugSkinColor.range,setup.skinColor[$debugSkinColor.type])
+}>>
+<<replace #images>>
+	<<clothesTestingImageGenerateAll>>
+<</replace>>
+<</widget>>
+
+<<widget "clothesTestingImageGenerateAll">>
+<<set _colors to ["black", "blue", "brown", "green", "pink", "purple", "red", "tangerine", "teal", "white", "yellow"]>>
+<<set _eyeColors to ["purple", "dark blue", "light blue", "amber", "hazel", "green", "red", "pink", "grey", "purple", "purple"]>>
+<<set _test to []>>
+<<for _i to 0; _i lt $debugBodyState.charactersToShow; _i++>>
+<<capture _i>>
+	<<set $debugSelectedColorsAdjusted to clone($debugSelectedColors)>>
+	<<if $debugSelectedColors.eyes is "range">>
+		<<set $debugSelectedColorsAdjusted.eyes to _eyeColors[_i]>>
+	<</if>>
+	<<set _keys to Object.keys($debugSelectedColorsAdjusted)>>
+	<<for _j to 0; _j lt _keys.length; _j++>>
+		<<if _keys[_j] isnot "hair" and _keys[_j] isnot "eyes">>
+			<<if $debugSelectedColorsAdjusted[_keys[_j]][0] is "Range">>
+				<<set $debugSelectedColorsAdjusted[_keys[_j]][0] to _colors[_i]>>
+			<</if>>
+			<<if $debugSelectedColorsAdjusted[_keys[_j]][0] is "Inversed Range">>
+				<<set $debugSelectedColorsAdjusted[_keys[_j]][0] to _colors[_colors.length - _i - 1]>>
+			<</if>>
+			<<if $debugSelectedColorsAdjusted[_keys[_j]][1] is "Range">>
+				<<set $debugSelectedColorsAdjusted[_keys[_j]][1] to _colors[_i]>>
+			<</if>>
+			<<if $debugSelectedColorsAdjusted[_keys[_j]][1] is "Inversed Range">>
+				<<set $debugSelectedColorsAdjusted[_keys[_j]][1] to _colors[_colors.length - _i - 1]>>
+			<</if>>
+		<</if>>
+	<</for>>
+	<<run _test.push($debugSelectedColorsAdjusted)>>
+	<div @id="'no' + _i" class="left">
+		<<clothesTestingImageGenerate $debugSelectedColorsAdjusted>>
+	</div>
+<</capture>>
+<</for>>
+
+<</widget>>
+
+<<widget "clothesTestingImageGenerate">>
+<<set _img to setup.tanImg.sidebar[$skinColor.tanImgEnabled]>>
+<<set _filters to $debugSkinColor.style>>
+<div @class="`debug-images hideImageOverflow ` + debugColourContainerClasses($args[0])">
+	<img class="layer-base anim-idle-2f" @src="_img.basenoarms" @style="'filter: '+_filters.body">
+	<img class="layer-basehead anim-idle-2f" @src="_img.basehead" @style="'filter: '+_filters.body">
+	<img class="layer-base" @src="_img.leftarmidle" @style="'filter: '+_filters.body">
+	<img class="layer-base" @src="_img.rightarmidle" @style="'filter: '+_filters.body">
+
+	<<if $debugBodyState.hairStage isnot "none">>
+		<<if $debugBodyState.hairStage is "thighs" and $debugBodyState.hairType is "default">>
+			<img class="layer-backhair colour-hair anim-idle-2f" src="img/hair/red/backhairthighsred.png">
+		<<elseif $debugBodyState.hairStage is "feet" and $debugBodyState.hairType is "default">>
+			<img class="layer-backhair colour-hair anim-idle-2f" src="img/hair/red/backhairfeetred.png">
+		<</if>>
+		<img class="layer-backhair colour-hair anim-idle-2f" @src="'img/hair/sides/' + $debugBodyState.hairType + '/' + $debugBodyState.hairStage + '.png'">
+		<img class="layer-fronthair colour-hair anim-idle-2f" @src="'img/hair/fringe/' + $debugBodyState.fringeType + '/' + $debugBodyState.fringeStage + '.png'">
+		<img class="layer-brow colour-hair" src="img/hair/red/browtopred.png">
+		<img class="layer-lashes colour-hair" src="img/hair/red/lashesred.png">
+	<</if>>
+	<<if $args[0].eyes isnot "none">>
+		<img class="layer-mouth" @src="_img.mouthsmile" @style="'filter: '+_filters.mouth">
+		<img class="layer-eyes colour-eye anim-idle-2f" src="img/eyes/eyeshazel.png">
+	<</if>>
+	<<if $debugClothesEquipped.upper is 0>>
+		<<if $debugClothesEquipped.under_upper isnot 0>>
+			<<if $debugBodyState.breastSize gte 12>>
+				<img class="layer-breasts anim-idle-2f" @src="_img.breasts6_clothed" @style="'filter: '+_filters.body">
+			<<elseif $debugBodyState.breastSize gte 8>>
+				<img class="layer-breasts anim-idle-2f" @src="_img.breasts6_clothed" @style="'filter: '+_filters.body">
+			<<elseif $debugBodyState.breastSize gte 6>>
+				<img class="layer-breasts anim-idle-2f" @src="_img.breasts4_clothed" @style="'filter: '+_filters.body">
+			<<elseif $debugBodyState.breastSize gte 4>>
+				<img class="layer-breasts anim-idle-2f" @src="_img.breasts3_clothed" @style="'filter: '+_filters.body">
+			<<elseif $debugBodyState.breastSize gte 3>>
+				<img class="layer-breasts anim-idle-2f" @src="_img.breasts2" @style="'filter: '+_filters.body">
+			<<elseif $debugBodyState.breastSize gte 1>>
+				<img class="layer-breasts anim-idle-2f" @src="_img.breasts1" @style="'filter: '+_filters.body">
+			<</if>>
+		<<else>>
+			<<if $debugBodyState.breastSize gte 12>>
+				<img class="layer-breasts anim-idle-2f" @src="_img.breasts6" @style="'filter: '+_filters.body">
+			<<elseif $debugBodyState.breastSize gte 8>>
+				<img class="layer-breasts anim-idle-2f" @src="_img.breasts5" @style="'filter: '+_filters.body">
+			<<elseif $debugBodyState.breastSize gte 6>>
+				<img class="layer-breasts anim-idle-2f" @src="_img.breasts4" @style="'filter: '+_filters.body">
+			<<elseif $debugBodyState.breastSize gte 4>>
+				<img class="layer-breasts anim-idle-2f" @src="_img.breasts3" @style="'filter: '+_filters.body">
+			<<elseif $debugBodyState.breastSize gte 3>>
+				<img class="layer-breasts anim-idle-2f" @src="_img.breasts2" @style="'filter: '+_filters.body">
+			<<elseif $debugBodyState.breastSize gte 1>>
+				<img class="layer-breasts anim-idle-2f" @src="_img.breasts1" @style="'filter: '+_filters.body">
+			<</if>>
+		<</if>>
+	<</if>>
+	<<if $debugBodyState.penisSize isnot -2>>
+		<<if $debugBodyState.penisVirgin is true>>
+			<<if $debugBodyState.penisSize gte 4>>
+			<img class="layer-penis anim-idle-2f" @src="_img.penis_virgin5" @style="'filter: '+_filters.body">
+			<<elseif $debugBodyState.penisSize is 3>>
+			<img class="layer-penis anim-idle-2f" @src="_img.penis_virgin4" @style="'filter: '+_filters.body">
+			<<elseif $debugBodyState.penisSize is 2>>
+			<img class="layer-penis anim-idle-2f" @src="_img.penis_virgin3" @style="'filter: '+_filters.body">
+			<<elseif $debugBodyState.penisSize is 1>>
+			<img class="layer-penis anim-idle-2f" @src="_img.penis_virgin2" @style="'filter: '+_filters.body">
+			<<else>>
+			<img class="layer-penis anim-idle-2f" @src="_img.penis_virgin1" @style="'filter: '+_filters.body">
+			<</if>>
+		<<else>>
+			<<if $debugBodyState.penisSize gte 4>>
+			<img class="layer-penis anim-idle-2f" @src="_img.penis5" @style="'filter: '+_filters.body">
+			<<elseif $debugBodyState.penisSize is 3>>
+			<img class="layer-penis anim-idle-2f" @src="_img.penis4" @style="'filter: '+_filters.body">
+			<<elseif $debugBodyState.penisSize is 2>>
+			<img class="layer-penis anim-idle-2f" @src="_img.penis3" @style="'filter: '+_filters.body">
+			<<elseif $debugBodyState.penisSize is 1>>
+			<img class="layer-penis anim-idle-2f" @src="_img.penis2" @style="'filter: '+_filters.body">
+			<<else>>
+			<img class="layer-penis anim-idle-2f" @src="_img.penis1" @style="'filter: '+_filters.body">
+			<</if>>
+		<</if>>
+	<</if>>
+
+	<<if $debugBodyState.vaginaCum isnot "none">>
+		<img class="layer-tears" @src="'img/body/cum/'+$debugBodyState.vaginaCum+'.gif'">
+	<</if>>
+	<<if $debugBodyState.anusCum isnot "none">>
+		<img class="layer-tears" @src="'img/body/cum/'+$debugBodyState.anusCum+'.gif'">
+	<</if>>
+	<<if $debugBodyState.mouthCum isnot "none">>
+		<img @class="'layer-tears '+_shift" @src="'img/body/cum/'+$debugBodyState.mouthCum+'.gif'">
+	<</if>>
+
+	<<if $debugBodyState.fallenAngelWings isnot "hidden">>
+		<img @class="'layer-'+($debugBodyState.fallenAngelWingsLeftType is 'leftwing'? 'backhair' : 'tailPenisCover')+' anim-idle-2f'" @src="'img/transformations/fallen/'+$debugBodyState.fallenAngelWingsLeftType+'/'+$debugBodyState.fallenAngelWings+'.png'">
+		<img @class="'layer-'+($debugBodyState.fallenAngelWingsRightType is 'leftwing'? 'backhair' : 'tailPenisCover')+' anim-idle-2f'" @src="'img/transformations/fallen/'+$debugBodyState.fallenAngelWingsRightType+'/'+$debugBodyState.fallenAngelWings+'.png'">
+	<</if>>
+	<<if $debugBodyState.fallenAngelHalo isnot "hidden">>
+		<img class="layer-backhair" @src="'img/transformations/fallen/backbrokenhalo/'+$debugBodyState.fallenAngelHalo+'.png'">
+		<img class="layer-parasite" @src="'img/transformations/fallen/frontbrokenhalo/'+$debugBodyState.fallenAngelHalo+'.png'">
+	<</if>>
+	<<if $debugBodyState.angelHalo isnot "hidden">>
+		<img class="layer-backhair anim-idle-2f" @src="'img/transformations/angel/backhalo/'+$debugBodyState.angelHalo+'.png'">
+		<img class="layer-parasite anim-idle-2f" @src="'img/transformations/angel/fronthalo/'+$debugBodyState.angelHalo+'.png'">
+	<</if>>
+	<<if $debugBodyState.angelWings isnot "hidden">>
+		<img @class="'layer-'+($debugBodyState.angelWingsLeftType is 'leftwing'? 'backhair' : 'tailPenisCover')+' anim-idle-2f'" @src="'img/transformations/angel/'+$debugBodyState.angelWingsLeftType+'/'+$debugBodyState.angelWings+'.png'">
+		<img @class="'layer-'+($debugBodyState.angelWingsRightType is 'rightwing'? 'backhair' : 'tailPenisCover')+' anim-idle-2f'" @src="'img/transformations/angel/'+$debugBodyState.angelWingsRightType+'/'+$debugBodyState.angelWings+'.png'">
+	<</if>>
+
+	<<if $debugBodyState.demonHorns isnot "hidden">>
+		<img class="layer-horns anim-idle-2f" @src="'img/transformations/demon/horns/'+$debugBodyState.demonHorns+'.png'">
+	<</if>>
+
+	<<if $debugBodyState.demonTail isnot "hidden">>
+		<img @class="'layer-'+($debugBodyState.demonTailType is 'tail'? 'backhair' : 'tailPenisCover')+' anim-idle-2f'" @src="'img/transformations/demon/'+$debugBodyState.demonTailType+'/'+$debugBodyState.demonTail+'.png'">
+	<</if>>
+
+	<<if $debugBodyState.demonWings isnot "hidden">>
+		<img @class="'layer-'+($debugBodyState.demonWingsType is 'wings'? 'backhair' : 'tailPenisCover')+' anim-idle-2f'" @src="'img/transformations/demon/'+$debugBodyState.demonWingsType+'/'+$debugBodyState.demonWings+'.png'">
+	<</if>>
+
+	<<if $debugBodyState.wolfEars isnot "hidden">>
+		<img class="layer-backhair colour-hair anim-idle-2f" @src="'img/transformations/wolf/ears/'+$debugBodyState.wolfEars+'.png'">
+	<</if>>
+	<<if $debugBodyState.wolfPits isnot "hidden">>
+		<img class="layer-hirsute colour-hair anim-idle-2f" @src="'img/transformations/hirsute/pits/'+$debugBodyState.wolfPits+'.png'">
+	<</if>>
+	<<if $debugBodyState.wolfPubes isnot "hidden">>
+		<img class="layer-hirsute colour-hair anim-idle-2f" @src="'img/transformations/hirsute/pubes/'+$debugBodyState.wolfPubes+'.png'">
+	<</if>>
+	<<if $debugBodyState.wolfTail isnot "hidden">>
+		<img class="layer-backhair colour-hair anim-idle-2f" @src="'img/transformations/wolf/tail/'+$debugBodyState.wolfTail+'.png'">
+	<</if>>
+
+	<<if $debugBodyState.catEars isnot "hidden">>
+		<img class="layer-backhair colour-hair anim-idle-2f" @src="'img/transformations/cat/ears/'+$debugBodyState.catEars+'.png'">
+	<</if>>
+	<<if $debugBodyState.catTail isnot "hidden">>
+		<img class="layer-backhair colour-hair anim-idle-2f" @src="'img/transformations/cat/tail/'+$debugBodyState.catTail+'.png'">
+	<</if>>
+
+	<<if $debugBodyState.cowHorns isnot "hidden">>
+		<img class="layer-backhair colour-hair anim-idle-2f" @src="'img/transformations/cow/horns/'+$debugBodyState.cowHorns+'.png'">
+	<</if>>
+	<<if $debugBodyState.cowEars isnot "hidden">>
+		<img class="layer-backhair colour-hair anim-idle-2f" @src="'img/transformations/cow/ears/'+$debugBodyState.cowEars+'.png'">
+		<img class="layer-face anim-idle-2f" src="img/transformations/cow/tag.png">
+	<</if>>
+	<<if $debugBodyState.cowTail isnot "hidden">>
+		<img class="layer-backhair colour-hair anim-idle-2f" @src="'img/transformations/cow/tail/'+$debugBodyState.cowTail+'.png'">
+	<</if>>
+
+	<<if $debugBodyState.birdEyes isnot "hidden">>
+		<img class="layer-irisacc anim-idle-2f" @src="'img/transformations/bird/eyes/'+$debugBodyState.birdEyes+'.png'">
+	<</if>>
+
+	<<if $debugBodyState.birdMalar isnot "hidden">>
+		<img class="layer-sexlashes colour-hair anim-idle-2f" @src="'img/transformations/bird/malar/'+$debugBodyState.birdMalar+'.png'">
+	<</if>>
+
+	<<if $debugBodyState.birdPlumage isnot "hidden">>
+		<img class="layer-sexlashes colour-hair anim-idle-2f" @src="'img/transformations/bird/plumage/'+$debugBodyState.birdPlumage+'.png'">
+	<</if>>
+
+	<<if $debugBodyState.birdPubes isnot "hidden">>
+		<img class="layer-hirsute colour-hair anim-idle-2f" @src="'img/transformations/bird/pubes/'+$debugBodyState.birdPubes+'.png'">
+	<</if>>
+
+	<<if $debugBodyState.birdTail isnot "hidden">>
+		<img class="layer-sexlashes colour-hair anim-idle-2f" @src="'img/transformations/bird/tail/'+$debugBodyState.birdTail+'.png'">
+	<</if>>
+
+	<<if $debugBodyState.birdWings isnot "hidden">>
+		<img @class="'colour-hair layer-'+($debugBodyState.birdWingsLeftType is 'leftwing'? 'backhair' : 'tailPenisCover')+' anim-idle-2f'" @src="'img/transformations/bird/'+$debugBodyState.birdWingsLeftType+'/'+$debugBodyState.birdWings+'.png'">
+		<img @class="'colour-hair layer-'+($debugBodyState.birdWingsRightType is 'rightwing'? 'backhair' : 'tailPenisCover')+' anim-idle-2f'" @src="'img/transformations/bird/'+$debugBodyState.birdWingsRightType+'/'+$debugBodyState.birdWings+'.png'">
+	<</if>>
+
+	<<set _equip to ["upper", "lower", "under_upper", "under_lower","head", "face", "neck", "hands", "legs", "feet"]>>
+	<<for _i to 0; _i lt _equip.length; _i++>>
+		<<if $debugClothesEquipped[_equip[_i]] isnot 0>>
+			<<set _item to setup.clothes[_equip[_i]][$debugClothesEquipped[_equip[_i]]]>>
+			<img @class="'layer-'+_equip[_i]+(_item.colour_options.length isnot 0 ?` colour-`+_equip[_i]:``)+' anim-idle-2f'" @src="'img/clothes/'+_equip[_i]+'/' + _item.variable + '/' + 'full.png'">
+			<<if _equip[_i] is "upper" or _equip[_i] is "under_upper">>
+				<<if _item.sleeve_img is 1>>
+					<img @class="'layer-rightarmclothes'+(_item.colour_options.length isnot 0 ?` colour-`+_equip[_i]:``)+' anim-idle-2f'" @src="'img/clothes/'+_equip[_i]+'/' + _item.variable + '/' + 'right.png'">
+					<img @class="'layer-leftarmclothes'+(_item.colour_options.length isnot 0 ?` colour-`+_equip[_i]:``)+' anim-idle-2f'" @src="'img/clothes/'+_equip[_i]+'/' + _item.variable + '/' + 'left.png'">
+				<</if>>
+				<<if _item.breast_img is 1>>
+					<<if $debugBodyState.breastSize gte 12>>
+						<img @class="'layer-'+_equip[_i]+ (_item.colour_options.length isnot 0 ?` colour-`+_equip[_i]:``)+' anim-idle-2f'" @src="'img/clothes/'+_equip[_i]+'/' + _item.variable + '/' + '5.png'">
+					<<elseif $debugBodyState.breastSize gte 8>>
+						<img @class="'layer-'+_equip[_i]+ (_item.colour_options.length isnot 0 ?` colour-`+_equip[_i]:``)+' anim-idle-2f'" @src="'img/clothes/'+_equip[_i]+'/' + _item.variable + '/' + '4.png'">
+					<<elseif $debugBodyState.breastSize gte 6>>
+						<img @class="'layer-'+_equip[_i]+ (_item.colour_options.length isnot 0 ?` colour-`+_equip[_i]:``)+' anim-idle-2f'" @src="'img/clothes/'+_equip[_i]+'/' + _item.variable + '/' + '3.png'">
+					<<elseif $debugBodyState.breastSize gte 4>>
+						<img @class="'layer-'+_equip[_i]+ (_item.colour_options.length isnot 0 ?` colour-`+_equip[_i]:``)+' anim-idle-2f'" @src="'img/clothes/'+_equip[_i]+'/' + _item.variable + '/' + '2.png'">
+					<<elseif $debugBodyState.breastSize gte 2>>
+						<img @class="'layer-'+_equip[_i]+ (_item.colour_options.length isnot 0 ?` colour-`+_equip[_i]:``)+' anim-idle-2f'" @src="'img/clothes/'+_equip[_i]+'/' + _item.variable + '/' + '1.png'">
+					<<else>>
+						<img @class="'layer-'+_equip[_i]+ (_item.colour_options.length isnot 0 ?` colour-`+_equip[_i]:``)+' anim-idle-2f'" @src="'img/clothes/'+_equip[_i]+'/' + _item.variable + '/' + '0.png'">
+					<</if>>
+				<</if>>
+				<<if _item.breast_acc_img is 1>>
+					<<if $debugBodyState.breastSize gte 12>>
+						<img @class="'layer-'+_equip[_i]+ (_item.colour_options.length isnot 0 ?` colour-`+_equip[_i]:``)+' anim-idle-2f'" @src="'img/clothes/'+_equip[_i]+'/' + _item.variable + '/' + '5_acc.png'">
+					<<elseif $debugBodyState.breastSize gte 8>>
+						<img @class="'layer-'+_equip[_i]+ (_item.colour_options.length isnot 0 ?` colour-`+_equip[_i]:``)+' anim-idle-2f'" @src="'img/clothes/'+_equip[_i]+'/' + _item.variable + '/' + '4_acc.png'">
+					<<elseif $debugBodyState.breastSize gte 6>>
+						<img @class="'layer-'+_equip[_i]+ (_item.colour_options.length isnot 0 ?` colour-`+_equip[_i]:``)+' anim-idle-2f'" @src="'img/clothes/'+_equip[_i]+'/' + _item.variable + '/' + '3_acc.png'">
+					<<elseif $debugBodyState.breastSize gte 4>>
+						<img @class="'layer-'+_equip[_i]+ (_item.colour_options.length isnot 0 ?` colour-`+_equip[_i]:``)+' anim-idle-2f'" @src="'img/clothes/'+_equip[_i]+'/' + _item.variable + '/' + '2_acc.png'">
+					<<elseif $debugBodyState.breastSize gte 2>>
+						<img @class="'layer-'+_equip[_i]+ (_item.colour_options.length isnot 0 ?` colour-`+_equip[_i]:``)+' anim-idle-2f'" @src="'img/clothes/'+_equip[_i]+'/' + _item.variable + '/' + '1_acc.png'">
+					<<else>>
+						<img @class="'layer-'+_equip[_i]+ (_item.colour_options.length isnot 0 ?` colour-`+_equip[_i]:``)+' anim-idle-2f'" @src="'img/clothes/'+_equip[_i]+'/' + _item.variable + '/' + '0_acc.png'">
+					<</if>>
+				<</if>>
+			<</if>>
+			<<if _equip[_i] is "under_lower">>
+				<<if $worn.under_lower.penis_img is 1 and $player.penisExist>>
+					<img class="layer-under_lower-top colour-under_lower anim-idle-2f" @src="'img/clothes/under_lower/' + _item.variable + '/' + 'penis.png'">
+				<</if>>
+			<</if>>
+			<<if _item.leftImage is 1>>
+				<img @class="'layer-'+_equip[_i]+' colour-'+_equip[_i]+' anim-idle-2f'" @src="'img/clothes/'+_equip[_i]+'/' + _item.variable + '/' + 'left.png'">
+			<</if>>
+			<<if _item.rightImage is 1>>
+				<img @class="'layer-'+_equip[_i]+' colour-'+_equip[_i]+' anim-idle-2f'" @src="'img/clothes/'+_equip[_i]+'/' + _item.variable + '/' + 'right.png'">
+			<</if>>
+			<<if _item.accessory is 1>>
+				<img @class="'layer-'+_equip[_i] + ' colour-'+_equip[_i]+'_acc anim-idle-2f'" @src="'img/clothes/'+_equip[_i]+'/' + _item.variable + '/' + 'acc.png'">
+			<</if>>
+		<</if>>
+	<</for>>
+</div>
+<</widget>>
+
+<<widget "clothesTestingGenerateClothes">>
+<<set _clothes to {}>>
+<<set _equip to ["upper", "lower", "under_upper", "under_lower","head", "face", "neck", "hands", "legs", "feet"]>>
+<<for _i to 0; _i lt _equip.length; _i++>>
+	<<set _clothes[_equip[_i]] to {}>>
+	<<set _keys to Object.keys(setup.clothes[_equip[_i]])>>
+	<<for _j to 0; _j lt _keys.length; _j++>>
+		<<set _clothes[_equip[_i]][setup.clothes[_equip[_i]][_j].name] to _j>>
+	<</for>>
+<</for>>
+<</widget>>
+
+<<widget "clothesTestingBodyControls">>
+<h4>Body</h4>
+<span class="gold">Character Setup</span>
+<<listbox "$debugBodyState.charactersToShow" autoselect>>
+	<<option "Single" 1>>
+	<<option "Wiki" 11>>
+<</listbox>>
+<br><br>
+
+<span class="gold">Skin Colour</span>
+<label>Enable <<print '<<radiobutton "$skinColor.tanImgEnabled" "t" ' + ($skinColor.tanImgEnabled is "t" ? "checked" : "") + '>>'>></label> |
+<label>Disable <<print '<<radiobutton "$skinColor.tanImgEnabled" "f" ' + ($skinColor.tanImgEnabled is "f" ? "checked" : "") + '>>'>></label> |
+<br>
+Skin colour:
+<br>
+Reddish:
+<label>Light <<print '<<radiobutton "$debugSkinColor.type" "light" ' + ($debugSkinColor.type is "light" ? "checked" : "") + '>>'>></label> |
+<label>Medium <<print '<<radiobutton "$debugSkinColor.type" "medium" ' + ($debugSkinColor.type is "medium" ? "checked" : "") + '>>'>></label> |
+<label>Dark <<print '<<radiobutton "$debugSkinColor.type" "dark" ' + ($debugSkinColor.type is "dark" ? "checked" : "") + '>>'>></label> |
+<label>Gyaru <<print '<<radiobutton "$debugSkinColor.type" "gyaru" ' + ($debugSkinColor.type is "gyaru" ? "checked" : "") + '>>'>> (Pale with no tan, very dark with full tan)</label>
+<br>
+Yellowish:
+<label>Light <<print '<<radiobutton "$debugSkinColor.type" "ylight" ' + ($debugSkinColor.type is "ylight" ? "checked" : "") + '>>'>></label> |
+<label>Medium <<print '<<radiobutton "$debugSkinColor.type" "ymedium" ' + ($debugSkinColor.type is "ymedium" ? "checked" : "") + '>>'>></label> |
+<label>Dark <<print '<<radiobutton "$debugSkinColor.type" "ydark" ' + ($debugSkinColor.type is "ydark" ? "checked" : "") + '>>'>></label>
+<label>Gyaru <<print '<<radiobutton "$debugSkinColor.type" "ygyaru" ' + ($debugSkinColor.type is "ygyaru" ? "checked" : "") + '>>'>></label>
+<br><br>
+
+<label>Initial Tan: <<print '<<numberslider "$debugSkinColor.range" '+($debugSkinColor.range isnot undefined? $debugSkinColor.range:0)+' 0 100 1>>'>></label>
+<br><br>
+
+<span class="gold">Penis Size</span>
+<br>
+<<set _penisSize to {"None":"-2", "Mini":"-1", "Tiny":"0", "Small":"1", "Normal":"2", "Large":"3", "Enormous":"4"}>>
+<<set _keys to Object.keys(_penisSize)>>
+<<for _i to 0; _i lt _keys.length; _i++>>
+	<label>
+		<<print _keys[_i]>>
+		<<print '<<radiobutton "$debugBodyState.penisSize" "'+_penisSize[_keys[_i]]+'" ' + ($debugBodyState.penisSize is _penisSize[_keys[_i]] ? "checked" : "") + '>>'>>
+	</label> |
+<</for>>
+
+<br><br>
+<span class="gold">Penis Virginity</span>
+<br>
+<label>Virgin <<print '<<radiobutton "$debugBodyState.penisVirgin" "true" ' + ($debugBodyState.penisVirgin is "true" ? "checked" : "") + '>>'>></label> |
+<label>Non-Virgin <<print '<<radiobutton "$debugBodyState.penisVirgin" "false" ' + ($debugBodyState.penisVirgin is "false" ? "checked" : "") + '>>'>></label> |
+<br><br>
+
+<span class="gold">Breasts</span>
+<<set _name to ["Flat", "Budding", "Tiny", "Small", "Pert", "Modest", "Full", "Large", "Ample", "Massive", "Huge", "Gigantic", "Enormous"]>>
+<<for _i to 0; _i lt _name.length; _i++>>
+	<label><<print _name[_i]>> <<print '<<radiobutton "$debugBodyState.breastSize" _i ' + ($debugBodyState.breastSize is _i ? "checked" : "") + '>>'>></label> |
+<</for>>
+<br><br>
+
+<span class="gold">Eye Colour</span>
+<br>
+<label><span class="">None</span> <<print '<<radiobutton "$debugSelectedColors.eyes" "none" ' + ($debugSelectedColors.eyes is "none" ? "checked" : "") + '>>'>></label> |
+<label><span class="purple">Purple</span> <<print '<<radiobutton "$debugSelectedColors.eyes" "purple" ' + ($debugSelectedColors.eyes is "purple" ? "checked" : "") + '>>'>></label> |
+<label><span class="blue">Dark Blue</span> <<print '<<radiobutton "$debugSelectedColors.eyes" "dark blue" ' + ($debugSelectedColors.eyes is "dark blue" ? "checked" : "") + '>>'>></label> |
+<label><span class="lblue">Light Blue</span> <<print '<<radiobutton "$debugSelectedColors.eyes" "light blue" ' + ($debugSelectedColors.eyes is "light blue" ? "checked" : "") + '>>'>></label> |
+<label><span class="tangerine">Amber</span> <<print '<<radiobutton "$debugSelectedColors.eyes" "amber" ' + ($debugSelectedColors.eyes is "amber" ? "checked" : "") + '>>'>></label> |
+<label><span class="brown">Hazel</span> <<print '<<radiobutton "$debugSelectedColors.eyes" "hazel" ' + ($debugSelectedColors.eyes is "hazel" ? "checked" : "") + '>>'>></label> |
+<label><span class="green">Green</span> <<print '<<radiobutton "$debugSelectedColors.eyes" "green" ' + ($debugSelectedColors.eyes is "green" ? "checked" : "") + '>>'>></label> |
+<label><span class="red">Red</span> <<print '<<radiobutton "$debugSelectedColors.eyes" "red" ' + ($debugSelectedColors.eyes is "red" ? "checked" : "") + '>>'>></label> |
+<label><span class="pink">Pink</span> <<print '<<radiobutton "$debugSelectedColors.eyes" "pink" ' + ($debugSelectedColors.eyes is "pink" ? "checked" : "") + '>>'>></label> |
+<label><span class="grey">Grey</span> <<print '<<radiobutton "$debugSelectedColors.eyes" "grey" ' + ($debugSelectedColors.eyes is "grey" ? "checked" : "") + '>>'>></label>
+<label><span class="grey">Range</span> <<print '<<radiobutton "$debugSelectedColors.eyes" "range" ' + ($debugSelectedColors.eyes is "range" ? "checked" : "") + '>>'>></label>
+<br><br>
+
+<span class="gold">Hair Colour</span>
+<br>
+<<set _hairColorByName to {"Red":"red", "Jet Black":"jetblack", "Black":"black", "Brown":"brown", "Soft Brown":"softbrown", "Light Brown":"lightbrown", "Blond":"blond",
+"Platinum Blond":"platinumblond", "Strawberry Blond":"strawberryblond", "Soft Blond":"softblond", "Ashy blond":"ashyblond", "Burnt Orange":"burntorange", "Ginger":"ginger", "Blue":"blue", "Green":"green", "Teal":"teal",
+"Pink":"pink", "Hotpink":"hotpink", "Softpink":"softpink", "Crimson":"crimson", "Purple":"purple","Medium Purple":"mediumpurple", "Bright Purple":"brightpurple", "White":"white", "Snow White":"snowwhite", "Deep Blue":"deepblue","Dark Lime":"darklime", "Toxic Green":"toxicgreen",}>>
+<<set _keys to Object.keys(_hairColorByName)>>
+<<for _i to 0; _i lt _keys.length; _i++>>
+	<label @class="_hairColorByName[_keys[_i]]">
+		<<print _keys[_i]>>
+		<<print '<<radiobutton "$debugSelectedColors.hair" "'+_hairColorByName[_keys[_i]]+'" ' + ($debugSelectedColors.hair is _hairColorByName[_keys[_i]] ? "checked" : "") + '>>'>>
+	</label> |
+<</for>>
+<br><br>
+
+<span class="gold">Hair Length</span>
+<br>
+<label>None <<print '<<radiobutton "$debugBodyState.hairStage" "none" ' + ($debugBodyState.hairStage is "none" ? "checked" : "") + '>>'>></label> |
+<label>Short <<print '<<radiobutton "$debugBodyState.hairStage" "short" ' + ($debugBodyState.hairStage is "short" ? "checked" : "") + '>>'>></label> |
+<label>Shoulder <<print '<<radiobutton "$debugBodyState.hairStage" "shoulder" ' + ($debugBodyState.hairStage is "shoulder" ? "checked" : "") + '>>'>></label> |
+<label>Chest <<print '<<radiobutton "$debugBodyState.hairStage" "chest" ' + ($debugBodyState.hairStage is "chest" ? "checked" : "") + '>>'>></label> |
+<label>Navel <<print '<<radiobutton "$debugBodyState.hairStage" "navel" ' + ($debugBodyState.hairStage is "navel" ? "checked" : "") + '>>'>></label> |
+<label>Thighs <<print '<<radiobutton "$debugBodyState.hairStage" "thighs" ' + ($debugBodyState.hairStage is "thighs" ? "checked" : "") + '>>'>></label> |
+<label>Feet <<print '<<radiobutton "$debugBodyState.hairStage" "feet" ' + ($debugBodyState.hairStage is "feet" ? "checked" : "") + '>>'>></label> |
+<br><br>
+
+<span class="gold">Hair Type</span>
+<br>
+<<set _hairTypeByName to {"Default": "default", "Braid left": "braid left", "Braid right": "braid right", "Flat ponytail": "flat ponytail",
+"Loose": "loose", "Messy": "messy", "Pigtails": "pigtails", "Ponytail": "ponytail", "Short": "short", "Side tail left": "side tail left",
+"Side tail right": "side tail right", "Straight": "straight", "Swept left": "swept left", "Twin braids": "twin braids", "Twintails": "twintails", "Curl": "curl", "Neat": "neat"}>>
+<<set _keys to Object.keys(_hairTypeByName)>>
+<<for _i to 0; _i lt _keys.length; _i++>>
+	<label>
+		<<print _keys[_i]>>
+		<<print '<<radiobutton "$debugBodyState.hairType" "'+_hairTypeByName[_keys[_i]]+'" ' + ($debugBodyState.hairType is _hairTypeByName[_keys[_i]] ? "checked" : "") + '>>'>>
+	</label> |
+<</for>>
+<br><br>
+
+<span class="gold">Fringe Type</span>
+<br>
+<<set _fringeTypeByName to {"Default": "default", "Thin flaps": "thin flaps", "Wide flaps": "wide flaps", "Hime": "hime", "Loose": "loose", "Messy": "messy", "Overgrown": "overgrown",
+"Ringlets": "ringlets", "Split": "split", "Straight": "straight", "Swept left": "swept left", "Back": "back", "Parted": "parted", "Flat": "flat", "Quiff": "quiff", "Straight curl": "straight curl", "Ringlet curl": "ringlet curl", "Curtain": "curtain"}>>
+<<set _keys to Object.keys(_fringeTypeByName)>>
+<<for _i to 0; _i lt _keys.length; _i++>>
+	<label>
+		<<print _keys[_i]>>
+		<<print '<<radiobutton "$debugBodyState.fringeType" "'+_fringeTypeByName[_keys[_i]]+'" ' + ($debugBodyState.fringeType is _fringeTypeByName[_keys[_i]] ? "checked" : "") + '>>'>>
+	</label> |
+<</for>>
+<br><br>
+
+<span class="gold">Fringe Length</span>
+<br>
+<<set _fringeLengthByName to {"Short":"short", "Shoulder":"shoulder", "Chest":"chest", "Navel":"navel", "Thighs":"thighs", "Feet":"feet", }>>
+<<set _keys to Object.keys(_fringeLengthByName)>>
+<<for _i to 0; _i lt _keys.length; _i++>>
+	<label>
+		<<print _keys[_i]>>
+		<<print '<<radiobutton "$debugBodyState.fringeStage" "'+_fringeLengthByName[_keys[_i]]+'" ' + ($debugBodyState.fringeStage is _fringeLengthByName[_keys[_i]] ? "checked" : "") + '>>'>>
+	</label> |
+<</for>>
+<br><br>
+
+<span class="gold">Vagina Cum</span>
+<br>
+<<listbox "$debugBodyState.vaginaCum" autoselect>>
+	<<option "None" "none">>
+	<<option "Start" "VaginalCumDripStart">>
+	<<option "Very Slow" "VaginalCumDripVerySlow">>
+	<<option "Slow" "VaginalCumDripSlow">>
+	<<option "Fast" "VaginalCumDripFast">>
+	<<option "Very Fast" "VaginalCumDripVeryFast">>
+<</listbox>>
+<br><br>
+
+<span class="gold">Anus Cum</span>
+<br>
+<<listbox "$debugBodyState.anusCum" autoselect>>
+	<<option "None" "none">>
+	<<option "Start" "AnalCumDripStart">>
+	<<option "Very Slow" "AnalCumDripVerySlow">>
+	<<option "Slow" "AnalCumDripSlow">>
+	<<option "Fast" "AnalCumDripFast">>
+	<<option "Very Fast" "AnalCumDripVeryFast">>
+<</listbox>>
+<br><br>
+
+<span class="gold">Mouth Cum</span>
+<br>
+<<listbox "$debugBodyState.mouthCum" autoselect>>
+	<<option "None" "none">>
+	<<option "Start" "MouthCumDripStart">>
+	<<option "Very Slow" "MouthCumDripVerySlow">>
+	<<option "Slow" "MouthCumDripSlow">>
+	<<option "Fast" "MouthCumDripFast">>
+	<<option "Very Fast" "MouthCumDripVeryFast">>
+<</listbox>>
+<br><br>
+
+<</widget>>
+
+<<widget "clothesTestingTransformationsControls">>
+<h4>Transformations</h4>
+<span class="gold">Angel:</span>
+<br>
+Wings:
+<<listbox "$debugBodyState.angelWings" autoselect>>
+	<<option "Hide" "hidden">>
+	<<option "Default" "default">>
+<</listbox>>
+||
+Halo:
+<<listbox "$debugBodyState.angelHalo" autoselect>>
+	<<option "Hide" "hidden">>
+	<<option "Default" "default">>
+<</listbox>>
+<br>
+Left Wing Type:
+<<listbox "$debugBodyState.angelWingsLeftType" autoselect>>
+	<<option "Normal" "leftwing">>
+	<<option "Cover" "leftcover">>
+<</listbox>>
+||
+Right Wing Type:
+<<listbox "$debugBodyState.angelWingsRightType" autoselect>>
+	<<option "Normal" "rightwing">>
+	<<option "Cover" "rightcover">>
+<</listbox>>
+<br><br>
+
+<span class="gold">Fallen Angel:</span>
+<br>
+Wings:
+<<listbox "$debugBodyState.fallenAngelWings" autoselect>>
+	<<option "Hide" "hidden">>
+	<<option "Default" "default">>
+<</listbox>>
+||
+Halo:
+<<listbox "$debugBodyState.fallenAngelHalo" autoselect>>
+	<<option "Hide" "hidden">>
+	<<option "Default" "default">>
+<</listbox>>
+<br>
+Left Wing Type:
+<<listbox "$debugBodyState.fallenAngelWingsLeftType" autoselect>>
+	<<option "Normal" "leftwing">>
+	<<option "Cover" "leftcover">>
+<</listbox>>
+||
+Right Wing Type:
+<<listbox "$debugBodyState.fallenAngelWingsRightType" autoselect>>
+	<<option "Normal" "rightwing">>
+	<<option "Cover" "rightcover">>
+<</listbox>>
+<br><br>
+
+<span class="gold">Demon:</span>
+<br>
+Horns:
+<<listbox "$debugBodyState.demonHorns" autoselect>>
+	<<option "Hide" "hidden">>
+	<<option "Default" "default">>
+	<<option "Classic" "classic">>
+<</listbox>>
+||
+Tail:
+<<listbox "$debugBodyState.demonTail" autoselect>>
+	<<option "Hide" "hidden">>
+	<<option "Default" "default">>
+	<<option "Classic" "classic">>
+<</listbox>>
+||
+Demon Wings:
+<<listbox "$debugBodyState.demonWings" autoselect>>
+	<<option "Hide" "hidden">>
+	<<option "Default" "default">>
+<</listbox>>
+<br>
+Demon Wings Type:
+<<listbox "$debugBodyState.demonWingsType" autoselect>>
+	<<option "Normal" "wings">>
+	<<option "Cover" "leftcover">>
+	<<option "Flaunt" "flauntWings">>
+<</listbox>><br>
+Demon Tail Type:
+<<listbox "$debugBodyState.demonTailType" autoselect>>
+	<<option "Normal" "tail">>
+	<<option "Cover" "rightcover">>
+	<<option "Flaunt" "flauntTail">>
+<</listbox>>
+<br><br>
+
+<span class="gold">Wolf:</span>
+<br>
+Ears:
+<<listbox "$debugBodyState.wolfEars" autoselect>>
+	<<option "Hide" "hidden">>
+	<<option "Default" "default">>
+<</listbox>>
+||
+Tail:
+<<listbox "$debugBodyState.wolfTail" autoselect>>
+	<<option "Hide" "hidden">>
+	<<option "Default" "default">>
+<</listbox>>
+<br><br>
+
+<span class="gold">Cat:</span>
+<br>
+Ears:
+<<listbox "$debugBodyState.catEars" autoselect>>
+	<<option "Hide" "hidden">>
+	<<option "Default" "default">>
+<</listbox>>
+||
+Tail:
+<<listbox "$debugBodyState.catTail" autoselect>>
+	<<option "Hide" "hidden">>
+	<<option "Default" "default">>
+<</listbox>>
+<br><br>
+
+<span class="gold">Cow:</span>
+<br>
+Horns:
+<<listbox "$debugBodyState.cowHorns" autoselect>>
+	<<option "Hide" "hidden">>
+	<<option "Default" "default">>
+<</listbox>>
+||
+Ears:
+<<listbox "$debugBodyState.cowEars" autoselect>>
+	<<option "Hide" "hidden">>
+	<<option "Default" "default">>
+<</listbox>>
+||
+Tail:
+<<listbox "$debugBodyState.cowTail" autoselect>>
+	<<option "Hide" "hidden">>
+	<<option "Default" "default">>
+<</listbox>>
+<br><br>
+
+<span class="gold">Bird:</span>
+<br>
+Eyes:
+<<listbox "$debugBodyState.birdEyes" autoselect>>
+	<<option "Hide" "hidden">>
+	<<option "Default" "default">>
+<</listbox>>
+||
+Malar:
+<<listbox "$debugBodyState.birdMalar" autoselect>>
+	<<option "Hide" "hidden">>
+	<<option "Default" "default">>
+<</listbox>>
+||
+Plumage:
+<<listbox "$debugBodyState.birdPlumage" autoselect>>
+	<<option "Hide" "hidden">>
+	<<option "Default" "default">>
+<</listbox>>
+||
+Pubes:
+<<listbox "$debugBodyState.birdPubes" autoselect>>
+	<<option "Hide" "hidden">>
+	<<option "Default" "default">>
+<</listbox>>
+||
+Tail:
+<<listbox "$debugBodyState.birdTail" autoselect>>
+	<<option "Hide" "hidden">>
+	<<option "Default" "default">>
+<</listbox>>
+<br>
+Wings:
+<<listbox "$debugBodyState.birdWings" autoselect>>
+	<<option "Hide" "hidden">>
+	<<option "Default" "default">>
+<</listbox>>
+||
+Left Wing Type:
+<<listbox "$debugBodyState.birdWingsLeftType" autoselect>>
+	<<option "Normal" "leftwing">>
+	<<option "Cover" "leftcover">>
+<</listbox>>
+||
+Right Wing Type:
+<<listbox "$debugBodyState.birdWingsRightType" autoselect>>
+	<<option "Normal" "rightwing">>
+	<<option "Cover" "rightcover">>
+<</listbox>>
+<br><br>
+<</widget>>
+
+<<widget "clothesTestingClothesControls">>
+<h4>Clothes</h4>
+<span class="gold">Head:</span>
+<<listbox "$debugClothesEquipped.head" autoselect>>
+	<<optionsfrom _clothes.head>>
+<</listbox>>
+<br>
+Primary:
+<<listbox "$debugSelectedColors.head[0]" autoselect>>
+	<<optionsfrom _clothesColorOptions>>
+<</listbox>>
+| Secondary:
+<<listbox "$debugSelectedColors.head[1]" autoselect>>
+	<<optionsfrom _clothesColorOptions>>
+<</listbox>>
+<br><br>
+
+<span class="gold">Face:</span>
+<<listbox "$debugClothesEquipped.face" autoselect>>
+	<<optionsfrom _clothes.face>>
+<</listbox>>
+<br>
+Primary:
+<<listbox "$debugSelectedColors.face[0]" autoselect>>
+	<<optionsfrom _clothesColorOptions>>
+<</listbox>>
+| Secondary:
+<<listbox "$debugSelectedColors.face[1]" autoselect>>
+	<<optionsfrom _clothesColorOptions>>
+<</listbox>>
+<br><br>
+
+<span class="gold">Neck:</span>
+<<listbox "$debugClothesEquipped.neck" autoselect>>
+	<<optionsfrom _clothes.neck>>
+<</listbox>>
+<br>
+Primary:
+<<listbox "$debugSelectedColors.neck[0]" autoselect>>
+	<<optionsfrom _clothesColorOptions>>
+<</listbox>>
+| Secondary:
+<<listbox "$debugSelectedColors.neck[1]" autoselect>>
+	<<optionsfrom _clothesColorOptions>>
+<</listbox>>
+<br><br>
+
+<span class="gold">Hands:</span>
+<<listbox "$debugClothesEquipped.hands" autoselect>>
+	<<optionsfrom _clothes.hands>>
+<</listbox>>
+<br>
+Primary:
+<<listbox "$debugSelectedColors.hands[0]" autoselect>>
+	<<optionsfrom _clothesColorOptions>>
+<</listbox>>
+| Secondary:
+<<listbox "$debugSelectedColors.hands[1]" autoselect>>
+	<<optionsfrom _clothesColorOptions>>
+<</listbox>>
+<br><br>
+
+<span class="gold">Upper:</span>
+<<listbox "$debugClothesEquipped.upper" autoselect>>
+	<<optionsfrom _clothes.upper>>
+<</listbox>>
+<br>
+Primary:
+<<listbox "$debugSelectedColors.upper[0]" autoselect>>
+	<<optionsfrom _clothesColorOptions>>
+<</listbox>>
+| Secondary:
+<<listbox "$debugSelectedColors.upper[1]" autoselect>>
+	<<optionsfrom _clothesColorOptions>>
+<</listbox>>
+<br><br>
+
+<span class="gold">Lower:</span>
+<<listbox "$debugClothesEquipped.lower" autoselect>>
+	<<optionsfrom _clothes.lower>>
+<</listbox>>
+<br>
+Primary:
+<<listbox "$debugSelectedColors.lower[0]" autoselect>>
+	<<optionsfrom _clothesColorOptions>>
+<</listbox>>
+| Secondary:
+<<listbox "$debugSelectedColors.lower[1]" autoselect>>
+	<<optionsfrom _clothesColorOptions>>
+<</listbox>>
+<br><br>
+
+<span class="gold">Under Upper:</span>
+<<listbox "$debugClothesEquipped.under_upper" autoselect>>
+	<<optionsfrom _clothes.under_upper>>
+<</listbox>>
+<br>
+Primary:
+<<listbox "$debugSelectedColors.under_upper[0]" autoselect>>
+	<<optionsfrom _clothesColorOptions>>
+<</listbox>>
+| Secondary:
+<<listbox "$debugSelectedColors.under_upper[1]" autoselect>>
+	<<optionsfrom _clothesColorOptions>>
+<</listbox>>
+<br><br>
+
+<span class="gold">Under Lower:</span>
+<<listbox "$debugClothesEquipped.under_lower" autoselect>>
+	<<optionsfrom _clothes.under_lower>>
+<</listbox>>
+<br>
+Primary:
+<<listbox "$debugSelectedColors.under_lower[0]" autoselect>>
+	<<optionsfrom _clothesColorOptions>>
+<</listbox>>
+| Secondary:
+<<listbox "$debugSelectedColors.under_lower[1]" autoselect>>
+	<<optionsfrom _clothesColorOptions>>
+<</listbox>>
+<br><br>
+
+<span class="gold">Legs:</span>
+<<listbox "$debugClothesEquipped.legs" autoselect>>
+	<<optionsfrom _clothes.legs>>
+<</listbox>>
+<br>
+Primary:
+<<listbox "$debugSelectedColors.legs[0]" autoselect>>
+	<<optionsfrom _clothesColorOptions>>
+<</listbox>>
+| Secondary:
+<<listbox "$debugSelectedColors.legs[1]" autoselect>>
+	<<optionsfrom _clothesColorOptions>>
+<</listbox>>
+<br><br>
+
+<span class="gold">Feet:</span>
+<<listbox "$debugClothesEquipped.feet" autoselect>>
+	<<optionsfrom _clothes.feet>>
+<</listbox>>
+<br>
+Primary:
+<<listbox "$debugSelectedColors.feet[0]" autoselect>>
+	<<optionsfrom _clothesColorOptions>>
+<</listbox>>
+| Secondary:
+<<listbox "$debugSelectedColors.feet[1]" autoselect>>
+	<<optionsfrom _clothesColorOptions>>
+<</listbox>>
+<</widget>>

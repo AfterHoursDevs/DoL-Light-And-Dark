@@ -1,0 +1,305 @@
+:: Widgets Sleep [widget]
+
+<<widget "sleep">>
+	<<sleephour>>
+<</widget>>
+
+<<widget "sleephour">>
+	<<set $sleepHoursTotal to 0>>
+	<<set _equip to ["over_upper", "over_lower", "upper", "lower", "over_head", "head", "face", "neck", "hands", "legs", "feet"]>>
+	<<set _sleepTraitEffect to 10>>
+	<<if $worn.upper.type.includes("sleep") or $worn.lower.type.includes("sleep")>>
+		<<set _sleepTraitEffect += 5>>
+	<</if>>
+	<<if $robinbed is 1 or $kylarbed is 1 or $wolfbed is 1>>
+		<<set _sleepTraitEffect += 5>>
+	<</if>>
+	<<for $_i to 0; $_i lt _equip.length; $_i++>>
+		<<if $worn[_equip[$_i]].type.includes("naked") or $worn[_equip[$_i]].type.includes("sleep") or $worn[_equip[$_i]].type.includes("eerie")>>
+			<<continue>>
+		<</if>>
+		<<set _sleepTraitEffect to 0>>
+		<<break>>
+	<</for>>
+	<<for $sleephour gte 1 or $sleephour lte -1>><<set $sleephour -= 1>><<set $sleepStat++>>
+		<<effectstime>>
+		<<if $location is "asylum">>
+			<<asylumeffects>>
+		<</if>>
+		<<if $robinromance is 1 and $NPCName[$NPCNameList.indexOf("Robin")].lust gte 20 and $robinbed isnot 1 and $location is "home" and $robinwakeday isnot 1 and $kylarbed isnot 1>>
+			<<if $hour gte 18 or $hour lte 6>>
+				<<set $schoolwake to 1>>
+				<<set $NPCName[$NPCNameList.indexOf("Robin")].lovewake to 1>>
+				<<set $robinwakeday to 1>>
+			<</if>>
+		<<elseif $NPCName[$NPCNameList.indexOf("Robin")].love gte 100 and $robindebtknown isnot 1 and $location is "home" and $kylarbed isnot 1>>
+			<<if $hour gte 18 or $hour lte 6>>
+				<<set $schoolwake to 1>>
+				<<set $robindebtwake to 1>>
+			<</if>>
+		<<elseif $wraith and $wraith.state isnot "" and $wraith.nightmare is 1 and ($moonstate is "evening" and $hour gte 21 or $moonstate is "morning" and $hour lt 5)>>		
+			<<if $location is "home" or $location is "cabin" or $location is "wolf_cave" or ($location is "tower" and $bird and $bird.mirror is 1) or $location is "alex_cottage">>
+				<<set $schoolwake to 1>>
+				<<set $wraith.nightmare to 2>>
+				<<set $sleepHoursTotal to 1>>
+				<<if $sleeptrouble is 1 and $controlled is 0>>
+					<<set $tiredness -= 200>>
+				<<else>>
+					<<set $tiredness -= 250>>
+				<</if>>
+				<<if _sleepTraitEffect>>
+					<<set $tiredness -= _sleepTraitEffect>>
+				<</if>>
+				<<if $location isnot "tower">>
+					<<pass 1 hour>>
+				<<else>>
+					<<bird_pass 60>>
+				<</if>>
+				<<if ($sleephour lte -1 and $tiredness lte 0) or $sleephour lte (-1 - 10)>>
+					<<set $sleephour to 0>>
+				<</if>>
+				<<set $wraith.hunt to 0>>
+				<<set $foresthunt to 0>>
+			<</if>>
+		<<elseif $baileydefeatedchain gte 1 and $location is "home" and ($rng * 100) gte (9900 - ($allure / 5))>>
+			<<set $schoolwake to 1>>
+			<<set $baileyrapewake to 1>>
+		<<elseif $christmas is 1 and $monthday is 25 and $location is "home" and $hour lte 6 and $christmas_kylar is undefined and $NPCName[$NPCNameList.indexOf("Kylar")].state is "active">>
+			<<set $schoolwake to 1>>
+			<<set $christmas_kylar to 1>>
+		<<elseif $hour is 6 and $location is "asylum" or $asylumstate is "firsttreatment" and $asylumfirsttreatment isnot 1 and $location is "asylum" or $asylumstate is "secondtreatment" and $asylumsecondtreatment isnot 1 and $location is "asylum" or $asylumstate is "assessment" and $asylumassessment isnot 1 and $location is "asylum">>
+			<<set $schoolwake to 1>>
+		<<elseif $location is "asylum" and $suspicion gte 80 and random(1, 10) gte 10>>
+			<<set $schoolwake to 1>>
+			<<set $rapewake to 1>>
+		<<elseif $location is "prison" and $hour is 6>>
+			<<set $schoolwake to 1>>
+			<<set $prisonwake to 1>>
+		<<elseif $location is "alex_cottage" and ($hour gte 21 or $hour lte 5) and $NPCName[$NPCNameList.indexOf("Alex")].lust gte 10 and $alexwake isnot 1>>
+			<<set $alexwake to 1>>
+			<<set $schoolwake to 1>>
+		<<elseif $location is "alex_cottage" and $farm_attack_timer is 0 and $hour gte 21>>
+			<<set $remywake to 1>>
+			<<set $schoolwake to 1>>
+		<<elseif $schoolday is 1 and $hour is 7 and $location is "home" and !$bailey_wake_day>>
+			<<set $schoolwake to 1>>
+			<<set $bailey_wake_day to true>>
+		<<elseif $hour lte 6 and $location is "cabin" and $NPCName[$NPCNameList.indexOf("Eden")].lust gte 26 and $edenwake isnot 1>>
+			<<set $edenwake to 1>>
+			<<set $schoolwake to 1>>
+		<<elseif $location is "forest" and $wolfpackferocity gte 10 and $wolfwake isnot 1>>
+			<<set $schoolwake to 1>>
+			<<set $wolfwake to 1>>
+		<<elseif $location is "tower" and $bird.state is "hunting" and $bird.timer lte 0>>
+			<<set $schoolwake to 1>>
+		<<elseif $location is "tower" and $bird.state is "home" and $bird.satisfied isnot true and random(1, 10) is 10>>
+			<<set $schoolwake to 1>>
+		<<elseif $location is "home" and $corruption_slime gte ($willpower / 20) and random(0,100) lt 3 and $daystate is "night" and $slimeSleepEvent is 0 and $kylarbed isnot 1>>
+			<<set $slimeWake to 1>>
+			<<break>>
+		<</if>>
+		<<if $schoolwake isnot 1>>
+			<<set $sleepHoursTotal += 1>>
+			<<if $sleeptrouble is 1 and $controlled is 0>>
+				<<set $tiredness -= 200>>
+			<<else>>
+				<<set $tiredness -= 250>>
+			<</if>>
+			<<if _sleepTraitEffect>>
+				<<set $tiredness -= _sleepTraitEffect>>
+			<</if>>
+			<<if $location isnot "tower">>
+				<<pass 1 hour>>
+			<<else>>
+				<<bird_pass 60>>
+			<</if>>
+			<<if $nightmares gte 1 and $controlled is 0>>
+				<<stress 6>>
+			<</if>>
+			<<if ($sleephour lte -1 and $tiredness lte 0) or $sleephour lte (-1 - 10)>>
+				<<set $sleephour to 0>>
+			<</if>>
+		<<else>>
+			<<break>>
+		<</if>>
+	<</for>>
+<</widget>>
+<<widget "sleepeffects">>
+	<<if $sleeptransform is 1>>
+		<<if $wolfgirl is 0 and $wolfbuild gte 5>>
+			<<set $wolfgirl to 1>>
+			<span class="gold">You have a strange toothache.</span>
+			<br><br>
+		<<elseif $wolfgirl is 1 and $wolfbuild gte 10>>
+			<<set $wolfgirl to 2>>
+			<span class="gold">Your mouth feels different. You explore your mouth and wince as your tongue presses against your new fangs.</span>
+			<br><br>
+		<<elseif $wolfgirl is 1 and $wolfbuild lt 5>>
+			<<set $wolfgirl to 0>>
+			<span class="gold">Your toothache has stopped.</span>
+			<br><br>
+		<<elseif $wolfgirl is 2 and $wolfbuild gte 15>>
+			<<set $wolfgirl to 3>>
+			<span class="gold">Your scalp itches.</span>
+			<br><br>
+		<<elseif $wolfgirl is 2 and $wolfbuild lt 10>>
+			<<set $wolfgirl to 1>>
+			<span class="gold">Your fangs have turned into regular teeth.</span>
+			<br><br>
+		<<elseif $wolfgirl is 3 and $wolfbuild gte 20>>
+			<<set $wolfgirl to 4>>
+			<span class="gold">You feel something on your head. You reach up and tug, but it hurts. You have a new pair of wolf ears.</span>
+			<br><br>
+		<<elseif $wolfgirl is 3 and $wolfbuild lt 15>>
+			<<set $wolfgirl to 2>>
+			<span class="gold">Your scalp no longer itches.</span>
+			<br><br>
+		<<elseif $wolfgirl is 4 and $wolfbuild gte 25>>
+			<<set $wolfgirl to 5>>
+			<span class="gold">Your lower back itches.</span>
+			<br><br>
+		<<elseif $wolfgirl is 4 and $wolfbuild lte 20>>
+			<<set $wolfgirl to 3>>
+			<span class="gold">Your wolf ears have disappeared.</span>
+			<br><br>
+		<<elseif $wolfgirl is 5 and $wolfbuild gte 30>>
+			<<set $wolfgirl to 6>>
+			<span class="gold">You turn away from your bed and somehow knock your pillow to the floor. You reach behind you and feel your new wolf tail.</span>
+			<br><br>
+		<<elseif $wolfgirl is 5 and $wolfbuild lt 25>>
+			<<set $wolfgirl to 4>>
+			<span class="gold">Your lower back has stopped itching.</span>
+			<br><br>
+		<<elseif $wolfgirl is 6 and $wolfbuild lt 30>>
+			Your balance feels different. Your wolf tail has disappeared.
+			<<set $wolfgirl to 5>>
+			<span class="gold"></span>
+			<br><br>
+		<</if>>
+	<</if>>
+	<<if $stress gte $stressmax>>
+		<<set $stress -= 2000>>
+		<<trauma 10>>
+		<span class="red">Your stress level reached a peak while you slept and has since subsided, but at cost to your mental health.</span>
+		<<lstress>><<gtrauma>>
+		<br><br>
+	<</if>>
+	<<if $scienceproject is "ongoing" and $sciencephallusknown isnot 1 and $promiscuity gte 35>>
+		<<set $sciencephallusknown to 1>>
+		A lewd thought comes to you as you wake up. <span class="gold">You've conceived the "local phalli" science project.</span> Check your journal for details.
+		<br><br>
+	<</if>>
+<</widget>>
+
+<<widget "bedclotheson">>
+	<<switch $args[0]>>
+		<<case "bed" "Bed">>
+			<<set $_storeLocation to "bed">>
+			<<set $wardrobe_location to "wardrobe">>
+		<<case "Farm Bed">>
+			<<set $_storeLocation to "Farm Bed">>
+			<<set $wardrobe_location to "alexFarm">>
+		<<case "prison bed">>
+			<<set $_storeLocation to "prison bed">>
+			<<set $wardrobe_location to "prison">>
+		<<default>>
+			Something went wrong with the "bedclotheson" widget, please report
+			<<run console.log('Something went wrong with the "bedclotheson" widget, please report')>>
+	<</switch>>
+	<<wardrobeSelection true>>
+	<<updateWornClothingLocation $wardrobe_location>>
+	<<if $wear_outfit is "clotheson">>
+		/*Was causing some wierdness when getting out of bed*/
+		/*<<undress $wardrobe_location>>*/
+		<<storeon $_storeLocation>>
+	<<elseif $wear_outfit isnot "none">>
+		<<storeon $_storeLocation>>
+		<<undress $wardrobe_location>>
+		<<wearoutfit>>
+	<</if>>
+	<<updateWornClothingLocation $wardrobe_location>>
+	<<set $wear_outfit to "none">>
+<</widget>>
+
+<<widget "slimeNoSleep">>
+	<<if $corruption_slime gte 80>>
+		<<set _eventsList to ["have sex with someone or something", "only sleep naked from now on"]>>
+
+		<<if $alwaysSleepNaked is true>>
+			<<set _eventsList.delete("only sleep naked from now on")>>
+		<</if>>
+	<<else>>
+		<<set _eventsList to ["have sex with someone", "go running or swimming for an hour"]>>
+	<</if>>
+	<<if $skulduggery gt 200>>
+		<<set _eventsList.push("steal something")>>
+	<</if>>
+	<<if $exhibitionism gt 35>>
+		<<set _eventsList.push("go running or swimming naked for an hour")>>
+	<</if>>
+
+	<<set _maxEvents to _eventsList.length - 1>>
+	<<set $slimeEvent to _eventsList[random(0,_maxEvents)]>>
+
+	<span class="lewd">You feel the slime in your head command you to <<print $slimeEvent>> before it allows you to sleep.</span> It promises rewards if you comply, and threatens consequences if you do not.
+	<br><br>
+	<<link [[Obey|SleepSlimeEventObey]]>><<corruption 1>><<pain -4>><<stress -6>><<trauma -12>><<set $submissive += 1>><</link>><<gcorruption>><<lpain>><<lltrauma>><<lstress>>
+	<br>
+	<<link [[Defy|SleepSlimeEventDefy]]>><<corruption -1>><<pain 8>><<stress 6>><<trauma 6>><<set $submissive -= 1>><</link>><<lcorruption>><<ggpain>><<ggtrauma>><<ggstress>>
+	<br>
+<</widget>>
+
+<<widget "slimeEventResult">>
+	<<if $slimeEvent is "go running or swimming naked for an hour" or "go running or swimming for an hour">>
+		<<set $slimeEventLength to 2>>
+	<</if>>
+	<<if $slimeEvent is "only sleep naked from now on">>
+		<<strip>>
+		<<set $alwaysSleepNaked to true>>
+		<<unset $slimeEvent>>
+		You strip before getting into bed.
+		<br><br>
+		<<link [[Next|Bed]]>><</link>>
+	<<else>>
+		You move away from your bed to do the task given to you.
+		<br><br>
+		<<link [[Next|Bedroom]]>><</link>>
+	<</if>>
+<</widget>>
+
+<<widget "slimeEventEnd">>
+<<switch $slimeEvent>>
+	<<case "go running or swimming naked for an hour">>
+		<<if $slimeEventLength is 1 and $exposed is 2>>
+			<<unset $slimeEvent>>
+			<<unset $slimeEventLength>>
+		<<elseif $exposed is 2>>
+			<<set $slimeEventLength -= 1>>
+		<</if>>
+	<<case "go running or swimming for an hour">>
+		<<if $slimeEventLength is 1>>
+			<<unset $slimeEvent>>
+			<<unset $slimeEventLength>>
+		<<else>>
+			<<set $slimeEventLength -= 1>>
+		<</if>>
+	<<default>>
+		<<unset $slimeEvent>>
+<</switch>>
+<</widget>>
+
+:: SleepSlimeEventObey
+	You obey the slime's demand.
+	<<slimeEventResult>>
+
+:: SleepSlimeEventDefy
+<<if $corruption_slime gte ($willpower / 10)>>
+	The slime is able to force you to comply with its demand.
+	<<slimeEventResult>>
+
+<<else>>
+	You are able to defy what the slime is demanding and get into bed without listening any further.
+	<<unset $slimeEvent>>
+	<br><br>
+	<<link [[Next|Bed]]>><</link>>
+<</if>>

@@ -1,0 +1,215 @@
+:: Widgets NPC Damage [widget]
+<<widget "npcdamage">>
+<!-- Calculates damage inflicted by PC on NPCs and removes highest number NPC from group combat NG v2.8-->
+<<set _thenpc to $args[0]>>
+
+<<if $NPCList[_thenpc].stance isnot "defeated" and $NPCList[_thenpc].health lte 0>>
+	<<defeatnpc _thenpc>>
+<</if>>
+
+<</widget>>
+
+<<widget "defeatnpc">>
+<!-- This knocks out and resets the last NPC on the list from 5 to 0 -->
+<!-- Resets PC variables to release PC from NPC actions, resets NPC variables as partial cleanup prior to cleannpc, gives PC stats uptick as side benefit to defeating NPCs. -->
+
+<<set _i to $args[0]>>
+<<personselect _i>>
+<span class="blue"><<combatPerson>> staggers back, defeated.</span>
+<<llpain>><<llstress>><<lltrauma>>
+<br><br>
+
+<!-- Check for Defeated NPC actions and reverse them out -->
+<!-- NPC penis in PC -->
+<<if $NPCList[_i].penis is "anus" or $NPCList[_i].penis is "anusimminent" or $NPCList[_i].penis is "anusentrance">>
+	<<set $anusstate to 0>><<set $anususe to 0>>
+<</if>>
+<<if $NPCList[_i].penis is "vagina" or $NPCList[_i].penis is "vaginaimminent" or $NPCList[_i].penis is "vaginaentrance">>
+	<<set $vaginastate to 0>><<set $vaginause to 0>>
+<</if>>
+<<if $NPCList[_i].penis is "mouth" or $NPCList[_i].penis is "mouthimminent" or $NPCList[_i].penis is "mouthentrance">>
+	<<set $mouthstate to 0>><<set $mouthuse to 0>>
+<</if>>
+<<if $NPCList[_i].penis is "anusdouble" or $NPCList[_i].penis is "anusdoubleimminent" or $NPCList[_i].penis is "anusdoubleentrance">>
+	<<set _otherNPCindex to "f">>
+	<<if _i is $anustarget>>
+		<<set _otherNPCindex to $anusdoubletarget>>
+	<<else>>
+		<<set _otherNPCindex to $anustarget>>
+	<</if>>
+	<<if _otherNPCindex isnot "f" and $NPCList[_otherNPCindex].penis isnot 0 and $NPCList[_otherNPCindex].penis.includes("double")>>
+		<<switch $NPCList[_otherNPCindex].penis>>
+			<<case "anusdouble">>
+				<<set $NPCList[_otherNPCindex].penis to "anus">>
+				<<set $anusstate to "penetrated">><<set $anususe to "penis">>
+			<<case "anusdoubleentrance">>
+				<<set $NPCList[_otherNPCindex].penis to "anusentrance">>
+				<<set $anusstate to "entrance">><<set $anususe to "penis">>
+			<<case "anusdoubleimminent">>
+				<<set $NPCList[_otherNPCindex].penis to "anusimminent">>
+				<<set $anusstate to "imminent">><<set $anususe to "penis">>
+		<</switch>>
+	<<else>>
+		<<set $anusstate to 0>><<set $anususe to 0>>
+	<</if>>
+<</if>>
+<<if $NPCList[_i].penis is "vaginadouble" or $NPCList[_i].penis is "vaginadoubleimminent" or $NPCList[_i].penis is "vaginadoubleentrance">>
+	<<set _otherNPCindex to "f">>
+	<<if _i is $vaginatarget>>
+		<<set _otherNPCindex to $vaginadoubletarget>>
+	<<else>>
+		<<set _otherNPCindex to $vaginatarget>>
+	<</if>>
+	<<if _otherNPCindex isnot "f" and $NPCList[_otherNPCindex].penis isnot 0 and $NPCList[_otherNPCindex].penis.includes("double")>>
+		<<switch $NPCList[_otherNPCindex].penis>>
+			<<case "vaginadouble">>
+				<<set $NPCList[_otherNPCindex].penis to "vagina">>
+				<<set $vaginastate to "penetrated">><<set $vaginause to "penis">>
+			<<case "vaginadoubleentrance">>
+				<<set $NPCList[_otherNPCindex].penis to "vaginaentrance">>
+				<<set $vaginastate to "entrance">><<set $vaginause to "penis">>
+			<<case "vaginadoubleimminent">>
+				<<set $NPCList[_otherNPCindex].penis to "vaginaimminent">>
+				<<set $vaginastate to "imminent">><<set $vaginause to "penis">>
+		<</switch>>
+	<<else>>
+		<<set $vaginastate to 0>><<set $vaginause to 0>>
+	<</if>>
+<</if>>
+
+<!-- PC penis in NPC -->
+<<if $NPCList[_i].vagina is "penis" or $NPCList[_i].vagina is "penisimminent" or $NPCList[_i].vagina is "penisentrance">>
+	<<set $penisstate to 0>><<set $penisuse to 0>>
+<</if>>
+<<if $NPCList[_i].mouth is "penis" or $NPCList[_i].mouth is "penisimminent" or $NPCList[_i].mouth is "penisentrance">>
+	<<set $mouthstate to 0>><<set $mouthuse to 0>>
+<</if>>
+<<if $NPCList[_i].vagina is "otheranus" or $NPCList[_i].vagina is "otheranusimminent" or $NPCList[_i].vagina is "otheranusentrance">>
+	<<set $penisstate to 0>><<set $penisuse to 0>>
+<</if>>
+<<if $NPCList[_i].penis is "otheranus" or $NPCList[_i].penis is "otheranusimminent" or $NPCList[_i].penis is "otheranusentrance">>
+	<<set $penisstate to 0>><<set $penisuse to 0>>
+<</if>>
+
+<!-- Genital other -->
+<<if $NPCList[_i].vagina is "vagina" or $NPCList[_i].vagina is "vaginaimminent" or $NPCList[_i].vagina is "vaginaentrance">>
+	<<set $vaginastate to 0>><<set $vaginause to 0>>
+<</if>>
+<<if $NPCList[_i].penis is "penis" or $NPCList[_i].penis is "penisimminent" or $NPCList[_i].penis is "penisentrance">>
+	<<set $penisstate to 0>><<set $penisuse to 0>>
+<</if>>
+
+<!-- NPC Mouth other -->
+<<if $NPCList[_i].mouth is "anus" or $NPCList[_i].mouth is "anusimminent" or $NPCList[_i].mouth is "anusentrance">>
+	<<set $anusstate to 0>><<set $anususe to 0>>
+<</if>>
+<<if $NPCList[_i].mouth is "vagina" or $NPCList[_i].mouth is "vaginaimminent" or $NPCList[_i].mouth is "vaginaentrance">>
+	<<set $vaginastate to 0>><<set $vaginause to 0>>
+<</if>>
+<<if $NPCList[_i].mouth is "kiss" or $NPCList[_i].mouth is "kissimminent" or $NPCList[_i].mouth is "kissentrance">>
+	<<set $mouthstate to 0>><<set $mouthuse to 0>>
+<</if>>
+
+<!-- PC using feet on NPC -->
+<<if $NPCList[_i].penis is "feet">><<set $feetstate to 0>><<set $feetuse to 0>><</if>>
+<<if $NPCList[_i].vagina is "feet">><<set $feetstate to 0>><<set $feetuse to 0>><</if>>
+
+<!-- NPC using feet on PC -->
+<<if $NPCList[_i].penis is "footjob" or $NPCList[_i].vagina is "footjob">>
+	<<if $player.penisExist and $penisuse is "feet">>
+		<<set $penisuse to 0>>
+	<<elseif $vaginause is "feet">>
+		<<set $vaginause to 0>>
+	<</if>>
+<</if>>
+
+<!-- NPC Chest to PC-->
+<<if $NPCList[0].chest is "mouth" or $NPCList[0].chest is "mouthentrance">>
+	<<set $mouthstate to 0>><<set $mouthuse to 0>>
+<</if>>
+
+<!-- PC grapple release -->
+<<if $NPCList[_i].lefthand is "arms" or $NPCList[_i].righthand is "arms">>
+	<<set $leftarm to 0>><<set $rightarm to 0>>
+<</if>>
+
+<!-- PC choking release -->
+<<if $NPCList[_i].lefthand is "throat" or $NPCList[_i].righthand is "throat">>
+	<<set $neckuse to 0>>
+<</if>>
+
+<!-- NPC facesitting -->
+<<if $NPCList[_i].vagina is "facesit" or $NPCList[_i].vagina is "facesitanal" or $NPCList[_i].penis is "mouthotheranus">>
+	<<set $mouthstate to 0>><<set $mouthuse to 0>>
+<</if>>
+
+<!-- Probably still some edge cases missing... -->
+
+<!-- Reset Defeated NPC appendages -->
+<<set $NPCList[_i].lefthand to "none">>
+<<set $NPCList[_i].righthand to "none">>
+<<set $NPCList[_i].penis to "none">>
+<<set $NPCList[_i].vagina to "none">>
+<<set $NPCList[_i].mouth to "none">>
+<<set $NPCList[_i].chest to "none">>
+<<set $NPCList[_i].stance to "defeated">>
+
+<!-- Remove Defeated NPC from loops -->
+<<set $enemyno-->>
+<!-- Reset Group attributes-->
+<<set $enemyarousalmax to 500 * $enemyno>>
+<<set $enemyarousal to $enemyarousal * ($enemyno / ($enemyno +1))>>
+<<set $enemyhealthmax -= $NPCList[_i].healthmax>>
+<<set $_excessdamage to (0-$NPCList[_i].health)>><<if $debug is 1>><br> Excess damage: $_excessdamage<br><</if>>
+<<set $NPCList[_i].health to 0>>
+<<set $enemyhealth to 0>>
+<<set $oldtarget to _i>>
+<<for _returnHP to 0; _returnHP lt $enemynomax; _returnHP++>>
+	<<if $NPCList[_returnHP].active is "active" and $NPCList[_returnHP].stance isnot "defeated">>
+		<<set $NPCList[_returnHP].health -= $_excessdamage>>
+		<<if $newtarget is undefined>>
+			<<set $newtarget to _returnHP>>
+		<</if>>
+		<<set $_excessdamage to 0>>
+		<<set $enemyhealth += $NPCList[_returnHP].health>>
+	<</if>>
+<</for>>
+<!-- Give PC stats uptick. -->
+<<violence -10>>
+<<if $newtarget is undefined>>
+	<<set $newtarget to $oldtarget>>
+<</if>>
+
+<</widget>>
+
+<<widget "setnewtarget">>
+<<if $lefttarget is $oldtarget>>
+	<<set $lefttarget to $newtarget>>
+<</if>>
+<<if $righttarget is $oldtarget>>
+	<<set $righttarget to $newtarget>>
+<</if>>
+<<if $feettarget is $oldtarget>>
+	<<set $feettarget to $newtarget>>
+<</if>>
+<<if $mouthtarget is $oldtarget>>
+	<<set $mouthtarget to $newtarget>>
+<</if>>
+<<if $vaginatarget is $oldtarget>>
+	<<set $vaginatarget to $newtarget>>
+<</if>>
+<<if $penistarget is $oldtarget>>
+	<<set $penistarget to $newtarget>>
+<</if>>
+<<if $anustarget is $oldtarget>>
+	<<set $anustarget to $newtarget>>
+<</if>>
+<<if $thightarget is $oldtarget>>
+	<<set $thighaction to 0>>
+<</if>>
+<<if $chesttarget is $oldtarget>>
+	<<set $chestaction to 0>>
+<</if>>
+<<unset $oldtarget>>
+<<unset $newtarget>>
+<</widget>>

@@ -1,0 +1,1598 @@
+:: Widgets Settings [widget]
+
+<<widget "initsettings">>
+<<set $player.gender to "f">>
+<<set $player.sex to "f">>
+<<set $player.gender_body to "a">>
+<<set $player.ballsExist to false>>
+<<set $player.freckles to false>>
+<<set $devlevel to 12>>
+<<set $bodysize to 2>>
+<<set $breastsize to 0>>
+<<set $breastsensitivity to 1>>
+<<set $penissize to 1>>
+<<set $genitalsensitivity to 1>>
+<<set $eyeselect to "purple">>
+<<set $hairselect to "red">>
+<<set $hairlength to 200>>
+<<set $awareselect to "innocent">>
+<<set $background to "waif">>
+<<if StartConfig.enableImages is true>>
+	<<set $images to 1>>
+	<<set $silhouettedisable to "f">>
+<</if>>
+<<set $numberify_enabled to 1>>
+<<set $gamemode to "normal">>
+<<set $whitechance to 90>>
+<<set $blackchance to 10>>
+<<set $bestialitydisable to "f">>
+<<set $swarmdisable to "f">>
+<<set $spiderdisable to "f">>
+<<set $slugdisable to "f">>
+<<set $waspdisable to "f">>
+<<set $beedisable to "f">>
+<<set $lurkerdisable to "f">>
+<<set $horsedisable to "f">>
+<<set $bodywritingLvl to 3>>
+<<set $parasitedisable to "f">>
+<<set $bestialitydisable to "f">>
+<<set $slimedisable to "f">>
+<<set $voredisable to "f">>
+<<set $tentacledisable to "f">>
+<<set $plantdisable to "f">>
+<<set $analdisable to "f">>
+<<set $analdoubledisable to "f">>
+<<set $analingusdisablegiving to "f">>
+<<set $analingusdisablereceiving to "f">>
+<<set $vaginaldoubledisable to "f">>
+<<set $transformdisable to "f">>
+<<set $transformdisabledivine to "f">>
+/*<<set $hirsutedisable to "t">>*/
+<<set $breastfeedingdisable to "f">>
+<<set $analpregdisable to "f">>
+<<set $asphyxiaLvl to 3>>
+<<set $NudeGenderDC to 1>>
+<<set $footdisable to "f">>
+<<set $tipdisable to "f">>
+<<set $bodywritingImages to true>>
+<<if $debug is 1>>
+	<<set $debugdisable to "f">>
+<<else>>
+	<<set $debugdisable to "t">>
+<</if>>
+<<set $cheatdisable to "t">>
+<<set $watersportsdisable to "f">>
+<<set $timestyle to "military">>
+<<set $saveName to "">>
+<<set $zoom to 100>>
+<<set $checkstyle to "words">>
+<<set $blackwolfmonster to 1>>
+<<set $greathawkmonster to 1>>
+<<set $blinkingdisable to "f">>
+<<set $halfcloseddisable to "f">>
+
+<<set $newWardrobeStyle to true>>
+<<set $imgLighten to "">>
+<<set $sidebarStats to "Disabled">>
+<<set $sidebarTime to "Disabled">>
+<<set $combatControls to "radio">>
+<<set $reducedLineHeight to false>>
+<<set $sidebarAnimations to true>>
+<<set $combatAnimations to true>>
+<<set $clothesPrice to 1>>
+<<set $clothesPriceUnderwear to 1>>
+<<set $clothesPriceSchool to 1>>
+<<set $clothesPriceLewd to 1>>
+<<set $baseVaginalPregnancyChance to 80>>
+<<set $baseNpcPregnancyChance to 8>>
+<<set $humanPregnancyMonths to 3>>
+<<set $wolfPregnancyWeeks to 4>>
+<<set $playerPregnancyHumanDisable to "f">>
+<<set $playerPregnancyBeastDisable to "f">>
+<<set $npcPregnancyDisable to "f">>
+<<set $rentmod to 1>>
+<<set $condomchance to 50>>
+<<set $condomautochance to 50>>
+<<set $multipleWardrobes to "isolated">>
+<<set $targetYourself to false>>
+
+<<set $notifyUpdate = true>>
+
+<<startingPlayerImageReset>>
+<</widget>>
+
+<<widget "displaySettings">>
+<<if $args[0]>>
+	<<set $currentSettings to $args[0]>>
+<</if>>
+<<if $passage isnot "Start" and ["characterSettings", "featSettings"].includes($currentSettings)>>
+	<<set $currentSettings to "gameSettings">>
+<</if>>
+<<switch $currentSettings>>
+	<<case "quickStart">><<replace #settingsDiv>><<quickStart>><</replace>>
+	<<case "presetConfirmDetails">><<replace #settingsDiv>><<presetConfirmDetails>><</replace>>
+	<<case "characterSettings">>
+		<<replace #settingsDiv>><<characterSettings>><</replace>>
+		<<if StartConfig.enableImages and $passage is "Start">><<startingPlayerImageUpdate>><<removeclass #startingPlayerImage "hidden">><</if>>
+	<<case "featSettings">><<replace #settingsDiv>><<featSettings>><</replace>>
+	<<case "gameSettings">><<replace #settingsDiv>><<gameSettings>><</replace>>
+	<<case "sizeLimitsSettings">><<replace #settingsDiv>><<sizeLimitsSettings>><</replace>>
+	<<case "npcSettings">><<replace #settingsDiv>><<npcSettings>><</replace>>
+	<<case "generalSettings">><<replace #settingsDiv>><<generalSettings>><</replace>>
+	<<case "exportsettings">><<replace #settingsDiv>><<exportsettings>><</replace>>
+	<<case "importConfirmDetails">><<replace #settingsDiv>><<importConfirmDetails>><</replace>>
+	<<default>><<replace #settingsDiv>><<gameSettings>><</replace>>
+<</switch>>
+<<if $currentSettings isnot "importConfirmDetails">>
+	<<unset $importString>>
+<</if>>
+<</widget>>
+
+<<widget "displaySubsection">>
+<<if $args[0]>>
+	<<set $currentSubsection to $args[0]>>
+<</if>>
+<<switch $currentSubsection>>
+	<<case "humanSettings">><<replace #subsectionDiv>><<humanSettings>><</replace>>
+	<<case "beastSettings">><<replace #subsectionDiv>><<beastSettings>><</replace>>
+	<<case "priceSettings">><<replace #subsectionDiv>><<priceSettings>><</replace>>
+	<<case "pregnancySettings">><<replace #subsectionDiv>><<pregnancySettings>><</replace>>
+	<<default>><<replace #subsectionDiv>><<humanSettings>><</replace>>
+<</switch>>
+<</widget>>
+
+<<widget "settings">>
+<<updatehistorycontrols>><!-- hides controls on going back in history after enabling that option -->
+<<if $passage is "Start">>
+	<div id="settingsExit">
+		<<settingsExit>>
+	</div>
+	<br>
+<</if>>
+<<set $cheatdisabletoggle to $cheatdisable>>
+<div class="gold">
+	<<button `$passage is "Start" ? "Quick Start" : "Quick Edit"`>>
+		<<displaySettings "quickStart">>
+	<</button>>
+	<<if $passage is "Start">>
+		<<button "Character Creation<span class='red'>*</span>">>
+			<<displaySettings "characterSettings">>
+		<</button>>
+		<<if $images is 1>>
+			<<button "Feat Boosts<span class='red'>*</span> <img src='img/ui/GoldCoin.gif' style='height:1.1em;margin-bottom:-3px;'/>">>
+				<<displaySettings "featSettings">>
+			<</button>>
+		<<else>>
+			<<button "Feat Boosts<span class='red'>*</span>">>
+				<<displaySettings "featSettings">>
+			<</button>>
+		<</if>>
+	<</if>>
+	<<button "Game Settings">>
+		<<displaySettings "gameSettings">>
+	<</button>>
+	<<button "Size Limits">>
+		<<displaySettings "sizeLimitsSettings">>
+	<</button>>
+	<<button "Named NPC Settings">>
+		<<displaySettings "npcSettings">>
+	<</button>>
+	<<button "General">>
+		<<displaySettings "generalSettings">>
+	<</button>>
+	<<button "Export/Import Settings">>
+		<<displaySettings "exportsettings">>
+	<</button>>
+</div>
+<br>
+<div id="settingsDiv" class="no-numberify">
+	<<if $passage is "Start">>
+		<<quickStart>><<set $currentSettings to "quickStart">>
+	<<else>>
+		<<quickStart>><<set $currentSettings to "quickStart">>
+	<</if>>
+</div>
+<br>
+<<link "Top of Page">>
+	<<script>>
+		document.body.scrollTop = 0;
+		document.documentElement.scrollTop = 0;
+	<</script>>
+<</link>>
+<<if $passage isnot "Start">>
+<br><br>
+<div id="settingsExit">
+	<<settingsExit>>
+</div>
+<</if>>
+<br><br><br>
+<</widget>>
+
+<<widget "settingsExit">>
+<<if $passage is "Start">>
+	<<set _buttonName to "Begin">>
+<<else>>
+	<<set _buttonName to "Confirm">>
+<</if>>
+<<link _buttonName>>
+	<<if ($feats.locked is true or ($cheatdisabletoggle is "t" and $rentmod gte 1)) and ($feats.soft is true or ($gamemode isnot "soft" and $alluremod gte 1)) and $maxStates lte 5>>
+		<<settingsExitFunction>>
+	<<elseif $maxStates lte 5>><!-- confirm cheats -->
+		<<replace #settingsExit>><<settingsExitConfirm>><</replace>>
+	<<else>><!-- confirm huge history -->
+		<<replace #settingsExit>><<settingsExitConfirmHistory>><</replace>>
+	<</if>>
+<</link>>
+<</widget>>
+
+<<widget "settingsExitConfirm">>
+<span class="red">Some settings will disable feats in some way, is this OK?</span>
+<br>
+<<link "No, please undo these changes">>
+	<<set $cheatdisabletoggle to "t">>
+	<<if $gamemode is "soft">>
+		<<set $gamemode to "normal">>
+	<</if>>
+	<<if $alluremod lt 1>>
+		<<set $alluremod to 1>>
+	<</if>>
+	<<if $rentmod lt 1>>
+		<<set $rentmod to 1>>
+	<</if>>
+	<<replace #settingsExit>><<settingsExit>><</replace>>
+	<<displaySettings>>
+<</link>>
+<br><br><br>
+<<link "Yes">>
+	<<settingsExitFunction>>
+<</link>>
+<</widget>>
+
+<<widget "settingsExitConfirmHistory">>
+<span class="red"><b>WARNING! Your history depth setting is too high!</b><br>
+Values above 5 can lead to errors when creating new saves! Make sure you know what you're doing before proceeding, or turn it down!
+</span>
+<br>
+<<link "Disable the feature">>
+	<<set $maxStates to 1>>
+	<<replace #settingsExit>><<settingsExit>><</replace>>
+	<<displaySettings>>
+<</link>>
+<br>
+<<link "Lower the values to safer levels">>
+	<<set $maxStates to 5>>
+	<<replace #settingsExit>><<settingsExit>><</replace>>
+	<<displaySettings>>
+<</link>>
+<br><br><br>
+<<link "I love shooting myself in the foot">>
+	<<settingsExitFunction>>
+<</link>>
+<</widget>>
+
+<<widget "settingsExitFunction">>
+	<<if $settingsExitPassage is "Start2">>
+		<<setSkinColorBase>>
+	<</if>>
+	<<set $cheatdisable to $cheatdisabletoggle>>
+	<<if $cheatdisable is "f" or $rentmod lt 1>>
+		<<set $feats.locked to true>>
+	<</if>>
+	<<unset $cheatdisabletoggle>>
+	<<if $gamemode is "soft" or $alluremod lt 1>>
+		<<set $feats.soft to true>>
+	<</if>>
+	<<updatehistorycontrols>>
+	<<initnpcgender>>
+	<<updatePersistentNPCs>>
+	<<hirsuteHideCheck>>
+	<<generateTipsList>>
+	<<tanned 0 "ignoreCoverage">>
+	<<if $player.freckles is "random">>
+		<<set $player.freckles to (random(1, 5) is 1)>>
+	<</if>>
+	<!-- check if specified face style is installed -->
+	<img id="testImage" class="hidden" @scr="'img/face/' + $facestyle + '/base.png'">
+	<<if $facestyle is "" or isImageOk("#testImage")>>
+		<<set $facestyle = "default">>
+	<</if>>
+	<!-- Init shop mannequin gender -->
+	<<if $mannequinHasPenis is undefined>>
+		<<set $mannequinHasPenis to $player.penisExist>>
+		<<set $mannequinBreastsSize to ($mannequinHasPenis ? 0 : 3)>>
+	<</if>>
+	<<if $clothesPriceLewd lt Math.ceil(10 / $clothesPrice) * 0.1>>
+		<<set $clothesPriceLewd to parseFloat((Math.ceil(10 / $clothesPrice) * 0.1).toFixed(1))>>
+	<</if>>
+	<<set _settingsExitPassage to clone($settingsExitPassage)>>
+	<<unset $settingsExitPassage>>
+	<<run State.display(_settingsExitPassage)>>
+	<<set $saveName to $saveName.replace(/[^a-zA-Z 0-9]+/g,"")>>
+	<<unset $importString>>
+<</widget>>
+
+/*complete:{"Vrelnir (Default)":"vrelDefault","Lollipop Scythe":"lollipopScythe","PurityGuy":"purityGuy","Fangi":"fangi"},*/
+<<widget "quickStartOptions">>
+<<if _quickStartOptions is undefined>>
+	<<set _quickStartOptions to {
+		player:{"Female Waif":"femaleWaif","Male Waif":"maleWaif", "Hermaphrodite Waif":"hermaphroditeWaif", "Vrelnir PC":"vrel", "Crossdresser":"crossdresser","Tough Guy":"toughGuy"},
+		genericNpc:{"Default Genders":"genericNpcDefaultGender", "All Male":"genericNpcAllMaleGender", "All Female":"genericNpcAllFemaleGender"},
+		namedNpc:{"Default Genders":"namedNpcDefaultGender", "All Male":"namedNpcAllMaleGender", "All Female":"namedNpcAllFemaleGender"},
+		beasts:{"Default Genders":"beastDefaultGenders", "All Male":"beastMaleGenders", "All Female":"beastFemaleGenders"},
+		monsters:{"When Hallucinating":"monstersDefault", "No Monsters":"monstersNone", "All Monsters":"monstersAll"},
+		kink:{"Reasonably Debauched":"kinkDefault", "Vanilla":"kinkVanilla", "No Beasts":"kinkNoBeasts", "Everything Goes":"kinkEverything"},
+		game:{
+			"Normal ":"gameNormal","Soft (No Feats)":"gameSoft","Hard":"gameHard","Masochist":"gameMasochist","Soft with Cheats (No Feats)":"gameSoftCheats","Normal with Cheats (No Feats)":"gameNormalCheats","Hard with Cheats (No Feats)":"gameHardCheats","Masochist with Cheats (No Feats)":"gameMasochistCheats"
+		},
+		images:{"Default":"imagesdefault","High Quality":"imagesHigh","Low Quality":"imagesLow","Performance Mode":"imagesPerformance","Disable images":"imagesDisable"},
+		settings:{"PC, Tips":"settingPCTip","PC, no Tips":"settingPCNoTip","Mobile, Tips":"settingMobileTips","Mobile, no Tips":"settingMobileNoTips"}
+	}>>
+<</if>>
+<</widget>>
+
+<<widget "quickStart">>
+<<quickStartOptions>>
+<i>Gender ratios and kinks can be fine-tuned in the Game Settings Tab.</i>
+<br><br>
+/*
+<span class="gold">Complete Contributor Preset:</span> <<listbox "_completePreset" autoselect>><<optionsfrom _quickStartOptions.complete>><</listbox>> |
+<<link Set>><<presets _completePreset>><</link>>
+<br><br>
+*/
+
+/*
+<span class="gold">Player Preset:</span> <<listbox "_playerPreset" autoselect>><<optionsfrom _quickStartOptions.player>><</listbox>> |
+<<link Set>><<presets _playerPreset>><</link>>
+<br><br>
+*/
+
+<span class="gold">Generic NPC Preset:</span> <<listbox "_genericNpcPreset" autoselect>><<optionsfrom _quickStartOptions.genericNpc>><</listbox>> |
+<<link Set>><<presets _genericNpcPreset>><</link>>
+<br><br>
+<span class="gold">Named NPC Preset:</span> <<listbox "_namedNpcPreset" autoselect>><<optionsfrom _quickStartOptions.namedNpc>><</listbox>> |
+<<link Set>><<presets _namedNpcPreset>><</link>>
+<br><br>
+
+<span class="gold">Beasts Preset:</span> <<listbox "_beastPreset" autoselect>><<optionsfrom _quickStartOptions.beasts>><</listbox>> |
+<<link Set>><<presets _beastPreset>><</link>>
+<br><br>
+<span class="gold">Beasts as monsters Preset:</span> <<listbox "_monstersPreset" autoselect>><<optionsfrom _quickStartOptions.monsters>><</listbox>> |
+<<link Set>><<presets _monstersPreset>><</link>>
+<br><br>
+
+<span class="gold">Kinks Preset:</span> <<listbox "_kinkPreset" autoselect>><<optionsfrom _quickStartOptions.kink>><</listbox>> |
+<<link Set>><<presets _kinkPreset>><</link>>
+<br><br>
+<<if $passage is "Start">>
+	<span class="gold">Difficulty Preset:</span> <<listbox "_gamePreset" autoselect>><<optionsfrom _quickStartOptions.game>><</listbox>> |
+	<<link Set>><<presets _gamePreset>><</link>>
+	<br><br>
+<</if>>
+<<if StartConfig.enableImages is true>>
+	<span class="gold">Images Preset:</span> <<listbox "_imagesPreset" autoselect>><<optionsfrom _quickStartOptions.images>><</listbox>> |
+	<<link Set>><<presets _imagesPreset>><</link>>
+	<br><br>
+<</if>>
+<span class="gold">Settings Preset:</span> <<listbox "_settingsPreset" autoselect>><<optionsfrom _quickStartOptions.settings>><</listbox>> |
+<<link Set>><<presets _settingsPreset>><</link>>
+<br><br>
+<</widget>>
+
+<<widget "characterSettings">>
+
+	<<if StartConfig.enableImages is true>>
+		<span class="gold">View a preview of the character in the side bar</span> <label>Hide Clothes <<checkbox "_showClothes" true false autocheck>></label> <label>Hide Underwear <<checkbox "_showUnderwear" true false autocheck>></label>
+	<mouse class="tooltip linkBlue">(?)<span>'Visual representation of the player character's skin colour' needs to be enabled in the general tab for skin colouring to show during normal gameplay.</span></mouse>
+	<br>
+	<</if>>
+	<br>
+
+	<<if $dev is 1>>
+		<span class="gold">Difficulty</span>
+		<br>
+		<span class="red">Harder</span> <------------------------------> <span class="green">Easier</span>
+		<br>
+		<<numberslider "$devlevel" $devlevel 6 16 1>>
+		<br><br>
+	<<else>>
+		<span class="gold">Body size</span> <mouse class="tooltip linkBlue">(?)<span>A smaller body makes you inflict less damage during encounters, making defiance harder.</span></mouse>
+		<br>
+		<label>Tiny <<radiobutton "$bodysize" 0 autocheck>></label> |
+		<label>Small <<radiobutton "$bodysize" 1 autocheck>></label> |
+		<label>Normal <<radiobutton "$bodysize" 2 autocheck>></label> |
+		<label>Large <<radiobutton "$bodysize" 3 autocheck>></label>
+		<br><br>
+	<</if>>
+
+	<span class="gold">Gender</span>
+	<br>
+	<div class="playergender">
+	<label>Male <<radiobutton "$player.gender" "m" autocheck>></label> |
+	<label>Female <<radiobutton "$player.gender" "f" autocheck>></label> |
+	<label>Hermaphrodite <<radiobutton "$player.gender" "h" autocheck>></label>
+	<br><br>
+	</div>
+	<<run settingsPCGenderUpdate()>>
+
+	<span class="gold">Natural features</span>
+	<br>
+	<label>Masculine <<radiobutton "$player.gender_body" "m" autocheck>></label> |
+	<label>Feminine <<radiobutton "$player.gender_body" "f" autocheck>></label> |
+	<label>Androgynous <<radiobutton "$player.gender_body" "a" autocheck>></label> |
+	<br><br>
+
+	<<if $dev is 1>>
+		<span class="gold">Sex</span>
+		<br>
+		<label>Penis <<radiobutton "$player.sex" "m" autocheck>></label> |
+		<label>Vagina <<radiobutton "$player.sex" "f" autocheck>></label>
+		<br><br>
+	<</if>>
+
+	<span class="gold">Penis size</span> - if applicable
+	<br>
+	<label>Tiny <<radiobutton "$penissize" 0 autocheck>></label> |
+	<label>Small <<radiobutton "$penissize" 1 autocheck>></label> |
+	<label>Normal <<radiobutton "$penissize" 2 autocheck>></label>
+	<br><br>
+
+	<span class="gold">Breast size</span>
+	<br>
+	<label>Flat <<radiobutton "$breastsize" 0 autocheck>></label> |
+	<label>Budding <<radiobutton "$breastsize" 1 autocheck>></label> |
+	<label>Tiny <<radiobutton "$breastsize" 2 autocheck>></label> |
+	<label>Small <<radiobutton "$breastsize" 3 autocheck>></label> |
+	<label>Pert <<radiobutton "$breastsize" 4 autocheck>></label>
+	<br><br>
+
+	<span class="gold">Ass size</span>
+	<br>
+	<label>Slender <<radiobutton "$bottomsize" 0 autocheck>></label> |
+	<label>Slim <<radiobutton "$bottomsize" 1 autocheck>></label> |
+	<label>Modest <<radiobutton "$bottomsize" 2 autocheck>></label> |
+	<label>Cushioned <<radiobutton "$bottomsize" 3 autocheck>></label>
+	<br><br>
+
+	<span class="gold">Testes</span> - applicable only if hermaphrodite
+	<br>
+	<label>Yes <<radiobutton "$player.ballsExist" true autocheck>></label> |
+	<label>No <<radiobutton "$player.ballsExist" false autocheck>></label> |
+	<br><br>
+
+	<span class="gold">Chest sensitivity</span>
+	<br>
+	<label>Normal <<radiobutton "$breastsensitivity" 1 autocheck>></label> |
+	<label><span class="pink">Sensitive</span> <<radiobutton "$breastsensitivity" 3 autocheck>></label> |
+	<label><span class="red">Very sensitive</span> <<radiobutton "$breastsensitivity" 5 autocheck>></label>
+	<br><br>
+
+	<span class="gold">Genital sensitivity</span>
+	<br>
+	<label>Normal <<radiobutton "$genitalsensitivity" 1 autocheck>></label> |
+	<label><span class="pink">Sensitive</span> <<radiobutton "$genitalsensitivity" 3 autocheck>></label> |
+	<label><span class="red">Very sensitive</span> <<radiobutton "$genitalsensitivity" 5 autocheck>></label>
+	<br><br>
+
+	<span class="gold">Eye Colour</span>
+	<br>
+	<label><span class="purple">Purple</span> <<radiobutton "$eyeselect" "purple" autocheck>></label> |
+	<label><span class="blue">Dark Blue</span> <<radiobutton "$eyeselect" "dark blue" autocheck>></label> |
+	<label><span class="lblue">Light Blue</span> <<radiobutton "$eyeselect" "light blue" autocheck>></label> |
+	<label><span class="tangerine">Amber</span> <<radiobutton "$eyeselect" "amber" autocheck>></label> |
+	<label><span class="brown">Hazel</span> <<radiobutton "$eyeselect" "hazel" autocheck>></label> |
+	<label><span class="green">Green</span> <<radiobutton "$eyeselect" "green" autocheck>></label> |
+	<label><span class="red">Red</span> <<radiobutton "$eyeselect" "red" autocheck>></label> |
+	<label><span class="pink">Pink</span> <<radiobutton "$eyeselect" "pink" autocheck>></label> |
+	<label><span class="grey">Grey</span> <<radiobutton "$eyeselect" "grey" autocheck>></label> |
+	<label><span>Random</span> <<radiobutton "$eyeselect" "random" autocheck>></label>
+	<br><br>
+
+	<span class="gold">Hair Colour</span>
+	<br>
+	<label><span class="red">Red</span> <<radiobutton "$hairselect" "red" autocheck>></label> |
+	<label><span class="black">Jet Black</span> <<radiobutton "$hairselect" "jetblack" autocheck>></label> |
+	<label><span class="black">Black</span> <<radiobutton "$hairselect" "black" autocheck>></label> |
+	<label><span class="brown">Brown</span> <<radiobutton "$hairselect" "brown" autocheck>></label> |
+	<label><span class="softbrown">Soft Brown</span> <<radiobutton "$hairselect" "softbrown" autocheck>></label> |
+	<label><span class="lightbrown">Light brown</span> <<radiobutton "$hairselect" "lightbrown" autocheck>></label> |
+	<label><span class="burntorange">Burnt Orange</span> <<radiobutton "$hairselect" "burntorange" autocheck>></label> |
+	<label><span class="gold">Blond</span> <<radiobutton "$hairselect" "blond" autocheck>></label> |
+	<label><span class="softblond">Soft Blond</span> <<radiobutton "$hairselect" "softblond" autocheck>></label> |
+	<label><span class="platinum">Platinum blond</span> <<radiobutton "$hairselect" "platinumblond" autocheck>></label> |
+	<label><span class="ashy">Ashy blond</span> <<radiobutton "$hairselect" "ashyblond" autocheck>></label> |
+	<label><span class="strawberry">Strawberry blond</span> <<radiobutton "$hairselect" "strawberryblond" autocheck>></label> |
+	<label><span class="tangerine">Ginger</span> <<radiobutton "$hairselect" "ginger" autocheck>></label> |
+	<label><span>Random</span> <<radiobutton "$hairselect" "random" autocheck>></label>
+	<br><br>
+
+	<span class="gold">Hair length</span>
+	<br>
+	<label>Ear <<radiobutton "$hairlength" 0 autocheck>></label> |
+	<label>Neck <<radiobutton "$hairlength" 200 autocheck>></label> |
+	<label>Chest <<radiobutton "$hairlength" 400 autocheck>></label>
+	<br><br>
+
+	<span class="gold">Freckles</span>
+	<br>
+	<label>Yes <<radiobutton "$player.freckles" true autocheck>></label> |
+	<label>No <<radiobutton "$player.freckles" false autocheck>></label> |
+	<label>Random <<radiobutton "$player.freckles" "random" autocheck>></label> |
+	<br><br>
+
+	<span class="gold">Skin Colour</span> <mouse class="tooltip linkBlue">(?)<span>Visual representation of the PC's skin colour and tanning changes must be enabled through the General tab of this Settings menu before they will function. They are disabled by default due to performance issues on some devices.</span></mouse>
+	<br>
+	Reddish:
+	<label>Light <<radiobutton "$skinColor.natural" "light" autocheck>></label> |
+	<label>Medium <<radiobutton "$skinColor.natural" "medium" autocheck>></label> |
+	<label>Dark <<radiobutton "$skinColor.natural" "dark" autocheck>></label> |
+	<label>Gyaru <<radiobutton "$skinColor.natural" "gyaru" autocheck>> (Pale with no tan, very dark with full tan)</label>
+	<br>
+	Yellowish:
+	<label>Light <<radiobutton "$skinColor.natural" "ylight" autocheck>></label> |
+	<label>Medium <<radiobutton "$skinColor.natural" "ymedium" autocheck>></label> |
+	<label>Dark <<radiobutton "$skinColor.natural" "ydark" autocheck>></label> |
+	<label>Gyaru <<radiobutton "$skinColor.natural" "ygyaru" autocheck>></label>
+	<br><br>
+
+	<label>Initial Tan Value: <<numberslider "$skinColor.range" $skinColor.range 0 100 1>></label>
+	<br>
+	<<if StartConfig.enableImages is true>>
+		<<link "Test Colour">>
+			<<replace #test>>
+				<<if $skinColor.tanImgEnabled is "f">>
+					<<set $skinColor.tanImgEnabled to "t">>
+					<<set _skincolortemp to true>>
+				<</if>>
+				<<print '<div style="height: 30px; width: 50px; background-color: red; filter: '+skinColor($skinColor.tanImgEnabled, $skinColor.range,setup.skinColor[$skinColor.natural])+';"></div>'>>
+				<<if _skincolortemp is true>>
+					<<set $skinColor.tanImgEnabled to "f">>
+				<</if>>
+			<</replace>>
+		<</link>> (approximate)
+		<div id="test">/*<<print '<div style="height: 30px; width: 50px; background-color: red; filter: '+skinColor($skinColor.tanImgEnabled, $skinColor.range,setup.skinColor[$skinColor.natural])+';"></div>'>>*/</div>
+		<br>
+	<</if>>
+	<br>
+
+	<span class="gold">Awareness</span> <mouse class="tooltip linkBlue">(?)<span>Whether your character knows a thing or two about sex despite their lack of experience.</span></mouse>
+	<br>
+	<label>Innocent <<radiobutton "$awareselect" "innocent" autocheck>></label> |
+	<label>Knowledgeable <<radiobutton "$awareselect" "knowledgeable" autocheck>></label>
+	<br><br>
+
+	<span class="gold">Background</span>
+	<br>
+	<label><span class="green">Waif</span> <<radiobutton "$background" "waif" autocheck>> - No special advantages or disadvantages. <i>Recommended for beginners.</i></label>
+	<br>
+	<label><span class="teal">Nerd</span> <<radiobutton "$background" "nerd" autocheck>> - Good at school. Picked on. <span class="red">(This will prevent Unsocial Moth feat from being earned)</span></label>
+	<br>
+	<label><span class="teal">Athlete</span> <<radiobutton "$background" "athlete" autocheck>> - Physically capable. Grades have suffered.</label>
+	<br>
+	<label><span class="teal">Delinquent</span> <<radiobutton "$background" "delinquent" autocheck>> - Your antics have made you popular with other students. Less so with the teachers.</label>
+	<br>
+	<label><span class="blue">Promiscuous</span> <<radiobutton "$background" "promiscuous" autocheck>> - You've experimented sexually.</label>
+	<br>
+	<label><span class="blue">Exhibitionist</span> <<radiobutton "$background" "exhibitionist" autocheck>> - You have an affinity for exposing yourself in public places.</label>
+	<br>
+	<label><span class="blue">Deviant</span> <<radiobutton "$background" "deviant" autocheck>> - You <i>really</i> like animals.</label>
+	<br>
+	<label><span class="lewd">Beautiful</span> <<radiobutton "$background" "beautiful" autocheck>> - You turn heads. <i>Not recommended for beginners.</i></label>
+	<br>
+	<label><span class="lewd">Crossdresser</span> <<radiobutton "$background" "crossdresser" autocheck>> - You've taken a liking to the clothing of the opposite sex. Does nothing for hermaphrodites.</label>
+	<br>
+	<label><span class="lewd">Lustful</span> <<radiobutton "$background" "lustful" autocheck>> - Arousal increases over time, and needs to be managed.</label>
+	/*<br>
+	<label>Green Thumb <<radiobutton "$background" "greenthumb" autocheck>> - More bountiful crops and no decay when using fertiliser. Start with ne unit of fertiliser.</label>*/
+	<br>
+	<label><mouse class="tooltip lewd">Dendrophile <<radiobutton "$background" "plantlover" autocheck>> - Plants are everything to you.<span class="green">You're addicted to nectar. You're more vulnerable to aphrodisiacs and alcohol. Plantpeople and plant-based tentacles no longer require hallucinations to encounter. You get a bonus to Tending, as your Trauma increases.</span></mouse>
+	</label>
+	<br>
+
+<</widget>>
+
+<<widget "featSettings">>
+
+	<<if $feats.allSaves.points is undefined or $feats.allSaves.points is 0>>
+		<span class="red">You have 0 VrelCoins to use on boosts at the moment. If this is incorrect, please load your last save and restart.</span>
+	<<else>>
+		<<link "Reset All Feats">>
+			<<set $feats to {
+				"locked":false,
+				"soft":false,
+				"allSaves":{},
+				"currentSave":{},
+				"filter":"All"
+			}>>
+			<<script>>
+				localStorage.removeItem("dolFeats");
+			<</script>>
+			<<setupFeats true>>
+			<<displaySettings "featSettings">>
+		<</link>><span class="red"> This will remove all feats that have been earned so far, meaning you will have to collect them again.</span>
+		Loading your last save with these feats will revert this.
+		<br><br>
+		<<set _upgradeNames to Object.keys($featsBoosts.upgrades)>>
+		<<set _visibleUpgradeNames to []>>
+		<<set _visibleUpgradeIDs to []>>
+		<<for _i to 0; _i lt _upgradeNames.length; _i++>>
+			<<if $featsBoosts.upgradeDetails[_upgradeNames[_i]].count gte $featsBoosts.upgradeDetails[_upgradeNames[_i]].minCount>>
+				<<set _visibleUpgradeNames.push($featsBoosts.name[_upgradeNames[_i]])>>
+				<<set _visibleUpgradeIDs.push(clone(_i))>>
+			<<else>>
+				<<set _visibleUpgradeNames.push("?????")>>
+				<<set _visibleUpgradeIDs.push(clone(_i))>>
+			<</if>>
+		<</for>>
+		<div id="featsPointsMenu">
+			<<featsPointsMenu>>
+		</div>
+		<<featsPointsMenuReset>>
+	<</if>>
+<</widget>>
+
+<<widget "gameSettings">>
+	<span class="gold">Game Mode</span>
+	<br>
+	<label><mouse class="tooltip green">Normal mode<span>Survive in a dangerous world.</span></mouse>
+	<<radiobutton "$gamemode" "normal" autocheck>></label>
+	<br>
+	<label><mouse class = "tooltip blue">Soft mode<span>For those who prefer a light-hearted lewd adventure, though the game is still dark in places.<span class="red">This is an experimental feature, and contains gamebreaking bugs. It will be changed or removed in the future. Leaving the settings with soft mode will prevent you from earning feats until it is set to normal mode. Doing this will permanently prevent some feats from being earned.</span></span></mouse>
+	<<radiobutton "$gamemode" "soft" autocheck>></label>
+	<br>
+	<<if $intro is 1 or $gamemode is "hard">>
+		<label><mouse class = "tooltip purple">Hard mode<span>Removes lewd stat decay (promiscuity, exhibitionism, deviancy) making trauma and control increasingly difficult to manage. Can only be chosen at the game's start, and being incarcerated in the asylum will put you in normal mode.<span class="red">This is an experimental feature, and will be changed or removed in the future.</span></span></mouse>
+		<<radiobutton "$gamemode" "hard" autocheck>>
+		</label>
+		<br>
+	<</if>>
+	<br>
+
+	<span class="gold">The rate that events are triggered by allure</span> - Default is 1.0.
+	<br>
+	<span class="red">Setting this below 1 will permanently prevent you from earning some feats, and prevent you from earning others until it is increased to at least 1.</span>
+	<br>
+	<<numberslider "$alluremod" $alluremod 0.2 2 0.1>>
+	<br><br>
+
+	<span class="gold">Multiple Wardrobes</span> <mouse class="tooltip linkBlue">(?)<span class="red">This is an experimental feature, and will be changed or removed in the future. While you may change this during gameplay, it's not recommended as disabling will remove access to clothing and enabling it may leave you stuck with your only option wearing a towel.</span></mouse>
+	<br>
+	
+	<br>
+	<label><<radiobutton "$multipleWardrobes" false autocheck>> Single shared wardrobe only</label>
+	<br>
+	<label><<radiobutton "$multipleWardrobes" "isolated" autocheck>> Isolated areas will have their own wardrobe</label>
+	<br>
+	<<if $debug is 1>>
+		<!--This setting will not be ready on initial release-->
+		<label><<radiobutton "$multipleWardrobes" "all" autocheck>> Enable for all wardrobes</label>
+		<br>
+	<</if>>
+	<br><br>
+
+	<div class="gold widerButton">
+	<<button "Human NPC Settings">>
+		<<displaySubsection "humanSettings">>
+	<</button>>
+	<<button "Beast Settings and Toggles">>
+		<<displaySubsection "beastSettings">>
+	<</button>>
+	<<button "Price Settings">>
+		<<displaySubsection "priceSettings">>
+	<</button>>
+	/*ToDo: Pregnancy, remove check to properly enable*/
+	<<if $pregnancyTesting>>
+		<<button "Pregnancy Settings">>
+			<<displaySubsection "pregnancySettings">>
+		<</button>>
+	<</if>>
+	</div>
+
+	<div id="subsectionDiv">
+	</div>
+	<br>
+
+
+	<<widget "humanSettings">>
+		<div class="solidBorderContainer">
+		<br>
+			<span class="gold">Percentage of people attracted to you that are male</span>
+			<br>
+			<<numberslider "$malechance" $malechance 0 100 1>>
+			<br><br>
+
+			<span class="gold">Percentage of women that have penises</span>
+			<br>
+			<<numberslider "$dgchance" $dgchance 0 100 1>>
+			<br><br>
+
+			<span class="gold">Percentage of women that have strap-on penises</span>
+			<br>
+			<<numberslider "$straponchance" $straponchance 0 100 1>>
+			<br><br>
+
+			<span class="gold">Percentage of men that have vaginas</span>
+			<br>
+			<<numberslider "$cbchance" $cbchance 0 100 1>>
+			<br><br>
+
+			<span class="gold">Percentage of other victims that are male</span>
+			<br>
+			<<numberslider "$malevictimchance" $malevictimchance 0 100 1>>
+			<br><br>
+
+			<span class="gold">Proportion of same-sex couples</span>
+			<br>
+			<<numberslider "$homochance" $homochance 0 100 1>>
+			<br><br>
+
+			<span class="gold">Average size of women's breasts</span> <mouse class="tooltip linkBlue">(?)<span>A bigger number means bigger breasts in the world. At 12 everyone will have enormous breasts. At -12 everyone will have flat chests. Defaults to 0, which will result in a broad range of sizes.</span></mouse>
+			<br>
+			<<numberslider "$breast_mod" $breast_mod -12 12 1>>
+			<br><br>
+
+			<span class="gold">Average size of NPC penises</span> <mouse class="tooltip linkBlue">(?)<span>A bigger number means bigger penises in the world. At 8 everyone will have enormous penises. At -8 everyone will have tiny penises. Defaults to 0, which will result in a broad range of sizes.</span></mouse>
+			<br>
+			<<numberslider "$penis_mod" $penis_mod -8 8 1>>
+			<br><br>
+
+			<span class="gold">Likelihood that people have pale skin</span>
+			<br>
+			<<numberslider "$whitechance" $whitechance 0 100 1>>
+			<br><br>
+
+			<span class="gold">Likelihood that people have dark skin</span>
+			<br>
+			<<numberslider "$blackchance" $blackchance 0 100 1>>
+			<br><br>
+			
+			<<if $pregnancyTesting>>
+				/*ToDo: Pregnancy, remove check to properly enable*/
+				<span class="gold">Likelihood of NPCs having condoms on them</span>
+				<br>
+				<<numberslider "$condomchance" $condomchance 0 100 1>>
+				<br><br>
+
+				<span class="gold">Likelihood of NPCs using a condom without being asked</span>
+				<br>
+				<<numberslider "$condomautochance" $condomautochance 0 100 1>>
+				<br><br>
+			<</if>>
+		</div>
+	<</widget>>
+
+	<<widget "beastSettings">>
+		<div class="solidBorderContainer">
+		<br>
+			<span class="gold">Percentage of beasts or monsters attracted to you that are male</span>
+			<br>
+			<<numberslider "$beastmalechance" $beastmalechance 0 100 1>>
+			<br><br>
+
+			<span class="gold">Percentage of beasts that are replaced with monster girls or boys</span>
+			<br>
+			<<numberslider "$monsterchance" $monsterchance 0 100 1>>
+			<br><br>
+
+			<span class="gold">Replace beasts with monster boys and girls</span>
+			<br>
+			<label>Only when hallucinating <<radiobutton "$monsterhallucinations" "t" autocheck>></label> |
+			<label>At any time <<radiobutton "$monsterhallucinations" "f" autocheck>></label>
+			<br><br>
+
+			<span class="red">Disabling bestiality will still allow lewd events with monster girls and boys.</span>
+			<br>
+
+			<span class="gold">Beast Toggles</span>
+			<br><span style="font-size: x-small; margin-left: 5px;">
+			<<run beastTogglesCheck()>>
+			<<button `(_anyBeastOn ? "Disable" : "Enable") + " all beast toggles"`>>
+				<<script>>
+					let val = T.anyBeastOn ? 't' : 'f';
+					T.beastVars.forEach(x => V[x] = val);
+				<</script>>
+				<<displaySubsection "beastSettings">>
+			<</button>>
+			</span><br>
+			<label><div class="settingsToggle">
+			<<checkbox "$bestialitydisable" "t" "f" autocheck>> Enable bestiality
+			</div></label>
+			<label><div class="settingsToggle">
+			<<checkbox "$swarmdisable" "t" "f" autocheck>> Enable swarms (Eels, etc)
+			</div></label>
+			<label><div class="settingsToggle">
+			<<checkbox "$parasitedisable" "t" "f" autocheck>> Enable parasites
+			</div></label>
+			/*ToDo: Pregnancy, remove duplicate option once enabled*/
+			<label><div class="settingsToggle">
+			<<checkbox "$analpregdisable" "t" "f" autocheck>> Enable anal parasitic pregnancy
+			</div></label>
+			<label><div class="settingsToggle">
+			<<checkbox "$tentacledisable" "t" "f" autocheck>> Enable tentacles
+			</div></label>
+			<label><div class="settingsToggle">
+			<<checkbox "$slimedisable" "t" "f" autocheck>> Enable slimes
+			</div></label>
+			<label><div class="settingsToggle">
+			<<checkbox "$voredisable" "t" "f" autocheck>> Enable soft monster vore
+			</div></label>
+			<label><div class="settingsToggle">
+			<<checkbox "$spiderdisable" "t" "f" autocheck>> Enable spiders
+			</div></label>
+			<label><div class="settingsToggle">
+			<<checkbox "$slugdisable" "t" "f" autocheck>> Enable slugs
+			</div></label>
+			<label><div class="settingsToggle">
+			<<checkbox "$waspdisable" "t" "f" autocheck>> Enable wasps
+			</div></label>
+			<label><div class="settingsToggle">
+			<<checkbox "$beedisable" "t" "f" autocheck>> Enable bees
+			</div></label>
+			<label><div class="settingsToggle">
+			<<checkbox "$lurkerdisable" "t" "f" autocheck>> Enable lurkers
+			</div></label>
+			<label><div class="settingsToggle">
+			<<checkbox "$horsedisable" "t" "f" autocheck>> Enable horses and centaurs
+			</div></label>
+			<label><div class="settingsToggle">
+			<<checkbox "$plantdisable" "t" "f" autocheck>> Enable plantpeople
+			</div></label>
+			<div style="clear:both;">/*Keep at end of toggles*/</div>
+		</div>
+	<</widget>>
+
+	<<widget "priceSettings">>
+		<div class="solidBorderContainer clothes-price-container">
+			<span class="bold gold">Clothing Price</span>
+			<div class="small-description">Modify cost of clothing items. This includes the cost for buying, the automatic re-buy and repairing. Towels are still free.</div>
+			<div class="numberslider-group">
+				<div class="numberslider-inline">
+					<span class="gold">All Clothes</span>
+					<div class="small-description">For hard mode 200% is recommended.</div>
+					<<numberslider "$clothesPrice" $clothesPrice 1 10 0.5>>
+				</div>
+			</div>
+			<div class="numberslider-group">
+				<div class="numberslider-inline">
+					<span class="gold">Underwear</span>
+					<<numberslider "$clothesPriceUnderwear" $clothesPriceUnderwear 1 2 0.1>>
+				</div>
+				<div class="numberslider-inline">
+					<span class="gold">School Clothes</span>
+					<<numberslider "$clothesPriceSchool" $clothesPriceSchool 1 2 0.1>>
+				</div>
+				<div class="numberslider-inline">
+					<span class="gold">Lewd Clothes</span>
+					<<numberslider "$clothesPriceLewd" $clothesPriceLewd 0.1 2 0.1>>
+				</div>
+			</div>
+			<div class="numberslider-group">
+				<span class="gold">Bailey's Rent</span>
+				<div class="small-description">Modifies the amount of money Bailey demands weekly. 100% is default.</div>
+				<span class="red">Setting this below 100% will prevent feats being earned in that save.</span>
+				<<numberslider "$rentmod" $rentmod 0.1 3 0.1>>
+			</div>
+
+			<!-- Make it show % instead of fractions and add some colour -->
+			<<run $(() => { $('.clothes-price-container input').on('input change', e => {
+					let valSpan = $(e.currentTarget).siblings().first();
+					let value = valSpan.text();
+
+					valSpan.text((i, value) => Math.round(value * 100) + '%');
+
+					if (value > 1)
+						valSpan.css('color', 'gold');
+					else if (value < 1)
+						valSpan.css('color', 'green');
+					else
+						valSpan.css('color', 'unset');
+				}).trigger('change') })>>
+			<!-- Set the initial minimum -->
+			<<run $(() => {
+				let newmin = parseFloat((Math.ceil(10 / $('#numberslider-input-clothesprice').val()) * 0.1).toFixed(1));
+				let oldval = V.clothesPriceLewd;
+				$('#numberslider-input-clothespricelewd').attr('min', newmin).val(oldval).trigger('change');
+			})>>
+			<!-- Limit lewd slider so that all coef * lewd coef >= 100% -->
+			<<run $(() => {
+				$('#numberslider-input-clothesprice').on('input change', e => {
+					let newmin = parseFloat((Math.ceil(10 / $(e.currentTarget).val()) * 0.1).toFixed(1));
+					let oldval = V.clothesPriceLewd;
+					$('#numberslider-input-clothespricelewd').attr('min', newmin).val(oldval).trigger('change');
+				})
+			})>>
+		</div>
+	<</widget>>
+
+	<<widget "pregnancySettings">><<nobr>>
+		<div class="solidBorderContainer"><div class="numberslider-inline">
+			<div class="numberslider-inline basevaginalpregnancychance-container">
+				<span class="gold">Base Vaginal Pregnancy Chance</span>
+				<div class="small-description">Chance of conceiving when only being inseminated once at the right time, <span id="maxRequired"><<print 100 - $baseVaginalPregnancyChance>></span> times to guarantee. Some events may leave you with more than one helping of cum.</div>
+				<<numberslider "$baseVaginalPregnancyChance" $baseVaginalPregnancyChance 0 96 4>>
+			</div>
+			<<run $(() => { $('.basevaginalpregnancychance-container input').on('input change', e => { 
+				let valSpan = $(e.currentTarget).siblings().first();
+				let value = valSpan.text();
+				
+				valSpan.text((i, value) => "1 in " + (100 - value));
+				$('#maxRequired').text(100 - $baseVaginalPregnancyChance);
+			}).trigger('change') })>>
+			<div class="numberslider-inline basenpcpregnancychance-container">
+				<span class="gold">Base NPC Pregnancy Chance</span>
+				<div class="small-description">Chance of an npc conceiving when only being inseminated once at the right time, <span id="npcMaxRequired"><<print 20 - $baseNpcPregnancyChance>></span> times to guarantee.</div>
+				<<numberslider "$baseNpcPregnancyChance" $baseNpcPregnancyChance 0 16 4>>
+			</div>
+			<<run $(() => { $('.basenpcpregnancychance-container input').on('input change', e => { 
+				let valSpan = $(e.currentTarget).siblings().first();
+				let value = valSpan.text();
+				
+				valSpan.text((i, value) => "1 in " + (20 - value));
+				$('#npcMaxRequired').text(20 - $baseNpcPregnancyChance);
+			}).trigger('change') })>>
+			<div class="numberslider-inline">
+				<span class="gold">Human Pregnancy Length in Months</span>
+				<<numberslider "$humanPregnancyMonths" $humanPregnancyMonths 1 9 1>>
+			</div>
+			<div class="numberslider-inline">
+				<span class="gold">Wolf Pregnancy Length in Weeks</span>
+				<<numberslider "$wolfPregnancyWeeks" $wolfPregnancyWeeks 2 12 1>>
+			</div>
+			<br>
+			<div class="small-description"><span class="red">Will not stop existing pregnancy.</span></div>
+			<label><div class="settingsToggle">
+				<<checkbox "$playerPregnancyHumanDisable" "t" "f" autocheck>>
+				Enable Player Human Pregnancy
+			</div></label>
+			<label><div class="settingsToggle">
+				<<checkbox "$playerPregnancyBeastDisable" "t" "f" autocheck>> Enable Player Beast Pregnancy
+			</div></label>
+			<label><div class="settingsToggle">
+				<<checkbox "$npcPregnancyDisable" "t" "f" autocheck>> Enable NPC Pregnancy
+			</div></label>
+			<label><div class="settingsToggle">
+			<<checkbox "$analpregdisable" "t" "f" autocheck>> Enable anal parasitic pregnancy
+			</div></label>
+			<div style="clear:both;">/*Keep at end of toggles*/</div>
+		</div>
+	<</nobr>><</widget>>
+
+	<span class="gold">Togglable Features</span>
+	<br>
+	<label><div class="settingsToggle">
+	<<checkbox "$analdisable" "t" "f" autocheck>> Enable anal
+	</div></label>
+	<<run settingsDoubleAnalToggleGreyOut()>>
+	<div class="settingsToggle" role="group" aria-labelledby="settingsAnalingusHead">
+	<span id="settingsAnalingusHead">Analingus:</span>
+	<label>
+		<<checkbox "$analingusdisablegiving" "t" "f" autocheck>> Giving
+	</label>
+	<label>
+		<<checkbox "$analingusdisablereceiving" "t" "f" autocheck>> Receiving
+	</label>
+	</div>
+	<div class="settingsToggle" role="group" aria-labelledby="settingsDoubleHead">
+	<span id="settingsAnalingusHead">Double penetration:</span>
+	<label>
+		<<checkbox "$vaginaldoubledisable" "t" "f" autocheck>> Vaginal
+	</label>
+	<label>
+		<<checkbox "$analdoubledisable" "t" "f" autocheck>> Anal
+	</label>
+	<mouse class="tooltip linkBlue">(?)<span>Note that double anal requires anal to be enabled.
+	<br>"Double penetration" here means two phalluses in the same orifice of the player.</span></mouse>
+	</div>
+	<label><div class="settingsToggle">
+	<<checkbox "$pbdisable" "t" "f" autocheck>> Enable pubic hair growth
+	</div></label>
+	<div class="settingsToggle" role="group">
+	Transformations:
+	<label><<checkbox "$transformdisable" "t" "f" autocheck>> Animal</label>
+	<label><<checkbox "$transformdisabledivine" "t" "f" autocheck>> Divine</label>
+	<mouse class="tooltip linkBlue">(?)<span>You may have both one divine and one animal transformation at the same time.</span></mouse>
+	</div>
+	/*<label><div class="settingsToggle">
+	<<checkbox "$hirsutedisable" "t" "f" autocheck>> Extra hirsute/hairy wolf transformation
+	</div></label>*/
+	<label><div class="settingsToggle">
+	<<checkbox "$breastfeedingdisable" "t" "f" autocheck>> Enable lactation
+	</div></label>
+	<label><div class="settingsToggle">
+	<<checkbox "$watersportsdisable" "t" "f" autocheck>> Enable watersports
+	<mouse class="tooltip linkBlue">(?)<span>This toggle is largely unused, only affecting a single very rare event as of right now.</span></mouse>
+	</div></label>
+
+	<label><div class="settingsToggle">
+	<<checkbox "$footdisable" "t" "f" autocheck>> Enable feet
+	<mouse class="tooltip linkBlue">(?)<span>Does not remove the player's feet.</span></mouse>
+	</div></label>
+	
+	<div class="settingsToggle" style="display: inline-flex;">
+	&nbsp;Asphyxiation
+	<<numberslider "$asphyxiaLvl" $asphyxiaLvl 0 4 1>>
+	<<run settingsAsphyxiation()>>
+	</div>
+
+	<div class="settingsToggle" style="display: inline-flex;">
+	&nbsp;Bodywriting
+	<<numberslider "$bodywritingLvl" $bodywritingLvl 0 3 1>>
+	<<run settingsBodywriting()>>
+	</div>
+		
+	<div class="settingsToggle">
+	&nbsp;Nude&nbsp;Gender&nbsp;Appearance
+	<<numberslider "$NudeGenderDC" $NudeGenderDC 0 2 1>>
+	<<run settingsNudeGenderAppearance()>>
+	</div>
+
+	<div style="clear:both;">/*Keep at end of toggles*/</div>
+<</widget>>
+
+<<widget "sizeLimitsSettings">>
+	<span class="gold">Maximum player character breast size</span> <mouse class="tooltip linkBlue">(?)<span>Breasts already above this size won't automatically shrink. Your breasts will grow regardless of gender. Males and those with high purity experience slower growth. Surgery, pills and parasites can influence growth in both directions. Having breasts played with and hosting internal parasites increase growth.</span></mouse>
+	<br>
+	<<set _name to ["Flat", "Budding", "Tiny", "Small", "Pert", "Modest", "Full", "Large", "Ample", "Massive", "Huge", "Gigantic", "Enormous"]>>
+	<<for _i to 0; _i lt _name.length; _i++>>
+		<label><<print _name[_i]>> <<radiobutton "$breastsizemax" `_i` autocheck>></label> |
+	<</for>>
+	<br><br>
+
+	<span class="gold">Minimum player character breast size</span> <mouse class="tooltip linkBlue">(?)<span>Breasts already below this size won't automatically grow.</span></mouse>
+	<br>
+	<<for _i to 0; _i lt 5; _i++>>
+		<label><<print _name[_i]>> <<radiobutton "$breastsizemin" _i autocheck>></label> |
+	<</for>>
+	<br><br>
+
+	<span class="gold">Maximum player character ass size</span> <mouse class="tooltip linkBlue">(?)<span>Bottoms already above this size won't automatically shrink.</span></mouse>
+	<br>
+	<<set _name to ["Slender", "Slim", "Modest", "Cushioned", "Soft", "Round", "Plump", "Large", "Huge"]>>
+	<<for _i to 0; _i lt _name.length; _i++>>
+		<label><<print _name[_i]>> <<radiobutton "$bottomsizemax" _i autocheck>></label> |
+	<</for>>
+	<br><br>
+
+	<span class="gold">Maximum player character penis size</span> <mouse class="tooltip linkBlue">(?)<span>Penises already above this size won't automatically shrink. Surgery, pills and parasites can influence growth in both directions.</span></mouse>
+	<br>
+	<<set _name to ["Micro","Mini", "Tiny", "Small", "Normal", "Large", "Enormous"]>>
+	<<for _i to 0; _i lt _name.length; _i++>>
+		<label><<print _name[_i]>> <<radiobutton "$penissizemax" `(_i - 2)` autocheck>></label> |
+	<</for>>
+	<br><br>
+
+	<span class="gold">Minimum player character penis size</span> <mouse class="tooltip linkBlue">(?)<span>Penises already below this size won't automatically grow. The smaller sizes have additional requirements to shrink to/grow from.</span></mouse>
+	<br>
+	<<set _name to ["Micro","Mini", "Tiny"]>>
+	<<for _i to 0; _i lt _name.length; _i++>>
+		<label><<print _name[_i]>> <<radiobutton "$penissizemin" `(_i - 2)` autocheck>></label> |
+	<</for>>
+	<br><br>
+
+<</widget>>
+
+<<widget "generalSettings">>
+	<span class="gold">Images</span>
+	<<if StartConfig.enableImages is true>>
+		<label><div class="settingsToggleBig">
+		<<checkbox "$images" 0 1 autocheck>> Enable images
+		<div class="description">Images may not load properly on older Androids.</div>
+		</div></label>
+
+		<label><div class="settingsToggleBig">
+		CSS animations
+		<div><label><<checkbox "$sidebarAnimations" false true autocheck>> Sidebar animations</label></div>
+		<div><label><<checkbox "$combatAnimations" false true autocheck>> Combat animations</label></div>
+		<div class="description">Disabling may help improve performance and prevent images from loading incorrectly. Gif images will not be affected. Try disabling sidebar images first.</div>
+		</div></label>
+
+		<label><div class="settingsToggleBig">
+		<<checkbox "$bodywritingImages" false true autocheck>> Enable body-writing Images
+		<div class="description">Disabling may improve performance and potentially prevent images from not loading correctly.</div>
+		</div></label>
+
+		<label><div class="settingsToggleBig">
+		<<checkbox "$silhouettedisable" "t" "f" autocheck>> Enable NPC silhouettes
+		</div></label>
+
+		<<if $skinColor.init is false and $passage isnot "Start">>
+			<span class="gold">You can now choose your character's skin colour. Click "Test" to preview the setting on the paperdolls. Click "Confirm" when you've made your selection.</span> This can cause performance issues on some devices. Should this be an issue, the option to disable the new skin system will appear here.
+			<br>
+			<div id="skinColorDiv"><img class="" src="img/bodyRed/baseReColorTest.png"></div>
+
+			Skin colour:<br>
+			Reddish:
+			<label>Light <<radiobutton "$naturalSkinColor" "light" autocheck>></label> |
+			<label>Medium <<radiobutton "$naturalSkinColor" "medium" autocheck>></label> |
+			<label>Dark <<radiobutton "$naturalSkinColor" "dark" autocheck>></label> |
+			<label>Gyaru <<radiobutton "$naturalSkinColor" "gyaru" autocheck>> (Pale with no tan, very dark with full tan)</label>
+			<br>
+			Yellowish:
+			<label>Light <<radiobutton "$naturalSkinColor" "ylight" autocheck>></label> |
+			<label>Medium <<radiobutton "$naturalSkinColor" "ymedium" autocheck>></label> |
+			<label>Dark <<radiobutton "$naturalSkinColor" "ydark" autocheck>></label>
+			<label>Gyaru <<radiobutton "$naturalSkinColor" "ygyaru" autocheck>></label>
+			<br><br>
+			<<if $range is undefined>>
+				<<set $range to 0>>
+			<</if>>
+			<label>Initial Tan: <<numberslider "$range" 0 0 100 1>></label>
+			<br>
+			<<link Test>>
+				<<if $range isnot undefined and $naturalSkinColor isnot undefined>>
+					<<replace #skinColorDiv>><<SkinColorImgTest $range $naturalSkinColor>><</replace>>
+				<</if>>
+			<</link>>
+
+			<br>
+			<<link [[Confirm|$passage]]>>
+				<<if $range isnot undefined and $naturalSkinColor isnot undefined>>
+					<<set $skinColor.range to $range>>
+					<<set $skinColor.natural to $naturalSkinColor>>
+					<<set $skinColor.tanningEnabled to true>>
+					<<set $skinColor.tanImgEnabled to "t">>
+					<<setSkinColorBase>>
+					<<unset $naturalSkinColor>>
+					<<unset $range>>
+				<</if>>
+			<</link>> - <span class="red">These settings can not be changed after Confirming.</span>
+		<<else>>
+			<label><div class="settingsToggleBig">
+			<<checkbox "$skinColor.tanImgEnabled" "f" "t" autocheck>> Visual representation of the player character's skin colour
+			<div class="description"><span class="pink">May hinder performance on some devices.</span></div>
+			</div></label>
+			<label><div class="settingsToggleBig">
+			<<checkbox "$skinColor.tanningEnabled" false true autocheck>> Tanning changes due to sun exposure
+			<div class="description"><span class="red">Option to disable may be removed at a later date.</span></div>
+			</div></label>
+		<</if>>
+
+		<label><div class="settingsToggleBig">
+		<<checkbox "$blinkingdisable" "t" "f" autocheck>> Animate eyes blinking
+		<div class="description">Works only if CSS animations are enabled.</div>
+		</div></label>
+		<<if $eyelidTEST is true>>
+		<label><div class="settingsToggleBig">
+		<<checkbox "$halfcloseddisable" "t" "f" autocheck>> Enable half-closed eyes graphics
+		<div class="description">Draw eyelids in sidebar as half-closed when highly aroused.</div>
+		</div></label>
+		<</if>>
+		<<if $debug is 1>>
+			<label><div class="settingsToggleBig"><div style="display: inline-flex;">
+			Face style
+			<div style="margin-left: 1em;"><<textbox "$facestyle" $facestyle>></div></div>
+			<div class="description">This setting works only if you have installed face styles other than default.</div>
+			<<script>>jQuery(document).ready(() => { jQuery('#textbox-facestyle').css('width', '100%').css('min-width', 'unset').css('height', '0.75em'); });<</script>>
+			</div></label>
+		<</if>>
+	<<else>>
+		<br>
+		Not Available
+	<</if>>
+	<br><br>
+	<span class="gold">Numbered link navigation</span>
+	<br>
+	<<if StartConfig.enableLinkNumberify is true>>
+		<label><div class="settingsToggleBig">
+		<<checkbox "$numberify_enabled" 0 1 autocheck>> Enable numbered link navigation
+		<div class="description">Allows navigation with keyboard.</div>
+		</div></label>
+	<<else>>
+		<br>
+		Not Available
+	<</if>>
+	<br><br>
+
+	<span class="gold">Time format</span>
+	<br>
+	<label>24-hour <<radiobutton "$timestyle" "military" autocheck>></label> |
+	<label>12-hour <<radiobutton "$timestyle" "ampm" autocheck>></label>
+	<br>
+	<<checkbox "$oldclock" false true autocheck>> Use old clock style in the sidebar
+
+	<br><br>
+
+	<span class="gold">Skill check display</span>
+	<br>
+	<label>Show exact percentage <<radiobutton "$checkstyle" "percentage" autocheck>></label> |
+	<label>Show only general description <<radiobutton "$checkstyle" "words" autocheck>></label> |
+	<label>Show only skill name <<radiobutton "$checkstyle" "skillname" autocheck>></label> |
+	<br><br>
+
+	<span class="gold">In game hints and tips</span>
+	<label><div class="settingsToggleBig">
+	<<checkbox "$tipdisable" "t" "f" autocheck>> Enable hints and tips
+	<div class="description">Shows in the sidebar.</div>
+	<div><<link [["View all tips"|Tips]]>><<set $lastPassage to $passage>><</link>></div>
+	</div></label>
+	<br><br>
+
+	<span class="gold">Additional error information</span>
+	<br>
+	<label><div class="settingsToggleBig">
+	<<checkbox "$debugdisable" "t" "f" autocheck>> Enable additional error messages
+	<div class="description">Shows in the sidebar.</div>
+	</div></label>
+	<br><br>
+
+	<span class="gold">Save Name</span>
+	<br>
+	<<textbox "$saveName" $saveName>>
+	<div class="description">Shows in the save menu in place of the save id.</div>
+	<div class="description"><span class="red">Only 10 characters at most will show in the save menu, leave empty to show the save ID.</span></div>
+	<br>
+	<span class="gold">Game Zoom</span> <mouse class="tooltip linkBlue">(?)<span>Will allow you to adjust the size of game elements and text. 100 is the default value.
+	A value of 50 will zoom the page out to half of its original size, while a value of 200 will zoom the page in to double its size.
+	The test button will not save the zoom value into the current save.
+	<span class="red">
+		Please be careful with this setting! Only save if you are happy with the changes made, as reloading the game will reset it to the last value used in that save.
+		Depending on the device and browser, the setting may break entirely, and may cause unexpected effects. Please report these issues as necessary.
+	</span></span></mouse>
+	<br><br>
+	<<numberslider "$zoom" $zoom 50 200 1>>
+	<input type="button" value="Set Zoom Test" onclick="zoom()"/>
+	<br><br>
+	<input type="button" value="Reset Zoom" onclick="zoom(100, true)"/>
+	<input type="button" value="Set Zoom" onclick="zoom(undefined, true)"/>
+	<br><br>
+
+	
+	<span class="gold">History depth</span><br>
+	<div class="description">Enables going back in history up to N-1 passages. Changes take effect on settings exit.<br>
+	<span class="red"><b>WARNING:</b> Will cause slowdowns. Additionally, values above 5 can exceed your localStorage quota and cause <br>
+	<b>troubles with saves</b>. Use at your own risk.</span>
+	</div>
+	<<numberslider "$maxStates" $maxStates 1 20 1>>
+	<br><br>
+	
+
+	<span class="gold">Cheats menu</span>
+	<label><div class="settingsToggleBig">
+	<<checkbox "$cheatdisabletoggle" "t" "f" autocheck>> Enable cheats
+	<div class="description">Button shows in sidebar. <span class="red">Leaving the settings with cheats enabled will prevent you from earning feats in a save.</span></div>
+	</div></label>
+	<br><br>
+	<span class="gold">Gallery</span> - these will not affect your save in any way.
+	<br>
+	<<if version.major gt 2 or version.minor gt 29>>
+		<<link [["Character Viewer"|Clothes Testing]]>>
+			<<set $lastPassage to $passage>>
+			<<set $gameTanImgSetting to clone($skinColor.tanImgEnabled)>>
+		<</link>>
+		- This will allow you to have a play with the character sprites.
+		<br>
+	<</if>>
+	<<if $passage isnot "Start">>
+		<<link [["Scene Viewer"|Scene Viewer]]>>
+			<<set $lastPassage to $passage>>
+			<<seenPassageChecks>>
+		<</link>>
+		- This will allow you to replay scenes that you have unlocked.
+		<br>
+	<<else>>
+		The Scene Viewer is not available on the start page.
+		<br>
+	<</if>>
+	<<link [["Test Renderer"|Renderer Test Page]]>>
+		<<set $lastPassage to $passage>>
+	<</link>>
+	- This will check your browser's capabilities required for new renderer.
+	<br>
+
+<</widget>>
+
+<<widget "npcSettings">>
+<<if $passage is "Start">>
+	<span class="red">Untouched options will be automatically generated for you.</span>
+	<br>
+<</if>>
+<<link "Generate all genders based on game settings">>
+	<<initnpcgender "genders">>
+	<<updatePersistentNPCs "genders">>
+	<<displaySettings>>
+<</link>>
+<br>
+<<link "Generate all penis sizes based on game settings">>
+	<<initnpcgender "penis">>
+	<<updatePersistentNPCs "penis">>
+	<<displaySettings>>
+<</link>>
+<br>
+<<link "Generate all breast sizes based on game settings">>
+	<<initnpcgender "breasts">>
+	<<updatePersistentNPCs "breasts">>
+	<<displaySettings>>
+<</link>>
+<<if $debug is 1>>
+	<br>
+	<<link "Reset hair and eye colours (Will only effect NPC's with a default colour)">>
+		<<generateNPCNameHairAndEyeColors "default">>
+		<<displaySettings>>
+	<</link>>
+<</if>>
+<br><br>
+
+<<if _npcId is undefined>>
+	<<set _npcId to 0>>
+
+	<<set _breastDescription to ["Flat","Small","Pert","Modest","Full","Large"]>>
+	<<set _breastDescriptionNPC to ["nipple","small breast","pert breast","modest breast","full breast","large breast"]>>
+	<<set _breastsDescriptionNPC to ["nipples","small breast","pert breast","modest breast","full breast","large breast"]>>
+
+	<<set _hairColorNPC to ["Red","Black","Brown","Light Brown","Blond","Platinum blond","Strawberry blond","Ginger", "mousy"]>>
+	<<set _hairColorNPCData to ["red","black","brown","lightbrown","blond","platinumblond","strawberryblond","ginger", "mousy"]>>
+	<<set _hairColorNPCText to ["red","black","brown","lightbrown","gold","platinum","strawberry","tangerine", "mousy"]>>
+
+	<<set _eyeColorNPC to ["Purple","Dark Blue","Light Blue","Amber","Hazel","Green","Red","Pink","Grey"]>>
+	<<set _eyeColorNPCData to ["purple","dark blue","light blue","amber","hazel","green","red","pink","grey"]>>
+	<<set _eyeColorNPCText to ["purple","blue","lblue","tangerine","brown","green","red","pink","grey"]>>
+<</if>>
+
+<<if _npcList is undefined>>
+	<<set _npcList to {}>>
+	<<for $_i to 0; $_i lt $NPCNameList.length; $_i++>>
+		<<set _npcList[clone($NPCNameList[$_i])] to clone($_i)>>
+	<</for>>
+<</if>>
+
+<div id="npcSettingsMenu">
+	<<npcSettingsMenu>>
+</div>
+
+<<if $passage isnot "start" and $per_npc and Object.keys($per_npc).length gt 0>>
+	<<run
+		if (!T.perNPCLock) {
+			$("#passages").on('change', '#perNPCSettingsMenu .macro-listbox', function (e) {
+				new Wikifier(null, '<<replace #perNPCSettingsMenu>><<perNPCSettingsMenu>><</replace>>');
+			});
+
+			T.keys = {};
+			T.keyNames = [];
+			T.allowed_npcs = ["steed", "guard", "inmate", "panty_thief", "tower_creature", "wraith", "pinch"];
+			Object.keys(V.per_npc).forEach(k => {
+				for (let j of T.allowed_npcs){
+					if (k.includes(j)){
+						T.keyNames.push(k);
+						T.keys[k.toUpperFirst().replaceAll('_', ' ')] = k;
+						break
+					}
+				}
+			});
+			T.perNPCLock = true;
+		}
+	>>
+	<<if T.keyNames and T.keyNames.length>>
+		<div id="perNPCSettingsMenu">
+			<<perNPCSettingsMenu>>
+		</div>
+	<</if>>
+<</if>>
+
+<<if _listActive isnot true>>
+	<<NPCSettingsReset>>
+	<<set _listActive to true>>
+<</if>>
+
+<</widget>>
+
+<<widget "exportsettings">>
+
+	<span class="yellow">Will also import/export settings found in the "SAVE/OPTIONS" overlay.</span>
+
+	<h4>Settings File Import/Export</h4>
+
+	<<if SugarCube.Browser.isMobile.any() is true>>
+		Note that saving and loading from file does not work on Android currently.
+	<<else>>
+		Load from file: <input id="saveImport" type="file" value="Load from file" onchange="importSettings(this.files, 'file')">
+		<br><br>
+		<input type="button" value="Save to file" onclick="exportSettings(null,'file')">
+	<</if>>
+
+	<h4>Settings Text Import/Export</h4>
+
+	To save your current settings, click on "Get Settings Data", then copy and paste the save data where required.
+	<br>
+	To load your current settings, paste in the settings data then click "Load Settings Data".
+	<br>
+	To transfer to and from Android, it is recommended to use email or a service such as pastebin. Please ensure that the start and the end of the save is exact to prevent issues.
+	<br>
+	Click on "Copy Text Area" to copy the current contents for you. The button name will change to "Copying Error" if your device or browser does not support it.
+	<br><br>
+	<textarea id="settingsDataInput" rows="4" cols="40" onClick="if(V.disableAutoSelect == false)this.select();" onfocus="V.tempDisable = true;" onblur="V.tempDisable = false;"></textarea>
+	<br>
+	<input type="button" value="Clear Text Box" onclick="clearTextBox('settingsDataInput')"/>
+	<input type="button" value="Top of Text Box" onclick="topTextArea('settingsDataInput')"/>
+	<input type="button" value="Bottom of Text Box" onclick="bottomTextArea('settingsDataInput')"/>
+	<input type="button" value="Get Settings Data" onclick="exportSettings(null,'text')"/>
+	<input type="button" value="Load Settings Data" onclick="importSettings(null,'text')"/>
+	<input id="CopyTextArea" type="button" value="Copy Text Area" onclick="copySavedata('settingsDataInput')">
+	<input id="LoadExternalExportFile" type="button" value="Load External Export File" onclick="loadExternalExportFile()">
+
+	<br><br>
+
+	<label>
+		<<checkbox "$disableAutoSelect" false true autocheck>>
+		Disables auto select.
+	</label>
+
+<</widget>>
+
+<<widget "npcSettingsMenu">>
+	<<listbox "_npcId" autoselect>>
+		<<optionsfrom _npcList>>
+	<</listbox>>
+	| <<link Previous>>
+		<<if _npcId is 0>>
+			<<set _npcId to $NPCNameList.length - 1>>
+		<<else>>
+			<<set _npcId-->>
+		<</if>>
+		<<replace #npcSettingsMenu>><<npcSettingsMenu>><</replace>>
+	<</link>> |
+	<<link Next>>
+		<<set _npcId++>>
+		<<replace #npcSettingsMenu>><<npcSettingsMenu>><</replace>>
+	<</link>>
+	<br><br>
+	<span class="gold">$NPCName[_npcId].nam the $NPCName[_npcId].title</span>
+	<br>
+	<label><<radiobutton "$NPCName[_npcId].pronoun" "f" autocheck>> Female</label> |
+	<label><<radiobutton "$NPCName[_npcId].pronoun" "m" autocheck>> Male</label>
+	<br>
+	<<if $NPCName[_npcId].pregnancy[0] is null>>
+		<label><<radiobutton "$NPCName[_npcId].gender" "f" autocheck>> Vagina</label> |
+		<label><<radiobutton "$NPCName[_npcId].gender" "m" autocheck>> Penis</label>
+		<<run settingsNamedNpcGenderUpdate()>>
+	<<else>>
+		Unable to change the npc genitals due to their pregnancy.
+	<</if>>
+	<br><br>
+	Penis size - if applicable:
+	<br>
+	<<set _penisNames to ["", "Tiny", "Average", "Thick", "Huge"]>> /* the empty first element is necessary because _j starts at 1 */
+	<<for _j to 1; _j lt _penisNames.length; _j++>>
+		<label>
+			<<radiobutton "$NPCName[_npcId].penissize" _j autocheck>>
+			<<print _penisNames[_j]>>
+		</label>
+		<<if _j isnot _penisNames.length -1>>|<</if>>
+	<</for>>
+	<br><br>
+
+	<div class="settingsToggle" style="display: inline-flex;">
+	Breast size
+	<<numberslider "$NPCName[_npcId].breastsize" $NPCName[_npcId].breastsize 0 12 1>>
+	<<run settingsNamedNpcBreastSize(Util.slugify('$NPCName[_npcId].breastsize'), false)>>
+	</div>
+	<div style="clear:both;">/*Keep at end of toggles*/</div>
+	<br>
+
+	<<if $NPCName[_npcId].nam is "Black Wolf">>
+		Beast Type:
+		<br>
+		<label><<radiobutton "$blackwolfmonster" 0 autocheck>> Always a beast</label> |
+		<label><<radiobutton "$blackwolfmonster" 1 autocheck>> Monster girl or boy when requirements met</label> |
+		<label><<radiobutton "$blackwolfmonster" 2 autocheck>> Always a monster girl or boy</label>
+		<br><br>
+	<<elseif $NPCName[_npcId].nam is "Great Hawk">>
+		Beast Type:
+		<br>
+		<label><<radiobutton "$greathawkmonster" 0 autocheck>> Always a beast</label> |
+		<label><<radiobutton "$greathawkmonster" 1 autocheck>> Monster girl or boy when requirements met</label> |
+		<label><<radiobutton "$greathawkmonster" 2 autocheck>> Always a monster girl or boy</label>
+		<br><br>
+	<</if>>
+	<<if $debug is 1>>
+		Hair Colour:
+		<br>
+		<<for _j to 0; _j lt _hairColorNPC.length; _j++>>
+			<label>
+				<<print '<<radiobutton "$NPCName['+_npcId+'].hairColour" "'+_hairColorNPCData[_j]+'" ' + ($NPCName[_npcId].hairColour is _hairColorNPCData[_j] ? "checked" : "") + '>>'>>
+				<span @class="_hairColorNPCText[_j]">_hairColorNPC[_j]</span>
+			</label> |
+		<</for>>
+		<br><br>
+
+		Eye Colour:
+		<br>
+		<<for _j to 0; _j lt _eyeColorNPC.length; _j++>>
+			<label>
+				<<print '<<radiobutton "$NPCName['+_npcId+'].eyeColour" "'+_eyeColorNPCData[_j]+'" ' + ($NPCName[_npcId].eyeColour is _eyeColorNPCData[_j] ? "checked" : "") + '>>'>>
+				<span @class="_eyeColorNPCText[_j]">_eyeColorNPC[_j]</span>
+			</label> |
+		<</for>>
+		<br><br>
+	<</if>>
+<</widget>>
+
+<<widget "perNPCSettingsMenu">>
+	<span class="gold">Persistent NPCs:</span>
+	<br>
+	<<listbox "_pNPCId" autoselect>>
+		<<optionsfrom _keys>>
+	<</listbox>>
+	<<switch _pNPCId>>
+		<<case "scarred_inmate">>
+			<<if $per_npc[_pNPCId].description isnot "scarred">>
+				<<generate_scarred_inmate 0>>
+				<<clearsinglenpc 0>>
+			<</if>>
+		<<case "veteran_guard">>
+			<<if $per_npc[_pNPCId].description isnot "veteran">>
+				<<generate_veteran_guard 0>>
+				<<clearsinglenpc 0>>
+			<</if>>
+	<</switch>>
+	<<set _index to _keyNames.indexOf(_pNPCId)>>
+	| <<link Previous>>
+		<<set _index to (_index is 0 ? _keyNames.length - 1 : --_index)>>
+		<<set _pNPCId to _keyNames[_index]>>
+		<<replace #perNPCSettingsMenu>><<perNPCSettingsMenu>><</replace>>
+	<</link>> |
+	<<link Next>>
+		<<set _index++>>
+		<<set _pNPCId to _keyNames[_index]>>
+		<<replace #perNPCSettingsMenu>><<perNPCSettingsMenu>><</replace>>
+	<</link>>
+	<br><br>
+	<<if $per_npc[_pNPCId].name_known>>
+		<span class="gold">$per_npc[_pNPCId].name the <<print _pNPCId.replaceAll('_', ' ')>></span>
+	<<elseif $per_npc[_pNPCId].name is "Ivory Wraith">>
+		<span class="wraith">The Ivory Wraith</span>
+	<<elseif _pNPCId is "tower_creature">>
+		<span class="gold">The Night Monster</span>
+	<<else>>
+		<span class="gold"><<print _pNPCId.toUpperFirst().replaceAll('_', ' ')>></span>
+	<</if>>
+	<<if $per_npc[_pNPCId].name_known and $debug is 1>>
+		| <<link Rename>>
+			<<if $per_npc[_pNPCId].pronoun is "f">>
+				<<set $per_npc[_pNPCId].name to $NPC_names_f.random()>>
+			<<else>>
+				<<set $per_npc[_pNPCId].name to $NPC_names_m.random()>>
+			<</if>>
+			<<replace #perNPCSettingsMenu>><<perNPCSettingsMenu>><</replace>>
+		<</link>>
+	<</if>>
+	<br>
+	<label><<radiobutton "$per_npc[_pNPCId].pronoun" "f" autocheck>> Female</label> |
+	<label><<radiobutton "$per_npc[_pNPCId].pronoun" "m" autocheck>> Male</label>
+	<br>
+	<label><<radiobutton "$per_npc[_pNPCId].gender" "f" autocheck>> Vagina</label> |
+	<label><<radiobutton "$per_npc[_pNPCId].gender" "m" autocheck>> Penis</label>
+	<<run settingsPersistentNpcGenderUpdate()>>
+	<br><br>
+	Penis size - if applicable:
+	<br>
+	<<set _penisNames to ["", "Tiny", "Average", "Thick", "Huge"]>> /* the empty first element is necessary because _j starts at 1 */
+	<<for _j to 1; _j lt _penisNames.length; _j++>>
+		<label>
+			<<radiobutton "$per_npc[_pNPCId].penissize" _j autocheck>>
+			<<print _penisNames[_j]>>
+		</label>
+		<<if _j isnot _penisNames.length -1>>|<</if>>
+	<</for>>
+	<br><br>
+	<div class="settingsToggle" style="display: inline-flex;">
+		Breast size
+		<<numberslider "$per_npc[_pNPCId].breastsize" $per_npc[_pNPCId].breastsize 0 12 1>>
+		<<run settingsNamedNpcBreastSize(Util.slugify('$per_npc[_pNPCId].breastsize'), true)>>
+	</div>
+	<div style="clear:both;">
+		/*Keep at end of toggles*/
+	</div>
+<</widget>>
+
+
+:: Settings
+<<settings>>
+
+:: Attitudes
+<<attitudes>>
+<<set $attitudesControl.showGoldLink to "false">>
+<br><br>
+<<link [[Confirm|$attitudesExitPassage]]>>
+	<<unset $attitudesExitPassage>>
+	<<run DefaultActions.save(T.defaultActions)>>
+<</link>>
+<br>

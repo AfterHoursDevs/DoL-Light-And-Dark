@@ -1,0 +1,379 @@
+:: Widgets Nicknames [widget]
+<<widget "underworld_nickname">>
+<<if $famesex gte 400>>
+	<<if $fameprostitution gte 400>>
+		<<if $famerape gte 400>>
+			<<if $famebestiality gte 400>>
+				<<if $famescrap gte 400>>
+					<<if $famepimp gte 400>>
+						<<if $player.gender_appearance is "m">>
+							<<set _text_output to "Our Boy">>
+						<<else>>
+							<<set _text_output to "Our Girl">>
+						<</if>>
+					<<else>>
+						<<if $player.gender_appearance is "m">>
+							<<set _text_output to "The Boy">>
+						<<else>>
+							<<set _text_output to "The Girl">>
+						<</if>>
+					<</if>>
+				<<else>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Plaything">>
+					<<else>>
+						<<set _text_output to "Fucktoy">>
+					<</if>>
+				<</if>>
+			<<else>>
+				<<if $famescrap gte 400>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Pike">>
+					<<else>>
+						<<set _text_output to "Rapier">>
+					<</if>>
+				<<else>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Ultra Slut">>
+					<<else>>
+						<<set _text_output to "Super Slut">>
+					<</if>>
+				<</if>>
+			<</if>>
+		<<else>>
+			<<if $famebestiality gte 400>>
+				<<if $famescrap gte 400>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Milker">>
+					<<else>>
+						<<set _text_output to "Milky">>
+					<</if>>
+				<<else>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Kibbles">>
+					<<else>>
+						<<set _text_output to "Nibbles">>
+					<</if>>
+				<</if>>
+			<<else>>
+				<<if $famescrap gte 400>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Weaver">>
+					<<else>>
+						<<set _text_output to "Needle">>
+					<</if>>
+				<<else>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Pokies">>
+					<<else>>
+						<<set _text_output to "Pokey">>
+					<</if>>
+				<</if>>
+			<</if>>
+		<</if>>
+	<<else>>
+		<<if $famerape gte 400>>
+			<<if $famebestiality gte 400>>
+				<<if $famescrap gte 400>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Wolf Whore">>
+					<<else>>
+						<<set _text_output to "Wolf Slut">>
+					<</if>>
+				<<else>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Dog Whore">>
+					<<else>>
+						<<set _text_output to "Dog Slut">>
+					<</if>>
+				<</if>>
+			<<else>>
+				<<if $famescrap gte 400>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Spike">>
+					<<else>>
+						<<set _text_output to "Rough-and-Tumble">>
+					<</if>>
+				<<else>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Freebies">>
+					<<else>>
+						<<set _text_output to "Free Slut">>
+					<</if>>
+				<</if>>
+			<</if>>
+		<<else>>
+			<<if $famebestiality gte 400>>
+				<<if $famescrap gte 400>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Doggy Squeezer">>
+					<<else>>
+						<<set _text_output to "Wolf Warrior">>
+					<</if>>
+				<<else>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Doggy Milker">>
+					<<else>>
+						<<set _text_output to "Wolf Rider">>
+					<</if>>
+				<</if>>
+			<<else>>
+				<<if $famescrap gte 400>>
+					<<if $famepimp gte 400>>
+						<<if $player.gender_appearance is "m">>
+							<<set _text_output to "Pimp">>
+						<<else>>
+							<<set _text_output to "Madame">>
+						<</if>>
+					<<else>>
+						<<set _text_output to "Sabre">>
+					<</if>>
+				<<else>>
+					<<if $famepimp gte 400>>
+						<<if $player.gender_appearance is "m">>
+							<<set _text_output to "Slut Dad">>
+						<<else>>
+							<<set _text_output to "Slut Mum">>
+						<</if>>
+					<<else>>
+						<<set _text_output to "Slut">>
+					<</if>>
+				<</if>>
+			<</if>>
+		<</if>>
+	<</if>>
+<<else>>
+	<<if $fameprostitution gte 400>>
+		<<if $famerape gte 400>>
+			<<if $famebestiality gte 400>>
+				<<if $famescrap gte 400>>
+					<<if $famepimp gte 400>>
+						<<if $player.gender_appearance is "m">>
+							<<set _text_output to "Hound Father">>
+						<<else>>
+							<<set _text_output to "Hound Mother">>
+						<</if>>
+					<<else>>
+						<<set _text_output to "Hound">>
+					<</if>>
+				<<else>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Dogged One">>
+					<<else>>
+						<<set _text_output to "Pup">>
+					<</if>>
+				<</if>>
+			<<else>>
+				<<if $famescrap gte 400>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Dagger">>
+					<<else>>
+						<<set _text_output to "Scar">>
+					<</if>>
+				<<else>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Sex Beggar">>
+					<<else>>
+						<<set _text_output to "Rape Beggar">>
+					<</if>>
+				<</if>>
+			<</if>>
+		<<else>>
+			<<if $famebestiality gte 400>>
+				<<if $famescrap gte 400>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Fang">>
+					<<else>>
+						<<set _text_output to "Claw">>
+					<</if>>
+				<<else>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "The Hound">>
+					<<else>>
+						<<set _text_output to "Puppy">>
+					<</if>>
+				<</if>>
+			<<else>>
+				<<if $famescrap gte 400>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Stiletto">>
+					<<else>>
+						<<set _text_output to "Knife">>
+					<</if>>
+				<<else>>
+					<<if $famepimp gte 400>>
+						<<if $player.gender_appearance is "m">>
+							<<set _text_output to "Whoredad">>
+						<<else>>
+							<<set _text_output to "Whoremum">>
+						<</if>>
+					<<else>>
+						<<set _text_output to "Penny Chaser">>
+					<</if>>
+				<</if>>
+			<</if>>
+		<</if>>
+	<<else>>
+		<<if $famerape gte 400>>
+			<<if $famebestiality gte 400>>
+				<<if $famescrap gte 400>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Tasty">>
+					<<else>>
+						<<set _text_output to "The Rabbit">>
+					<</if>>
+				<<else>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Kitten">>
+					<<else>>
+						<<set _text_output to "Bitch">>
+					<</if>>
+				<</if>>
+			<<else>>
+				<<if $famescrap gte 400>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "The Rough One">>
+					<<else>>
+						<<if $player.gender_appearance is "m">>
+							<<set _text_output to "Spear-Prick">>
+						<<else>>
+							<<set _text_output to "Vagina Dentata">>
+						<</if>>
+					<</if>>
+				<<else>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Free Samples">>
+					<<else>>
+						<<set _text_output to "Rape Bait">>
+					<</if>>
+				<</if>>
+			<</if>>
+		<<else>>
+			<<if $famebestiality gte 400>>
+				<<if $famescrap gte 400>>
+					<<if $famepimp gte 400>>
+						<<if $player.gender_appearance is "m">>
+							<<set _text_output to "Den Father">>
+						<<else>>
+							<<set _text_output to "Den Mother">>
+						<</if>>
+					<<else>>
+						<<set _text_output to "The Wolf">>
+					<</if>>
+				<<else>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "Rancher">>
+					<<else>>
+						<<set _text_output to "Paw">>
+					<</if>>
+				<</if>>
+			<<else>>
+				<<if $famescrap gte 400>>
+					<<if $famepimp gte 400>>
+						<<set _text_output to "The Rat">>
+					<<else>>
+						<<set _text_output to "Scrappy">>
+					<</if>>
+				<<else>>
+					<<if $famepimp gte 400>>
+						<<if $player.gender_appearance is "m">>
+							<<set _text_output to "Dad">>
+						<<else>>
+							<<set _text_output to "Mum">>
+						<</if>>
+					<<else>>
+						<<set _text_output to "meat">>
+					<</if>>
+				<</if>>
+			<</if>>
+		<</if>>
+	<</if>>
+<</if>>
+<<print _text_output>>
+<</widget>>
+
+<<widget "overworld_nickname">>
+<<if $fameexhibitionism gte 400>>
+	<<if $famegood gte 400>>
+		<<if $famebusiness gte 400>>
+			<<if $famesocial gte 400>>
+				<<set _text_output to "The Orphan">>
+			<<else>>
+				<<set _text_output to "Gold Heart">>
+			<</if>>
+		<<else>>
+			<<if $famesocial gte 400>>
+				<<set _text_output to "Flaunty">>
+			<<else>>
+				<<set _text_output to "Smiles">>
+			<</if>>
+		<</if>>
+	<<else>>
+		<<if $famebusiness gte 400>>
+			<<if $famesocial gte 400>>
+				<<set _text_output to "Orchid">>
+			<<else>>
+				<<if $player.gender_appearance is "m">>
+					<<set _text_output to "Suspicious Shop Boy">>
+				<<else>>
+					<<set _text_output to "Suspicious Shop Girl">>
+				<</if>>
+			<</if>>
+		<<else>>
+			<<if $famesocial gte 400>>
+				<<if $player.gender_appearance is "m">>
+					<<set _text_output to "Party Boy">>
+				<<else>>
+					<<set _text_output to "Party Girl">>
+				<</if>>
+			<<else>>
+				<<if $player.gender_appearance is "m">>
+					<<set _text_output to "Lewd Boy">>
+				<<else>>
+					<<set _text_output to "Lewd Girl">>
+				<</if>>
+			<</if>>
+		<</if>>
+	<</if>>
+<<else>>
+	<<if $famegood gte 400>>
+		<<if $famebusiness gte 400>>
+			<<if $famesocial gte 400>>
+				<<set _text_output to "Flower">>
+			<<else>>
+				<<set _text_output to "Charity">>
+			<</if>>
+		<<else>>
+			<<if $famesocial gte 400>>
+				<<set _text_output to "Preachy">>
+			<<else>>
+				<<set _text_output to "Angel">>
+			<</if>>
+		<</if>>
+	<<else>>
+		<<if $famebusiness gte 400>>
+			<<if $famesocial gte 400>>
+				<<set _text_output to "Tulip">>
+			<<else>>
+				<<if $player.gender_appearance is "m">>
+					<<set _text_output to "Shop Boy">>
+				<<else>>
+					<<set _text_output to "Shop Girl">>
+				<</if>>
+			<</if>>
+		<<else>>
+			<<if $famesocial gte 400>>
+				<<set _text_output to "Wallflower">>
+			<<else>>
+				<<if $player.gender_appearance is "m">>
+					<<set _text_output to "some orphan boy">>
+				<<else>>
+					<<set _text_output to "some orphan girl">>
+				<</if>>
+			<</if>>
+		<</if>>
+	<</if>>
+<</if>>
+<<print _text_output>>
+<</widget>>
+

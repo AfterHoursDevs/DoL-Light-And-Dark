@@ -1,0 +1,114 @@
+:: Widgets Actions Speak [widget]
+<<widget "speak">>
+<<if $underwater lte 0>>
+	<<if $enemyno gte 2>>
+		<<set _pron to "them">>
+	<<else>>
+		<<switch $pronoun>>
+			<<case "m">><<set _pron to "him">>
+			<<case "f">><<set _pron to "her">>
+			<<case "i">><<set _pron to "it">>
+		<</switch>>
+	<</if>>
+	<<set _askActions to {"Nothing":"rest"}>>
+	<<if !$gloryhole and $gamemode isnot "soft">>
+		<<seductiondifficulty true>>
+		<<set _diffText to " " + clone(_text_output)>>
+	<<else>>
+		<<set _diffText to "">>
+	<</if>>
+	<<if $consensual is 1>>
+		<<if $noFinish isnot 1>>
+			<<set _askActions["to stop" + _diffText] to "finish">>
+		<</if>>
+		<<if $enemytype is "man" and !$npcSub>>
+			<<if $player.vaginaExist and $vaginalchastity is 0 and $novaginal is 0>>
+				<<set _askActions["to not put anything in your pussy" + _diffText] to "novaginal">>
+			<</if>>
+			<<if $player.penisExist and $penilechastity is 0 and $nopenile is 0>>
+				<<set _askActions["to not put your penis in anything" + _diffText] to "nopenile">>
+			<</if>>
+			<<if $analchastity is 0 and $noanal is 0>>
+				<<set _askActions["to not put anything in your anus" + _diffText] to "noanal">>
+			<</if>>
+			<<if $asphyxiaLvl gte 1 and $nochoke isnot 1>>
+				<<set _askActions["to not choke you" + _diffText] to "nochoke">>
+			<</if>>
+		<</if>>
+	<<else>>
+		<<set _mouthaction["Scream"] to "scream">>
+		<<set _mouthaction["Plead"] to "plead">>
+		<<if $angel gte 6 and $angelforgive isnot 1>>
+			<<set _mouthaction["Forgive"] to "forgive">>
+		<</if>>
+		<<if $submissive lte 850>>
+			<<set _mouthaction["Demand"] to "demand">>
+		<</if>>
+	<</if>>
+	<<if $worn.over_upper.name isnot "naked" and $worn.over_upper.cursed isnot 1 or $worn.upper.name isnot "naked" and $worn.upper.cursed isnot 1 or $worn.under_upper.name isnot "naked" and $worn.under_upper.cursed isnot 1>>
+		<<if $noupper isnot 1 and $noupperasked isnot 1 and $enemytype is "man" and !$npcSub>>
+			<<set _askActions["to leave your top on" + _diffText] to "noupper">>
+		<</if>>
+	<</if>>
+	<<if $submissive gte 1150>>
+		<<set _mouthaction["Moan"] to "moan">>
+	<</if>>
+	<<if !$npcSub and $asphyxiaLvl gte 1 and $consensual is 1 and $enemytype is "man" and ($choketrait or ($chokeorgasm gte 1 and $submissive gt 850) or ($awarelevel gte 2 and $submissive gte 1150))>>
+		<<set _askActions["to choke you"] to "askchoke">>
+	<</if>>
+	/*ToDo: Pregnancy, remove $pregnancyTesting to properly enable*/
+	<<if $enemytype is "man" and $condomAsk is undefined and $pregnancyTesting and !$abomination>>
+		<<if $npcCondoms isnot undefined>>
+			<<set _askActions["to use condoms"] to "condoms">>
+		<</if>>
+		<<if $npcCondoms isnot undefined>>
+			<<set _askActions["to not use condoms"] to "noCondoms">>
+		<</if>>
+	<</if>>
+	<<if Object.keys(_askActions).length gt 0>>
+		<<set _mouthaction["Ask "+_pron+""] to "ask">>
+		<<set _defaultsCombatAction to "askActions">>
+		<<set _actionsSet = DefaultActions.get($defaultsCombatType, $defaultsType, _defaultsCombatAction)>>
+		<<set _pass to false>>
+		<<for _set to 0; _set lt $maxDefaultActionSets; _set++>>
+			<<if Object.values(_askActions).includes(_actionsSet[_set])>>
+				<<set $askAction to clone(_actionsSet[_set])>>
+				<<set _pass to true>>
+				<<break>>
+			<</if>>
+		<</for>>
+		<<if _pass is false>>
+			<<set $askAction to Object.values(_askActions)[0]>>
+		<</if>>
+		<<switch $askAction>>
+			<<case "askchoke" "condoms" "damagedCondoms" "noCondoms">><<set $askActionColour to "sub">>
+			<<default>><<set $askActionColour to "brat">>
+		<</switch>>
+	<</if>>
+	<<if $awarelevel gte 2 and $enemytype is "man">>
+		<<if $consensual is 1>>
+			<<set _mouthaction["Tease " + $NPCList[$mouthtarget].pronouns.his] to "mock">>
+		<<else>>
+			<<set _mouthaction["Mock " + $NPCList[$mouthtarget].pronouns.his] to "mock">>
+		<</if>>
+	<</if>>
+<</if>>
+<</widget>>
+
+<<widget "replaceAskColour">>
+<<switch $askAction>>
+	<<case "askchoke" "condoms" "damagedCondoms" "noCondoms">>
+		<<if $combatControls is "radio">>
+			<<addclass "#askLabel" "sub">><<removeclass "#askLabel" "brat">>
+		<<else>>
+			<<addclass "#askDifficulty" "subList">><<removeclass "#askDifficulty" "bratList">>
+		<</if>>
+	<<case "askchoke">>
+	<<default>>
+		<<if $combatControls is "radio">>
+			<<addclass "#askLabel" "brat">><<removeclass "#askLabel" "sub">>
+		<<else>>
+			<<addclass "#askDifficulty" "bratList">><<removeclass "#askDifficulty" "subList">>
+		<</if>>
+<</switch>>
+<</widget>>

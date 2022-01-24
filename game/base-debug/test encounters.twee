@@ -1,0 +1,1155 @@
+:: The Pod
+
+<<if $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<generate1>><<generate2>><<generate3>><<generate4>><<generate5>><<generate6>><<person1>>
+	You feel the room shake, then shift sideways. You find yourself in a featureless black room with a gang of $enemyno and an audience behind ropes. There is a sign on the wall that says <span class="orange">DEBUG</span> in bright orange letters, along with other statistics you don't understand.
+	<br><br>
+	<span class="red">The gang advances...</span>
+	<br><br>
+	<<controlloss>>
+	<br>
+	<<violence 1>>
+	<<neutral 1>>
+	<<maninit>>
+<</if>>
+
+<span class="orange">DEBUG GROUP:</span> <span class="red">TRST: $enemytrust HLTH: <<print Math.trunc($enemyhealth)>> : $enemyhealthmax AROSL: <<print Math.trunc($enemyarousal)>> : $enemyarousalmax ANGR: $enemyanger : $enemyangermax </span>
+<br>
+<span class="orange">DEBUG BROTHEL EVENT:</span> Enemy current of $enemynomax (1 - 6): $enemyno
+<br>
+<span class="green">DEBUG: Enemy #: Health Descr Gen Pro PP Vag Mouth LH RH</span>
+<br>
+<<for _ii = 0; _ii < $enemynomax; _ii++>>
+	DEBUG: _ii: <<print Math.trunc($NPCList[_ii].health)>> $NPCList[_ii].description $NPCList[_ii].gender $NPCList[_ii].pronoun $NPCList[_ii].penis $NPCList[_ii].vagina $NPCList[_ii].mouth $NPCList[_ii].lefthand $NPCList[_ii].righthand
+	<br>
+<</for>>
+DEBUG PC (P/V/A/M/LARM): $penisstate $vaginastate $anusstate $mouthstate $leftarm
+<br><br>
+
+<<effects>>
+<<effectsman>><<man>>
+
+<<audience>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $alarm is 1>>
+	<<if $rescue is 1>>
+	<<else>>
+		No one comes to your aid.
+		<<set $alarm to 0>>
+		<<if $drugged gte 1>>The drugs inhibit you, you couldn't cry very convincingly.<</if>>
+		<br><br>
+		<<if $enemyarousal gte $enemyarousalmax>>
+			<span id="next"><<link [[Next->The Pod Finish]]>><</link>></span><<nexttext>>
+		<<elseif $enemyhealth lte 0>>
+			<span id="next"><<link [[Next->The Pod Finish]]>><</link>></span><<nexttext>>
+		<<else>>
+			<span id="next"><<link [[Next->The Pod]]>><</link>></span><<nexttext>>
+		<</if>>
+	<</if>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next->The Pod Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[Next->The Pod Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next->The Pod]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: The Pod Finish
+<<effects>>
+
+<<if $enemyhealth lte 0>>
+	<<He>> recoils in pain, giving you the chance you need. <<tearful>> you escape the gang, leaving them defeated on the floor.
+	<br>
+	You feel the room shift again, and find yourself in your bedroom.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+	[[Next|Bedroom]]
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>>
+	<<if $audience is 1>>
+		A cheer erupts from the crowd as the <<person1>><<person>> climaxes. <<tearful>> you manage to stagger away before anyone else gets ideas.
+	<<elseif $audience lte 6>>
+		The <<person1>><<person>> and <<person2>><<person>> high-five each other. <<tearful>> you manage to stagger away while the audience congratulates each other.
+	<<else>>
+		A cheer erupts from the crowd, seems they enjoyed the show. <<tearful>> you manage to stagger away before anyone else gets any ideas.
+	<</if>>
+	<br><br>
+	<<stealclothes>>
+	<<clotheson>>
+	<<endcombat>>
+	You feel the room shift again, and find yourself in your bedroom.
+	<br><br>
+	[[Next|Bedroom]]
+<</if>>
+
+:: The Farm
+<<if $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<beastTrainGenerate 5 `["pig","cat","dog","pig","creature"]`>>
+	<<beastNEWinit 1 dog>>
+		You stumble from the woods onto the verge of a steep cliff. Losing your balance <span class="red">you tip over the edge, tumbling to the bottom.</span>
+		<br><br>
+		When you recover, you find yourself in the main yard of a small farm. You are stunned to see several animals dancing around you... singing...
+		<br><br>
+		<span class="green">Old McDonalds rape-y farm
+		<br>
+		E-I-E-I-O
+		<br>
+		And on this farm we found a whore
+		<br>
+		E-I-E-I-O</span>
+		<br><br>
+		<span class="red">They stop singing and advance on you</span>
+		<br>
+	<<controlloss>>
+	<<violence 1>>
+	<<neutral 1>>
+	<<molested>>
+	<<beastCombatInit>>
+<</if>>
+<<effects>>
+<<effectsman>>
+<br>
+<<beast $enemyno>>
+<br><br>
+DEBUG BEAST EVENT: Enemy current of $enemynomax (1 - 6): $enemyno
+<br>
+<span class="green">DEBUG: Enemy #: Gen Pro Type Monster Stance PP Vag</span>
+<br>
+<<for _ii = 0; _ii < $enemynomax; _ii++>>
+	DEBUG: _ii: $NPCList[_ii].gender $NPCList[_ii].pronoun $NPCList[_ii].type $NPCList[_ii].monster $NPCList[_ii].stance $NPCList[_ii].penis $NPCList[_ii].vagina
+	<br>
+<</for>>
+<br><br>
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $finish is 1>>
+	<span id="next"><<link [[Next|The Farm Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|The Farm Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|The Farm Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|The Farm]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: The Farm Finish
+
+<<effects>>
+<<if $enemyhealth lte 0>>
+	<<beastwound>>
+		<<if $combatTrain.length gt 0>>
+		The $NPCList[0].type recoils in pain and fear, but another beast is eager for a go.
+		<<beastNEWinit $combatTrain.numberPerTrain[0] $combatTrain.beastTypes[0]>>
+		<<combatTrainAdvance>>
+		<br><br>
+		[[Next|The Farm]]
+	<<else>>
+		The $NPCList[_na].type recoils in pain and fear.
+		<br><br>
+		<<link [[Next|The Farm Finish]]>><<set $finish to 1>><</link>>
+	<</if>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<<beastejaculation>>
+	<<if $combatTrain.length gt 0>>
+		Satisfied, the $NPCList[0].type moves and another beast takes its turn.
+		<<beastNEWinit $combatTrain.numberPerTrain[0] $combatTrain.beastTypes[0]>>
+		<<combatTrainAdvance>>
+		<br><br>
+		[[Next|The Farm]]
+	<<else>>
+		Satisfied, the $NPCList[0].type moves away from you.
+		<br><br>
+		<<link [[Next|The Farm Finish]]>><<set $finish to 1>><</link>>
+	<</if>>
+<<elseif $finish is 1>>
+	<<if $enemywounded is 1 and $enemyejaculated is 0>>
+		The $NPCList[_na].type whimpers and flees into a barn.
+	<<elseif $enemywounded is 0 and $enemyejaculated is 1>>
+		The $NPCList[_na].type leaves you laying on the grass.
+	<<elseif $enemywounded gte 2 and $enemyejaculated is 0>>
+		Feeling that you're more trouble than you're worth, the animals flee to a nearby barn.
+	<<elseif $enemywounded is 0 and $enemyejaculated gte 2>>
+		The animals leave you spent and shivering on the grass.
+	<<elseif $enemywounded gte 1 and $enemyejaculated gte 1>>
+		The animals leave you spent and shivering on the grass.
+	<</if>>
+	<br><br>
+	<<tearful>> you gather yourself.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+	<<destinationeventend>>
+	Out of nowhere a goat runs from the shed. Rearing back, <span class="green">it kicks you all the way to Domus Street and through your bedroom window.</span>
+	<br>
+	<<link [[Next|Bedroom]]>><</link>>
+<</if>>
+
+:: Beast Parade
+<!-- Used to debug Beast generation by displaying all attributes. -->
+<span class="red">TOTAL BEAST TYPES: $BeastList.length</span>
+<br>
+
+<<for _i = 0; _i lt $BeastList.length; _i++>>
+	/% <<generateBEAST 1 $BeastList[_i]>><!-- This can call all m/f if specified --> %/
+	<<beastNEWinit 1 $BeastList[_i]>>
+	<br>
+	Introducing Beast <<print _i>>: <span class="green">$NPCList[0].description $NPCList[0].type</span>
+	<br>
+	PRONOUN: <span class="red">$NPCList[0].pronoun</span> GENDER: <span class="red">$NPCList[0].gender</span>
+	<br>
+	PPSize,Desc: <span class="gold">$NPCList[0].penissize, $NPCList[0].penisdesc</span> BREASTSize,Desc: <span class="gold">$NPCList[0].breastsize, $NPCList[0].breastsdesc</span>
+	<br>
+	PenActiv: <span class="gold">$NPCList[0].penis</span> VagActiv: <span class="gold">$NPCList[0].vagina</span>
+	<br>
+	/% DOM: $NPCList[0].dom LUST $NPCList[0].lust RAGE: $NPCList[0].rage TRAUMA $NPCList[0].trauma<br> %/
+	/% STATE: $NPCList[0].state<br> %/
+<</for>>
+
+[[Next|Bedroom]]
+
+:: Beast Train
+<!-- Used to debug Beast Train -->
+<<beastNEWinit 6 dolphin>>
+<span class="red">BEAST TRAIN: $enemyno members</span>
+<br>
+<<for _x = $enemyno-1; _x gte 0; _x-->>
+Introducing Beast <<print _x+1>>: <span class="green">$NPCList[_x].description $NPCList[_x].type</span>
+<br>
+PRONOUN: <span class="red">$NPCList[_x].pronoun</span> GENDER: <span class="red">$NPCList[_x].gender</span>
+<br>
+PPSize,Desc: <span class="gold">$NPCList[_x].penissize, $NPCList[_x].penisdesc</span> BREASTSize,Desc: <span class="gold">$NPCList[_x].breastsize, $NPCList[_x].breastsdesc</span>
+<br>
+PenActiv: <span class="gold">$NPCList[_x].penis</span> VagActiv: <span class="gold">$NPCList[_x].vagina</span>
+<br><br>
+<</for>>
+
+[[Next|Bedroom]]
+
+:: NNPC Parade
+<!-- Used to debug Named NPCs by displaying all attributes. Note that running this in Debug introduces all NNPCs to PC -->
+<span class="red">TOTAL NAMED NPCS: $NPCName.length</span>
+<br>
+<!-- Example of introduction, variable set / increment, and put away of npc -->
+/% <<npc Robin>> %/
+/% In walks $npc[0], and takes a bow. <<He>> has more Trauma now. And out <<he>> goes.<br> %/
+/% <<npcset $npc[0] trauma 80>> %/
+/% <<npcincr $npc[0] trauma 100>> %/
+/% <<endnpc>> %/
+
+<<for _i = 0; _i lt $NPCName.length; _i++>>
+	<<npc $NPCName[_i].nam>>
+	<br>
+	Introducing NPC Number <<print _i>>: <span class="green">$NPCName[_i].nam the $NPCName[_i].title</span>
+	<br>
+	PRONOUN: <span class="red">$NPCName[_i].pronoun</span> GENDER: <span class="red">$NPCName[_i].gender</span>
+	<br>
+	PPSize,Desc: <span class="gold">$NPCName[_i].penissize, $NPCName[_i].penisdesc</span> BREASTSize,Desc: <span class="gold">$NPCName[_i].breastsize, $NPCName[_i].breastsdesc</span>
+	<br>
+	TYPE: <span class="red"><<if $NPCName[_i].adult>>Adult<<elseif $NPCName[_i].teen>>Teen<<else>>???<</if>></span> INSECURITY: <span class="red">$NPCName[_i].insecurity</span>
+	<br>
+	TRUST: $NPCName[_i].trust LOVE: $NPCName[_i].love DOM: $NPCName[_i].dom LUST $NPCName[_i].lust RAGE: $NPCName[_i].rage TRAUMA $NPCName[_i].trauma
+	<br>
+	STATE: $NPCName[_i].state
+	<br>
+	You have <<if $NPCName[_i].init is 1>>been introduced to <<him>>.<<else>>not been introduced to <<him>>.<</if>>
+	<br>
+	<<endnpc $NPCName[_i].nam>>
+<</for>>
+
+[[Next|Bedroom]]
+
+:: Alley Dog
+
+<!-- Keeping this only as an example on how to use Widget as Event for debug -->
+<<residentialex2>>
+[[Next|Domus Street]]
+
+:: Abomination Old
+
+<<if $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<controlloss>>
+	<<violence 1>>
+	<<neutral 1>>
+	<<molested>>
+	<<abomination>>
+	You awaken to find yourself being assaulted by a strange beast!
+<</if>>
+<<effects>>
+<<effectsman>><<man>>
+<<stateman>>
+<br><br>
+<<actionsman>>
+<<if $alarm is 1>>
+	<<if $rescue is 1>>
+		<span id="next"><<link [[Next->Abomination Old]]>><</link>></span><<nexttext>>
+	<<else>>
+		No one comes to your aid.
+		<<set $alarm to 0>>
+		<<if $drugged gte 1>>The drugs inhibit you, you couldn't cry very convincingly.<</if>>
+		<br><br>
+		<<if $enemyarousal gte $enemyarousalmax>>
+			<span id="next"><<link [[Next->Abomination Old]]>><</link>></span><<nexttext>>
+		<<else>>
+			<span id="next"><<link [[Next->Abomination Old]]>><</link>></span><<nexttext>>
+		<</if>>
+	<</if>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next->Abomination Old]]>><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[Next->Abomination Old]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next->Abomination Old]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Swarm Test
+<<if $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<molested>>
+	<<controlloss>>
+	<<set $combat to 1>>
+<</if>>
+
+<<underwater>><<effects>><<swarmeffects>>
+<<swarm>>
+<<swarmactions>>
+
+<<if $stress gte $stressmax>>
+	<span id="next"><<link [[Next|Swarm Test]]>><</link>></span><<nexttext>>
+<<elseif $swimdistance lte 0>>
+	<span id="next"><<link [[Next|Swarm Test]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link "Next">><<script>>state.display(state.active.title, null)<</script>><</link>></span><<nexttext>>
+<</if>>
+
+:: Monster Test
+
+<<location "sea">><<effects>>
+
+<<if $molestationstart is 1>><<set $molestationstart to 0>>
+	<<set $combat to 1>>
+	<<molested>>
+	<<controlloss>>
+
+	<<set $enemytype to "tentacles">>
+	<<tentaclestart 6 15>>
+
+	<<set $vorestage to 1>>
+	<<set $vorecreature to "whale">>
+	<<set $vorestrength to 1>><<set $position to "doggy">>
+	<<if $hallucinations gte 1>>
+		<<set $voretentacles to 1>>
+	<<else>>
+		<<set $voretentacles to 0>>
+	<</if>>
+
+	<<swarminit "fish" "swarm" "moving towards you" "encircle you" "fend off" 1 9>>
+
+	<<set $swimdistance to 20>>
+	<<set $water to 1>>
+	<<resetLastOptions>>
+	<<getCombatDefaultsType>>
+<</if>>
+
+<<voreeffects>><<swarmeffects>><<effectstentacles>>
+<<vore>><<swarm>><<tentacles>>
+<<statetentacles>>
+<<actionsOmni>>
+
+<<if $stress gte $stressmax>>
+	<span id="next"><<link [[Next|Monster Test]]>><</link>></span><<nexttext>>
+<<elseif $vorestage lte 0>>
+	<span id="next"><<link [[Next|Monster Test]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link "Next">><<script>>state.display(state.active.title, null)<</script>><</link>></span><<nexttext>>
+<</if>>
+
+:: DP Test
+
+<<if $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<controlloss>>
+	<<violence 1>>
+	<<neutral 1>>
+	<<molested>>
+	<<generate1>><<generate2>><<maninit>>
+	<<set $NPCList[0].penis to "vagina">><<set $vaginause to "penis">><<set $vaginastate to "penetrated">><<set $vaginatarget to 0>>
+	<<set $NPCList[1].penis to "anus">><<set $anususe to "penis">><<set $anusstate to "penetrated">><<set $anustarget to 1>>
+<</if>>
+
+<<effects>>
+<<effectsman>><<man>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $alarm is 1>>
+	<<if $rescue is 1>>
+		<span id="next"><<link [[Next->DP Test]]>><</link>></span><<nexttext>>
+	<<else>>
+		No one comes to your aid.
+		<<set $alarm to 0>>
+		<<if $drugged gte 1>>The drugs inhibit you, you couldn't cry very convincingly.<</if>>
+		<br><br>
+		<<if $enemyarousal gte $enemyarousalmax>>
+			<span id="next"><<link [[Next->Molestation Ejaculation]]>><</link>></span><<nexttext>>
+		<<elseif $enemyhealth lte 0>>
+			<span id="next"><<link [[Next->Molestation Escape]]>><</link>></span><<nexttext>>
+		<<else>>
+			<span id="next"><<link [[Next->DP Test]]>><</link>></span><<nexttext>>
+		<</if>>
+	<</if>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next->Molestation Ejaculation]]>><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[Next->Molestation Escape]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next->DP Test]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Wolf Pack
+<<if $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<controlloss>>
+	<<violence 1>>
+	<<neutral 1>>
+	<<molested>>
+	<<beastNEWinit 1 dog>>
+	<<beastCombatInit>>
+
+	<<beastTrainGenerate>>
+
+	You awaken to find yourself surrounded by a pack of stray dogs!
+<</if>>
+
+<<effects>>
+<<effectsman>>
+<br>
+<<beast $enemyno>>
+<br><br>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+	<<if $alarm is 1>>
+
+		No one comes to your aid.
+		<<set $alarm to 0>>
+		<<if $drugged gte 1>>The drugs inhibit you, you couldn't cry very convincingly.<</if>>
+		<br><br>
+		<<if $enemyarousal gte $enemyarousalmax>>
+			<span id="next"><<link [[Next|Wolf Pack Ejaculation]]>><</link>></span><<nexttext>>
+		<<elseif $enemyhealth lte 0>>
+			<span id="next"><<link [[Next->Wolf Pack Escape]]>><</link>></span><<nexttext>>
+		<<else>>
+			<span id="next"><<link [[Next|Wolf Pack]]>><</link>></span><<nexttext>>
+		<</if>>
+
+	<<elseif $enemyarousal gte $enemyarousalmax>>
+		<span id="next"><<link [[Next->Wolf Pack Ejaculation]]>><</link>></span><<nexttext>>
+	<<elseif $enemyhealth lte 0>>
+		<span id="next"><<link [[Next->Wolf Pack Escape]]>><</link>></span><<nexttext>>
+	<<else>>
+		<span id="next"><<link [[Next->Wolf Pack]]>><</link>></span><<nexttext>>
+	<</if>>
+
+:: Wolf Pack Escape
+<<effects>>
+<<beastwound>>
+<<if $combatTrain.length gt 0>>
+	The beast recoils in pain and fear, but another takes its place.
+	<<beastNEWinit $combatTrain.numberPerTrain[0] $combatTrain.beastTypes[0]>>
+	<<combatTrainAdvance>>
+	<br><br>
+	[[Next|Wolf Pack]]
+<<else>>
+	The beast recoils in pain and fear.
+	<br><br>
+	[[Next|Wolf Pack End]]
+<</if>>
+
+:: Wolf Pack Ejaculation
+<<effects>>
+<<beastejaculation>>
+<<if $combatTrain.length gt 0>>
+	Satisfied, the beast leaves you be. Another takes its place.
+	<<beastNEWinit $combatTrain.numberPerTrain[0] $combatTrain.beastTypes[0]>>
+	<<combatTrainAdvance>>
+	<br><br>
+	[[Next|Wolf Pack]]
+<<else>>
+	Satisfied, the beast leaves you be.
+	<br><br>
+	[[Next|Wolf Pack End]]
+<</if>>
+
+:: Wolf Pack End
+<<effects>>
+
+<<if $enemywounded is 1 and $enemyejaculated is 0>>
+	The wolf whimpers and flees into the forest.
+<<elseif $enemywounded is 0 and $enemyejaculated is 1>>
+	The wolf leaves you lying on the grass.
+<<elseif $enemywounded gte 2 and $enemyejaculated is 0>>
+	Feeling that you're more trouble than you're worth, the wolves flee into the forest.
+<<elseif $enemywounded is 0 and $enemyejaculated gte 2>>
+	The wolves leave you spent and shivering on the grass.
+<<elseif $enemywounded gte 1 and $enemyejaculated gte 1>>
+	The wolves leave you spent and shivering on the grass. One seems to be limping.
+<</if>>
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+
+
+:: Named NPC Gangbang Select
+
+Add the NPCs you want.<br>
+<<if $enemyno lt 6>>
+	<<if !($npc.includes("Alex"))>>
+		<<link [[Add Alex|$passage]]>><<npc Alex -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Avery"))>>
+		<<link [[Add Avery|$passage]]>><<npc Avery -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Bailey"))>>
+		<<link [[Add Bailey|$passage]]>><<npc Bailey -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Briar"))>>
+		<<link [[Add Briar|$passage]]>><<npc Briar -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Charlie"))>>
+		<<link [[Add Charlie|$passage]]>><<npc Charlie -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Darryl"))>>
+		<<link [[Add Darryl|$passage]]>><<npc Darryl -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Doren"))>>
+		<<link [[Add Doren|$passage]]>><<npc Doren -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Eden"))>>
+		<<link [[Add Eden|$passage]]>><<npc Eden -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Gwylan"))>>
+		<<link [[Add Gwylan|$passage]]>><<npc Gwylan -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Harper"))>>
+		<<link [[Add Harper|$passage]]>><<npc Harper -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Jordan"))>>
+		<<link [[Add Jordan|$passage]]>><<npc Jordan -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Kylar"))>>
+		<<link [[Add Kylar|$passage]]>><<npc Kylar -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Landry"))>>
+		<<link [[Add Landry|$passage]]>><<npc Landry -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Leighton"))>>
+		<<link [[Add Leighton|$passage]]>><<npc Leighton -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Mason"))>>
+		<<link [[Add Mason|$passage]]>><<npc Mason -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Morgan"))>>
+		<<link [[Add Morgan|$passage]]>><<npc Morgan -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Niki"))>>
+		<<link [[Add Niki|$passage]]>><<npc Niki -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Quinn"))>>
+		<<link [[Add Quinn|$passage]]>><<npc Quinn -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Remy"))>>
+		<<link [[Add Remy|$passage]]>><<npc Remy -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("River"))>>
+		<<link [[Add River|$passage]]>><<npc River -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Robin"))>>
+		<<link [[Add Robin|$passage]]>><<npc Robin -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Sam"))>>
+		<<link [[Add Sam|$passage]]>><<npc Sam -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Sirris"))>>
+		<<link [[Add Sirris|$passage]]>><<npc Sirris -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Sydney"))>>
+		<<link [[Add Sydney|$passage]]>><<npc Sydney -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Whitney"))>>
+		<<link [[Add Whitney|$passage]]>><<npc Whitney -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Winter"))>>
+		<<link [[Add Winter|$passage]]>><<npc Winter -1>><</link>><br>
+	<</if>>
+	<<if !($npc.includes("Wren"))>>
+		<<link [[Add Wren|$passage]]>><<npc Wren -1>><</link>><br>
+	<</if>>
+<</if>>
+<br><br>
+<<if $enemyno gte 1>>
+	<<for _lll to 0; _lll lt $enemyno; _lll++>>
+		$npc[_lll] is active.<br>
+	<</for>><br>
+	<<link "Remove $npc[0]"$passage>><<endnpc `$npc[0]`>><</link>><br>
+	<<if $enemyno gte 2>>
+		<<link "Remove $npc[1]"$passage>><<endnpc `$npc[1]`>><</link>><br>
+	<</if>>
+	<<if $enemyno gte 3>>
+		<<link "Remove $npc[2]"$passage>><<endnpc `$npc[2]`>><</link>><br>
+	<</if>>
+	<<if $enemyno gte 4>>
+		<<link "Remove $npc[3]"$passage>><<endnpc `$npc[3]`>><</link>><br>
+	<</if>>
+	<<if $enemyno gte 5>>
+		<<link "Remove $npc[4]"$passage>><<endnpc `$npc[4]`>><</link>><br>
+	<</if>>
+	<<if $enemyno is 6>>
+		<<link "Remove $npc[5]"$passage>><<endnpc `$npc[5]`>><</link>><br>
+	<</if>>
+	<<if $enemyno gte 2>>
+		<<link [[Remove all NPCs|$passage]]>><<endnpc>><</link>><br>
+	<</if>>
+	<br><br>
+	<<link [[Named NPC Gangbang]]>><<set $sexstart to 1>><</link>>
+<</if>>
+
+
+
+
+:: Named NPC Gangbang
+<<if $sexstart is 1>>
+	<<set $sexstart to 0>>
+	<<consensual>>
+	<<set $consensual to 1>>
+	<<neutral 1>>
+
+	<<maninit>>
+	<<if $possessed is true>>
+		<<set $enemyanger to 200>><<npcidlegenitals>>
+	<</if>>
+<</if>>
+
+<<effects>>
+<<effectsman>><<man>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $finish is 1>>
+	<span id="next"><<link [[Next|Named NPC Gangbang Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Named NPC Gangbang Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Named NPC Gangbang Finish]]>><</link>></span><<nexttext>>
+<<elseif _controlRegain is 1>>
+	<span id="next"><<link [[Next|Named NPC Gangbang Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Named NPC Gangbang]]>><</link>></span><<nexttext>>
+<</if>>
+
+
+
+
+:: Named NPC Gangbang Finish
+<<if $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>><br>
+<<elseif $enemyhealth lte 0>>
+	You've beaten their ass.
+<<elseif $finish is 1>>
+	You ended it prematurely.
+<<elseif $possessed is true and $control gte $controlmax>>
+	You maxed out your control.
+	<<set $possessed to 0>><<set _possess to 1>>
+<</if>>
+<br>
+<<clotheson>>
+<<if _possess>>
+	<<link [[Go again|Possessed Fight Test]]>><<endcombat>><<set $possessed to true>><<set $control to 0>><</link>><<lllcontrol>> | <span class="wraith">+ Wraith</span><br>
+<<else>>
+	<<link [[Select NPCs|Named NPC Gangbang Select]]>><<endcombat>><</link>><br>
+<</if>>
+<<link [[Back Home|Bedroom]]>><<endcombat>><</link>>
+
+:: Wraith Test Start
+<<set $outside to 0>><<set $location to "home">><<effects>>
+<!-- Generate Ivory Wraith -->
+<<generateWraith 1 true>><<person1>><<rainWraith>>
+You find yourself standing before your mirror. You trace a holy symbol on it, and a baleful red glow begins to emanate from it. A beautiful pale figure stares back. It presses a hand against the mirror.
+<br><br>
+"<span class="wraith">I can feel your heartbeat. I am already inside you. Won't you give in?</span>"
+<br><br>
+How do you respond?
+<br><br>
+<<link [[As One.|Wraith Test]]>><<set $wraith.select to "man">><</link>>
+<br>
+<<link [[The Writhing Ensues.|Wraith Test]]>><<set $wraith.select to "tentacles">><</link>>
+<br>
+<<link [[Enveloped by Nothing.|Wraith Test]]>><<set $wraith.select to "slimetentacles">><</link>>
+<br>
+<<link [[Dissolve.|Wraith Test]]>><<set $wraith.select to "slime">><</link>>
+<br>
+<<link [[Immaculate Vanity.|Wraith Test]]>><<set $wraith.select to "arms">><</link>>
+<br>
+<<link [[The Power of Lust.|Wraith Test]]>><<set $wraith.select to "abomination">><</link>>
+<br>
+<<link [[Surprise Me.|Wraith Test]]>><<set $wraith.select to "random">><</link>>
+<br>
+<<link [[I'm going to jump out my window now, bye.|Domus Street]]>><<endWraith>><<set $eventskip to 1>><</link>>
+<br>
+
+:: Wraith Test
+<<effects>>
+<<if $wraith.select is "random">>
+	<<switch random(1, 6)>>
+		<<case 1>>
+			<<set $wraith.select to "man">>
+		<<case 2>>
+			<<set $wraith.select to "tentacles">>
+		<<case 3>>
+			<<set $wraith.select to "slimetentacles">>
+		<<case 4>>
+			<<set $wraith.select to "slime">>
+		<<case 5>>
+			<<set $wraith.select to "arms">>
+		<<case 6>>
+			<<set $wraith.select to "abomination">>
+	<</switch>>
+<</if>>
+<<if ($wraith.select.includes("slime") and $slimedisable is "t") or (($wraith.select.includes("tentacle") or $wraith.select is "abomination") and $tentacledisable is "t")>>
+	The image in the mirror freezes, and the figure's face becomes blank. A message appears on the surface:
+	<br><br>
+	<span class="red">ERROR: You have chosen or randomly rolled an option disabled by your current settings. Please enable both slimes and tentacles. If both are already enabled, please tell PurityGuy that he's an idiot.</span>
+	<br><br>
+	The figure unfreezes, and shakes its head. It then looks at you. "<span class="wraith">Get fucked.</span>" Your mirror shatters, and signals for replacement. When you blink, it's been fixed.
+	<br><br>
+	<<link [[Next...?|Bedroom]]>><<endWraith>><</link>>
+	<br>
+<<else>>
+	<<initWraith $wraith.select>>
+	<<switch $wraith.gen>>
+		<<case "man">>
+			A pale arm reaches out from the mirror and lifts your chin. "<span class="wraith">Forever,</span> <span class="tentacle">As One.</span>" It steps from the mirror.
+		<<case "tentacles">>
+			The space behind the figure begins to distort. A mass of pale tentacles shoot out from the mirror, violently pinning you to the wall and destroying your clothes.
+			<<clothesruined>><<legsruined>><<feetruined>>
+			<br><br>
+			"<span class="wraith">The writhing ensues.</span>" The figure steps out of the mirror.
+		<<case "slimetentacles">>
+			The space behind the figure begins to distort. A mass of pale tentacles shoot out from the mirror, violently pinning you to the wall and destroying your clothes.
+			<br><br>
+			It raises its hand, and a swirling portal appears above you. Slimes begin to pour out and cover you.
+			<br><br>
+			"<span class="wraith">Be enveloped by nothing.</span>"
+			<<clothesruined>><<legsruined>><<feetruined>>
+		<<case "slime">>
+			The figure raises a hand as it steps from the mirror. From behind it, a group of pale slimes leap at you! "<span class="wraith">Dissolve the shell to have your way with the flesh.</span>"
+		<<case "arms">>
+			The figure steps out from the mirror. As it emerges before you, several extra pairs of arms spring out from its back. "<span class="wraith">Kneel before my immaculate form.</span>"
+		<<case "abomination">>
+			The space behind the figure begins to distort. A mass of pale tentacles shoot out from the mirror as it steps out. "<span class="wraith">Embrace the power of lust.</span>"
+	<</switch>>
+	<br><br>
+	<<link [[Next|Wraith Test Sex]]>><</link>>
+<</if>>
+
+:: Wraith Test Sex
+<<effects>>
+<<if $struggle_start is 1>>
+	<<set $combat to 1>>
+	<<controlloss>>
+	<<violence 1>>
+	<<molested>>
+	<<if $player.penisExist>>
+		<<set $struggle.penis.creature to "pale slime">><<set $penisuse to "struggle">><<set $penisstate to "struggle">><<set $struggle.enemy[0].location to "penis">>
+	<<else>>
+		<<set $struggle.vagina.creature to "pale slime">><<set $vaginause to "struggle">><<set $vaginastate to "struggle">><<set $struggle.enemy[0].location to "vagina">>
+	<</if>>
+	<<unset $struggle_start>>
+<<elseif $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<controlloss>>
+	<<violence 1>>
+	<<neutral 1>>
+	<<molested>>
+	<<set $enemytype to $wraith.type>>
+<</if>>
+<<set $rescue to 0>>
+
+<<effectsWraith>>
+
+<<switch $wraith.type>>
+	<<case "man">>
+		<<if $enemyarousal gte $enemyarousalmax>>
+			<span id="next"><<link [[Next|Wraith Test Sex Finish]]>><</link>></span><<nexttext>>
+		<<elseif $enemyhealth lte 0>>
+			<span id="next"><<link [[Next|Wraith Test Sex Finish]]>><</link>></span><<nexttext>>
+		<<else>>
+			<span id="next"><<link [[Next|Wraith Test Sex]]>><</link>></span><<nexttext>>
+		<</if>>
+	<<case "tentacles">>
+		<<if $tentacles.active lte ($tentacles.max / 2)>>
+			<span id="next"><<link [[Next|Wraith Test Sex Finish]]>><</link>></span><<nexttext>>
+		<<else>>
+			<span id="next"><<link [[Next|Wraith Test Sex]]>><</link>></span><<nexttext>>
+		<</if>>
+	<<case "slime">>
+		<<if $struggle.done gte $struggle.number>>
+			<span id="next"><<link [[Next|Wraith Test Sex Finish]]>><</link>></span><<nexttext>>
+		<<else>>
+			<span id="next"><<link [[Next|Wraith Test Sex]]>><</link>></span><<nexttext>>
+		<</if>>
+<</switch>>
+<br>
+<<link [[Back to the bedroom|Bedroom]]>><<endcombat>><<endWraith>><<clotheson>><</link>>
+<br><br><br><br>
+
+:: Wraith Test Sex Finish
+<<effects>>
+
+<<switch $wraith.type>>
+	<<case "man">>
+		<<if $enemyhealth lte 0>>
+			The figure looks down at you in shock as it staggers backwards.
+			<<if $wraith.gen is "abomination">>
+				The tentacles drop lifelessly to the ground, and sublimate into a pink mist.
+			<<elseif $wraith.gen is "arms">>
+				Its extra arms fold back in.
+			<</if>> 
+			Its head snaps back, and it dissipates into nothingness with a brief shriek that echoes in your mind. Your ears ring, and you think you hear laughter. "<span class="wraith">Worry not, we'll meet again soon.</span>"
+			<br><br>
+			<<tearful>> you sit against you bed, wondering if what just happened was real.
+			<<set $wraith.defeated ++>>
+		<<else>>
+			<<ejaculation>>
+			With a bright flash, it vanishes. You feel lewd energy linger in the air, and its laughs echo between your ears. "<span class="wraith">Worry not, we'll meet again soon.</span>"
+			<br><br>
+			<<tearful>> you sit against you bed, wondering if what just happened was real.
+		<</if>>
+	<<case "tentacles">>
+		The tentacles retreat from you, back to the pale figure's side.<<if $wraith.gen is "slimetentacles">> The slimes quickly follow.<</if>> It gives you a regal bow, before stepping back into your mirror, which promptly shatters behind it.
+		<br><br>
+		You blink, and your mirror looks normal again. <<tearful>> you sit against you bed, wondering if what just happened was real.
+	<<case "slime">>
+		The slimes disengage, retreating back to the figure. It picks one up, and begins to pet it as it walks back though your mirror.
+		<br><br>
+		<<tearful>> you sit against you bed, wondering if what just happened was real.
+<</switch>>
+
+<<clotheson>>
+<<endcombat>>
+<<endWraith>>
+
+<<link [[Next|Bedroom]]>><<set $eventskip to 1>><</link>>
+<br>
+
+:: Plantperson Test
+<br>
+<<if $plantdisable is "f">>
+	<<link [[Consensual sex in the forest|Plantperson Test Sex]]>><<set $sexstart to 1>><<set $location to "forest">><</link>><br>
+	<<link [[Nonconsensual sex in the forest|Plantperson Test Sex]]>><<set $molestationstart to 1>><<set $location to "forest">><</link>><br>
+	<<link [[Consensual sex in the moor|Plantperson Test Sex]]>><<set $sexstart to 1>><<set $location to "moor">><</link>><br>
+	<<link [[Nonconsensual sex in the moor|Plantperson Test Sex]]>><<set $molestationstart to 1>><<set $location to "moor">><</link>>
+<<else>>
+	<b>Plantpeople are disabled or otherwise unavailable.</b> I don't know what you're trying to do here.
+	<br><br>
+	<<link [[Enable plantpeople|Plantperson Test]]>><<set $hallucinogen += 10>><<set $plantdisable to "f">><<set $tentacledisable to "f">><</link>><<ghallucinogens>>
+<</if>>
+<br><br>
+<<link [[Back home|Bedroom]]>><<endevent>><</link>>
+
+:: Plantperson Test Sex
+<<if $sexstart is 1 or $molestationstart is 1>>
+	<<if $sexstart is 1>>
+		<<set $sexstart to 0>>
+		<<consensual>><<set $consensual to 1>>
+		<<neutral 1>>
+	<<elseif $molestationstart is 1>>
+		<<set $molestationstart to 0>>
+		<<controlloss>>
+		<<violence 1>>
+		<<neutral 1>>
+		<<molested>>
+	<</if>>
+	<<generatePlant1>><<person1>>
+	<<maninit "plant">><<npcexpose>>
+	<<if $location is "forest">>
+		<<enable_rescue>>
+	<</if>>
+	<<set $enemyarousalmax to 800>>
+	<<set _randomtentacles to random(6, 10)>>
+	<<makeAbomination _randomtentacles 10 "vine" "vine" true>>
+	"Hi there!" A <<person>> pops up in front of you, <<plant_details>> strewn through <<his>> hair because you're in the $location and it's $season. "You're cute! I'm gonna fuck you with my vines!"
+	<br>
+	A bunch of vines pop out of the ground.
+<</if>>
+<<effects>>
+<<effectsabomination>><<abomination>>
+<<stateabomination>>
+<br><br>
+<<actionsabomination>>
+
+<<if $enemyhealth lte 0>>
+	<span id="next"><<link [[HEALTH|Plantperson Test Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[ORGASM|Plantperson Test Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $alarm is 1 and $rescue is 1>>
+	<span id="next"><<link [[RESCUE|Plantperson Test Sex Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Plantperson Test Sex]]>><</link>></span><<nexttext>>
+<</if>>
+<br>
+<<link [[Emergency exit|Plantperson Test Sex Finish]]>><<set $finish to 1>><</link>>
+<br><br><br><br>
+
+:: Plantperson Test Sex Finish
+<<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>>
+	<<if _orgasm>>
+		"That was great!" the <<person>> cheers. "And thanks for cumming in me! Later!"
+	<<else>>
+		"That was fun!" the <<person>> chirps. "Later!"
+	<</if>>
+	<<He>> digs back into the ground, and <<his>> vines follow. One of the vines waves at you.
+<<elseif $enemyhealth lte 0>>
+	"Ow!" the <<person>> whines. "You're no fun!" <<He>> digs back into the ground, and <<his>> vines follow. One of the vines flips you off, somehow.
+<<elseif $alarm is 1 and $rescue is 1>>
+	You hear a gun fire close by, and a bullet lands at the <<persons>> feet. "Fuck," <<he>> hisses. "It's the <<nnpc_title "Eden">>. Fuck. Fuck shit fuck. Um." <<He>> grabs your face and gives you a syrupy kiss on each cheek, before pulling away from you. "See ya! I'm out!"
+	<<set $player.bodyliquid.face.goo += 1>>
+	<br><br>
+
+	The <<person>> retracts <<his>> vines and retreats into the forest right as Eden emerges. <<nnpc_He "Eden">> helps you collect yourself. "Damn hikers," <<nnpc_he "Eden">> mutters. "Are you okay?"
+<<else>>
+	"Emergency exit? Bummer," the <<person>> says. <<He>> shrugs. "Oh well. Fuck your holes until you're a gibbering mess hopelessly addicted to my nectar later!" <<He>> digs back into the ground, and <<his>> vines follow. One of the vines checks <<his>> notifications on <<his>> phone.
+<</if>>
+<<endcombat>>
+<<clotheson>>
+<<link [[Do it again|Plantperson Test]]>><</link>><br>
+<<link [[Back home|Bedroom]]>><</link>>
+
+:: Possessed Fight Test
+<br>
+You feel a tap on your shoulder. You turn around. Nothing is there. You turn back.
+<br><br>
+
+"<span class="wraith">Boo.</span>"
+<br><br>
+
+You open your mouth to scream, but it is already inside you.
+<br><br>
+
+<<link [[Fight a stranger|Possessed Fight]]>><<set $opponent to 1>><<set $fightstart to 1>><</link>><br>
+<<link [[Fight Sydney|Possessed Fight]]>><<set $opponent to 2>><<set $fightstart to 1>><</link>><br>
+<<link [[Select your named NPCs|Named NPC Gangbang Select]]>><</link>>
+
+:: Possessed Fight
+<<if $fightstart is 1>>
+	<<set $fightstart to 0>>
+	<<if $opponent is 1>>
+		<<generate1>><<person1>>
+		<<catcall>> A <<person>> reaches for you.
+		<br><br>
+		Your body is made to laugh. "<span class="wraith">Those who interrupt ghosts shall join them.</span>"
+	<<elseif $opponent is 2>>
+		<<npc Sydney>><<person1>>
+		Sydney freezes in front of you. "Oh, no. Beloved, something's wrong, I can feel it."
+		<br><br>
+		Your body is made to laugh. "<span class="wraith">False. Everything is right in the world.</span>"
+	<</if>>
+	<<neutral 1>>
+	<<maninit>>
+	<<set $enemytrust -= 100>>
+	<<set $enemyanger += 200>>
+	<<npcidlegenitals>>
+	<br><br>
+<</if>>
+
+<<effects>>
+<<effectsman>><<man>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyhealth lte 0>>
+	<span id="next"><<link [[HEALTH|Possessed Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[ORGASM|Possessed Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif _controlRegain is 1>>
+	<span id="next"><<link [[CONTROL|Possessed Fight Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Possessed Fight]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Possessed Fight Finish
+<<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>>
+	<br><br>
+	<<tearful>> you recover. "<span class="wraith">Shall we dance again?</span>" your mouth is forced to ask.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+	<<link [[Fight again|Possessed Fight]]>><<endevent phaseless>><<set $fightstart to 1>><</link>><br>
+	<<link [[Freshen up, then fight again|Possessed Fight]]>><<endevent phaseless>><<set $fightstart to 1>><<set $pain to 0>><<set $arousal to 0>><</link>><<lpain>><<larousal>>
+
+<<elseif $enemyhealth lte 0>>
+	<<if $opponent is 1>>
+		The <<person>> falls back, and scrambles away.
+	<<elseif $opponent is 2>>
+		Sydney moans, slaps a hand over <<his>> mouth, and runs away.
+	<</if>>
+	<br><br>
+	<<tearful>> you recover. "<span class="wraith">Shall we dance again?</span>" your mouth is forced to ask.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+	<<link [[Fight again|Possessed Fight]]>><<set $fightstart to 1>><<endevent phaseless>><</link>><br>
+	<<link [[Freshen up, then fight again|Possessed Fight]]>><<set $fightstart to 1>><<endevent phaseless>><<set $pain to 0>><<set $arousal to 0>><</link>><<lpain>><<larousal>>
+
+<<else>>
+	<<set $possessed to 0>>
+	You regain control in your body, and rip the pale figure out of your chest like you're pulling a rabbit out of a hat.
+	<<if $opponent is 1>>The <<person>>, justifiably terrified by this development, scrambles away.<</if>>
+	<br><br>
+	"<span class="wraith">Congratulations. You won.</span>" It pats you on the head, then vanishes in a torrent of water.
+	<<if $opponent is 2>>Sydney is nowhere to be seen.<</if>>
+	<br><br>
+	<<tearful>> you try to decide if you want to go again or not.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+	<<link [[Fight again|Possessed Fight]]>><<set $possessed to true>><<set $control to 0>><<set $fightstart to 1>><<endevent phaseless>><</link>><<lllcontrol>> | <span class="wraith">+ Wraith</span><br>
+	<<link [[Freshen up, then fight again|Possessed Fight]]>><<set $possessed to true>><<set $control to 0>><<set $fightstart to 1>><<endevent phaseless>><<set $pain to 0>><<set $arousal to 0>><</link>><<lpain>><<larousal>><<lllcontrol>> | <span class="wraith">+ Wraith</span><br>
+	<<link [[Decision room|Possessed Fight Test]]>><<set $possessed to true>><<set $control to 0>><</link>><<lllcontrol>> | <span class="wraith">Also + Wraith</span>
+<</if>>
+<br><br>
+<<link [[Back home|Bedroom]]>><<set $possessed to 0>><<endevent>><<unset $opponent>><</link>>
+
+:: NPC Role Select
+<br>
+The lights flash on. You find yourself in a strange chamber, completely smooth and featureless. There is a sign on the wall that says <span class="orange">DEBUG</span> in bright orange letters. A large, opaque tube reaches to the ceiling, The words <span class="blue">CUSTOM CONSTRUCT</span> are labelled on the front.
+<br>
+A terminal is attached to the tube. You look at the prompts.
+<br><br>
+<i>Please select the construct's descriptor. Leave blank for default generation.</i>
+<br>
+
+<<if $npcselectdesc is undefined>><<set $npcselectdesc to "custom">><</if>>
+<<textbox "$npcselectdesc" $npcselectdesc>>
+<br><br>
+
+<i>Please select the construct's role. Leave blank for default generation.</i>
+<br>
+
+<<if $npcselectrole is undefined>><<set $npcselectrole to "construct">><</if>>
+<<textbox "$npcselectrole" $npcselectrole>>
+<br><br>
+
+<<link [[Sex|NPC Role Fight]]>><<set $sexstart to 1>>
+	<<if $npcselectdesc is undefined>><<set $npcselectdesc to "custom">><</if>>
+	<<if $npcselectrole is undefined>><<set $npcselectrole to "construct">><</if>>
+	<<set $npcselectdesc to $npcselectdesc.replace(/[^a-zA-Z 0-9,.!()£/]+/g,"")>>
+	<<set $npcselectrole to $npcselectrole.replace(/[^a-zA-Z 0-9,.!()£/]+/g,"")>>
+	<<generateRole 0 $npcselectdesc $npcselectrole>><<person1>>
+	<<unset $npcselectdesc>><<unset $npcselectrole>>
+<</link>><br>
+<<link [[Fight|NPC Role Fight]]>><<set $fightstart to 1>>
+	<<if $npcselectdesc is undefined>><<set $npcselectdesc to "custom">><</if>>
+	<<if $npcselectrole is undefined>><<set $npcselectrole to "construct">><</if>>
+	<<set $npcselectdesc to $npcselectdesc.replace(/[^a-zA-Z 0-9,.!()£/]+/g,"")>>
+	<<set $npcselectrole to $npcselectrole.replace(/[^a-zA-Z 0-9,.!()£/]+/g,"")>>
+	<<generateRole 0 $npcselectdesc $npcselectrole>><<person1>>
+	<<unset $npcselectdesc>><<unset $npcselectrole>>
+<</link>>
+<br><br>
+<<link [[Back home|Bedroom]]>><<unset $npcselectdesc>><<unset $npcselectrole>><</link>>
+
+:: NPC Role Fight
+<<if $sexstart is 1>>
+	<<set $sexstart to 0>>
+	<<consensual>>
+	<<set $consensual to 1>>
+	<<neutral 1>>
+
+	<<maninit>>
+	With a hiss of steam, the tube retracts to the ceiling. A figure walks out, a <<if $pronoun is "m">>man<<else>>woman<</if>>. You recognize <<him>> as the <<person>> you selected.
+	<br><br>
+
+	"Beginning sex encounter," the <<person>> says in a flat tone, before <<his>> face morphs into a lavicious smile. <<catcall>>
+<<elseif $fightstart is 1>>
+	<<set $fightstart to 0>>
+	<<neutral 1>>
+
+	<<maninit>>
+	<<set $enemytrust -= 100>>
+	<<set $enemyanger += 200>>
+	<<npcidlegenitals>>
+	With a hiss of steam, the tube retracts to the ceiling. A figure walks out, a <<if $pronoun is "m">>man<<else>>woman<</if>>. You recognize <<him>> as the <<person>> you selected.
+	<br><br>
+
+	"Beginning combat encounter," the <<person>> says in a flat tone, before <<his>> face morphs into an angry scowl. "Oh, you're in for it now!"
+<</if>>
+
+<<effects>>
+<<effectsman>><<man>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $finish is 1>>
+	<span id="next"><<link [[FINISH|NPC Role Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[HEALTH|NPC Role Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[ORGASM|NPC Role Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $pain gte 100 and $willpowerpain is 0>>
+	<span id="next"><<link [[PAIN|NPC Role Fight Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|NPC Role Fight]]>><</link>></span><<nexttext>>
+<</if>>
+<br>
+<<link [[Emergency exit|NPC Role Fight Finish]]>><<set $finish to 1>><</link>>
+<br><br><br><br>
+
+:: NPC Role Fight Finish
+<<if $finish is 1>>
+	"Test concluded," the <<person>> says in a flat tone, abruptly stepping back. "Restoring state to default."
+<<elseif $enemyhealth lte 0>>
+	"Test concluded," the <<person>> says in a flat tone, stepping away from you as if <<he>> weren't hurt at all. "Restoring state to default."
+<<elseif $pain gte 100 and $willpowerpain is 0>>
+	"Test concluded," the <<person>> says in a flat tone, stepping away from you. "Restoring state to default."
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>>
+	"Test concluded," the <<person>> says in a flat tone, stepping away from you. "Restoring state to default."
+<</if>>
+<br><br>
+
+<<He>> walks back to the terminal and flicks a switch. <<He>> steps past it, and the tube descends from the ceiling over <<him>> again. Once the tube touches the floor, the lights switch off.
+<br><br>
+
+<<tearful>> you wonder what to do next.
+<br><br>
+
+<<endcombat>><<clotheson>>
+
+<<link [[Create another construct|NPC Role Select]]>><</link>><br>
+<<link [[Back home|Bedroom]]>><</link>>

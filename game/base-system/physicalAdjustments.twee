@@ -1,0 +1,526 @@
+:: Widgets physicalAdjustmentsInit [widget]
+<<widget "physicalAdjustmentsInit">>
+
+<<if $sexStats is undefined>>
+	<<set $sexStats to {
+		"breasts": {
+			"playedWith": 0
+		},
+		"creampie": {
+			"self": {
+				"anus":0,
+				"mouth":0,
+				"vagina":0
+			},
+			"npc":{
+				"anus":0,
+				"mouth":0,
+				"vagina":0,
+				"tentacle":0
+			}
+		},
+		"pills":{
+			"type": ["penis", "breast", "bottom"],
+			"penis": {
+				"type": null,
+				"doseTaken": null,
+				"autoTake": null,
+				"overdose": {
+					"growth":0,
+					"reduction":0},
+				"owned": {
+					"growth": 0,
+					"reduction": 0,
+					"blocker": 0,
+				}
+			},
+			"breast": {
+				"type": null,
+				"doseTaken": null,
+				"autoTake": null,
+				"overdose": {},
+				"owned": {
+					"growth": 0,
+					"reduction": 0,
+					"blocker": 0,
+				}
+			},
+			"bottom": {
+				"type": null,
+				"doseTaken": null,
+				"autoTake": null,
+				"overdose": {},
+				"owned": {
+					"growth": 0,
+					"reduction": 0,
+					"blocker": 0,
+				}
+			},
+			"boughtOnce": false,
+		}
+	}>>
+<</if>>
+
+<<if $sexStats.anus is undefined>>
+	<<set $sexStats.anus to {
+		"pregnancy": {
+			0: null,
+			1: null,
+			2: null,
+			3: null,
+			"count": 0,
+			"maxCount": 1,
+			"fertile": false,
+			"fertilised": false,
+			"lowestDaysLeft": null,
+			"lowestTimeLeft": null,
+			"givenBirth": 0,
+			"motherStatus": 0,
+			"seenDoctor": 0,
+			"feltMovement": false,
+			"namesChildren": false,
+			"autoRepairDone":1,
+		}
+	}>>
+<</if>>
+
+<<if $sexStats.pills.type is undefined or $sexStats.pills.type.length lt 3>>
+	<<set _quantity to [0,0,0,0,0,0,0,0,0]>>
+	<<if $sexStats.pills.breastOwned isnot undefined and $sexStats.pills.boughtOnce is true>>
+		<<set _quantity[0] to Math.floor($sexStats.pills.penisOwned[5] + ($sexStats.pills.penisOwned[4] / 2))>>
+		<<set _quantity[1] to Math.floor($sexStats.pills.penisOwned[0] + ($sexStats.pills.penisOwned[1] / 2))>>
+		<<set _quantity[2] to clone($sexStats.pills.penisOwned[2])>>
+		<<set _quantity[3] to Math.floor($sexStats.pills.breastOwned[5] + ($sexStats.pills.breastOwned[4] / 2))>>
+		<<set _quantity[4] to Math.floor($sexStats.pills.breastOwned[0] + ($sexStats.pills.breastOwned[1] / 2))>>
+		<<set _quantity[5] to clone($sexStats.pills.breastOwned[2])>>
+	<<elseif $sexStats.pills.breast isnot undefined and $sexStats.pills.boughtOnce is true>>
+		<<set _quantity[0] to clone($sexStats.pills.penis.owned.growth)>>
+		<<set _quantity[1] to clone($sexStats.pills.penis.owned.reduction)>>
+		<<set _quantity[2] to clone($sexStats.pills.penis.owned.blocker)>>
+		<<set _quantity[3] to clone($sexStats.pills.breast.owned.growth)>>
+		<<set _quantity[4] to clone($sexStats.pills.breast.owned.reduction)>>
+		<<set _quantity[5] to clone($sexStats.pills.breast.owned.blocker)>>
+	<</if>>
+	<<if $sexStats.pills.boughtOnce is true>>
+		<<set _boughtOnce to true>>
+	<<else>>
+		<<set _boughtOnce to false>>
+	<</if>>
+
+	<<set $sexStats.pills to {
+		"type": ["penis", "breast", "bottom"],
+		"penis": {
+			"type": null,
+			"doseTaken": null,
+			"autoTake": null,
+			"overdose": {
+				"growth":0,
+				"reduction":0
+			},
+			"owned": {
+				"growth": clone(_quantity[0]),
+				"reduction": clone(_quantity[1]),
+				"blocker": clone(_quantity[2]),
+			}
+		},
+		"breast": {
+			"type": null,
+			"doseTaken": null,
+			"autoTake": null,
+			"overdose": {},
+			"owned": {
+				"growth": clone(_quantity[3]),
+				"reduction": clone(_quantity[4]),
+				"blocker": clone(_quantity[5]),
+			}
+		},
+		"bottom": {
+			"type": null,
+			"doseTaken": null,
+			"autoTake": null,
+			"overdose": {},
+			"owned": {
+				"growth": clone(_quantity[6]),
+				"reduction": clone(_quantity[7]),
+				"blocker": clone(_quantity[8]),
+			}
+		},
+		"boughtOnce": _boughtOnce
+	}>>
+<</if>>
+<<if $sexStats.pills.pregnancy is undefined>>
+	<<set $sexStats.pills.pregnancy to {
+			"type": null,
+			"doseTaken": null,
+			"autoTake": null,
+			"overdose": false,
+			"owned": {
+				"fertility": 0,
+				"contraceptive": 0,
+			}
+	}>>
+	<<run $sexStats.pills.type.pushUnique("pregnancy")>>
+<</if>>
+<<if $sexStats.pills.penis.overdose is false>>
+	<<set $sexStats.pills.penis.overdose to {
+		"growth":0,
+		"reduction":0
+	}>>
+<</if>>
+<<set _pills to $sexStats.pills>>
+<<set _pills.penis.owned.growth to Math.clamp(_pills.penis.owned.growth, 0, 1000)>>
+<<set _pills.penis.owned.reduction to Math.clamp(_pills.penis.owned.reduction, 0, 1000)>>
+<<set _pills.penis.owned.blocker to Math.clamp(_pills.penis.owned.blocker, 0, 1000)>>
+<<set _pills.breast.owned.growth to Math.clamp(_pills.breast.owned.growth, 0, 1000)>>
+<<set _pills.breast.owned.reduction to Math.clamp(_pills.breast.owned.reduction, 0, 1000)>>
+<<set _pills.breast.owned.blocker to Math.clamp(_pills.breast.owned.blocker, 0, 1000)>>
+<<set _pills.bottom.owned.growth to Math.clamp(_pills.bottom.owned.growth, 0, 1000)>>
+<<set _pills.bottom.owned.reduction to Math.clamp(_pills.bottom.owned.reduction, 0, 1000)>>
+<<set _pills.bottom.owned.blocker to Math.clamp(_pills.bottom.owned.blocker, 0, 1000)>>
+<<set _pills.pregnancy.owned.fertility to Math.clamp(_pills.pregnancy.owned.fertility, 0, 1000)>>
+<<set _pills.pregnancy.owned.contraceptive to Math.clamp(_pills.pregnancy.owned.contraceptive, 0, 1000)>>
+
+<<if $sexStats.vagina is undefined>>
+	<<set _baseDays to random(24,38)>>
+	<<if _baseDays lt 26>>
+		<<set _baseDaysRng to random(0,4)>>
+	<<elseif _baseDays gte 30>>
+		<<set _baseDaysRng to random(-4,0)>>
+	<<else>>
+		<<set _baseDaysRng to random(-2,2)>>
+	<</if>>
+	/*To change after every cycle*/
+	<<set _currentDaysMax to _baseDays + random(0, _baseDaysRng)>>
+	/*
+		- pregnancy has multiple slots, but pregnancy should only occur when none are taken
+		- "baseDays", "baseDaysRng", "lastDaysMax", "currentDaysMax" values should not be changed by multipliers, but by percent if you want a faster/slower cycle during calculations only, do not modifier the values themselves
+		- Sperm Template - 
+		"sperm":{
+			"Robin":{"type":"npc", "count":[[daysTillRemoval,cummed inside],[4,3],[3,2]]},
+			"Avery":{"type":"npc", "count":[[daysTillRemoval,cummed inside],[5,1]]},
+			"slender man":{"type":"npc", "count":[[daysTillRemoval,cummed inside],[5,1]]},
+			"Beast":{"type":"dog", "count":[[daysTillRemoval,cummed inside],[5,1]]},
+		}
+		- Sperm data should be deleted after 3-5 days worth of the base, the entire named object after it is cleared.
+		- "CurrentDay" should never be above "lastDaysMax" or "currentDaysMax", "lastDaysMax" should be set to "currentDaysMax" on releasing the egg
+		- "recoveryTime" and "recoveryTimeStart" are to track how long the player needs to recover before they can get pregnant again. "recoveryTime" is reduced faster by taking fertility pills and when "totalBirthEvents" is more than 2.
+		- "recoveryStage" ranges from 0 to 4, to help with any story text regarding how the player is feeling after giving birth
+		- "periodEnabled" is only to prevent the first period based events after recovering from giving birth
+	*/
+	<<set $sexStats.vagina to {
+		"pregnancy": {
+			0: null,
+			1: null,
+			2: null,
+			3: null,
+			4: null,
+			5: null,
+			6: null,
+			7: null,
+			"currentCount": 0,
+			"givenBirth": 0,
+			"totalBirthEvents": 0,
+			"motherStatus": 0,
+			"beastMotherStatus": 0,
+			"morningSicknessWaking":0,
+			"morningSicknessGeneral":0,
+			"waterBreaking": false,
+			"type": null,
+			"bellySize": 0,
+			"timer": null,
+			"timerStart": null,
+			"awareOf": null,
+			"potentialFathers": [],
+			"ultrasoundDone": false,
+		},
+		"menstruation":{
+			"baseDays": _baseDays,
+			"baseDaysRng": _baseDaysRng,
+			"currentDay": random(0, _baseDays + random(0,_baseDaysRng)),
+			"lastDaysMax": _currentDaysMax,
+			"currentDaysMax": _currentDaysMax,
+			"currentState": "normal",
+			"recoveryTime": null,
+			"recoveryTimeStart": null,
+			"recoveryStage": null,
+			"periodEnabled": true,
+			"running": false,
+			"stages": [0, 0, 0, 0],
+		},
+		"sperm":{}
+	}>>
+	<<set _menstruation to $sexStats.vagina.menstruation>>
+	<<set _stage2 to Math.round(_menstruation.currentDaysMax * 0.17)>>
+	<<if _stage2 gte 4>>
+		<<set _stage2-->>
+	<</if>>
+	<<set _stage3 to Math.round(_menstruation.currentDaysMax * 0.5)>>
+	<<if _stage3 lt 13>>
+		<<set _stage3++>>
+	<<elseif _stage3 gte 18>>
+		<<set _stage3-->>
+	<</if>>
+	<<set _menstruation.stages to [0, _stage2, _stage3, _stage3 + random(1,2) * 0.5]>>
+
+
+	<<if $player.vaginaExist>>
+		<<set $sexStats.vagina.menstruation.running = true>>
+	<</if>>
+<</if>>
+<</widget>>
+
+:: Widgets physicalAdjustments [widget]
+<<widget "physicalAdjustments">>
+
+/*Breasts*/
+<<switch $sexStats.pills.breast.type>>
+	<<case "growth">>
+		<<set _breastMulti to 1 + (2.25 * $sexStats.pills.breast.doseTaken)>>
+	<<case "reduction">>
+		<<set _breastMulti to -1 + (-2.25 * $sexStats.pills.breast.doseTaken)>>
+	<<case "blocker">>
+		<<set _breastMulti to 0>>
+	<<default>>
+		<<set _breastMulti to 1>>
+<</switch>>
+
+<<if _breastMulti isnot 0>>
+	<<switch $player.gender>>
+	<<case "m">>
+		<<set _breastMulti -= 1>>
+	<<case "f" "h">>
+		<<set _breastMulti += (Math.clamp($sexStats.creampie.self.vagina * 2, 0, 50) / 100)>>
+	<</switch>>
+
+	<<set _breastMulti += (Math.clamp($sexStats.breasts.playedWith, 0, 500) / 250)>>
+
+	<<set _breastMulti += $sexStats.anus.pregnancy.count / 0.5>>
+
+	<<if $purity gte 990>>
+		<<set _breastMulti -= 1>>
+	<</if>>
+
+	<<if $cow gte 1>>
+		<<set _breastMulti += 1>>
+	<</if>>
+	
+	<<set _purityBoost to (_breastMulti lt 0 ? 1 + ($purity / 1000) : 1 + ((1000 - $purity) / 1000))>>
+	<<set $breastgrowthtimer -= _breastMulti * 25 * _purityBoost>>
+
+	<<if $parasite.nipples.name is "urchin">>
+		<<set $breastgrowthtimer -= 300>>
+	<</if>>
+	<<if $parasite.nipples.name is "slime">>
+		<<set $breastgrowthtimer += 300>>
+	<</if>>
+
+	<<if $breastgrowthtimer lte 0 and $breastsize lt $breastsizemax>>
+		<<set $breastsize += 1>>
+		<<set $breastgrowthtimer += 700>>
+		<<set $breastgrowthmessage to $breastsize>><<set $effectsmessage to 1>>
+	<<elseif $breastgrowthtimer gte 1000 and $breastsize gt $breastsizemin>>
+		<<set $breastsize -= 1>>
+		<<set $breastgrowthtimer -= 700>>
+		<<set $breastshrinkmessage to $breastsize>><<set $effectsmessage to 1>>
+	<</if>>
+
+	<<set $breastgrowthtimer to Math.clamp($breastgrowthtimer, 0, 1000)>>
+
+<</if>>
+
+/*Penis*/
+<<if $sexStats.pills.penis.overdose.growth gt 0>>
+	<<set $sexStats.pills.penis.overdose.growth to Math.clamp($sexStats.pills.penis.overdose.growth - 1, 0, 100)>>
+<</if>>
+<<if $sexStats.pills.penis.overdose.reduction gt 0>>
+	<<set $sexStats.pills.penis.overdose.reduction to Math.clamp($sexStats.pills.penis.overdose.reduction - 1, 0, 100)>>
+<</if>>
+
+<<switch $sexStats.pills.penis.type>>
+	<<case "growth">>
+		<<set _penisMulti to 1 + (2.25 * $sexStats.pills.penis.doseTaken)>>
+		<<set $sexStats.pills.penis.overdose.growth += $sexStats.pills.penis.doseTaken>>
+	<<case "reduction">>
+		<<set _penisMulti to -1 + (-2.25 * $sexStats.pills.penis.doseTaken)>>
+		<<set $sexStats.pills.penis.overdose.reduction += $sexStats.pills.penis.doseTaken>>
+	<<case "blocker">>
+		<<set _penisMulti to 0>>
+	<<default>>
+		<<set _penisMulti to 1>>
+<</switch>>
+<<if $player.penisExist and _penisMulti isnot 0>>
+	<<set _totalReduction to ($sexStats.creampie.self.anus + $sexStats.creampie.self.mouth) * 2>>
+	<<set _totalIncrease to ($sexStats.creampie.npc.anus + $sexStats.creampie.npc.mouth + $sexStats.creampie.npc.vagina) * 2>>
+
+	<<if $cow gte 6>>
+		<<set _penisMulti += 1>>
+	<</if>>
+
+	<<if _penisMulti gt 1>>
+		<<set _totalIncrease += 10>>
+		<<set _totalIncrease *= _penisMulti>>
+	<<elseif _penisMulti lt 0>>
+		<<set _totalReduction += 10>>
+		<<set _totalReduction *= _penisMulti * -1>>
+	<</if>>
+	<<set _totalChange to _totalIncrease - _totalReduction>>
+	<<set _purityBoost to (_totalChange lt 0 ? 2 + ($purity / 500) : 2 + ((1000 - $purity) / 500))>>
+	<<set $penisgrowthtimer -= _purityBoost * _totalChange>>
+
+	<<set $penisgrowthtimer -= $sexStats.pills.penis.overdose.growth>>
+	<<set $penisgrowthtimer += $sexStats.pills.penis.overdose.reduction>>
+
+	<<if $penissize lt 0>>
+		<<set $penisgrowthtimer -= 50>>
+	<</if>>
+
+	<<if $parasite.penis.name is "urchin">>
+		<<set $penisgrowthtimer -= 250>>
+		<<set $sexStats.pills.penis.overdose.growth += random(1,2)>>
+	<</if>>
+	<<if $parasite.penis.name is "slime">>
+		<<set $penisgrowthtimer += 250>>
+		<<set $sexStats.pills.penis.overdose.reduction += random(1,2)>>
+	<</if>>
+	<<set _overdose to $sexStats.pills.penis.overdose.growth - $sexStats.pills.penis.overdose.reduction>>
+	<<if $penisgrowthtimer lte 0 and $penissize lt $penissizemax and $penissize gte -1>>
+		<<set $penissize += 1>>
+		<<set $penisgrowthtimer += 700>>
+		<<set $penisgrowthmessage to $penissize>><<set $effectsmessage to 1>>
+	<<elseif $penisgrowthtimer lte -400 and $penissize lt $penissizemax and $penissize is -2 and _overdose gte 20>>
+		<<set $penissize += 1>>
+		<<set $penisgrowthtimer += 1100>>
+		<<set $penisgrowthmessage to $penissize>><<set $effectsmessage to 1>>
+	<<elseif $penisgrowthtimer gte 1000 and $penissize gt 0>>
+		<<set $penissize -= 1>>
+		<<set $penisgrowthtimer -= 700>>
+		<<set $penisshrinkmessage to $penissize>><<set $effectsmessage to 1>>
+	<<elseif $penisgrowthtimer gte 1200 and $penissize is 0 and $penissize gt $penissizemin>>
+		<<set $penissize -= 1>>
+		<<set $penisgrowthtimer -= 1000>>
+		<<set $penisshrinkmessage to $penissize>><<set $effectsmessage to 1>>
+	<<elseif $penisgrowthtimer gte 1500 and $penissize is -1 and $penissize gt $penissizemin and _overdose lte -20>>
+		<<set $penissize -= 1>>
+		<<set $penisgrowthtimer -= 1300>>
+		<<set $penisshrinkmessage to $penissize>><<set $effectsmessage to 1>>
+	<</if>>
+	<<set $penisgrowthtimer to Math.clamp($penisgrowthtimer, 0, 1000)>>
+
+<</if>>
+
+/*Bottom*/
+<<switch $sexStats.pills.bottom.type>>
+	<<case "growth">>
+		<<set _bottomMulti to 1 + (2.25 * $sexStats.pills.bottom.doseTaken)>>
+	<<case "reduction">>
+		<<set _bottomMulti to -1 + (-2.25 * $sexStats.pills.bottom.doseTaken)>>
+	<<case "blocker">>
+		<<set _bottomMulti to 0>>
+	<<default>>
+		<<set _bottomMulti to 1>>
+<</switch>>
+
+<<if _bottomMulti isnot 0>>
+	<<set _totalReduction to $workouts /2>>
+	<<set _totalIncrease to $sexStats.creampie.self.anus * 2>>
+
+	<<set _bottomMulti += (500 - $purity) / 500>>
+
+	<<if $cow gte 6>>
+		<<set _bottomMulti += 1>>
+	<</if>>
+
+	<<if _bottomMulti gt 1>>
+		<<set _totalIncrease += 10>>
+		<<set _totalIncrease *= _bottomMulti>>
+	<<elseif _bottomMulti lt 0>>
+		<<set _totalReduction += 10>>
+		<<set _totalReduction *= _bottomMulti * -1>>
+	<</if>>
+	<<set _totalChange to _totalIncrease - _totalReduction>>
+	<<set _purityBoost to (_totalChange lt 0 ? 2 + ($purity / 500) : 2 + ((1000 - $purity) / 500))>>
+	<<set $bottomgrowthtimer -= _purityBoost * _totalChange>>
+
+	<<if $parasite.bottom.name is "urchin">>
+		<<set $bottomgrowthtimer -= 300>>
+	<</if>>
+	<<if $parasite.bottom.name is "slime">>
+		<<set $bottomgrowthtimer += 300>>
+	<</if>>
+	<<if $bottomgrowthtimer lte 0 and $bottomsize lt $bottomsizemax>>
+		<<set $bottomsize += 1>>
+		<<set $bottomgrowthtimer += 700>>
+		<<set $bottomgrowthmessage to $bottomsize>><<set $effectsmessage to 1>>
+	<<elseif $bottomgrowthtimer gte 1000 and $bottomsize gt 0>>
+		<<set $bottomsize -= 1>>
+		<<set $bottomgrowthtimer -= 700>>
+		<<set $bottomshrinkmessage to $bottomsize>><<set $effectsmessage to 1>>
+	<<elseif $bottomgrowthtimer gte 1200 and $bottomsize lte 0 and $bottomsize gt $bottomsizemin>>
+		<<set $bottomsize -= 1>>
+		<<set $bottomgrowthtimer -= 1000>>
+		<<set $bottomshrinkmessage to $bottomsize>><<set $effectsmessage to 1>>
+	<</if>>
+	<<set $bottomgrowthtimer to Math.clamp($bottomgrowthtimer, 0, 1000)>>
+<</if>>
+
+/*Resetting of values*/
+
+<<set $sexStats.creampie.npc.anus to 0>>
+<<set $sexStats.creampie.npc.mouth to 0>>
+<<set $sexStats.creampie.npc.vagina to 0>>
+<<set $sexStats.creampie.npc.tentacle to 0>>
+<<set $sexStats.creampie.self.anus to 0>>
+<<set $sexStats.creampie.self.mouth to 0>>
+<<set $sexStats.creampie.self.vagina to 0>>
+<<set $sexStats.breasts.playedWith to 0>>
+<<set $workouts to 0>>
+
+<<set _pills to $sexStats.pills>>
+<<if $location is "home" or $location is "alex_cottage" or $location is "cabin">>
+	<<for _i to 0; _i lt _pills.type.length; _i++>>
+		<<set _type to _pills.type[_i]>>
+		<<set _autoTake to _pills[_type].autoTake>>
+		<<if _autoTake isnot null and _pills[_type].owned[_autoTake] gt 0>>
+			<<set _pills[_type].owned[_autoTake]-->>
+			<<set _pills[_type].type to clone(_autoTake)>>
+			<<set _pills[_type].doseTaken to 1>>
+			<<set $pillsTaken to true>><<set $effectsmessage to 1>>
+			<<if _pills[_type].owned[_autoTake] is 0>>
+				<<set _pills[_type].autoTake to null>>
+				<<set $pillsTakenLast to true>>
+			<</if>>
+		<<else>>
+			<<set _pills[_type].autoTake to null>>
+			<<set _pills[_type].type to null>>
+			<<set _pills[_type].doseTaken to 0>>
+		<</if>>
+	<</for>>
+<<else>>
+	<<set _pills.penis.type to null>>
+	<<set _pills.penis.doseTaken to 0>>
+	<<set _pills.breast.type to null>>
+	<<set _pills.breast.doseTaken to 0>>
+	<<set _pills.bottom.type to null>>
+	<<set _pills.bottom.doseTaken to 0>>
+<</if>>
+<</widget>>
+
+/*<<playWithBreasts>>*/
+:: Widgets playWithBreasts [widget]
+<<widget "playWithBreasts">>
+<<if $args[0]>>
+	<<set $sexStats.breasts.playedWith += $args[0]>>
+<<else>>
+	<<set $sexStats.breasts.playedWith++>>
+<</if>>
+<</widget>>
+
+/*<<creampie "npc" "anus" >> -- <<set $sexStats.creampie.npc.anus++>>*/
+/*<<creampie "self" "mouth">> -- <<set $sexStats.creampie.self.mouth++>>*/
+:: Widgets creampie [widget]
+<<widget "creampie">>
+<<if $args[0] and $args[1]>>
+	<<set $sexStats.creampie[$args[0]][$args[1]]++>>
+<</if>>
+<<set $internalejac to 1>>
+<</widget>>

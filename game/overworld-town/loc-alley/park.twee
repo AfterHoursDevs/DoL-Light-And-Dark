@@ -1,0 +1,266 @@
+:: Park
+
+<<set $outside to 1>><<set $location to "park">><<effects>><<set $bus to "park">><<getTarget true>>
+You are in the park.
+<<if $daystate is "dawn">>
+	There are a few people out walking or jogging. Some have dogs with them.
+<<elseif $daystate is "day">>
+	<<if $weather is "rain">>
+		Very few people are out, walking around the puddles that dot the paths.
+	<<elseif $weather is "snow">>
+		Many people are out, walking their dogs or jogging, wrapped up warm against the cold.
+	<<else>>
+		Many people are out, walking their dogs or jogging. You hear children in the playground.
+	<</if>>
+<<elseif $daystate is "dusk">>
+	There are many people around. Teenagers hang out in the playground.
+<<elseif $daystate is "night">>
+	<<if $famepark gte 60>>
+		<span class="pink">Creepy figures lurk in the shadows.</span> <i>News of your lewd running has spread. Don't run while exposed for several days if you want it to cool off.</i>
+	<<elseif $famepark gte 20>>
+		<span class="pink">You think you're being watched.</span> <i>News of your lewd running has spread. Don't run while exposed for a few days if you want it to cool off.</i>
+	<<else>>
+		There is no one around.
+	<</if>>
+<</if>>
+
+Tulips grow in great patches near the riverbank.
+
+<<streeteffects>>
+<br><br>
+<<if $exposed gte 1>>
+	<<exhibitionismpark>>
+	<<if $daystate isnot "night">>
+		You can hear the commotion of the High Street, there's no way you'll be able to cross like this. However, there's a depot from which crates are being carried across the road, maybe you could hide in one of them.
+		<br><br>
+	<</if>>
+<</if>>
+<<if $arousal gte $arousalmax>>
+	<<orgasmstreet>>
+<</if>>
+<<if $stress gte $stressmax and !$possessed>>
+	<<passoutpark>>
+<<else>>
+	<<run getRobinLocation()>>
+	<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+	<<if ($halloween_kylar is 1 or $NPCName[$NPCNameList.indexOf("Kylar")].love gte 60) and $halloween_kylar_proposed isnot 1 and $daystate is "night" and $NPCName[$NPCNameList.indexOf("Kylar")].init is 1 and $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and ($halloween is 1 and $monthday is 31 and $hour gte 21 or $month is "november" and $monthday is 1 and $hour lte 6)>>
+		<<halloweenkylar>>
+	<<elseif ($danger gte (9900 - $allure) or $eventforced) and $eventskip is 0>>
+		<<eventsstreet>>
+	<<elseif $robinReunionScene isnot undefined and _robin_location is "park" and $exposed lte 0>>
+		<<npc Robin>><<person1>>
+		<<if $robinReunionScene is "dungeon">>
+			<<unset $robinReunionScene>><<set $robinPostMortem to true>>
+			You see Robin stood behind <<his>> hot chocolate stand. <<His>> mouth goes agape as <<he>> sees you, and <<he>> sprints towards you.
+			<br><br>
+
+			"I don’t believe it!" <<he>> squeals as <<he>> buries <<himself>> in your chest. "I-I thought you were gone forever! We need to talk about this at home. When you’re ready."
+			<br><br>
+
+			You’re led back to their stand. A small picture of the two of you sits on top. Robin puts it away.
+			<br>
+			<<He>> fixes you a cup of hot chocolate and sends you on your way.
+			<br>
+			"Don't forget to see me later," <<he>> says with a worried expression. "I'm always here for you if you need to talk."
+			<br><br>
+
+			<<link [[Next|Park]]>><<set $eventskip to 1>><<endevent>><</link>>
+			<br>
+		<<elseif $robinReunionScene is "asylum">>
+			<<unset $robinReunionScene>>
+			You see Robin stood behind <<his>> hot chocolate stand.
+
+			<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>
+				<<He>> stares at you in disbelief.
+				<br><br>
+				
+				"Hi," <<he>> says quietly as you draw close. "I thought the doctors took you away. I would’ve tried to get you something had I known you were c-coming back," Robin’s voice quivers.
+			<<else>>
+				<<He>> excitedly beckons you over when <<he>> sees you.
+				<br><br>
+				
+				"Hey, you’re out!" <<he>> says as you draw close. "I thought you were staying at the doctor’s for a while. I would’ve prepared something had I known you were coming back," Robin explains.
+			<</if>>
+			<br><br>
+
+			You shake your head, telling <<him>> that they weren’t going to help you, so you "checked" out early. Robin seems confused, but <<he>> nods regardless. <<He>> gives you a hug.
+			<br>
+
+			<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>
+				"Well, I’m glad you’re free," <<he>> mumbles, holding you tight.
+			<<else>>
+				"Well, I’m happy to see you again! I hope you're feeling better."
+			<</if>>
+			<br>
+			The two of you make small talk for a bit. Eventually, Robin says <<he>> needs to get back to <<his>> stand.
+			
+			<<if $NPCName[$NPCNameList.indexOf("Robin")].trauma gte 40>>
+				<<He>> slowly shuffles away, <<his>> gaze glued to the floor.
+			<<else>>
+				<<He>> smiles and waves goodbye.
+			<</if>>
+			<br><br>
+
+			<<link [[Next|Park]]>><<set $eventskip to 1>><<endevent>><</link>>
+			<br>
+		<<else>>
+			You spot Robin at <<his>> hot chocolate stand. <<His>> eyes pass over you momentarily, but <<he>> doesn't stare. It's as if <<he>> doesn't even recognise you.
+			<br><br>
+			
+			<<link [[Next|Park]]>><<set $eventskip to 1>><<endevent>><</link>>
+			<br>
+		<</if>>
+	<<elseif $NPCName[$NPCNameList.indexOf("Robin")].init is 0 and $season is "winter" and ($weekday is 7 or $weekday is 1) and between($hour, 9, 16) and $exposed lte 0>>
+		<<set $robindebt to 0>><<set $robindebtlimit to 5>>
+		<<npc Robin>><<person1>>You see someone familiar working at a stand in the park. <<He>> notices you at the same time. "Hey!" It's Robin. <<Hes>> another resident at the orphanage. <<Hes>> always looked up to you, despite being about the same age. <<He>> motions you over, while cleaning a mug. <<He>> puts it down and hugs you when you approach.
+		<br><br>
+			"I haven't seen you at the orphanage in a while. We must keep missing each other. Remember, <span class="gold">you can visit me in my room at home</span> anytime you want. I've been waiting to show you something, I'm so excited!" <<He>> looks behind you, noticing customers approaching. "I've got to get back to work here. You're welcome to stay and help if you want." <<He>> gets back into position behind the stand.
+		<br><br>
+		<<endevent>>
+		<<link [[Next|Park]]>><<set $eventskip to 1>><</link>>
+		<br>
+	<<else>>
+		<<if $map.top is true>>
+			<<map "park">>
+			<br>
+		<</if>>
+		Places of interest
+		<br>
+		<<if $exposed lte 0>>
+			<<if $scienceproject is "ongoing" and $sciencelichenknown is 1 and $sciencelichenpark is 0>>
+				<<link [[Examine lichen for science project|Park Lichen]]>><</link>>
+				<br>
+			<</if>>
+			<<if !$plants_known.includes("tulip")>>
+				<<if $sciencetrait gte 1>>
+					<<link [[Search for seeds (0:30)|Park Tulip]]>><<set $plants_known.push("tulip")>><<pass 30>><<tending 6>><</link>><<gtending>>
+					<br>
+				<<else>>
+					<span class="blue">A higher science skill would let you harvest tulip seeds.</span>
+					<br>
+				<</if>>
+			<</if>>
+			<<link [[Pick tulips (0:20)|Park Tulip Pick]]>><<pass 20>><<crimeup 20>><</link>><<tendingdifficulty 1 200>><<crime>>
+			<br>
+			<<if _robin_location is "park">>
+				<!-- if robin met, is not missing, trauma < 80%, on winter sundays 09:00 - 16:59 -->
+				<<link [[Robin's hot chocolate stand|Robin Chocolate]]>><</link>>
+				<br>
+			<</if>>
+			<<if $NPCName[$NPCNameList.indexOf("Kylar")].state is "active" and !["rain", "snow"].includes($weather) and $daystate is "day">>
+				<<if $schoolday isnot 1 or $hour lte 8 or $hour gte 15>>
+					<<if $kylar.fountain is 1>>
+						<br>
+						Kylar sits at the fountain, occasionally tossing coins in.
+						<br>
+					<<else>>
+						<br>
+						Kylar sits on a bench, sketching something.
+						<br>
+					<</if>>
+					<<link [[Approach|Kylar Park]]>><<set $kylar_text_trigger to true>><</link>>
+					<br><br>
+				<</if>>
+			<</if>>
+			<<if ["active", "rescued"].includes($NPCName[$NPCNameList.indexOf("Whitney")].state) and $NPCName[$NPCNameList.indexOf("Whitney")].init is 1 and ["snow", "rain"].includes($weather) and $daystate is "day" and ($schoolday isnot 1 or $hour lte 8 or $hour gte 15) and $whitney_park is undefined and $pillory_tenant.special.name isnot "Whitney">>
+				<br>
+				You see smoke trailing from beneath an umbrella. It's Whitney. <<nnpc_He "Whitney">> stands under a tree near the park's fountain.
+				<br>
+				<<link [[Approach|Whitney Park]]>><<set $whitney_text_trigger to true>><<if $whitney_text is undefined>><<set $whitney_text to 0>><<else>><<set $whitney_text += 1>><</if>><</link>>
+				<br><br>
+			<</if>>
+		<</if>>
+		<<maleicon>><<link [[Men's toilets|Men's Toilets]]>><</link>>
+		<br>
+		<<femaleicon>><<link [[Women's toilets|Women's Toilets]]>><</link>>
+		<br>
+		<<if $worn.feet.type.includes("heels") and ($exposed is 0 or $daystate is "night")>>
+			<<link [[Exercise in heels (0:30)|Park Exercise Heels]]>><<pass 30>><<tiredness 3>><<stress -1>><<athletics 2>><<slimeEventEnd>><</link>><<ggtiredness>><<gathletics>><<lstress>>
+		<<else>>
+			<<if $daystate is "night">>
+				<<if $exposed gte 2 and $exhibitionism gte 35>>
+					<<runicon>><<link [[Go for a run (0:30)|Park Run Exposed]]>><<pass 30>><<set $phase to 0>><<tiredness 3>><<stress -3>><<athletics 3>><<slimeEventEnd>><</link>><<exhibitionist3>><<gtiredness>><<gathletics>><<lstress>>
+					<br>
+				<<elseif $exposed is 1>>
+					<<runicon>><<link [[Go for a run (0:30)|Park Run Exposed]]>><<pass 30>><<set $phase to 1>><<tiredness 3>><<stress -3>><<athletics 3>><<slimeEventEnd>><</link>><<exhibitionist1>><<gtiredness>><<gathletics>><<lstress>>
+					<br>
+				<<elseif $exposed is 0>>
+					<<runicon>><<link [[Go for a run (0:30)|Park Run]]>><<pass 30>><<tiredness 3>><<stress -3>><<athletics 3>><<slimeEventEnd>><</link>><<gtiredness>><<gathletics>><<lstress>>
+					<br>
+				<</if>>
+			<<elseif $exposed is 0>>
+				<<runicon>><<link [[Go for a run (0:30)|Park Run]]>><<pass 30>><<tiredness 3>><<stress -3>><<athletics 3>><<slimeEventEnd>><</link>><<gtiredness>><<gathletics>><<lstress>>
+				<br>
+			<</if>>
+		<</if>>
+		<br>
+		<<if $exposed gte 1 and $daystate isnot "night">>
+			<<link [[Hide in a crate (0:10)|Crate Ex]]>><<pass 10>><</link>>
+			<br>
+			<<if $exposed gte 2 and $exhibitionism gte 75>>
+				<<link [[Cross flyover to the industrial district (0:05)|Flyover Ex Naked]]>><</link>><<if $ex_flyover is undefined>><<exhibitionist5>><</if>>
+				<br>
+			<<elseif $exposed is 1 and $exhibitionism gte 35>>
+				<<link [[Cross flyover to the industrial district (0:05)|Flyover Ex Undies]]>><</link>><<if $ex_flyover is undefined>><<exhibitionist3>><</if>>
+				<br>
+			<</if>>
+		<<else>>
+			<<add_link "Travel<br>">><<hideDisplay>>
+			<<high>>
+			<<starfish>>
+			<<oxford>>
+			<<nightingale>>
+			<<loiter>>
+		<</if>>
+		<<add_link "<br>Alternate routes<br>">>
+		<<if $exposed gte 1 and $daystate isnot "night">><<hideDisplay>>
+		<<else>>
+			<<commercial>>
+			<<industrial>>
+		<</if>>
+		<<stormdrain>>
+		<<if $historytrait gte 1 and $parktunnelintro gte 1>>
+			<<add_link "<<link [[Secret tunnel to school (0:05)|School Rear Playground]]>><<pass 5>><</link>>">>
+			<br>
+		<</if>>
+		<<displayLinks>>
+		<<if $map.top isnot true>>
+			<br>
+			<<map "park">>
+		<</if>>
+	<</if>>
+<</if>>
+<<set $eventskip to 0>>
+
+:: Park Tulip
+<<effects>>
+
+You walk through the tulips, searching for any that are seeding and careful not to tread on the blossoms.
+<br><br>
+
+<span class="gold">You can now grow tulips.</span>
+<br><br>
+
+<<link [[Next|Park]]>><</link>>
+<br>
+
+:: Park Tulip Pick
+<<effects>>
+
+You search the riverbank for the prettiest tulips, the ones someone might be willing to pay for. These aren't strictly wild flowers. You try to avoid being seen.
+<br><br>
+
+<<if $tendingSuccess>>
+	<span class="green">You find some particularly vibrant specimens.</span>
+	<<tending_pick tulip>>
+	<br><br>
+
+	<<link [[Next|Park]]>><</link>>
+	<br>
+<<else>>
+	You find some nice specimens, <span class="red">but rip them from the earth with too little care,</span> leaving them haggard and wilted.<<gtending>><<tending 2>>
+	<br><br>
+
+	<<link [[Next|Park]]>><</link>>
+	<br>
+<</if>>

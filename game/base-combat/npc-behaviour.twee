@@ -1,0 +1,324 @@
+:: Widgets NPC Types [widget]
+<<widget "npcstrip">>
+	<<if $enemyno gte 1>>
+		<<set $anus to "idle">>
+		<<if $gender1 is "m">>
+			<<set $penis to "idle">>
+		<<elseif $gender1 is "f">>
+			<<set $vagina to "idle">>
+		<<elseif $gender1 is "h">>
+			<<set $penis to "idle">>
+			<<set $vagina to "idle">>
+		<</if>>
+		<<if !$worn.upper.type.includes("naked")>>
+			<<set $lefthand to "upperclothes">>
+		<<elseif !$worn.lower.type.includes("naked")>>
+			<<set $lefthand to "lowerclothes">>
+		<<elseif !$worn.under_lower.type.includes("naked") and !$worn.under_lower.type.includes("chastity")>>
+			<<set $lefthand to "underclothes">>
+		<</if>>
+		<<if !$worn.lower.type.includes("naked")>>
+			<<set $righthand to "lowerclothes">>
+		<<elseif !$worn.upper.type.includes("naked")>>
+			<<set $righthand to "upperclothes">>
+		<<elseif !$worn.under_lower.type.includes("naked") and !$worn.under_lower.type.includes("chastity")>>
+			<<set $righthand to "underclothes">>
+		<</if>>
+	<</if>>
+	<<if $enemyno gte 2>>
+		<<set $anus2 to "idle">>
+		<<if $gender2 is "m">>
+			<<set $penis2 to "idle">>
+		<<elseif $gender2 is "f">>
+			<<set $vagina2 to "idle">>
+		<<elseif $gender2 is "h">>
+			<<set $penis2 to "idle">>
+			<<set $vagina2 to "idle">>
+		<</if>>
+		<<if !$worn.upper.type.includes("naked")>>
+			<<set $lefthand2 to "upperclothes">>
+		<<elseif !$worn.lower.type.includes("naked")>>
+			<<set $lefthand2 to "lowerclothes">>
+		<<elseif !$worn.under_lower.type.includes("naked") and !$worn.under_lower.type.includes("chastity")>>
+			<<set $lefthand2 to "underclothes">>
+		<</if>>
+		<<if !$worn.lower.type.includes("naked")>>
+			<<set $righthand2 to "lowerclothes">>
+		<<elseif !$worn.upper.type.includes("naked")>>
+			<<set $righthand2 to "upperclothes">>
+		<<elseif !$worn.under_lower.type.includes("naked") and !$worn.under_lower.type.includes("chastity")>>
+			<<set $righthand2 to "underclothes">>
+		<</if>>
+	<</if>>
+	<<if $enemyno gte 3>>
+		<<set $anus3 to "idle">>
+		<<if $gender3 is "m">>
+			<<set $penis3 to "idle">>
+		<<elseif $gender3 is "f">>
+			<<set $vagina3 to "idle">>
+		<<elseif $gender3 is "h">>
+			<<set $penis3 to "idle">>
+			<<set $vagina3 to "idle">>
+		<</if>>
+		<<if !$worn.upper.type.includes("naked")>>
+			<<set $lefthand3 to "upperclothes">>
+		<<elseif !$worn.lower.type.includes("naked")>>
+			<<set $lefthand3 to "lowerclothes">>
+		<<elseif !$worn.under_lower.type.includes("naked") and !$worn.under_lower.type.includes("chastity")>>
+			<<set $lefthand3 to "underclothes">>
+		<</if>>
+		<<if !$worn.lower.type.includes("naked")>>
+			<<set $righthand3 to "lowerclothes">>
+		<<elseif !$worn.upper.type.includes("naked")>>
+			<<set $righthand3 to "upperclothes">>
+		<<elseif !$worn.under_lower.type.includes("naked") and !$worn.under_lower.type.includes("chastity")>>
+			<<set $righthand3 to "underclothes">>
+		<</if>>
+	<</if>>
+	<<if $enemyno gte 4>>
+		<<set $anus4 to "idle">>
+		<<if $gender4 is "m">>
+			<<set $penis4 to "idle">>
+		<<elseif $gender4 is "f">>
+			<<set $vagina4 to "idle">>
+		<<elseif $gender4 is "h">>
+			<<set $penis4 to "idle">>
+			<<set $vagina4 to "idle">>
+		<</if>>
+		<<if !$worn.upper.type.includes("naked")>>
+			<<set $lefthand4 to "upperclothes">>
+		<<elseif !$worn.lower.type.includes("naked")>>
+			<<set $lefthand4 to "lowerclothes">>
+		<<elseif !$worn.under_lower.type.includes("naked") and !$worn.under_lower.type.includes("chastity")>>
+			<<set $lefthand4 to "underclothes">>
+		<</if>>
+		<<if !$worn.lower.type.includes("naked")>>
+			<<set $righthand4 to "lowerclothes">>
+		<<elseif !$worn.upper.type.includes("naked")>>
+			<<set $righthand4 to "upperclothes">>
+		<<elseif !$worn.under_lower.type.includes("naked") and !$worn.under_lower.type.includes("chastity")>>
+			<<set $righthand4 to "underclothes">>
+		<</if>>
+	<</if>>
+	<<if $enemyno gte 5>>
+		<<set $anus5 to "idle">>
+		<<if $gender5 is "m">>
+			<<set $penis5 to "idle">>
+		<<elseif $gender5 is "f">>
+			<<set $vagina5 to "idle">>
+		<<elseif $gender5 is "h">>
+			<<set $penis5 to "idle">>
+			<<set $vagina5 to "idle">>
+		<</if>>
+		<<if !$worn.upper.type.includes("naked")>>
+			<<set $lefthand5 to "upperclothes">>
+		<<elseif !$worn.lower.type.includes("naked")>>
+			<<set $lefthand5 to "lowerclothes">>
+		<<elseif !$worn.under_lower.type.includes("naked") and !$worn.under_lower.type.includes("chastity")>>
+			<<set $lefthand5 to "underclothes">>
+		<</if>>
+		<<if !$worn.lower.type.includes("naked")>>
+			<<set $righthand5 to "lowerclothes">>
+		<<elseif !$worn.upper.type.includes("naked")>>
+			<<set $righthand5 to "upperclothes">>
+		<<elseif !$worn.under_lower.type.includes("naked") and !$worn.under_lower.type.includes("chastity")>>
+			<<set $righthand5 to "underclothes">>
+		<</if>>
+	<</if>>
+	<<if $enemyno gte 6>>
+		<<set $anus6 to "idle">>
+		<<if $gender6 is "m">>
+			<<set $penis6 to "idle">>
+		<<elseif $gender6 is "f">>
+			<<set $vagina6 to "idle">>
+		<<elseif $gender6 is "h">>
+			<<set $penis6 to "idle">>
+			<<set $vagina6 to "idle">>
+		<</if>>
+		<<if !$worn.upper.type.includes("naked")>>
+			<<set $lefthand6 to "upperclothes">>
+		<<elseif !$worn.lower.type.includes("naked")>>
+			<<set $lefthand6 to "lowerclothes">>
+		<<elseif !$worn.under_lower.type.includes("naked") and !$worn.under_lower.type.includes("chastity")>>
+			<<set $lefthand6 to "underclothes">>
+		<</if>>
+		<<if !$worn.lower.type.includes("naked")>>
+			<<set $righthand6 to "lowerclothes">>
+		<<elseif !$worn.upper.type.includes("naked")>>
+			<<set $righthand6 to "upperclothes">>
+		<<elseif !$worn.under_lower.type.includes("naked") and !$worn.under_lower.type.includes("chastity")>>
+			<<set $righthand6 to "underclothes">>
+		<</if>>
+	<</if>>
+	<<set $combatgoal to "strip">>
+<</widget>>
+
+<<widget "npcexhibit">>
+<</widget>>
+
+<<widget "stuck_in_wall_oral">>
+<<set $position to "wall">>
+<<set $walltype to "front">>
+<<set $anususe to "none">>
+<<set $vaginause to "none">>
+<<set $penisuse to "none">>
+<<set $thighuse to "none">>
+<<set $bottomuse to "none">>
+<<set $feetuse to "none">>
+<<set $chestuse to "none">>
+<<npcoral>>
+<</widget>>
+
+<<widget "npcoral">>
+<<if $NPCList[0].penis isnot "none">>
+	<<set $NPCList[0].penis to "mouthentrance">><<submission 5>><<set $mouthstate to "entrance">><<set $mouthuse to "penis">><<set $mouthtarget to 0>>
+	<<He>> presses <<his>> penis against your lips.
+	<<if $NPCList[0].type is "plant" and !["peniskiss","penislick"].includes($mouthactiondefault)>>
+		<span class="pink">Nectar glistens on the tip. It smells sweet.</span>
+	<</if>>
+	<br><br>
+<<elseif $NPCList[0].vagina isnot "none">>
+	<<submission 5>><<set $mouthuse to "othervagina">><<set $NPCList[0].vagina to "mouth">><<set $mouthstate to "othervagina">><<set $mouthtarget to 0>>
+	<<He>> presses <<his>> pussy against your lips.
+	<<if $NPCList[0].type is "plant" and !["peniskiss","penislick"].includes($mouthactiondefault)>>
+		<span class="pink">Nectar glistens at the entrance. It smells sweet.</span>
+	<</if>>
+	<br><br>
+<</if>>
+<<set $NPCList[0].location.genitals to "head">>
+<</widget>>
+
+<<widget "npchand">>
+	<<if $NPCList[0].penis isnot "none">>
+		<<set $leftarm to "penis">><<set $NPCList[0].penis to "leftarm">>
+	<<else>>
+		<<set $leftarm to "othervagina">><<set $NPCList[0].vagina to "leftarm">>
+	<</if>>
+<</widget>>
+
+<<widget "npcidlegenitals">>
+	<<for _i = 0; _i < $NPCList.length; _i++>>
+		<<if $NPCList[_i].penis isnot "none">>
+			<<set $NPCList[_i].penis to "idle">>
+		<</if>>
+		<<if $NPCList[_i].vagina isnot "none">>
+			<<set $NPCList[_i].vagina to "idle">>
+		<</if>>
+	<</for>>
+<</widget>>
+
+<<widget "npckiss">>
+	<<set $NPCList[0].mouth to "kiss">><<set $mouthstate to "kiss">><<set $mouthuse to "kiss">><<set $mouthtarget to 0>>
+<</widget>>
+
+<<widget "npcexpose">>
+	<<for _i = 0; _i < $NPCList.length; _i++>>
+		<<if $NPCList[_i].penis isnot "none">>
+			<<set $NPCList[_i].penis to 0>>
+		<</if>>
+		<<if $NPCList[_i].vagina isnot "none">>
+			<<set $NPCList[_i].vagina to 0>>
+		<</if>>
+	<</for>>
+<</widget>>
+
+<<widget "npcgrapplestripall">>
+<<if $rightarm is 0>>
+	<<set $rightarm to "grappled">>
+	<<set $NPCList[0].lefthand to "arms">>
+<</if>>
+<<if $leftarm is 0>>
+	<<set $leftarm to "grappled">>
+	<<set $NPCList[0].lefthand to "arms">>
+<</if>>
+<<set $NPCList[0].righthand to 0>>
+<<set $position to "missionary">>
+<<set $combatgoal to "strip">>
+<<set $NPCList[0].mouth to "speech_only">>
+<</widget>>
+
+<<widget "npcstripall">>
+<<set $NPCList[0].lefthand to 0>>
+<<set $NPCList[0].righthand to 0>>
+<<set $position to "missionary">>
+<<set $combatgoal to "strip">>
+<<set $NPCList[0].mouth to "speech_only">>
+<</widget>>
+
+<<widget "npcspank">>
+<<if $rightarm is 0>>
+	<<set $rightarm to "grappled">>
+	<<set $NPCList[0].lefthand to "arms">>
+<</if>>
+<<if $leftarm is 0>>
+	<<set $leftarm to "grappled">>
+	<<set $NPCList[0].lefthand to "arms">>
+<</if>>
+<<set $NPCList[0].righthand to "spank">>
+<<set $position to "doggy">>
+<</widget>>
+
+<<widget "npcspankgag">>
+<<hand_gag 0 left>>
+<<set $NPCList[0].righthand to "spank">>
+<<set $position to "doggy">>
+<</widget>>
+
+<<widget "npcgloryhole">>
+<<set $gloryhole to 1>>
+<<set $punishmentposition to "gloryhole">><!-- This is added to conform with other parts of code-base. Needs to be unset or set to 0 manually after a scene.-->
+<<set $enemyhealthmax to 10>><<set $enemyhealth to 10>>
+<<set $enemytrust += 100>>
+<<set $NPCList[0].lefthand to "none">>
+<<set $position to "doggy">>
+<<set $NPCList[0].righthand to "none">>
+<<set $NPCList[0].mouth to "speech_only">>
+<<if $NPCList[0].penis isnot "none">>
+	<<set $NPCList[0].penis to 0>>
+<</if>>
+<<if $NPCList[0].vagina isnot "none">>
+	<<set $NPCList[0].vagina to 0>>
+<</if>>
+<</widget>>
+
+<<widget "npcfence">>
+<<set $NPCList[0].lefthand to "none">>
+<<set $NPCList[0].righthand to "none">>
+<<set $NPCList[0].mouth to "speech_only">>
+<<if $NPCList[0].penis isnot "none">>
+	<<set $NPCList[0].penis to 0>>
+<</if>>
+<<if $NPCList[0].vagina isnot "none">>
+	<<set $NPCList[0].vagina to 0>>
+<</if>>
+<</widget>>
+
+<<widget "npc_attempt_sex">>
+<<if $NPCList[0].penis isnot "none">>
+	<<if $player.vaginaExist>>
+		<<set $NPCList[0].penis to "vaginaentrance">><<set $vaginause to "penis">><<set $vaginastate to "entrance">><<set $vaginatarget to 0>>
+	<<elseif $analdisable is "f">>
+		<<set $NPCList[0].penis to "anusentrance">><<set $anususe to "penis">><<set $anusstate to "entrance">><<set $anustarget to 0>>
+	<</if>>
+<<else>>
+	<<if $player.penisExist>>
+		<<set $NPCList[0].vagina to "penisentrance">><<set $penisuse to "othervagina">><<set $penisstate to "entrance">><<set $penistarget to 0>>
+	<</if>>
+<</if>>
+<</widget>>
+
+<<widget "npc_submissive">>
+<<if $NPCList[0].penis isnot "none">>
+	<<set $NPCList[0].penis to "clothed">>
+<</if>>
+<<if $NPCList[0].vagina isnot "none">>
+	<<set $NPCList[0].vagina to "clothed">>
+<</if>>
+<<set $NPCList[0].lefthand to "idle">>
+<<set $NPCList[0].righthand to "idle">>
+<<set $NPCList[0].location.genitals to 0>>
+<<set $enemyarousal to 0>>
+<<set $npcSub to 1>>
+<<set $promiscuityIgnore to 1>>
+<span class="green">Your partner is submissive. You may take the lead. [Promiscuity requirements will be ignored for this encounter]</span>
+<</widget>>

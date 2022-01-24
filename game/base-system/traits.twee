@@ -1,0 +1,609 @@
+:: Traits [widget]
+<<widget "traits">>
+
+<<if $player.virginity.vaginal is true and $player.virginity.penile is true>>
+	<span class="green">Virgin</span> - Your purity recovers faster. Your virginity might be worth something.
+	<br>
+<<elseif $player.virginity.temple is true>>
+	<span class="blue">Chastity Vow</span> - Lost when your <<if $player.penisExist>>penis is enveloped<</if>><<if $player.penisExist and $player.vaginaExist>> or your <</if>><<if $player.vaginaExist>>vagina is penetrated<</if>>. The temple will know.
+	<br>
+<<elseif $player.virginity.temple is false and $temple_rank isnot "prospective" and $temple_rank isnot undefined>>
+	<span class="red">Broken Vow</span> - The temple will know.
+	<br>
+<</if>>
+<<if $templePromised isnot "">>
+	<<if $player.virginity.temple is true>>
+		<span class="blue">Rite of Promise: $templePromised</span> - You've been bound to another initiate. Sex with this person will not break your vows.
+	<<else>>
+		<span class="red">Broken Promise: $templePromised</span> - The temple will know.
+	<</if>>
+	<br>
+<</if>>
+<br>
+
+<<if $featsPurityBoost gt 0>>
+	<span class="green">Purity boost</span> - You are gaining purity daily.
+	<br>
+<<elseif $featsPurityBoost lt 0>>
+	<span class="red">Impurity boost</span> - You are losing purity daily.
+	<br>
+<</if>>
+
+<<if $backgroundTraits.includes("crossdresser")>>
+	<<if $player.gender is "m">>
+		<span class="pink">Crossdresser</span> - Stress decays faster while dressed as a girl, but slower when dressed as a boy.
+		<br>
+	<<elseif $player.gender is "f">>
+		<span class="lblue">Crossdresser</span> - Stress decays faster while dressed as a boy, but slower when dressed as a girl.
+		<br>
+	<</if>>
+<</if>>
+
+<<if $backgroundTraits.includes("lustful")>>
+	<span class="lewd">Lustful</span> - Arousal increases over time, and needs to be managed.
+	<br>
+<</if>>
+
+<<if $backgroundTraits.includes("greenthumb")>>
+	<span class="green">Green Thumb</span> - More bountiful crops and no decay when using fertiliser.
+	<br>
+<</if>>
+
+<<if $backgroundTraits.includes("plantlover")>>
+	<<if $submissive lte 850>>
+		<span class="lewd">Dendrophile</span>
+	<<else>>
+		<span class="lewd">Plant Lover</span>
+	<</if>>
+	- Plants are everything to you. Plantpeople and plant-based tentacles no longer require hallucinations to encounter. You get a bonus to tending, as your trauma increases.
+	<br>
+	<span class="red">Nectar Addict</span> - You're more vulnerable to aphrodisiacs and alcohol. You draw nourishment from nectar. Drinking it invigorates your body, improving physique and reducing stress. Failing to consume nectar for an extended period will take its toll on your body, and eventually cause this trait and the <<if $submissive lte 850>><span class="lewd">Dendrophile</span><<else>><span class="lewd">Plant Lover</span><</if>> trait to disappear.
+	<br>
+<</if>>
+
+<<if $pregnancyStats isnot undefined>>
+	<<switch $pregnancyStats.mother>>
+		<<case 1>><span class="lewd">First Time Mother</span> - You have given birth to your first child.
+		<<case 2>><span class="lewd">Second Time Mother</span> - You have given birth to children two times now.
+		<<case 3>><span class="lewd">Mother</span> - You have some good experiences of being a mother.
+		<<case 4>><span class="lewd">Broodmother</span> - You have given birth to many, many children.
+	<</switch>>
+<</if>>
+
+<<if $sexStats.anus.pregnancy.motherStatus is 1>>
+	<span class="lewd">Anal Mother</span> - You have given birth to little critters.
+	<br>
+<<elseif $sexStats.anus.pregnancy.motherStatus is 2>>
+	<span class="lewd">Anal Broodmother</span> - You've become host to an endless number of little critters.
+	<br>
+<</if>>
+
+<<if $lactating gte 1 and $breastfeedingdisable is "f">>
+	<span class="blue">Lactating</span> - Your breasts are ready to be milked.
+	<br>
+	<<if $milk_volume gte 1000>>
+		<span class="blue">Milk Factory</span> - Your breasts are able to hold a tremendous amount of milk.
+		<br>
+	<</if>>
+<</if>>
+
+<<if $semen_volume gte 1000 and $player.penisExist>>
+	<span class="blue">Sperm bank</span> - You carry a tremendous amount of semen.
+	<br>
+<</if>>
+
+<<if $possessed>>
+	<br>
+	<span class="wraith">Possessed</span> - Your body is not your own.
+	<br><br>
+<</if>>
+
+<<if $wolfgirl gte 2 or $cat gte 2>>
+	<span class="def">Fangs</span> - Biting is three times as effective.
+	<br>
+<</if>>
+
+<<if $cow gte 2 and $demon gte 2>>
+	<span class="def">Compound Horns</span> - Your headbutts are vicious. Headbutts are four times as powerful, and no longer hurt you.
+	<br>
+<<elseif $cow gte 2>>
+	<span class="def">Sturdy Horns</span> - Headbutts no longer hurt you.
+	<br>
+<<elseif $demon gte 2>>
+	<span class="def">Dark Horns</span> - Headbutts deal twice as much damage.
+	<br>
+<</if>>
+
+<<if $wolfgirl gte 6>>
+	<span class="grey">Wolf <<girl>></span> - The spirit of the wild lives within you, making you more defiant over time. Your ears and tail make you more conspicuous.
+	<br>
+<</if>>
+
+<<if $cat gte 6>>
+	<span class="orange">Cat <<girl>></span> - You have an urge to lap up cream. Unlocks the "groom" action while dancing with lewd fluid on your person. Your ears and tail make you more conspicuous.
+	<br>
+<</if>>
+
+<<if $cow gte 6>>
+	<<if $player.gender_appearance is "m">>
+		<<if $player.gender is "f">>
+			<span class="brat">Bull boy (female)</span>
+		<<else>>
+			<span class="brat">Bull boy</span>
+		<</if>>
+	<<else>>
+		<<if $player.gender is "m">>
+			<span class="brat">Cow girl (male)</span>
+		<<else>>
+			<span class="brat">Cow girl</span>
+		<</if>>
+	<</if>>
+	- You yearn to be milked. Milk and semen volume is increased. Certain body parts might grow. Your horns, ears and tail make you more conspicuous.
+	<br>
+<</if>>
+
+<<if $harpy gte 2 or $cat gte 2>>
+	<span class="def">Sharp eyes</span> - Little escapes your notice. +5% skulduggery.
+	<br>
+<</if>>
+
+<<if $harpy gte 6 and $birdFly gte 1>>
+	<span class="gold">Strong wings</span> - Can glide from high locations. Can fly where the wind is willing.
+	<br>
+<<elseif $angel gte 6 or $fallenangel gte 2 or $demon gte 6 or $harpy gte 6>>
+	<span class="grey">Wings</span> - Can glide from high locations.
+	<br>
+<</if>>
+
+<<if $harpy gte 6>>
+	<<if $hallucinations gte 2 or $bestialitydisable is "t">>
+		<span class="grey">Harpy</span>
+	<<else>>
+		<span class="grey">Bird <<girl>></span>
+	<</if>>
+	 - The skies call.
+	 <br>
+<</if>>
+
+<<if $fallenangel gte 2>>
+	<span class="black">Fallen angel</span> - The world is so cruel. You feel less pure by the day.
+	<br>
+<</if>>
+
+<<if $angel gte 6>>
+	<span class="gold">Angel</span> - You radiate purity. Unlocks the "forgive" action once per encounter, removing any trauma gained so far. Beware, losing your virginity will remove this trait and leave you broken.
+	<br>
+<</if>>
+<<if $angel gte 4>>
+	<span class="gold">Radiant</span> - You are pure. Unlocks the "banish" action a number of times per day based on your angelicness, dealing heavy damage to a tentacle. Its strength is greatly increased while at maximum purity. Uses remaining today: ($angelBanish / $angelBanishMax)
+	<br>
+<</if>>
+
+<<if $demon gte 6>>
+	<<if $player.gender_appearance is "m">>
+		<<if $player.gender is "f">>
+			<span class="red">Incubus (female)</span>
+		<<else>>
+			<span class="red">Incubus</span>
+		<</if>>
+	<<else>>
+		<<if $player.gender is "m">>
+			<span class="red">Succubus (male)</span>
+		<<else>>
+			<span class="red">Succubus</span>
+		<</if>>
+	<</if>>
+	- You're devoid of purity. You lose trauma when something cums inside you, or you cum inside something else. Tentacles reduce stress and pain instead of trauma. Beware, ending a day with anything but minimum purity will be very stressful.
+	<br>
+<</if>>
+
+<<if $submissive gte 1150 and $submissive lt 1500>>
+	<span class="meek">Meek</span> - Unlocks the "Moan" action.
+	<br>
+<</if>>
+
+<<if $submissive gte 1500>>
+	<span class="sub">Submissive</span> - unlocks the "Moan" action.
+	<br>
+<</if>>
+
+<<if $submissive lte 850 and $submissive gt 500>>
+	<span class="brat">Bratty</span> - unlocks the "Demand" action.
+	<br>
+<</if>>
+
+<<if $submissive lte 500>>
+	<span class="def">Defiant</span> - unlocks the "Demand" action.
+	<br>
+<</if>>
+
+<<if $innocencestate is 1>>
+	<span class="blue">Innocent</span> - You're flattered that so many people want to spend time with you. This trait will disappear should you run out of innocence, and any trauma you've accumulated will be applied. Being attacked and low control will reduce innocence.
+	<br>
+<</if>>
+
+<<if $orgasmtrait gte 1>>
+	<<if $submissive lte 850>>
+		<span class="lewd">Hedonist</span>
+	<<else>>
+		<span class="lewd">Orgasm Addict</span>
+	<</if>>
+		- So many orgasms has had a physiological effect. Cumming is more difficult but pleasurable orgasms relieve more stress and painful orgasms no longer increase stress.
+	<br>
+<</if>>
+
+<<if $choketrait gte 1>>
+	<span class="lewd">Asphyxiophilia</span> - You've come to love the feeling of lack of oxygen. Getting choked makes sex more pleasurable.
+	<br>
+<</if>>
+
+<<if $ejactrait gte 1>>
+	<<if $submissive lte 850>>
+		<span class="lewd">Cumoisseur</span>
+	<<else>>
+		<span class="lewd">Cum Dump</span>
+	<</if>>
+	 - You've become accustomed to the scent of ejaculate and can take advantage of its calming effect. Your stress is reduced hourly depending on how much slime and semen covers you.
+	<br>
+<</if>>
+
+<<if $molesttrait gte 1>>
+	<<if $submissive lte 850>>
+		<span class="lewd">Graceful</span>
+	<<else>>
+		<span class="lewd">Plaything</span>
+	<</if>>
+	- You've learned to better cope with psychological trauma. Being molested no longer removes your sense of control (rape still does).
+	<br>
+<</if>>
+
+<<if $rapetrait gte 1>>
+	<<if $submissive lte 850>>
+		<span class="lewd">Survivor</span>
+	<<else>>
+		<span class="lewd">Fucktoy</span>
+	<</if>>
+	- You've been raped so much, but you've learned how to cope. Trauma increases more slowly.
+	<br>
+<</if>>
+
+<<if $bestialitytrait gte 1>>
+	<<if $submissive lte 850>>
+		<span class="lewd">Tamer</span>
+	<<else>>
+		<span class="lewd">Bitch</span>
+	<</if>>
+	- Animals have tried to breed with you so often that you're used to it. Trauma increases more slowly when attacked by animals.
+	<br>
+<</if>>
+
+<<if $tentacletrait gte 1>>
+	<<if $submissive lte 850>>
+		<span class="lewd">Witch</span>
+	<<else>>
+		<span class="lewd">Prey</span>
+	<</if>>
+	- Many tentacles have had their way with your body. Trauma increases more slowly when attacked by tentacles.
+	<br>
+<</if>>
+
+<<if $voretrait gte 1>>
+	<<if $submissive lte 850>>
+		<span class="lewd">Daredevil</span>
+	<<else>>
+		<span class="lewd">Tasty</span>
+	<</if>>
+		- You've found your way into the belly of many a creature. They'll have a harder time swallowing you as they savour your taste.
+	<br>
+<</if>>
+
+<<if $milkdranktrait gte 1>>
+	<<if $submissive lte 850>>
+		<span class="lewd">Milk Enthusiast</span>
+	<<else>>
+		<span class="lewd">Milk Addict</span>
+	<</if>>
+	 - You take full advantage of the nutrition in fresh breast milk. Drinking it invigorates your body, improving physique.
+	<br>
+<</if>>
+
+<<if $masochism_level is 1>>
+	<span class="blue">Guilty Masochist</span> - Provides a small resistance to most sources of pain. Those sources increase arousal instead.
+	<br>
+<<elseif $masochism_level is 2>>
+	<span class="purple">Masochist</span> - Provides resistance to most sources of pain. Those sources increase arousal instead.
+	<br>
+<<elseif $masochism_level is 3>>
+	<span class="pink">Hardened Masochist</span> - Provides strong resistance to most sources of pain. Those sources increase arousal instead.
+	<br>
+<<elseif $masochism_level is 4>>
+	<span class="red">Drooling Masochist</span> - Provides incredible resistance to most sources of pain. Those sources increase arousal instead.
+	<br>
+<</if>>
+
+<<if $sadism_level is 1>>
+	<span class="blue">Guilty Sadist</span> - Your defiant acts inflict a little more pain. Inflicting pain increases arousal.
+	<br>
+<<elseif $sadism_level is 2>>
+	<span class="purple">Sadist</span> - Your defiant acts inflict more pain. Inflicting pain increases arousal.
+	<br>
+<<elseif $sadism_level is 3>>
+	<span class="pink">Hardened Sadist</span> - Your defiant acts inflict much more pain. Inflicting pain increases arousal.
+	<br>
+<<elseif $sadism_level is 4>>
+	<span class="red">Vengeful Sadist</span> - Your defiant acts are far more dangerous. Inflicting pain increases arousal.
+	<br>
+<</if>>
+
+<<if $robinpaid gte 1>>
+	<span class="lblue">Robin's protector</span> - Robin is dependent on you. You need to be strong. Increases daily trauma decay.
+	<br>
+<</if>>
+
+<<if $farm_stage gte 6>>
+	<span class="green">Farmer</span> - You know your way around a barn. Your physique is easier to maintain.
+<</if>>
+<br>
+
+<<if $sciencetrait is 1>>
+	<span class="blue">Passable Science</span> - Pain is slightly easier to cope with.
+	<br>
+<<elseif $sciencetrait is 2>>
+	<span class="lblue">Decent Science</span> - Pain is moderately easier to cope with.
+	<br>
+<<elseif $sciencetrait is 3>>
+	<span class="teal">Good Science</span> - Pain is easier to cope with.
+	<br>
+<<elseif $sciencetrait is 4>>
+	<span class="green">Excellent Science</span> - Pain is much easier to cope with.
+	<br>
+<</if>>
+<<if $mathstrait is 1>>
+	<span class="blue">Passable Maths</span> - You make 25% more from tips and negotiated fees.
+	<br>
+<<elseif $mathstrait is 2>>
+	<span class="lblue">Decent Maths</span> - You make 50% more from tips and negotiated fees.
+	<br>
+<<elseif $mathstrait is 3>>
+	<span class="teal">Good Maths</span> - You make 75% more from tips and negotiated fees.
+	<br>
+<<elseif $mathstrait is 4>>
+	<span class="green">Excellent Maths</span> - You make 100% more from tips and negotiated fees.
+	<br>
+<</if>>
+
+<<if $englishtrait is 1>>
+	<span class="blue">Passable English</span> - Speech actions (plead, moan, demand, apologise, mock, tease) are twice as effective.
+	<br>
+<<elseif $englishtrait is 2>>
+	<span class="lblue">Decent English</span> - Speech actions (plead, moan, demand, apologise, mock, tease) are three times as effective.
+	<br>
+<<elseif $englishtrait is 3>>
+	<span class="teal">Good English</span> - Speech actions (plead, moan, demand, apologise, mock, tease) are four times as effective.
+	<br>
+<<elseif $englishtrait is 4>>
+	<span class="green">Excellent English</span> - Speech actions (plead, moan, demand, apologise, mock, tease) are five times as effective.
+	<br>
+<</if>>
+
+
+
+<<if $historytrait is 1>>
+	<span class="blue">Passable History</span> - You know there are secret paths around town.
+	<br>
+<<elseif $historytrait is 2>>
+	<span class="lblue">Decent History</span> - You know of a few secret paths around town.
+	<br>
+<<elseif $historytrait is 3>>
+	<span class="teal">Good History</span> - You know of several secret paths around town.
+	<br>
+<<elseif $historytrait is 4>>
+	<span class="green">Excellent History</span> - You know of many secret paths around town.
+	<br>
+<</if>>
+
+
+<<if $schooltrait is 1>>
+	<span class="blue">Okay at school</span> - Your performance at school has improved your self-esteem, slightly increasing your daily trauma decay.
+	<br>
+<<elseif $schooltrait is 2>>
+	<span class="lblue">Decent at school</span> - Your performance at school has improved your self-esteem, moderately increasing your daily trauma decay.
+	<br>
+<<elseif $schooltrait is 3>>
+	<span class="teal">Good at school</span> - Your performance at school has improved your self-esteem, increasing your daily trauma decay.
+	<br>
+<<elseif $schooltrait is 4>>
+	<span class="green">Excellent at school</span> - Your performance at school has improved your self-esteem, greatly increasing your daily trauma decay.
+	<br>
+<</if>>
+
+<br>
+
+<<if $quicksand gte 5>>
+	Knowledge: Quicksand - You know how to react when stuck in the stuff.
+	<br>
+<</if>>
+<br>
+
+<<if $scienceprojectwon is 1>>
+	<span class="green">Science Fair Winner</span>
+	<br>
+<</if>>
+<<if $mathsprojectwon is 1>>
+	<span class="green">Maths Competition Winner</span>
+	<br>
+<</if>>
+<br>
+
+<<if $controlled is 0>>
+
+	<<if $sleeptrouble gte 1>>
+		Insomnia - <span class="red">Sleep less effective</span>
+		<br>
+	<</if>>
+
+	<<if $nightmares gte 1>>
+		Nightmares - <span class="red">Sleep is stressful</span>
+		<br>
+	<</if>>
+
+	<<if $anxiety gte 1>>
+		Anxiety Disorder - <span class="red">Stress won't automatically decrease over time</span>
+		<br>
+	<</if>>
+
+	<<if $anxiety gte 2>>
+		Severe Anxiety Disorder - <span class="red">Stress increases over time</span>
+		<br>
+	<</if>>
+
+	<<if $flashbacks gte 1>>
+		Flashbacks - <span class="red">May relive nasty experiences</span>
+		<br>
+	<</if>>
+
+	<<if $panicattacks gte 1>>
+		Panic Attacks - <span class="red">Chance of paralysis</span>
+		<br>
+	<</if>>
+
+	<<if $panicattacks gte 2>>
+		Severe Panic Attacks - <span class="red">Chance of uncontrollable violent outbursts</span>
+		<br>
+	<</if>>
+
+	<<if $hallucinations gte 1>>
+		Hallucinations - <span class="red">More dangers during encounters</span>
+		<br>
+	<</if>>
+
+	<<if $hallucinations gte 2>>
+		Severe Hallucinations - <span class="red">More dangerous world</span>
+		<br>
+	<</if>>
+
+	<<if $dissociation gte 1>>
+		Visibly Disturbed - <span class="red">There's something wrong with you, and people can tell</span>
+		<br>
+	<</if>>
+
+	<<if $dissociation gte 2>>
+		Dissociation - <span class="red">Nothing feels real</span>
+		<br>
+	<</if>>
+
+<<else>>
+
+	<<if $sleeptrouble gte 1>>
+		<span class="blue">Controlled</span> Insomnia - <span class="black">Sleep less effective</span>
+		<br>
+	<</if>>
+
+	<<if $nightmares gte 1>>
+		<span class="blue">Controlled</span> Nightmares - <span class="black">Sleep is stressful</span>
+		<br>
+	<</if>>
+
+	<<if $anxiety gte 1>>
+		<span class="blue">Controlled</span> Anxiety Disorder - <span class="black">Stress won't automatically decrease over time</span>
+		<br>
+	<</if>>
+
+	<<if $anxiety gte 2>>
+		<span class="blue">Controlled</span> Severe Anxiety Disorder - <span class="black">Stress increases over time</span>
+		<br>
+	<</if>>
+
+	<<if $flashbacks gte 1>>
+		<span class="blue">Controlled</span> Flashbacks - <span class="black">May relive nasty experiences</span>
+		<br>
+	<</if>>
+
+	<<if $panicattacks gte 1>>
+		<span class="blue">Controlled</span> Panic Attacks - <span class="black">Chance of paralysis</span>
+		<br>
+	<</if>>
+
+	<<if $panicattacks gte 2>>
+		<span class="blue">Controlled</span> Severe Panic Attacks - <span class="black">Chance of uncontrollable violent outbursts</span>
+		<br>
+	<</if>>
+
+	<<if $hallucinations gte 1>>
+		<span class="blue">Controlled</span> Hallucinations - <span class="black">More dangers during encounters</span>
+		<br>
+	<</if>>
+
+	<<if $hallucinations gte 2>>
+		<span class="blue">Controlled</span> Severe Hallucinations - <span class="black">More dangers in the world</span>
+		<br>
+	<</if>>
+
+	<<if $dissociation gte 1>>
+		Visibly Disturbed - <span class="red">There's something wrong with you, and people can tell</span>
+		<br>
+	<</if>>
+
+	<<if $dissociation gte 2>>
+		<span class="blue">Controlled</span> Dissociation - <span class="black">Nothing feels real</span>
+		<br>
+	<</if>>
+
+<</if>>
+
+<<if $syndromeeden gte 1>>
+	Stockholm Syndrome: Eden - <span class="red">It must be lonely living on your own in the woods.</span>
+	<br>
+<</if>>
+
+<<if $syndromewolves gte 1>>
+	<<if $bestialitydisable is "f">>
+		Stockholm Syndrome: Wolves - <span class="red">They're just cute animals.</span>
+		<br>
+	<<else>>
+		Stockholm Syndrome: Wolf People - <span class="red">They're just cute monsters.</span>
+		<br>
+	<</if>>
+<</if>>
+
+<<if $syndromebird gte 1>>
+	Stockholm Syndrome:
+	<<if $hallucinations gte 2 or $bestialitydisable is "t">>
+		Harpy
+	<<else>>
+		Great Hawk
+	<</if>>
+	- <span class="red">It only wants a mate.</span>
+	<br>
+<</if>>
+
+<<if $acceptance_penis_tiny gte 1000 and $penissize lte 0>>
+	<span class="green">Acceptance: Tiny Penis</span> - You're proud of your tiny penis.
+	<br>
+<</if>>
+<<if $acceptance_penis_small gte 1000 and $penissize is 1>>
+	<span class="green">Acceptance: Small Penis</span> - You're proud of your small penis.
+	<br>
+<</if>>
+
+<<if $acceptance_tomgirl gte 100 and $acceptance_penis_tiny gte 1000>>
+	<span class="green">Acceptance: Tomgirl</span> - You're proud of becoming a tomgirl.
+<</if>>
+<<if $acceptance_penis_big gte 1000 and $penissize gte 4>>
+	<span class="green">Acceptance: Enormous Penis</span> - You're proud of your enormous penis.
+	<br>
+<</if>>
+<<if $acceptance_breasts_tiny gte 1000 and $breastsize lte 0 and $player.gender is "f">>
+	<span class="green">Acceptance: Flat Chest</span> - You're proud of your flat chest.
+	<br>
+<</if>>
+<<if $acceptance_breasts_small gte 1000 and $breastsize gte 1 and $breastsize lte 5>>
+	<span class="green">Acceptance: Small Breasts</span> - You're proud of your small breasts.
+	<br>
+<</if>>
+<<if $acceptance_breasts_big gte 1000 and $breastsize gte 8>>
+	<span class="green">Acceptance: Huge Breasts</span> - You're proud of your huge breasts.
+	<br>
+<</if>>
+
+<</widget>>

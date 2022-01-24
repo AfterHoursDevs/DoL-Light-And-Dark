@@ -1,0 +1,3832 @@
+:: Bully Locker
+
+<<effects>>
+You're pushed into the locker. <<He>> slams it shut and you hear the lock click. "Maybe the time alone will teach you manners." They leave you trapped there.<<endevent>>
+<br><br>
+Half an hour passes before a <<generatey1>><<person1>><<person>> unwittingly frees you, jumping back in shock as you step out. <<covered>>
+<<pass 30>>
+<<if $submissive gte 1150>>
+	You scurry past <<him>> without looking.
+<<elseif $submissive lte 850>>
+	"Took long enough," you say, leaving <<him>> dumbstruck.
+<<else>>
+	"Thanks," you say as you hurry past <<him>>, leaving <<him>> dumbstruck.
+<</if>>
+<br><br>
+<<clotheson>>
+<<link [[Next|Hallways]]>><<endevent>><<set $eventskip to 1>><</link>>
+<br>
+
+:: Bully Fight
+<<if $fightstart is 1>>
+<<set $fightstart to 0>>
+
+<<neutral 1>>
+
+<<maninit>>
+<<set $enemytrust -= 100>>
+<<set $enemyanger += 200>>
+<<npcidlegenitals>><<hand_gag 0 left>>
+You shove Whitney away and try to escape, but <<he>> grabs you from behind and wraps <<his>> arm around your mouth.
+<br><br>
+<<if $delinquency lt 400>><<enable_rescue>><</if>>
+<</if>>
+
+<<effects>>
+<<effectsman>><<man>>
+
+<<if $alarm is 1 and $rescue is 0>>
+<<set $alarm to 0>>
+No one comes to your aid, likely due to your reputation as a delinquent.
+<br><br>
+<</if>>
+
+<<audience>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Bully Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Bully Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $alarm is 1 and $rescue is 1>>
+	<span id="next"><<link [[Next|Bully Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $pain gte 100 and $willpowerpain is 0>>
+	<span id="next"><<link [[Next|Bully Fight Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Bully Fight]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Bully Fight Finish
+<<if $enemyhealth lte 0>>
+
+You push <<him>> to the ground, giving you a chance to escape. <<tearful>> you shove <<his>> friends aside and flee to safety.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
+
+<<elseif $enemyarousal gte $enemyarousalmax>>
+<<ejaculation>>
+
+"You... stupid..." <<he>> pants, leaning against a locker. <<His>> friends are so bemused by <<his>> state that they don't notice you slip away. <<tearful>> you escape to safety.
+<<llust>><<npcincr Whitney lust -20>>
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
+
+<<elseif $alarm is 1 and $rescue is 1>>
+
+Your cry echoes down the corridor. "Crybaby," Whitney says. "We'll get you next time." <<He>> and <<his>> friends leave. <<tearful>> you struggle to your feet.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
+
+<<else>>
+
+You're too battered and bruised to resist.
+<br><br>
+<<clotheson>>
+<<endcombat>>
+
+<<npc Whitney>><<person1>>
+
+	<<if $bullyevent is 3>>
+	<<link [[Next|Bully Top]]>><</link>>
+	<<elseif $bullyevent is 4>>
+	<<link [[Next|Bully Strip]]>><</link>>
+	<<elseif $bullyevent is 5>>
+	<<link [[Next|Bully Strip]]>><</link>>
+	<<elseif $bullyevent is 6>>
+	<<link [[Next|Bully Oral]]>><<set $molestationstart to 1>><</link>>
+	<<elseif $bullyevent is 7>>
+	<<link [[Next|Bully Detention]]>><</link>>
+	<<elseif $bullyevent is 10>>
+	<<link [[Next|Bully Strip 2]]>><<strip>><</link>>
+	<<elseif $bullyevent is 11>>
+	<<link [[Next|Bully Panties]]>><</link>>
+	<<elseif $bullyevent is 12>>
+	<<link [[Next|Bully Toilets]]>><</link>>
+	<<else>>
+	<<link [[Next|Bully Locker]]>><</link>>
+	<</if>>
+
+<</if>>
+
+:: Bully Panties Fight
+<<if $fightstart is 1>>
+<<set $fightstart to 0>>
+
+<<neutral 1>>
+
+<<maninit>>
+<<set $enemytrust -= 100>>
+<<set $enemyanger += 200>>
+<<npcidlegenitals>><<hand_gag 0 left>>
+You shove Whitney away and try to escape, but <<he>> grabs you from behind and wraps <<his>> arm around your mouth.
+<br><br>
+<<if $delinquency lt 400>><<enable_rescue>><</if>>
+<</if>>
+
+<<effects>>
+<<effectsman>><<man>>
+
+<<if $alarm is 1 and $rescue is 0>>
+<<set $alarm to 0>>
+No one comes to your aid, likely due to your reputation as a delinquent.
+<br><br>
+<</if>>
+
+<<audience>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyhealth lte 0>>
+<span id="next"><<link [[Next|Bully Panties Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+<span id="next"><<link [[Next|Bully Panties Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $alarm is 1 and $rescue is 1>>
+<span id="next"><<link [[Next|Bully Panties Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $pain gte 100 and $willpowerpain is 0>>
+<span id="next"><<link [[Next|Bully Panties Fight Finish]]>><</link>></span><<nexttext>>
+<<else>>
+<span id="next"><<link [[Next|Bully Panties Fight]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Bully Panties Fight Finish
+<<if $enemyhealth lte 0>>
+
+	You push <<him>> to the ground, giving you a chance to escape. <<tearful>> you shove <<his>> friends aside and flee to safety.
+	<br><br>
+
+	<<clotheson>>
+	<<endcombat>>
+
+	<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
+
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>>
+
+	"You... stupid..." <<he>> pants, leaning against a locker. <<His>> friends are so bemused by <<his>> state that they don't notice you slip away. <<tearful>> you escape to safety.<<llust>><<npcincr Whitney lust -20>>
+	<br><br>
+
+	<<clotheson>>
+	<<endcombat>>
+
+	<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
+
+<<elseif $alarm is 1 and $rescue is 1>>
+
+	Your cry echoes down the corridor. "Crybaby," Whitney says. "We'll get you next time." <<He>> and <<his>> friends leave. <<tearful>> you struggle to your feet.
+	<br><br>
+
+	<<clotheson>>
+	<<endcombat>>
+
+	<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
+
+<<else>>
+
+	You're too battered and bruised to resist.
+	<br><br>
+	<<clotheson>>
+	<<endcombat>>
+
+	<<npc Whitney>><<person1>>
+
+	<<link [[Next|Bully Panties]]>><</link>>
+
+<</if>>
+
+:: Bully Top
+<<effects>>
+
+<<if !$worn.upper.type.includes("naked")>>
+Whitney <<pullsup>> your $worn.upper.name, revealing your <<breasts>> to <<him>> and <<his>> friends.
+<<else>>
+Whitney stands back to observe your exposed <<breasts>>.
+<</if>>
+
+<<if $player.gender_appearance is "m">>
+"Nice," <<he>> says as <<he>> holds your top, preventing you from covering back up. "See this everyone? This is what a bitch boy's nipples look like."
+<<elseif $breastsize is 0 and !$worn.under_upper.type.includes("naked")>>
+"There's nothing there!" <<he>> exclaims as <<he>> holds your top, preventing you from covering back up. "Why do you even bother with a bra?" But <<he>> doesn't bother exposing you further.
+<<insecurity "breasts_tiny" 5>><<ginsecurity "breasts_tiny">>
+<<elseif $breastsize is 0>>
+"There's nothing there!" <<he>> exclaims as <<he>> holds your top, preventing you from covering back up. "How can you call yourself a girl with those little things?"
+<<insecurity "breasts_tiny" 5>><<ginsecurity "breasts_tiny">>
+<<elseif $breastsize lte 5 and !$worn.under_upper.type.includes("naked")>>
+"<<pShes>> so small!" <<he>> exclaims as <<he>> holds your top, preventing you from covering back up then pulls your $worn.under_upper.name up so your <<breasts>> come free with a little bounce that gets a laugh. "How can you call yourself a girl with those little things?"
+<<insecurity "breasts_small" 5>><<ginsecurity "breasts_small">>
+<<elseif $breastsize lte 5>>
+"<<pShes>> so small!" <<he>> exclaims as <<he>> holds your top, preventing you from covering back up. "How can you call yourself a girl with those little things?"
+<<insecurity "breasts_small" 5>><<ginsecurity "breasts_small">>
+<<elseif $breastsize lte 7 and !$worn.under_upper.type.includes("naked")>>
+"You've got a nice pair," <<he>> says as <<he>> holds your top, preventing you from covering back up then pulls your $worn.under_upper.name up so your <<breasts>> bounce free to a small cheer. "Don't be shy, tits like these need to be shown off."
+<<elseif $breastsize lte 7>>
+"You've got a nice pair," <<he>> says as <<he>> holds your top, preventing you from covering back up. "Don't be shy, tits like these need to be shown off."
+<<if $player.gender is "m">><<insecurity "breasts_big" 5>><<ginsecurity "breasts_big">><</if>>
+<<elseif !$worn.under_upper.type.includes("naked")>>
+"Did you escape from a barn?" <<he>> exclaims as <<he>> holds your top, preventing you from covering back up then pulling your $worn.under_upper.name up so your <<breasts>> flop out to whistles and applause. "Don't be shy, let me show off your cow tits."
+<<insecurity "breasts_big" 5>><<ginsecurity "breasts_big">>
+<<else>>
+"Did you escape from a barn?" <<he>> says as <<he>> holds your top, preventing you from covering back up. "Don't be shy, let me show off your cow tits."
+<<insecurity "breasts_big" 5>><<ginsecurity "breasts_big">>
+<</if>>
+<br><br>
+
+<<He>> shoves you aside. They jeer at you for a moment before leaving you to cover yourself.
+<<npcincr Whitney lust 5>><<glust>>
+<br><br>
+
+<<link [[Next|Hallways]]>><<endevent>><<set $eventskip to 1>><</link>>
+<br>
+
+:: Bully Strip
+<<effects>>
+
+<<if $worn.under_lower.type.includes("naked")>>
+	<<if $leftarm is "bound" and $rightarm is "bound">>
+Whitney and <<his>> friends tear off your clothing. You turn to keep your <<genitals>> and <<undertop>> concealed as best you can.
+	<<else>>
+Whitney and <<his>> friends tear off your clothing. You keep your <<genitals>> and <<undertop>> concealed as best you can.
+	<</if>>
+<<else>>
+	<<if $leftarm is "bound" and $rightarm is "bound">>
+	Whitney and <<his>> friends tear off your clothing. You turn to keep your <<undies>> and <<undertop>> concealed as best you can.
+	<<else>>
+	Whitney and <<his>> friends tear off your clothing. You keep your <<undies>> and <<undertop>> concealed as best you can.
+	<</if>>
+<</if>>
+
+<<upperstrip>>
+<<lowerstrip>>
+
+<br><br>
+
+<<if $bullyevent is 5>>
+
+The crowd gawks at you, taking in your bare skin. Whitney beholds you, savouring the feel of having control of your clothing. "Let's go for a walk," <<he>> says. "You don't have to, but I'll be taking your clothes with me."
+<br><br>
+
+<<link [[Go along with it|Bully Walk]]>><<trauma 6>><<stress 6>><<status -10>><<npcincr Whitney dom 1>><</link>><<lcool>><<gtrauma>><<gstress>><<gdom>>
+<br>
+	<<if $worn.under_lower.type.includes("naked")>>
+		<<if $exhibitionism gte 75>>
+		<<link [[Flaunt|Bully Walk Flaunt]]>><<npcincr Whitney dom 1>><<npcincr Whitney love 1>><</link>><<exhibitionist5>><<glove>><<gdom>>
+		<br>
+		<</if>>
+	<<else>>
+		<<if $exhibitionism gte 55>>
+		<<link [[Flaunt|Bully Walk Flaunt]]>><<npcincr Whitney dom 1>><<npcincr Whitney love 1>><</link>><<exhibitionist4>><<glove>><<gdom>>
+		<br>
+		<</if>>
+	<</if>>
+<<link [[Refuse|Bully Refuse]]>><</link>>
+<br>
+
+<<else>>
+
+The crowd gawks at you, taking in your bare skin. Whitney beholds you, savouring the feel of having control of your clothing. "Don't forget your place." <<He>> tosses your clothes on top of a locker, high enough that you'll need to stretch. You manage to reach them, but your <<breasts>> are exposed in the process, eliciting a cheer from the audience.
+<br><br>
+
+They lose interest once you're dressed. "Come on, we've wasted enough time with this loser." They leave you in peace. For now.
+<<npcincr Whitney lust 5>><<glust>>
+<br><br>
+
+<<link [[Next|Hallways]]>><<clotheson>><<endevent>><<set $eventskip to 1>><</link>>
+<br>
+
+<</if>>
+
+:: Bully Walk
+<<effects>>
+
+You start walking with Whitney and <<his>> friends. They push you to the front, making sure you're exposed to anyone you meet. Whitney stands at your side, clutching your arm.
+
+<<if $leftarm is "bound" and $rightarm is "bound">>
+<<else>>
+You cover yourself with your other hand.
+<</if>>
+<br><br>
+
+You're steered round a corner and into a corridor full of <<peopley>>. <<covered>> A nearby <<persony>> looks at you and gasps in shock. Others have a similar reaction. As the noise grows more turn to look, until everyone is watching you.
+<br><br>
+
+Some look away, going red in the face. Most though are keen to take in the sight of the <<if $worn.under_lower.type.includes("naked")>>naked<<else>>nearly naked<</if>> <<girl>> being marched down the centre.
+<br><br>
+
+"Don't be shy," Whitney says to the audience. "It's free to look." <<He>> stands behind you and grabs your other arm, forcing your hips forward to expose your body more completely to the hormone-addled crowd. At last, <<he>> pushes you to the ground and dumps your clothes on top of you. <<tearful>> you run from the corridor, and keep running until you find yourself alone once more.
+<<npcincr Whitney lust 5>><<glust>>
+<br><br>
+
+<<fameexhibitionism 50>>
+
+<<link [[Next|Hallways]]>><<clotheson>><<endevent>><<set $eventskip to 1>><</link>>
+<br>
+
+:: Bully Refuse
+<<effects>>
+
+"Suit yourself," <<he>> says. "I'm sure we'll hear stories of the pervert <<girl>> wandering the halls." They leave you stood in the middle of the corridor with your <<lewdness>> on display. There's no one else around.
+<<npcincr Whitney lust 5>><<glust>>
+<br><br>
+<<set $stealtextskip to 1>>
+<<stealclothes>>
+<<endevent>>
+
+<<link [[Next|Hallways]]>><</link>>
+<br>
+
+:: Bully Detention
+<<effects>>
+<<pass 10>>
+
+Whitney drags you along the corridor straight to Leighton's office. <<He>> barges the door open and enters, still clutching your collar. "Good, the perv isn't here yet." <<He>> shoves you beneath a desk and sits down. As soon as you've struggled to your knees <<he>> grabs the back of your hair and forces your face
+<<if $pronoun is "m">>into <<his>> crotch. <<His>> fly is already open.
+<<else>>up <<his>> skirt. <<Hes>> not wearing panties.
+<</if>>
+
+<<if $NPCList[0].penis isnot "none">>
+You feel <<his>> penis erect against your cheek.
+<<else>>
+<<His>> pussy is already wet.
+<</if>>
+<br><br>
+
+<<endevent>><<npc Leighton>><<person1>>
+
+You hear someone enter the room. "You again," says Leighton. "What was it this time?"
+<br><br>
+
+<<endevent>><<npc Whitney>><<person1>>
+
+"I didn't do nothing," Whitney replies.
+
+<<He>> yanks your hair beneath the desk and rubs your mouth against <<his>> <<if $NPCList[0].penis isnot "none">>penis<<else>>pussy<</if>>.
+<br><br>
+
+<<link [[Lick grudgingly|Bully Detention Oral]]>><<set $phase to 0>><<trauma 6>><<stress 6>><<npcincr Whitney dom 1>><<set $submissive += 1>><<set $molestationstart to 1>><</link>><<gtrauma>><<gstress>><<gdom>>
+<br>
+<<if $promiscuity gte 55>>
+<<link [[Lick enthusiastically|Bully Detention Oral]]>><<set $phase to 1>><<npcincr Whitney dom 1>><<set $submissive += 1>><<set $sexstart to 1>><</link>><<promiscuous4>><<gdom>>
+<br>
+<</if>>
+<<if $whitneyromance is 1>>
+<<link [[Lick lovingly|Bully Detention Oral]]>><<set $phase to 2>><<trauma 6>><<npcincr Whitney dom 1>><<npcincr Whitney love 1>><<set $submissive += 1>><<set $sexstart to 1>><</link>><<promiscuous1>><<gtrauma>><<glove>><<gdom>>
+<br>
+<</if>>
+<<link [[Refuse|Bully Detention Refuse]]>><<stress 6>><<detention 4>><<npcincr Whitney dom -1>><</link>><<gdelinquency>><<gstress>><<ldom>>
+
+:: Bully Detention Oral
+<<if $molestationstart is 1>>
+<<set $molestationstart to 0>>
+<<controlloss>>
+<<violence 1>>
+<<neutral 1>>
+<<molested>>
+
+<<maninit>>
+
+<<set $enemyanger to 70>>
+		<<if $NPCList[0].penis isnot "none">>
+		You try to get away with just licking the tip, but <<he>> shoves your lips against it.
+		<<else>>
+		You try to get away with some light licking, but <<he>> shoves your lips against <<his>> entrance.
+		<</if>>
+<br><br>
+
+<<npcoral>><<set $NPCList[0].lefthand to "hair">><<set $NPCList[0].righthand to "none">><<set $head to "grappled">><<set $NPCList[0].mouth to "none">><<set $enemyhealthmax to 10>><<set $enemyhealth to 10>>
+
+<<enable_rescue>>
+<</if>>
+
+<<if $sexstart is 1>>
+<<set $sexstart to 0>>
+<<consensual>>
+<<set $consensual to 1>>
+<<neutral 1>>
+
+<<maninit>>
+
+	<<if $phase is 0>><<set $enemyanger to 70>>
+		<<if $NPCList[0].penis isnot "none">>
+		You try to get away with just licking the tip, but <<he>> shoves your lips against it.
+		<<else>>
+		You try to get away with some light licking, but <<he>> shoves your lips against <<his>> entrance.
+		<</if>>
+	<<elseif $phase is 1>><<set $enemyanger to 70>>
+		<<if $NPCList[0].penis isnot "none">>
+		You tease the base of <<his>> glans with the tip of your tongue.
+		<<promiscuity4>>
+		<<else>>
+		You tease <<his>> clit with the tip of your tongue.
+		<<promiscuity4>>
+		<</if>>
+	<<elseif $phase is 2>><<set $enemyanger to 50>>
+		<<if $NPCList[0].penis isnot "none">>
+		You kiss the base of <<his>> penis, and work your way up the shaft. <<He>> eases <<his>> rough handling of your hair as you kiss <<his>> glans.
+		<<promiscuity1>>
+		<<else>>
+		You plant quick kisses on <<his>> labia. <<He>> eases <<his>> rough handling of your hair as you kiss <<his>> clit.
+		<<promiscuity1>>
+		<</if>>
+	<</if>>
+<br><br>
+
+<<npcoral>><<set $NPCList[0].lefthand to "hair">><<set $NPCList[0].righthand to "none">><<set $head to "grappled">><<set $NPCList[0].mouth to "none">><<set $enemyhealthmax to 10>><<set $enemyhealth to 10>>
+
+<<enable_rescue>>
+<</if>>
+
+<<effects>>
+
+<<effectsman>><<man>>
+
+Leighton lectures Whitney, unaware of your presence or what you're up to beneath the desk.
+<br><br>
+
+<<stateman>>
+<br><br>
+<<if $phase is 2>>
+<<set $enemyanger to 50>>
+<<else>>
+<<set $enemyanger to 70>>
+<</if>>
+<<set $enemyarousal += 20>>
+<<actionsman>>
+
+<<if $alarm is 1 and $rescue is 1>>
+	<span id="next"><<link [[Next|Bully Detention Oral Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Bully Detention Oral Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Bully Detention Oral Finish]]>><</link>></span><<nexttext>>
+<<elseif $finish is 1>>
+	<span id="next"><<link [[Next|Bully Detention Oral Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Bully Detention Oral]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Bully Detention Refuse
+<<effects>>
+
+You keep your mouth shut. Whitney tugs on your hair, making you wince in pain, but you don't relent. <<He>> rubs your face against <<him>>, but you endure. <<He>> soon becomes frustrated and shoves you out from under the desk with <<his>> foot. You land on your back, facing up at a shocked Leighton.
+<br><br>
+
+<<endevent>><<npc Leighton>><<person1>>
+
+"Well this is a surprise," the headteacher says. "If you're so keen on detention I can oblige. For now though, get out." <<He>> pushes you from the room.
+<br><br>
+
+<<endevent>>
+
+<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
+<br>
+
+:: Bully Detention Oral Finish
+<<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+<<ejaculation>><<npcincr Whitney lust -20>>
+
+	<<if $NPCList[0].penis isnot "none">>
+	<<He>> forces your face into <<his>> crotch, making sure you catch every last drop.
+	<<else>>
+	<<He>> forces your face into <<his>> crotch, making sure you can't breathe until <<hes>> done cumming.
+	<</if>>
+	<br><br>
+"Y-yes," <<he>> says. "Fuck, yes."
+<br><br>
+
+Leighton isn't amused. The desk above you shakes as the headteacher leans on it. "Keep that up and I'll keep you here all night."
+<br><br>
+
+"Yes," Whitney whispers as <<he>> continues to fill your face. It seems to satisfy Leighton.
+<br><br>
+
+"Good," the headteacher says, stepping towards the door. You hear it open, then slam shut.
+<br><br>
+
+Once alone, Whitney pulls your head up to face <<him>> and looks down at you. "You make a good sex toy," <<he>> says. <<He>> releases your hair and stands up. <<He>> leaves without looking back.
+<<llust>>
+<br><br>
+
+<<tearful>> you climb to your feet.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
+<<elseif $enemyhealth lte 0>>
+
+Whitney shouts in pain and kicks you out from under the desk. You land on your back, facing up at a shocked Leighton.
+<br><br>
+
+"Well this is a surprise," the headteacher says. "If you're so keen on detention I can oblige. For now though, get out." You're grabbed by the neck, pulled to your feet and shoved from the room.
+<<detention 4>><<gdelinquency>>
+<br><br>
+
+<<tearful>> you climb to your feet.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
+<<elseif $alarm is 1 and $rescue is 1>>
+<<set $rescued += 1>>
+A pair of hands grab your arms and pull you out from beneath the desk. You face up at a shocked Leighton.
+<br><br>
+
+"Well this is a surprise," the headteacher says. "If you're so keen on detention I can oblige. For now though, get out." You're grabbed by the neck, pulled to your feet and shoved from the room.
+<<detention 4>><<gdelinquency>>
+<br><br>
+
+<<tearful>> you climb to your feet.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
+
+<<else>>
+
+Whitney kicks you out from beneath the desk. You face up at a shocked Leighton.
+<br><br>
+
+"Well this is a surprise," the headteacher says. "If you're so keen on detention I can oblige. For now though, get out." You're grabbed by the neck, pulled to your feet and shoved from the room.<<detention 4>><<gdelinquency>>
+<br><br>
+
+<<tearful>> you climb to your feet.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
+
+<</if>>
+
+:: Bully Oral
+<<if $molestationstart is 1>>
+<<set $molestationstart to 0>>
+<<controlloss>>
+<<violence 1>>
+<<neutral 1>>
+<<molested>>
+
+<<maninit>>
+<<He>> forces you to your knees and <<if $pronoun is "m">>unzips <<his>> fly,<<else>>lifts <<his>> skirt,<</if>> revealing <<his>> <<if $NPCList[0].penis isnot "none">>penis<<else>>pussy<</if>>. "Open wide," <<he>> says. <<His>> friends cheer <<him>> on.
+<br><br>
+
+<<npcoral>><<set $NPCList[0].lefthand to "hair">><<set $enemyanger to 70>>
+<<enable_rescue>>
+<</if>>
+
+<<if $sexstart is 1>>
+<<set $sexstart to 0>>
+<<consensual>>
+<<set $consensual to 1>>
+<<neutral 1>>
+
+<<maninit>>
+You drop to your knees as <<he>> <<if $pronoun is "m">>unzips <<his>> fly,<<else>>lifts <<his>> skirt,<</if>> revealing <<his>> <<if $NPCList[0].penis isnot "none">>penis<<else>>pussy<</if>>. "Open wide," <<he>> says. <<His>> friends cheer <<him>> on.
+<<promiscuity4>>
+<br><br>
+
+<<npcoral>><<set $NPCList[0].lefthand to "hair">><<set $enemyanger to 70>>
+<<enable_rescue>>
+<</if>>
+
+<<effects>>
+
+<<effectsman>><<man>>
+
+<<audience>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $alarm is 1 and $rescue is 1>>
+	<span id="next"><<link [[Next|Bully Oral Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Bully Oral Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Bully Oral Finish]]>><</link>></span><<nexttext>>
+<<elseif $finish is 1>>
+	<span id="next"><<link [[Next|Bully Oral Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Bully Oral]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Bully Oral Finish
+<<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+<<ejaculation>><<npcincr Whitney lust -20>>
+
+<<His>> friends applaud <<him>>. "See you later, slut," <<he>> sneers as <<he>> pulls a cigarette from <<his>> shirt pocket.
+<<llust>>
+	<br><br>
+
+<<tearful>> you climb to your feet.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
+<<elseif $enemyhealth lte 0>>
+
+Whitney shouts in pain and staggers away from you.
+<<npcincr Whitney dom -1>><<ldom>>
+<br><br>
+
+"I've had enough of you," Whitney says, a slight quiver in <<his>> voice. "What are you waiting for you fucks? This slut has wasted enough of our time."
+<br><br>
+
+<<tearful>> you climb to your feet.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
+<<elseif $alarm is 1 and $rescue is 1>>
+"Stop crying, slut," Whitney says. <<He>> shoves you to the ground. <<He>> starts kicking you, so you curl up and shield your body. The crowd jeers at you. You think some of them get kicks in of their own.
+<<gpain>><<set $pain += 40>>
+<br><br>
+
+You hazard a peek once the kicking stops, and see Whitney and <<his>> friends walking away.
+<br><br>
+
+<<tearful>> you climb to your feet.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
+
+<<else>>
+
+"Aww," Whitney says. "Has the baby had enough?" <<He>> shoves you to the ground. "Whatever. I was bored anyway." <<He>> and <<his>> friends leave. <<tearful>> you climb to your feet.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
+
+<</if>>
+
+:: Whitney Abduction
+<<set $outside to 0>><<set $location to "town">><<effects>>
+
+<<set $leftarm to "bound">><<set $rightarm to "bound">>
+<<npc Whitney>><<person1>>You wake up to cold water drenching your face. Whitney stands above you, holding an empty bucket. Your arms are bound and you're lying in an unfamiliar alley.
+<br><br>
+
+"Wakey-wakey," <<he>> says. "I knew if I followed you I'd get my chance." <<He>> bunches <<his>> fists. "They don't respect me any more thanks to you. But that won't be a problem now." A van stops at the end of the alley. Whitney drags you to your feet. "You're going to disappear. So I don't have to see your stupid face ever again. And I'm even going to make some money from it."
+<br><br>
+
+<<generate2>><<generate3>><<person2>>
+
+A <<person2>><<person>> and <<person3>><<person>> climb out the van and walk towards you. "Here you go," <<person1>>Whitney says. "One slut, as promised." <<He>> shoves you to the ground in front of <<him>>.
+<br><br>
+
+<<person2>>"Very nice," the <<person>> says, stepping over you. "You're just the boss' type."
+<br><br>
+
+<<person1>>"Let go of me!" Whitney protests as the <<person3>><<person>> grabs <<person1>><<his>> arms. "I'm not the <<girl>> you're getting. That's <<phim>> on the floor."
+<br><br>
+
+<<person2>>"How do I put this," the <<person>> says, before slapping Whitney's face. "Your days of making decisions are over."
+<br><br>
+
+The pair start dragging Whitney towards the van. <<person1>>Whitney struggles and screams. "I said let go. Stop. P-please stop." <<He>> starts to sob.
+<br><br>
+
+<<link [[Intervene|Whitney Abduction Intervene]]>><</link>>
+<br>
+<<link [[Stay out of it|Whitney Abduction Stay]]>><</link>>
+<br>
+
+:: Whitney Abduction Intervene
+<<set $outside to 0>><<set $location to "town">><<effects>><<famegood 20>>
+
+You scramble to your feet. Your arms are still tied, but you charge at the <<person2>><<person>>. You run into <<him>>, catching <<him>> off guard and knocking <<him>> to the ground.
+<br><br>
+
+The <<person3>><<person>> stares dumbstruck. Whitney struggles free and together you run from the alley.
+<br><br>
+
+<<person1>>You feel safer once in public. Whitney leans against a wall and pants through <<his>> sobs. <<He>> looks at you with a conflicted expression on <<his>> face, then runs away.
+<br><br>
+<<npcset Whitney state "rescued">>
+<<endevent>>
+<<destinationeventend>>
+
+:: Whitney Abduction Stay
+<<set $outside to 0>><<set $location to "town">><<effects>>
+
+You lie still on the floor. They open the back of the van and shove the crying Whitney in. The <<person3>><<person>> climbs in after <<person1>> <<him>>. The <<person2>><<person>> shuts the doors, cutting off the sound of Whitney's cries. <<He>> climbs in the front seat and drives away.
+<br><br>
+<<dismissWhitney>>
+<<endevent>>
+<<destinationeventend>>
+
+:: Bully Pat
+<<effects>>
+
+You let <<him>> continue. <<He>> adds <<his>> other hand and starts massaging your scalp. Your body reacts of its own accord, and you shiver with pleasure. <<He>> grips your hair and pulls your face close to <<his>> own, "Don't forget who owns you." <<He>> licks your cheek before shoving you to the ground.
+<br><br>
+
+<<tearful>> you climb to your feet. <<He>> leaves with <<his>> friends.
+<br><br>
+
+<<endevent>>
+
+<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
+<br>
+
+:: Bully Shake
+<<effects>>
+
+You shake <<him>> off. "Aww," <<he>> says. "The little <<girl>> is sensitive. Later loser." <<He>> leaves with <<his>> friends.
+<br><br>
+
+<<endevent>>
+
+<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
+<br>
+
+:: Bully Top Flaunt
+<<effects>>
+
+<<if !$worn.upper.type.includes("naked")>>
+You <<pullup>> your $worn.upper.name.
+<<else>>
+Whitney stands back to observe your exposed <<breasts>>.
+<</if>>
+<br><br>
+
+<<if $player.gender_appearance is "m">>
+"Nice," <<he>> says as you turn to give everyone a view of your chest. "You know how to give a show."
+<<elseif $breastsize is 0>>
+"<<pShes>> so small!" <<he>> exclaims. You cover your <<nipples>> with your fingers, but turn to give everyone a good view of your flat chest.
+<<insecurity "breasts_tiny" 5>><<ginsecurity "breasts_tiny">>
+<<elseif $breastsize lte 5>>
+"<<pShes>> so small!" <<he>> exclaims. You cover your <<nipples>> with your fingers, but turn to give everyone a good view of your <<breasts>>.
+<<insecurity "breasts_small" 5>><<ginsecurity "breasts_small">>
+<<elseif $breastsize lte 7>>
+"You've got a nice pair," <<he>> says. You cover your <<nipples>> with your fingers, but turn to give everyone a good view of your <<breasts>>.
+<<if $player.gender is "m">><<insecurity "breasts_big" 5>><<ginsecurity "breasts_big">><</if>>
+<<else>>
+"Look at the size of those things." <<he>> says. You cover your <<nipples>> with your fingers, but turn to give everyone a good view of your <<breasts>>.
+<<insecurity "breasts_big" 5>><<ginsecurity "breasts_big">>
+<</if>>
+<<exhibitionism2>>
+<br><br>
+
+"It's good that you know your place. See you later, slut," <<he>> says before leaving you to cover yourself.
+<<npcincr Whitney lust 5>><<glust>>
+<br><br>
+
+<<link [[Next|Hallways]]>><<endevent>><<set $eventskip to 1>><</link>>
+<br>
+
+:: Bully Strip Flaunt
+<<effects>>
+
+<<if $worn.under_lower.type.includes("naked")>>
+	<<if $leftarm is "bound" and $rightarm is "bound">>
+You shuffle out of your clothing. <<flaunting>> you turn to keep your <<genitals>> and <<undertop>> concealed while giving everyone a good look at your <<bottom>>.
+	<<else>>
+<<flaunting>> you take off your clothing and keep your <<genitals>> and <<undertop>> barely concealed with your hands.
+	<</if>>
+<<exhibitionism4>>
+<<else>>
+	<<if $leftarm is "bound" and $rightarm is "bound">>
+	You shuffle out of your clothing. <<flaunting>> you turn to keep your <<undertop>> concealed and give them a good look at your <<bottom>>.
+	<<else>>
+	<<flaunting>> you take off your clothing and keep your <<undies>> and <<undertop>> barely concealed with your hands.
+	<</if>>
+<<exhibitionism3>>
+<</if>>
+
+<<upperstrip>>
+<<lowerstrip>>
+
+<br><br>
+
+<<if $bullyevent is 5>>
+
+Whitney snatches your clothes away as the crowd gawks at you, taking in your bare skin. Whitney beholds you, savouring the feel of having control of your clothing. "Let's go for a walk," <<he>> says. "You don't have to, but I'll be taking your clothes with me."
+<br><br>
+
+<<link [[Go along with it|Bully Walk]]>><<trauma 6>><<stress 6>><<status -10>><<npcincr Whitney dom 1>><</link>><<lcool>><<gtrauma>><<gstress>><<gdom>>
+<br>
+	<<if $worn.under_lower.type.includes("naked")>>
+		<<if $exhibitionism gte 75>>
+		<<link [[Flaunt|Bully Walk Flaunt]]>><<npcincr Whitney dom 1>><<npcincr Whitney love 1>><</link>><<exhibitionist5>><<glove>><<gdom>>
+		<br>
+		<</if>>
+	<<else>>
+		<<if $exhibitionism gte 55>>
+		<<link [[Flaunt|Bully Walk Flaunt]]>><<npcincr Whitney dom 1>><<npcincr Whitney love 1>><</link>><<exhibitionist4>><<glove>><<gdom>>
+		<br>
+		<</if>>
+	<</if>>
+<<link [[Refuse|Bully Refuse]]>><</link>>
+<br>
+
+<<else>>
+
+Whitney snatches your clothes away as the crowd gawks at you, taking in your bare skin. Whitney beholds you, savouring the feel of having control of your clothing. "Don't forget your place." <<He>> tosses your clothes on top of a locker, high enough that you'll need to stretch. You manage to reach them, but your <<breasts>> are exposed in the process, eliciting a cheer from the audience.
+<br><br>
+
+They lose interest once you're dressed. "Come on, we've wasted enough time with this loser." They leave you in peace. For now.
+<<npcincr Whitney lust 5>><<glust>>
+<br><br>
+
+<<link [[Next|Hallways]]>><<clotheson>><<endevent>><<set $eventskip to 1>><</link>>
+<br>
+
+<</if>>
+
+:: Bully Walk Flaunt
+<<effects>>
+
+You start walking with Whitney and <<his>> friends. They push you to the front, making sure you're exposed to anyone you meet. Whitney stands at your side, clutching your arm.
+
+<<if $leftarm is "bound" and $rightarm is "bound">>
+<<else>>
+You cover yourself with your other hand.
+<</if>>
+<br><br>
+
+You're steered round a corner and into a corridor full of <<peopley>>. <<covered>> A nearby <<persony>> looks at you and gasps in shock. Others have a similar reaction. As the noise grows more turn to look, until everyone is watching you.
+<br><br>
+
+<<flaunting>> you march down the corridor like it was a catwalk. Some look away, going red in the face. Most though are keen to take in the sight of the <<if $worn.under_lower.type.includes("naked")>>naked<<else>>nearly naked<</if>> <<girl>> marching down the centre.
+<br><br>
+
+"Feel free to look," you announce. "There's no shame in it."
+
+	<<if $worn.under_lower.type.includes("naked")>>
+	<<exhibitionism5>>
+	<<else>>
+	<<exhibitionism4>>
+	<</if>>
+
+Whitney and <<his>> friends follow behind you. When you reach the end of the corridor you turn and face them. "You're shameless," <<he>> says. <<He>> throws your clothes at you. "I wish every slut was as keen as you." <<He>> leaves you to get dressed.
+<<npcincr Whitney lust 5>><<glust>>
+<br><br>
+
+<<fameexhibitionism 50>>
+
+<<link [[Next|Hallways]]>><<clotheson>><<endevent>><<set $eventskip to 1>><</link>>
+<br>
+
+:: Bully Theft
+<<set $outside to 1>><<set $location to "town">><<effects>>
+<<pass 20>>
+Whitney drags you through the school gates. "We're going to Elk Street," <<he>> says. "You're gonna help us find something." Someone keeps jabbing at your waist throughout the journey.
+<br><br>
+
+You arrive beside a walled compound. There's a small hole at the base of the wall. "I'm out of fags," Whitney says. "Go get me some." <<He>> shoves you to your knees and kicks your <<bottom>> several times, pushing you into the hole.
+<br><br>
+
+You stand on the other side. You're in an open space behind a large building. There's a vehicle not far away. It's back doors are wide open, many large boxes of cigarettes. You walk over and pick up a couple.
+<br><br>
+
+As you turn back to the wall however, you hear a growl behind you. You run, and the growl becomes a bark.
+<br><br>
+
+You dive through the hole. Whitney takes the boxes from your hands. You try to crawl through but you're stuck.
+
+	<<if $submissive gte 1150>>
+	"H-help," you say.
+	<<elseif $submissive lte 850>>
+	"Don't just stand there," you say.
+	<<else>>
+	"Please help," you say.
+	<</if>>
+<br><br>
+<<endevent>>
+<<beastNEWinit 1 dog>>
+<<if $monster isnot 1 and $bestialitydisable is "t">>
+	<<endevent>>
+	<<npc Whitney>><<person1>>
+	Whitney laughs. "Nah, I'm not gonna be caught helping a thief. See you later slut."
+	<<npcincr Whitney lust 5>><<glust>>
+	<br><br>
+
+	You wriggle and manage to get through the hole before the dog reaches you. The struggle hurt you and damaged your clothing.
+	<<npcincr Whitney lust 5>><<glust>><<beastescape>>
+	<br><br>
+
+	<<endevent>>
+
+	<<link [[Next|Elk Street]]>><<endevent>><</link>>
+	<br>
+<<elseif $whitneyromance is 1>>
+	<<endevent>>
+	<<npc Whitney>><<person1>>
+	Whitney considers a moment, then grabs your arms. <<He>> pulls you through to safety. "Can't let that dog have its way with you. You'd smell all funny." <<He>> and <<his>> friends laugh. "See you later <<girl>>. Thanks for the help."
+	<<npcincr Whitney lust 5>><<glust>>
+	<br><br>
+
+	<<endevent>>
+
+	<<link [[Next|Elk Street]]>><<endevent>><</link>>
+	<br>
+<<else>><!-- Modified for Beast People -->
+	Whitney laughs. "Nah, I'm not gonna be caught helping a thief. See you later slut."
+	<<npcincr Whitney lust 5>><<glust>>
+	<br><br>
+	You feel the <<beasttype>> prod your behind.
+	<br><br>
+	
+	<<link [[Next|Bully Theft Dog]]>><<set $molestationstart to 1>><</link>>
+	<br>
+
+<</if>>
+
+:: Bully Outside Fight
+<<if $fightstart is 1>>
+<<set $fightstart to 0>>
+
+<<neutral 1>>
+
+<<maninit>>
+<<set $enemytrust -= 100>>
+<<set $enemyanger += 200>>
+<<npcidlegenitals>><<hand_gag 0 left>>
+You shove Whitney away and try to escape, but <<he>> grabs you from behind and wraps <<his>> arm around your mouth.
+<br><br>
+<<if $delinquency lt 400>><<enable_rescue>><</if>>
+<</if>>
+
+<<effects>>
+<<effectsman>><<man>>
+
+<<if $alarm is 1 and $rescue is 0>>
+<<set $alarm to 0>>
+No one comes to your aid, likely due to your reputation as a delinquent.
+<br><br>
+<</if>>
+
+<<audience>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Bully Outside Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Bully Outside Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $alarm is 1 and $rescue is 1>>
+	<span id="next"><<link [[Next|Bully Outside Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $pain gte 100 and $willpowerpain is 0>>
+	<span id="next"><<link [[Next|Bully Outside Fight Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Bully Outside Fight]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Bully Outside Fight Finish
+<<set _phase to $phase>>
+<<if $enemyhealth lte 0>>
+
+You push <<him>> to the ground, giving you a chance to escape. <<tearful>> you shove <<his>> friends aside and flee to safety.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<set $eventskip to 1>>
+<<playground>>
+
+<<elseif $enemyarousal gte $enemyarousalmax>>
+<<ejaculation>>
+
+"You... stupid..." <<he>> pants, leaning against the wall. <<His>> friends are so bemused by <<his>> state that they don't notice you slip away. <<tearful>> you escape to safety.
+<<llust>><<npcincr Whitney lust -20>>
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<set $eventskip to 1>>
+<<playground>>
+
+<<elseif $alarm is 1 and $rescue is 1>>
+
+Your cries attract attention. "Crybaby," Whitney says. "We'll get you next time." <<He>> and <<his>> friends leave. <<tearful>> you struggle to your feet.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<set $eventskip to 1>>
+<<playground>>
+
+<<else>>
+
+You're too battered and bruised to resist.
+<br><br>
+
+<<endcombat>>
+
+<<npc Whitney>><<person1>>
+
+	<<if $bullyeventoutside is 1>>
+	<<link [[Next|Bully Theft]]>><</link>>
+	<<elseif $bullyeventoutside is 2>>
+	<<link [[Next|Bully Light]]>><</link>>
+	<<elseif $bullyeventoutside is 3>>
+	<<link [[Next|Bully Romance]]>><</link>>
+	<<elseif $bullyeventoutside is 4>>
+	<<link [[Next|Bully Theft]]>><</link>>
+	<<elseif $bullyeventoutside is 5>>
+	<<link [[Next|Bully Whore]]>><</link>>
+	<<else>>
+		<<if _phase is 1>>
+			<<link [[Next|Bully Tattoo Write]]>><</link>>
+		<<else>>
+			<<link [[Next|Bully Tattoo]]>><</link>>
+		<</if>>
+	<</if>>
+
+<</if>>
+
+:: Bully Theft Dog
+<<if $molestationstart is 1>>
+<<set $molestationstart to 0>>
+<<controlloss>>
+<<violence 1>>
+<<neutral 1>>
+<<molested>>
+	<<beastCombatInit>>
+
+<<set $enemytrust -= 40>><<set $position to "wall">><<set $leftarm to "bound">><<set $rightarm to "bound">><<set $head to "bound">>
+
+<</if>>
+
+<<effects>>
+<<effectsman>>
+<br>
+<<beast $enemyno>>
+<br><br>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Bully Theft Dog Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Bully Theft Dog Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Bully Theft Dog]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Bully Theft Dog Finish
+<<set $outside to 1>><<set $location to "town">><<effects>>
+
+<<if $enemyarousal gte $enemyarousalmax>>
+
+<<beastejaculation>>
+
+You hear the <<beasttype>> walk away from you, and manage to wriggle through the hole.
+<br><br>
+
+<<tearful>> you rise to your feet.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Elk Street]]>><<set $eventskip to 1>><</link>>
+<br>
+<<elseif $enemyhealth lte 0>>
+
+You hear the <<beasttype>> yelp and run away. You manage to wriggle through the hole.
+<br><br>
+
+<<tearful>> you rise to your feet.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Elk Street]]>><<set $eventskip to 1>><</link>>
+<br>
+<</if>>
+
+:: Bully Light
+<<set $outside to 1>><<set $location to "town">><<effects>>
+<<pass 20>>
+
+You're dragged by the arm through the school gates. "The breeze from the sea is nice," <<he>> says. "I'll show you what I mean."
+<br><br>
+
+You journey to Mer Street. When you arrive Whitney steps up to the edge of the pier. "This is nice," <<he>> says. <<He>> points at a street light. <<His>> friends grasp your arms and drag you over to it. Someone ties your arms in place.
+<br><br>
+<<set $leftarm to "bound">><<set $rightarm to "bound">>
+Whitney saunters over to you. "Think I'll leave you here awhile. You'll have company." <<He>> points at a fishing ship just landing. "Doesn't look like they caught much. They must be real frustrated. I know what'll cheer them up. A nice slut all tied and ready for them." <<He>> and <<his>> friends leave. You can't turn to tell if they're gone or watching from somewhere.
+<br><br>
+
+<<endevent>><<generate1>><<generate2>><<generate3>><<person1>>
+
+A <<person>> on board the boat points at you. <<He>> comes ashore, followed by <<his>> crewmates.
+<br><br>
+
+<<set $rng to random(1, 100)>>
+<<if $rng gte 81>>
+"What do we have here," the <<person>> says as <<he>> draws close. "Now who'd tie you up like that. I bet you did something naughty to deserve it."
+<br><br>
+
+<<person2>>A <<person>> arrives at <<person1>><<his>> side. "We should probably help punish <<phim>>. Civic duty and all that."
+<br><br>
+
+<<link [[Next|Bully Light Molestation]]>><<set $molestationstart to 1>><</link>>
+<br>
+
+<<else>>
+
+<<link [[Next|Bully Light 2]]>><</link>>
+<br>
+
+<</if>>
+
+:: Bully Light Molestation
+<<if $molestationstart is 1>>
+<<set $molestationstart to 0>>
+<<controlloss>>
+<<violence 1>>
+<<neutral 1>>
+<<molested>>
+
+<<maninit>>
+<</if>>
+
+<<effects>>
+
+<<effectsman>><<man>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Bully Light Molestation Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Bully Light Molestation Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Bully Light Molestation]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Bully Light Molestation Finish
+<<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+<<ejaculation>>
+
+They laugh and joke with each other as they head back to their boat.
+<br><br>
+
+<<endcombat>>
+
+<<npc Whitney>><<person1>>
+You hear Whitney's voice behind you. "I bet you made their day." Your hands<<if $feetuse is "bound">> and legs<</if>> come free. "Don't forget who owns your ass. If I want you servicing sailors twenty-four hours a day that's what'll happen." <<tearful>> you remove the remains of the rope from your arms. Whitney and <<his>> friends leave you by the pier.
+<<npcincr Whitney lust 5>><<glust>>
+<br><br>
+<<unbind>>
+<<clotheson>>
+<<endevent>>
+<<link [[Next|Mer Street]]>><<set $eventskip to 1>><</link>>
+
+<<elseif $enemyhealth lte 0>>
+"Maybe paying a whore is worth it after all," the <<person1>><<person>> says. "They don't kick back." They grumble as they head back to their boat.
+<br><br>
+
+<<endcombat>>
+
+<<npc Whitney>><<person1>>
+You hear Whitney's voice behind you. "You sure showed them." Your hands<<if $feetuse is "bound">> and legs<</if>> come free. "Don't forget who owns your ass." <<tearful>> you remove the remains of the rope from your arms. Whitney and <<his>> friends leave you by the pier.
+<br><br>
+<<unbind>>
+<<clotheson>>
+<<endevent>>
+<<link [[Next|Mer Street]]>><<set $eventskip to 1>><</link>>
+
+<</if>>
+
+:: Bully Romance
+<<set $dateCount.Total++>><<set $dateCount.Whitney++>>
+<<set $outside to 0>><<set $location to "town">><<effects>>
+<<pass 20>>
+
+<<He>> pushes you through the school gates, groping your <<bottom>> the whole time without caring who sees. "I have something romantic planned," <<he>> says. "Only the best for my <<bitch>>."
+<br><br>
+
+<<He>> takes you to Harvest Street, to a seedy pub. "Sit down. I'll get drinks."
+<br><br>
+
+<<He>> returns with two colourful looking glasses. "Drink up," <<he>> says.
+<br><br>
+
+<<link [[Drink|Bully Romance 2]]>><<set $phase to 0>><<npcincr Whitney dom 1>><</link>><<gdom>>
+<br>
+<<link [[Don't drink|Bully Romance 2]]>><<set $phase to 1>><<npcincr Whitney dom -1>><</link>><<ldom>>
+<br>
+
+:: Bully Romance 2
+<<set $outside to 0>><<set $location to "town">><<effects>>
+
+<<if $phase is 0>>
+You sip the drink. It's very sweet. You feel light-headed within moments.
+<br><br>
+<<alcohol 120>>
+<</if>>
+
+<<He>> sips <<his>> drink and stares at you. "Why don't you come over here? Sit on my lap."
+<br><br>
+
+<<link [[Sit on lap|Bully Romance 3]]>><<set $phase to 0>><<npcincr Whitney dom 1>><<npcincr Whitney love 1>><</link>><<glove>><<gdom>>
+<br>
+<<link [[Refuse|Bully Romance 3]]>><<set $phase to 1>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>><</link>><<llove>><<ldom>>
+<br>
+
+:: Bully Romance 3
+<<set $outside to 0>><<set $location to "town">><<effects>>
+
+<<if $phase is 0>>
+You walk around the table and sit on <<his>> waiting lap. A few heads turn to look. <<He>> leans close.
+
+<<else>>
+You shake your head. <<He>> reaches forward and grabs your shoulders before pulling you onto the table. <<He>> leans close.
+
+<</if>>
+
+"I'm going to fuck you," <<he>> whispers. "Right here. Everyone will see and know you're mine."
+<br><br>
+
+<<link [[Nod|Bully Romance Sex]]>><<set $sexstart to 1>><<npcincr Whitney dom 1>><<npcincr Whitney love 1>><</link>><<promiscuous1>><<glove>><<gdom>>
+<br>
+<<link [[Refuse|Bully Romance Sex]]>><<set $molestationstart to 1>><<npcincr Whitney dom -1>><<npcincr Whitney love -1>><</link>><<llove>><<ldom>>
+<br>
+
+:: Bully Romance Sex
+<<if $molestationstart is 1>>
+<<set $molestationstart to 0>>
+<<controlloss>>
+<<violence 1>>
+<<neutral 1>>
+<<molested>>
+
+<<maninit>>
+<span class="red">"That's not your decision to make,"</span> <<he>> says.
+<br><br>
+<</if>>
+
+<<if $sexstart is 1>>
+<<set $sexstart to 0>>
+<<consensual>>
+<<set $consensual to 1>>
+<<neutral 1>>
+
+<<maninit>><<promiscuity1>>
+
+<</if>>
+
+<<effects>>
+
+<<effectsman>><<man>>
+
+<<audience>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Bully Romance Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Bully Romance Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $finish is 1>>
+	<span id="next"><<link [[Next|Bully Romance Sex Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Bully Romance Sex]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Bully Romance Sex Finish
+<<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+<<ejaculation>><<npcincr Whitney lust -20>>
+
+The audience applauds. Whitney gasps and climbs off you.
+<<if $orgasmcurrent is 0 and !$worn.genitals.type.includes("chastity")>>
+	<<He>> pulls your head close and whispers. "Couldn't even fake it? You're embarrassing me in front of the crowd."
+	<<if !$genderknown.includes("Whitney") and ($player.gender is "h") or ($player.gender_appearance is "m" and $player.gender isnot "m") or ($player.gender_appearance is "f" and $player.gender isnot "f")>>
+		<<set $genderknown.pushUnique("Whitney")>>
+		<<His>> hand trails down, until it makes contact with your <<genitals>>. For a moment, <<he>> seems surprised by what <<he>> feels, but <<he>> smiles anyway.
+		<br><br>
+	<</if>>
+	<<He>> quickly grabs your <<genitals>> and
+	<<if $player.gender is "h">>
+		starts to jerk you off with one hand, plunging a finger from <<his>> other hand into your <<pussy>>.
+	<<elseif $player.penisExist>>
+		starts to jerk you off, paying extra attention to the tip of your <<penis>>.
+	<<else>>
+		plunges a finger into your <<pussy>>, swirling it around.
+	<</if>>
+	<<arousal 5000>>
+	<<if $arousal gte $arousalmax>>
+		<<orgasm>><<He>> smiles.
+	<<else>>
+		"I'll teach you to appreciate a good fuck."
+		<br><br>
+		<<He>> locks eyes with you, and the speed of <<his>> assault increases.
+		<<if $player.gender is "h">>
+			<<He>> uses <<his>> thumb to rub your tip in circles, while sliding a second finger into your <<pussy>>.
+		<<elseif $player.penisExist>>
+			<<He>> uses <<his>> thumb to rub your tip in circles<<if $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 16 and $analdisable is "f">>, and slowly slides a finger into your <<bottom>>. <<He>> grins as <<he>> reaches your prostate<<else>>, giving your <<bottom>> a slap with <<his>> other hand<</if>>.
+		<<else>>
+			<<He>> plunges a second finger into your <<pussy>>, and uses <<his>> other hand to fondle your <<breasts>>.
+		<</if>>
+		<<He>> kisses you, muffling your involuntary moans.
+		<br><br>
+		<<set $arousal to 10000>>
+		<<if $arousal gte $arousalmax>>
+			<<orgasm>>
+		<</if>>
+	Whitney gives you a wicked smile, and the crowd cheers once again.
+	<</if>>
+<</if>>
+
+<<clotheson>>
+
+<<tearful>> you climb to your feet. Whitney takes your hand. "Let's leave before these perverts get any funny ideas." <<He>> drags you from the pub.<<takeHandholdingVirginity "Whitney" "romantic">>
+<br><br>
+
+<<He>> pulls a cigarette out of <<his>> shirt pocket once outside. "And they say I'm not romantic," <<he>> says. "Fuck off home or wherever, I've got things to do." <<He>> walks away from you.
+<<llust>>
+<br><br>
+
+<<endcombat>>
+
+<<link [[Next|Harvest Street]]>><<set $eventskip to 1>><</link>>
+<<elseif $enemyhealth lte 0>>
+
+You shove Whitney off you. <<tearful>> you flee the pub. The audience cheer at the spectacle.
+<<llove>><<ldom>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>>
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Harvest Street]]>><<set $eventskip to 1>><</link>>
+
+<<else>>
+
+"You're showing me up in front of all these people," Whitney says. "You should treat your <<nnpc_girlfriend "Whitney">> better." <<He>> shoves you away, adjusts <<his>> clothes and leaves the pub.
+<<llove>><<ldom>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>>
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<tearful>> you leave the same way as Whitney, but don't see them anywhere.
+<br><br>
+
+<<link [[Next|Harvest Street]]>><<set $eventskip to 1>><</link>>
+
+<</if>>
+
+:: Bully Whore
+<<set $outside to 0>><<set $location to "town">><<effects>>
+<<pass 20>>
+
+Whitney drags you by your hair, forcing you to bend forwards. <<He>> leads you through the school gates and down a nearby alley. <<He>> releases you in front of a <<endevent>><<generate1>><<person1>><<person>>.
+
+<<if !$worn.upper.type.includes("naked")>>
+Without warning, Whitney <<pullsup>> your $worn.upper.name.
+<</if>>
+
+"There. I've shown you a school <<girl>> shirtless. Now pay up."
+<br><br>
+
+<<if $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 20>>
+
+The <<person>> reaches forward to grope your <<breasts>>. "No touching!" Whitney says. "That's extra."
+<br><br>
+
+"How much extra?"
+<br><br>
+
+Whitney pauses, refusing to let you go. "£50."
+<br><br>
+
+"Done," the <<person>> says. <<He>> pulls some notes from <<his>> pocket. Whitney shoves you over while taking the money.
+<br><br>
+
+<<link [[Next|Bully Whore Molestation]]>><<set $molestationstart to 1>><</link>>
+<br>
+
+<<else>>
+
+The <<person>> reaches forward to grope your <<breasts>>. "No touching!" Whitney says. "You haven't paid for that." You struggle free.
+<br><br>
+
+<<endevent>><<npc Whitney>><<person1>>
+
+You leave the alley as Whitney takes <<his>> money. "Don't be upset," <<he>> shouts at you. "You've been productive for once."
+<<npcincr Whitney lust 5>><<glust>><<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
+<br><br>
+
+<<link [[Next|Oxford Street]]>><<endevent>><<set $eventskip to 1>><</link>>
+<br>
+
+<</if>>
+
+:: Bully Whore Molestation
+<<if $molestationstart is 1>>
+<<set $molestationstart to 0>>
+<<controlloss>>
+<<violence 1>>
+<<neutral 1>>
+<<molested>>
+
+<<maninit>>
+<</if>>
+
+<<effects>>
+
+<<effectsman>><<man>>
+
+Whitney counts the money.
+<br><br>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Bully Whore Molestation Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Bully Whore Molestation Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Bully Whore Molestation]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Bully Whore Molestation Finish
+<<if $enemyarousal gte $enemyarousalmax>>
+<<ejaculation>><<set $forcedprostitutionstat += 1>>
+
+"I hope you're satisfied," Whitney says. "Give another £20 and I'll let you have another go."
+<br><br>
+
+"I don't think my heart could take it," the <<person>> says. "Another time maybe."
+
+<<tearful>> you stagger from the alley.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Oxford Street]]>><<set $eventskip to 1>><</link>>
+
+<<elseif $enemyhealth lte 0>>
+
+
+
+"Fuck!" the <<person1>><<person>> shouts as <<he>> backs away from you. "I want my money back. This one has rabies or something."
+<br><br>
+
+Whitney laughs. "There's nothing wrong with it. You're just a weakling. Come back with more money and you can have another go."
+<br><br>
+
+<<tearful>> you leave the alley.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Oxford Street]]>><<set $eventskip to 1>><</link>>
+
+<</if>>
+
+:: Bully Light 2
+<<set $outside to 1>><<set $location to "town">><<effects>>
+
+<<He>> starts jogging towards you as <<he>> gets closer. "Hang on there <<girl>>. Won't take long." <<He>> walks behind you. Your bonds come loose. "You alright?"
+<br><br>
+<<unbind>>
+"Tha-" you begin, but Whitney interrupts you from the other side of the road. "What are you doing? Just fuck <<phim>> already."
+<br><br>
+
+One of the <<persons>> crewmates catches up and stares at Whitney. "Something's wrong with that kid. Damn."
+<br><br>
+
+"You shouldn't tie your friend up like that," the <<person>> shouts back at Whitney. "Not in this town especially."
+<br><br>
+
+<<endevent>><<npc Whitney>><<person1>>
+
+Whitney steps forward, fists clenched. <<His>> gang doesn't seem so eager to start a fight though. Two of them pull <<him>> back. "You weak fucks," <<he>> shouts, you're not sure at who. "I hope you fish fuckers get raped by a whale." <<He>> turns with <<his>> friends and walks away.
+<br><br>
+
+The crew make sure you're okay, then head back to their ship.
+<br><br>
+
+<<endevent>>
+
+<<link [[Next|Mer Street]]>><<set $eventskip to 1>><</link>>
+<br>
+
+:: School Leave Whitney
+<<set $outside to 1>><<set $location to "school">><<set $bullygate to 1>><<schooleffects>><<effects>>
+
+<<if $whitneyReunionScene isnot undefined>>
+	<<npc Whitney>><<person1>>
+	<<unset $whitneyReunionScene>>
+	As you pass through the gate, something grabs your arm. Before you can react, you're yanked backwards and find yourself face-to-face with Whitney. <<His>> goons flank you, preventing escape. "There you are, bitch," Whitney says, looking aggravated. "What? You didn’t think I’d notice when my favourite slut goes missing?" You’re unable to respond as <<he>> presses <<his>> lips against your mouth, kissing you.<<takeKissVirginity "Whitney" "loveInterest">>
+	<br><br>
+
+	Whitney’s arm wraps around your waist as <<he>> holds the back of your head still. <<He>> leans forward, forcing you to bend backward. Jeers erupt from <<his>> goons as they watch in anticipation.
+	<br><br>
+
+	"Fuck <<phim>>!"
+	<br>
+	"Beat <<phim>>!"
+	<br>
+	"Take <<pher>> clothes!"
+	<br><br>
+
+	Whitney glares at you, <<his>> grip the only thing keeping you from falling. You swear you see the faintest trace of a tear in <<his>> eye. Before it goes any further, <<he>> drops you on the floor. 
+	<br><br>
+
+	Whitney’s breathing is heavier. <<He>> speaks, "Only... I get to kidnap you. Got it?" <<He>> roughly shoves you through the gate, not taking <<his>> eyes off you.<<npcincr Whitney dom 3>><<stress 6>><<gstress>><<ggdom>>
+	<br><br>
+	
+	<<link [[Next|Oxford Street]]>><<endevent>><</link>>
+	<br>
+<<elseif $halloween is 1 and !$halloween_whitney>><<set $halloween_whitney to 1>>
+	<<npc Whitney>><<person1>>
+	An arm wraps around your neck. It's Whitney. <<He>> keeps walking, pushing you along. <<if $monthday is 31>>"Happy Halloween,"<<else>>"Halloween soon,"<</if>> <<he>> says, squeezing. <<if $monthday is 31>>"We're<<else>>"When it arrives we're<</if>> going trick-or-treating on <span class="gold">Domus Street after <<ampm 19 00>></span>. You better dress nice." <<He>> doesn't wait for a response before turning and walking back to <<his>> friends.
+	<br><br>
+
+	<<link [[Next|Oxford Street]]>><<endevent>><</link>>
+
+<<elseif $whitneyromance is 1>>
+	<<if $rng gte 81>>
+		<<npc Whitney>><<person1>>Whitney's busy arguing with one of <<his>> friends and doesn't spot you. Another of <<his>> friends, a <<generatey2>><<person2>><<person>> does though, and walks over to you. "You're Whitney's slut," <<he>> says. "Think I fancy a piece myself." You withdraw into a defensive posture as <<he>> tries to grope your <<genitals>>.
+		<br><br>
+
+		The <<person2>><<person>> turns just in time to get smacked in the face. Whitney grasps <<his>> collar and pulls <<him>> close. "Keep your <<if $pronoun is "m">>pervert hands<<else>>skanky ass<</if>> away from my slut." Whitney shoves <<him>> aside. <<He>> turns away, red in the face as Whitney grabs your arm and tugs.
+		<br><br>
+
+		<<endevent>><<npc Whitney>><<person1>><<He>> pulls you away from <<his>> friends, behind the bike shed. "The nerve of that cunt," <<he>> says. "I need to vent," <<he>> shoves you to the ground and drops on top of you.
+		<br><br>
+
+		<<link [[Next|School Leave Whitney Rape]]>><<set $molestationstart to 1>><</link>>
+		<br>
+
+	<<elseif $rng gte 61>>
+		<<npc Whitney>><<person1>>Whitney grins when <<he>> spots you. <<He>> stomps out <<his>> cigarette and marches over.
+		<<if $worn.face.type.includes("mask")>>
+			"Why hide your pretty face?" <<he>> asks. <<He>> reaches for your $worn.face.name.
+			<br><br>
+
+			<<link [[Allow it|School Leave Whitney Mask]]>><<npcincr Whitney love 1>><</link>><<glove>>
+			<br>
+			<<link [[Push Whitney's arm away|School Leave Whitney Mask Push]]>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>><</link>><<llove>><<ldom>>
+			<br>
+		<<elseif $skin.left_cheek.special is "Whitney">>
+			<<He>> leans in and licks your left cheek, right on the <<tattoo left_cheek>>. "Just wanted to make sure you were still labelled." <<He>> gives your <<bottom>> a smack before returning to <<his>> friends.
+			<<gstress>><<garousal>><<glust>><<stress 6>><<arousal 600>><<npcincr Whitney lust 5>>
+			<br><br>
+			<<link [[Next|Oxford Street]]>><<endevent>><</link>>
+			<br>
+		<<elseif $skin.right_cheek.special is "Whitney">>
+			<<He>> leans in and licks your right cheek, right on the <<tattoo right_cheek>>. "Just wanted to make sure you were still labelled." <<He>> gives your <<bottom>> a smack before returning to <<his>> friends.
+			<<gstress>><<garousal>><<glust>><<stress 6>><<arousal 600>><<npcincr Whitney lust 5>>
+			<br><br>
+			<<link [[Next|Oxford Street]]>><<endevent>><</link>>
+			<br>
+		<<elseif $skin.left_cheek.pen is "pen" or $skin.left_cheek.pen is "lipstick" or $skin.left_cheek.pen is "mud">>
+			<<bodywriting_clear left_cheek>>
+			<<He>> leans in and licks your left cheek, right on the <<tattoo left_cheek>>. <<He>> rubs it with <<his>> sleeve, then pulls a pen from <<his>> pocket. "Time for a proper label. Hold still."
+			<br><br>
+
+			<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 1>><<npcincr Whitney love 1>><</link>><<glove>><<gbodywriting>>
+			<br>
+			<<link [[Push Whitney's arm away|School Leave Whitney Writing Push]]>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>><</link>><<llove>><<ldom>>
+			<br>
+		<<elseif $skin.right_cheek.pen is "pen" or $skin.right_cheek.pen is "lipstick" or $skin.right_cheek.pen is "mud">>
+			<<bodywriting_clear right_cheek>>
+			<<He>> leans in and licks your right cheek, right on the <<tattoo right_cheek>>. <<He>> rubs it with <<his>> sleeve, then pulls a pen from <<his>> pocket. "Time for a proper label. Hold still."
+			<br><br>
+
+			<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 2>><<npcincr Whitney love 1>><</link>><<glove>><<gbodywriting>>
+			<br>
+			<<link [[Push Whitney's arm away|School Leave Whitney Writing Push]]>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>><</link>><<llove>><<ldom>>
+			<br>
+		<<elseif !$skin.left_cheek.pen>>
+			<<He>> pulls a pen from <<his>> pocket. "Gonna let everyone know who you belong to. Hold still."
+			<br><br>
+
+			<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 2>><<npcincr Whitney love 1>><</link>><<glove>><<gbodywriting>>
+			<br>
+			<<link [[Push Whitney's arm away|School Leave Whitney Writing Push]]>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>><</link>><<llove>><<ldom>>
+			<br>
+		<<elseif !$skin.right_cheek.pen>>
+			<<He>> pulls a pen from <<his>> pocket. "Gonna let everyone know who you belong to. Hold still."
+			<br><br>
+
+			<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 2>><<npcincr Whitney love 1>><</link>><<glove>><<gbodywriting>>
+			<br>
+			<<link [[Push Whitney's arm away|School Leave Whitney Writing Push]]>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>><</link>><<llove>><<ldom>>
+			<br>
+		<<else>>
+			<<if random(1, 2) is 2>>
+				<<He>> leans in and licks your left cheek, right on the <<tattoo left_cheek>> "Didn't think it would come off," <<he>> says as <<he>> pulls away. "Oh well. Later slut." <<He>> smacks your <<bottom>> as <<he>> returns to <<his>> friends.
+				<<gstress>><<garousal>><<glust>><<stress 6>><<arousal 600>><<npcincr Whitney lust 5>>
+				<br><br>
+			<<else>>
+				<<He>> leans in and licks your right cheek, right on the <<tattoo right_cheek>> "Didn't think it would come off," <<he>> says as <<he>> pulls away. "Oh well. Later slut." <<He>> smacks your <<bottom>> as <<he>> returns to <<his>> friends.
+				<<gstress>><<garousal>><<glust>><<stress 6>><<arousal 600>><<npcincr Whitney lust 5>>
+			<</if>>
+			<br><br>
+
+			<<link [[Next|Oxford Street]]>><<endevent>><</link>>
+			<br>
+		<</if>>
+	<<else>>
+		<<npc Whitney>><<person1>>Whitney spots you approaching the gate. <<He>> shoves one of <<his>> friends out of the way and marches towards you. <<He>> pushes you against a wall and holds your hands above your head in <<his>> own. <<takeHandholdingVirginity "Whitney" "romantic">> "Almost missed you," <<he>> says. <<He>> kisses you, still pressing your arms against the wall. <<takeKissVirginity "Whitney" "loveInterest">>"You wouldn't do that to me, would you?" <<He>> kisses once more before releasing you. <<He>> slaps your <<bottom>> as you leave.
+		<<gstress>><<garousal>><<glust>><<stress 6>><<arousal 600>><<npcincr Whitney lust 5>>
+		<br><br>
+
+		<<link [[Next|Oxford Street]]>><<endevent>><</link>>
+		<br>
+
+	<</if>>
+<<else>>
+	<<if $rng gte 81>>
+		<<npc Whitney>><<person1>>Whitney spots you approaching the gate. "Where do you think you're going," <<he>> says. "You haven't paid the toll." <<He>> grasps <<his>> crotch and <<his>> friends laugh.
+		<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<glust>><<npcincr Whitney lust 5>>
+		<br><br>
+
+		<<link [[Next|Oxford Street]]>><<endevent>><</link>>
+		<br>
+
+	<<elseif $rng gte 61>>
+		<<if $physique gte 15000>>
+			<<npc Whitney>><<person1>>You hear footsteps behind you. Before you can turn, Whitney leaps on your back and wraps <<his>> arms around your neck. "Giddy up, <<bitch>>," <<he>> says.
+			<span class="green">You resist being knocked to your knees.</span> "You're a good horse. I should ride you more often."
+			<br><br>
+
+			<<link [[Go along with it (0:10)|School Leave Whitney Ride]]>><<pass 10>><<npcincr Whitney dom 1>><<npcincr Whitney love 1>><</link>><<gdom>><<glove>>
+			<br>
+			<<link [[Take control (0:10)|School Leave Whitney Control]]>><<pass 10>><<npcincr Whitney dom -1>><</link>><<ldom>>
+			<br>
+			<<link [[Throw Whitney off|School Leave Whitney Throw]]>><<npcincr Whitney love -1>><</link>><<llove>>
+
+		<<else>>
+			<<npc Whitney>><<person1>>You hear footsteps behind you. Before you can turn, Whitney leaps on your back and wraps <<his>> arms around your neck. "Giddy up, <<bitch>>," <<he>> says. <span class="red">The weight forces you to your knees.</span> "You're a shit horse. Maybe you need to be ridden more." <<He>> turns to <<his>> friends. "Any takers?" They laugh as you climb to your feet.
+			<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<glust>><<npcincr Whitney lust 5>>
+			<br><br>
+
+			<<link [[Next|Oxford Street]]>><<endevent>><</link>>
+			<br>
+		<</if>>
+
+	<<elseif $rng gte 41>>
+		<<npc Whitney>><<person1>>Whitney spots you approaching the gate. "Look who it is," <<he>> shouts. <<His>> friends turn to watch you. "Look at the way <<pshe>> walks. I bet <<pshes>> sore after fucking all the teachers." They laugh.
+		<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<glust>><<npcincr Whitney lust 5>>
+		<br><br>
+
+		<<link [[Next|Oxford Street]]>><<endevent>><</link>>
+		<br>
+
+	<<elseif $rng gte 21>>
+
+		<<npc Whitney>><<person1>>Whitney spots you approaching the gate. <<He>> blocks your path. "Where do you think you're going?" <<he>> says. "There's a toll for passing through." <<He>> holds out a hand. "Twenty quid. Or I'll take something else as payment."
+		<br><br>
+
+		<<if $money gte 2000>>
+			<<link [[Pay up|School Leave Whitney Pay]]>><<set $money -= 2000>><<set $submissive += 1>><</link>><<gdom>>
+			<br>
+		<</if>>
+		<<link [[Say you can't afford it|School Leave Whitney Strip]]>><<set $phase to 0>><<set $molestationstart to 1>><</link>>
+		<br>
+		<<link [[Shove|School Leave Whitney Strip]]>><<set $submissive -= 1>><<npcincr Whitney dom -1>><<set $phase to 1>><<set $molestationstart to 1>><</link>><<ldom>>
+		<br>
+	<<else>>
+		<<npc Whitney>><<person1>>You walk past Whitney. You feel a sting on your arm and turn to see Whitney putting <<his>> cigarette out on it. <<He>> gives you an innocent smile.
+		<<gpain>><<set $pain += 20>><<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<glust>><<npcincr Whitney lust 5>>
+		<br><br>
+
+		<<endevent>>
+
+		<<link [[Next|Oxford Street]]>><<endevent>><</link>>
+		<br>
+
+	<</if>>
+<</if>>
+
+:: School Leave Whitney Rape
+<<if $molestationstart is 1>>
+<<set $molestationstart to 0>>
+<<controlloss>>
+<<violence 1>>
+<<neutral 1>>
+<<molested>>
+
+<<maninit>><<set $enemyanger += 60>>
+<</if>>
+
+<<effects>>
+<<effectsman>><<man>>
+
+<<audience>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|School Leave Whitney Rape Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|School Leave Whitney Rape Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|School Leave Whitney Rape]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: School Leave Whitney Rape Finish
+<<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+<<ejaculation>><<npcincr Whitney lust -20>>
+
+"Maybe you'll smell like me now," <<he>> says. "I read somewhere that affects people subconsciously." <<He>> pulls a cigarette from <<his>> shirt pocket. "Later <<girl>>."
+<<llust>>
+<br><br>
+
+<<tearful>> you climb to your feet.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Oxford Street]]>><<set $eventskip to 1>><</link>>
+<<else>>
+
+Whitney shouts in pain and staggers away from you. <<tearful>> you climb to you feet. <<He>> swipes at you but misses as you flee out from behind the shed. You leave the school.
+<<npcincr Whitney dom -1>><<ldom>>
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Oxford Street]]>><<set $eventskip to 1>><</link>>
+
+<</if>>
+
+:: School Leave Whitney Pay
+<<set $outside to 1>><<set $location to "school">><<schooleffects>><<effects>>
+
+You hand Whitney the money. "Nice doing business," <<he>> says. <<He>> barges past you.
+<<gtrauma>><<gstress>><<trauma 6>><<stress 6>><<glust>><<npcincr Whitney lust 5>><<npcincr Whitney dom 1>>
+<br><br>
+
+<<link [[Next|Oxford Street]]>><<endevent>><</link>>
+<br>
+
+:: School Leave Whitney Strip
+<<if $molestationstart is 1>>
+<<set $molestationstart to 0>>
+<<controlloss>>
+<<violence 1>>
+<<neutral 1>>
+<<molested>>
+
+<<maninit>><<npcstrip>><<npcidlegenitals>>
+	<<if $phase is 0>>
+	"Oh, I think you can," <<he>> says. <<He>> lunges for you. <<His>> friends cheer <<him>> on.
+	<br><br>
+	<<elseif $phase is 1>>
+	You shove Whitney away. "Slut," <<he>> snarls. "I'm gonna show everyone." <<He>> lunges for you. <<His>> friends cheer <<him>> on.
+	<br><br>
+	<</if>>
+<<if $delinquency lt 400>><<enable_rescue>><</if>>
+<</if>>
+
+<<effects>>
+<<effectsman>><<man>>
+
+<<if $alarm is 1 and $rescue is 0>>
+<<set $alarm to 0>>
+No one comes to your aid, likely due to your reputation as a delinquent.
+<br><br>
+<</if>>
+
+<<audience>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $alarm is 1 and $rescue is 1>>
+	<span id="next"><<link [[Next|School Leave Whitney Strip Finish]]>><</link>></span><<nexttext>>
+<<elseif $worn.upper.type.includes("naked") and $worn.lower.type.includes("naked") and $worn.under_lower.type.includes("naked")>>
+	<span id="next"><<link [[Next|School Leave Whitney Strip Finish]]>><</link>></span><<nexttext>>
+<<elseif $worn.upper.type.includes("naked") and $worn.lower.type.includes("naked") and $worn.genitals.type.includes("chastity")>>
+	<span id="next"><<link [[Next|School Leave Whitney Strip Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|School Leave Whitney Strip Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|School Leave Whitney Strip Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|School Leave Whitney Strip]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: School Leave Whitney Strip Finish
+<<if $enemyhealth lte 0>>
+
+Whitney stumbles backwards. <<tearful>> you push past <<his>> friends and flee to safety.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Oxford Street]]>><<set $eventskip to 1>><</link>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+<<ejaculation>><<npcincr Whitney lust -20>>
+
+<<tearful>> you push past <<his>> friends and flee to safety.
+<<llust>>
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|Oxford Street]]>><<set $eventskip to 1>><</link>>
+<<elseif $alarm is 1 and $rescue is 1>>
+
+<<endcombat>>
+
+<<npc Doren>><<person1>>"Leave the <<if $player.gender_appearance is "m">>lad<<else>>lass<</if>> alone," Doren shouts across the playground.<<endevent>><<npc Whitney>><<person1>> Whitney shoves you away. "I wasn't doing nothing," <<he>> protests. <<tearful>> you push past <<his>> friends and flee to safety.
+<br><br>
+
+<<endevent>>
+<<clotheson>>
+
+<br><br>
+<<link [[Next|Oxford Street]]>><<set $eventskip to 1>><</link>>
+
+<<else>>
+
+Whitney steps back to look at you. <<covered>> <<His>> friends jeer at you. "Hey everyone!" Whitney shouts, trying to attract more attention to your situation.
+<<glust>><<npcincr Whitney lust 5>><<fameexhibitionism 30>>
+<br><br>
+
+<<endcombat>>
+<<npc Doren>><<person1>>Doren pushes through the crowd. <<He>> scowls when <<he>> sees you and Whitney. "Give the <<if $player.gender_appearance is "m">>lad<<else>>lass<</if>> <<pher>> clothes back," <<he>> says. "Now."
+<br><br>
+
+Whitney hesitates, but relents and throws the clothes on top of you. "Come on. I think we showed <<phim>>."
+<br><br>
+
+Doren holds <<his>> large coat around you and looks away as you dress.
+<br><br>
+
+<<clothesontowel>>
+
+"Are you alri-" <<he>> begins, but is cut off by a scream on the other side of the playground. <<He>> sighs. "Sorry." <<He>> leaves to investigate the noise.
+<br><br>
+
+<<endevent>>
+
+<<link [[Next|Oxford Street]]>><<set $eventskip to 1>><</link>>
+
+<</if>>
+
+:: Bully Panties
+<<effects>>
+<<if $whitneypantiescheck is 0>><<set $whitneypantiescheck to 1>>
+Whitney tears off your $worn.under_lower.name and pockets them. "I'll be keeping an eye out, slut."
+<br><br>
+<<set $stealtextskip to 1>>
+<<underlowersteal strip>>
+<<else>>
+Whitney and <<his>> friends tear your clothes off, then shove you to the ground. <<tearful>> you pick yourself back up.
+<br><br>
+<<clothesruined>>
+
+<</if>>
+
+<<link [[Next|Hallways]]>><<endevent>><<set $eventskip to 1>><</link>>
+<br>
+
+:: Bully Strip 2
+<<effects>>
+
+Hands reach from all around, helping to remove your clothes.
+<br><br>
+The crowd gawks at the naked <<girl>> wearing nothing but a collar. Whitney forces you onto your<<if $rightarm isnot "bound" and $leftarm isnot "bound">> hands<</if>> and knees. "Let's go for a walk," <<he>> says. "I want to show off my new pet."
+<br><br>
+
+<<link [[Go along with it|Bully Walk 2]]>><<trauma 6>><<stress 3>><<status -10>><<npcincr Whitney dom 1>><</link>><<lcool>><<gtrauma>><<gstress>><<gdom>>
+<br>
+	<<if $exhibitionism gte 75>>
+<<link [[Flaunt|Bully Walk Flaunt 2]]>><<npcincr Whitney dom 1>><<npcincr Whitney love 1>><</link>><<exhibitionist5>><<glove>><<gdom>>
+<br>
+	<</if>>
+<<link [[Refuse|Bully Refuse 2]]>><</link>>
+<br>
+
+:: Bully Strip Flaunt 2
+<<effects>>
+
+Whitney snatches your clothes away as the crowd gawks at you, taking in your bare skin. Whitney beholds you, savouring the feel of having control of your clothing. You happily drop you your knees, and pant like a dog<<if $rightarm isnot "bound" and $leftarm isnot "bound">> with your arms in a begging position<</if>>, butt wagging. "That collar clearly was made for you," <<he>> laughs. "Come along slut, I want to show off my new pet."
+<<exhibitionism4>>
+
+<<link [[Go along with it|Bully Walk 2]]>><<trauma 6>><<stress 3>><<status -10>><<npcincr Whitney dom 1>><</link>><<lcool>><<gtrauma>><<gstress>><<gdom>>
+<br>
+<<if $exhibitionism gte 75>>
+	<<link [[Flaunt|Bully Walk Flaunt 2]]>><<npcincr Whitney dom 1>><<npcincr Whitney love 1>><</link>><<exhibitionist5>><<glove>><<gdom>>
+	<br>
+<</if>>
+<<link [[Refuse|Bully Refuse 2]]>><</link>>
+<br>
+
+:: Bully Walk 2
+<<effects>>
+
+<<if $leftarm is "bound" and $rightarm is "bound">>You shuffle across the floor on your knees, trying your hardest to keep up with Whitney and <<his>> friends without falling on your face.<<else>>You crawl across the floor on your hands and knees while Whitney walks along beside you.<</if>>
+<br><br>
+
+You glance up at the whispering crowd of onlookers and gawkers. Several faces turn red and look away while others peer between their hands.
+<br><br>
+
+You're pulled around a corner and come face to face with a crowd of <<peopley>>. <<covered>> A nearby <<persony>> looks you up and down, leering as others gasp in horror.
+<br><br>
+
+"Here <<girl>>," Whitney shouts, throwing your clothes down the hallway. "Fetch!"
+<br><br>
+
+You scramble after before anyone in the crowd steals them. You make it in time. You flee somewhere secluded to dress.
+<<npcincr Whitney lust 5>><<glust>>
+<br><br>
+
+<<fameexhibitionism 70>>
+
+<<endevent>>
+
+<<link [[Next|Hallways]]>><<clotheson>><<set $eventskip to 1>><</link>>
+<br>
+
+:: Bully Walk Flaunt 2
+<<effects>>
+
+<<flaunting>> you trot down the hallway on all fours with Whitney and <<his>> friends guiding you. You block their path once or twice, sitting down in front of them in a begging position<<if $leftarm is "bound" and $rightarm is "bound">> to the best of your ability<</if>>, barking and panting like an animal until they pat your head or scratch your chin and you purr.
+<<exhibitionism5>>
+
+"You can't decide if you're a dog or a cat," Whitney remarks. "Lets see you play fetch."
+
+You're steered round a corner and into a corridor full of <<peopley>>. <<covered>> A nearby <<persony>><<person1>> looks at you and gasps in shock. Others have a similar reaction. As the noise grows more turn to look, until everyone is watching you.
+<br><br>
+
+Some look away, going red in the face. Most though are keen to take in the sight of the <<if $worn.under_lower.type.includes("naked")>>naked<<else>>nearly naked<</if>> <<girl>> crawling on the floor like an animal, barking and panting.
+<br><br>
+
+Whitney gathers your clothes and gestures for everyone to stand back. "Ready <<girl>>?" <<if $leftarm is "bound" and $rightarm is "bound">>You nod.<<else>>You give <<him>> a paw, eager to play.<</if>> <<He>> tosses the clothes down the hall, and you scramble after them. <<if $leftarm is "bound" and $rightarm is "bound">>You pick them up with your mouth<<else>>You gather them<</if>> and find somewhere secluded to dress. Your heart thuds.
+<br><br>
+
+<<fameexhibitionism 70>>
+<<link [[Next|Hallways]]>><<clotheson>><<endevent>><<set $eventskip to 1>><</link>>
+<br>
+
+:: Bully Refuse 2
+<<effects>>
+
+"What a shame," Whitney says. "Too bad you forfeited the right to wear clothes when you wore a collar." They leave you stood in the middle of the corridor with your <<lewdness>> on display. There's no one else around.
+<<npcincr Whitney lust 5>><<glust>>
+<br><br>
+<<set $stealtextskip to 1>>
+<<stealclothes>>
+<<endevent>>
+
+<<link [[Next|Hallways]]>><</link>>
+<br>
+
+:: Bully Strip Theft
+<<set $outside to 1>><<set $location to "town">><<effects>>
+<<pass 20>>
+"We're going to Connudatus Street," <<he>> continues. "Got a plan I thought up, and you're going to be a part of it."
+<br><br>
+They bring you to the back alleys of Connudatus Street, out of sight from the public.
+<br><br>
+"You're gonna distract some poor rich sod while I rob them. But you're going to need to be a bit more eye-catching for this to work. Strip."
+<br><br>
+
+<<link [[Go along with it|Bully Rob]]>><<trauma 6>><<fameexhibitionism 5>><<stress 6>><<npcincr Whitney dom 1>><</link>><<gtrauma>><<gstress>><<gdom>>
+<br>
+<<if $exhibitionism gte 75>>
+<<link [[Strip willingly|Willing Rob]]>><<fameexhibitionism 5>><<npcincr Whitney dom 1>><<npcincr Whitney love 1>><</link>><<exhibitionist5>><<glove>><<gdom>>
+<br>
+<</if>>
+<<if $whitneyromance is 1>>
+<<link [[Ask Whitney to Strip|Bully Rob Reversal]]>><<npcincr Whitney dom -1>><</link>><<ldom>>
+<br>
+<</if>>
+<<link [[Refuse|Bully Strip Rob Refuse]]>><<set $fightstart to 1>><</link>>
+<br>
+
+:: Bully Rob Reversal
+"Or.." you smirk. "If you want to see how it's really done, you be the bait. Get naked and I'll take the mark."
+<br><br>
+
+Whitney erupts into laughter, raising a hand to <<his>> hair and brushing it back. "Wait. You're serious," <<he>> says, eyeing you with surprise. "Alright slut. I hope you know what you're getting into."
+<br><br>
+You watch Whitney undress. In mere seconds <<hes>> already completely exposed. You think you see a faint blush on <<his>> face. "Like what you see, slut?" <<he>> asks. "I bet you do. After all, it's not every day you get to see me naked." <<He>> turns to face <<his>> astonished friends. "That goes for the rest of you too."
+<br><br>
+
+<<link [[Next|Bully Rob Reversal 2]]>><</link>>
+<br><br>
+
+:: Bully Rob Reversal 2
+<<endevent>>
+<<generate1>><<person1>>
+With Whitney at the ready, you move out of the alleyway and onto the main street. You look up and down the road, trying to find an easy target to fleece. A short while passes, and you manage to find your mark. A <<person>> walking down your side of the street. You wait until <<hes>> close, then gesture to Whitney. <<nnpc_He "Whitney">> jumps into the open.
+<br><br>
+
+<<if $rng gte 80>>
+	"Excuse me, does this outfit make me look fat?" Whitney says, keeping a straight face.
+<<elseif $rng gte 51>>
+	"Excuse me, have you seen my clothing?" Whitney says, keeping a straight face.
+<<else>>
+	"Is it draughty out or is it just me?" Whitney says, keeping a straight face.
+<</if>>
+The <<person>> gapes.
+<br><br>
+
+<<set $skulduggerydifficulty to 500>>
+<<link [[Next|Bully Alley Rob]]>><</link>><<skulduggerydifficulty>>
+<br>
+
+:: Bully Alley Rob
+
+<<effects>>
+<<person1>>
+<<if $pronoun is "m">>
+	You take your position next to the <<person>>, feigning surprise at Whitney's exposure as you look for the imprint of <<his>> <<wallet>>.
+<<else>>
+	You take your position next to the <<person>>, feigning surprise at Whitney's exposure as you open <<his>> purse.
+<</if>>
+<br><br>
+<<skulduggerycheck>>
+<<if $skulduggerysuccess is 1>>
+	<<set $money += 3000>>
+	<span class="green">Some deft handiwork later and you find yourself in possession of the <<persons>> cash.</span> Your job done, you walk away, giving Whitney a surreptitious thumbs up as you do. You take a short loop around and return to the alleyway.<<endevent>><<npc Whitney>><<person1>> Whitney's still there, stark naked and without shame. <<His>> friends pretend not to look. You hand <<him>> half of the money you stole.
+	<br><br>
+	"That was too easy," <<he>> says, counting the money. "But cash is cash. Thanks, slut. Before I go," <<His>> face lights up for a moment as <<he>> turns back towards you. "I have an idea." <<He>> reaches out and tugs at your $worn.lower.name. "Seeing as I'm already naked, let's have a bit of fun."
+	<br><br>
+	<<if $skulduggery lte ($skulduggerydifficulty + 100)>>
+		<<skulduggeryskilluse>>
+	<<else>>
+		<span class="blue">That was too easy. You didn't learn anything.</span>
+		<br><br>
+	<</if>>
+	<<link [[Accept|Bully Alley Sex]]>><<set $sexstart to 1>><</link>>
+	<br>
+	<<link [[Refuse|Bully No Alley Sex]]>><<set $molestationstart to 1>><</link>>
+	<br>
+<<else>>
+	<span class="red">You're too clumsy. The <<person>> whips around and grasps your arm.</span> Whitney vanishes into the alleyway as the <<person>> descends on you in a rage.
+	<br><br>
+	<<if $skulduggery lte ($skulduggerydifficulty + 100)>>
+		<<skulduggeryskilluse>>
+	<<else>>
+		<span class="blue">That was too easy. You didn't learn anything.</span>
+		<br><br>
+	<</if>>
+	<<link [[Next|Bully Rob Fail]]>><<set $fightstart to 1>><</link>>
+	<br>
+<</if>>
+
+:: Bully Rob Fail
+
+<<if $fightstart is 1>>
+	<<set $fightstart to 0>>
+	<<neutral 1>>
+	<<maninit>>
+	<<set $enemytrust -= 100>>
+	<<set $enemyanger += 200>>
+	<<npcidlegenitals>>
+<</if>>
+<<effects>>
+<<effectsman>><<man>>
+<<stateman>>
+<br><br>
+<<actionsman>>
+<<if $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Bully Rob Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Bully Rob Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $pain gte 100 and $willpowerpain is 0>>
+	<span id="next"><<link [[Next|Bully Rob Fight Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Bully Rob Fail]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Bully Rob Fight Finish
+
+<<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+<<ejaculation>>
+
+<<His>> breath ragged, the <<person>> falters. <<Hes>> too exerted to give chase as you make your escape.
+<br><br>
+
+<<tearful>> you come to a stop.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+<<set $eventskip to 1>>
+<<link [[Next|Connudatus Street]]>><</link>>
+<<elseif $enemyhealth lte 0>>
+
+You break out of the <<persons>> grasp, leaving <<him>> to nurse <<his>> bruises as you escape.
+<br><br>
+
+<<tearful>> you come to a stop.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+<<set $eventskip to 1>>
+<<link [[Next|Connudatus Street]]>><</link>>
+
+<<else>>
+
+You collapse to the ground. The <<person>> gives you a hard kick to the side for good measure.
+<br><br>
+
+<<tearful>> you stagger to your feet.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+<<set $eventskip to 1>>
+<<link [[Next|Connudatus Street]]>><</link>>
+
+<</if>>
+
+:: Bully Alley Sex
+
+<<if $molestationstart is 1>>
+<<set $molestationstart to 0>>
+<<controlloss>>
+<<violence 1>>
+<<neutral 1>>
+<<molested>>
+
+<<maninit>>
+<span class="red">"That's not your decision to make,"</span> <<he>> says.
+<br><br>
+
+<<elseif $sexstart is 1>>
+<<set $sexstart to 0>>
+<<consensual>>
+<<set $consensual to 1>>
+<<neutral 1>>
+
+<<maninit>><<promiscuity1>>
+"I'm surprised I had to wait that long," you flirt, pulling off your $worn.lower.name before Whitney does.
+<br><br>
+<<set $audienceforceteen to 1>>
+<</if>>
+
+<<effects>>
+
+<<effectsman>><<man>>
+
+<<audience>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Bully Alley Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Bully Alley Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $finish is 1>>
+	<span id="next"><<link [[Next|Bully Alley Sex Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Bully Alley Sex]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Bully Alley Sex Finish
+<<effects>>
+
+<<if $enemyarousal gte $enemyarousalmax>>
+<<ejaculation>><<npcincr Whitney lust -20>>
+You feel Whitney shudder as <<he>> leans against you, <<his>> panting muffled in your neck. "Thanks slut. That's just what I needed," <<he>> pants as <<he>> puts <<his>> clothes back on. "Later."
+<br><br>
+
+<<tearful>> you watch <<him>> walk from the alley.
+<br><br>
+
+<<elseif $enemyhealth lte 0>>
+Whitney recoils in pain and backs away from you. "The fuck is wrong with you?" <<he>> says, agitated. <<He>> tries <<his>> best to conceal a fresh bruise on <<his>> shoulder as <<he>> fixes <<his>> clothing.
+<br><br>
+
+<<tearful>> you watch <<him>> walk from the alley.
+<br><br>
+
+<<else>>
+"Sorry, forgot I have to be somewhere," you say, pulling away from Whitney.
+<br><br>
+
+"Fine," Whitney remarks. "But next time I'm not stopping."
+<br><br>
+
+<<tearful>> you watch <<him>> dress and walk from the alley.
+<br><br>
+
+<</if>>
+
+<<endcombat>>
+<<clotheson>>
+<<set $eventskip to 1>>
+<<link [[Next|Connudatus Street]]>><</link>>
+<br>
+
+:: Bully No Alley Sex
+<<effects>>
+"Some other time," you say.
+<br><br>
+
+"Your loss," Whitney says. "You're lucky I give you a choice." <<He>> fixes <<his>> clothes and walks from the alleyway.
+<br><br>
+
+<<clotheson>>
+<<endevent>>
+<<set $eventskip to 1>>
+<<link [[Next|Connudatus Street]]>><</link>>
+<br>
+
+:: Bully Rob
+<<effects>>
+<<clothesstrip>>
+You slowly remove your clothes while keeping your <<genitals>> and <<breasts>> from the leering eyes of Whitney and <<his>> friends. "When I give the signal," <<he>> says to one of them. "Give <<phim>> a good push into the street."
+<br><br>
+
+A minute passes before Whitney makes an odd gesture. You are shoved naked into the open, right in the path of a well-dressed <<endevent>><<generate1>><<person1>><<person>>. <<He>> freezes when <<he>> see you, left completely speechless. <<covered>>
+<br><br>
+
+Whitney takes the opportunity and approaches from behind, reaching into the <<persons>> jacket and pulling out <<his>> <<wallet>>. The deed complete, Whitney vanishes around a corner as you run back into the alley.
+<br><br>
+Whitney's friends are already gone, but at least they left your clothes.
+<br><br>
+
+<<endevent>><<set $eventskip to 1>>
+<<link [[Next|Connudatus Street]]>><<clotheson>><</link>>
+<br>
+
+:: Willing Rob
+<<effects>>
+<<clothesstrip>>
+<<endevent>>
+<<npc Whitney>><<person1>>
+
+You remove your clothes with enthusiasm, basking in the gaze of your audience. <<exhibitionism5>>
+Whitney grins. "When I give the signal," <<he>> explains. "Jump in front of the nearest person. Make sure to show off that <<genitals>> of yours." <<He>> slinks away from the alley.
+<br><br>
+<<endevent>>
+<<generate1>><<person1>>
+A minute passes, and Whitney makes a gesture in your direction. <<flaunting>> you jump naked into the open, right into the path of a well-dressed <<endevent>><<generate1>><<person1>><<person>>.
+<br><br>
+<<if $rng gte 99>>
+"Behold my fabulous <<genitals>>."
+<<elseif $rng gte 80>>
+"Is there something on my face?"
+<<elseif $rng gte 51>>
+"Oops, I knew I left something at home,"
+<<else>>
+"Is there a problem? You're staring,"
+<</if>>
+
+you say to the astonished <<person>>. <<His>> eyes wander up and down your body. <<covered>>
+<br><br>
+
+Whitney walks behind the <<person>>, reaches into <<his>> jacket and successfully snatches <<his>> <<wallet>>. Once Whitney is clear, you blow a kiss and dart back into the alley, leaving the bewildered <<person>> behind you.
+<br><br>
+<<endevent>><<npc Whitney>><<person1>>
+<<if $whitneyromance is 1>>
+Whitney shows up as you dress.
+"Good job slut," <<he>> grins at your undressed body. "You're a natural." <<He>> pulls out <<moneyGain 30>>. "Your cut." <<He>> hands you the amount and walks from the alley.
+<br><br>
+<<else>>
+Whitney's friends have already cleared out, but they left your clothes behind.
+<br><br>
+<</if>>
+
+<<clotheson>><<endevent>><<set $eventskip to 1>>
+<<link [[Next|Connudatus Street]]>><</link>>
+<br>
+
+:: Bully Strip Rob Refuse
+<<if $fightstart is 1>>
+<<set $fightstart to 0>>
+
+<<neutral 1>>
+
+<<maninit>>
+<<set $enemytrust -= 100>>
+<<set $enemyanger += 200>>
+<<npcidlegenitals>>
+
+<</if>>
+
+<<effects>>
+<<effectsman>><<man>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyhealth lte 0>>
+<span id="next"><<link [[Next|Bully Strip Rob Refuse Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+<span id="next"><<link [[Next|Bully Strip Rob Refuse Finish]]>><</link>></span><<nexttext>>
+<<elseif $pain gte 100 and $willpowerpain is 0>>
+<span id="next"><<link [[Next|Bully Strip Rob Refuse Finish]]>><</link>></span><<nexttext>>
+<<else>>
+<span id="next"><<link [[Next|Bully Strip Rob Refuse]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Bully Strip Rob Refuse Finish
+<<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+<<ejaculation>>
+
+"F-fuck, yes…" Whitney says, putting a hand on the alley wall. <<tearful>> you duck under <<his>> arm and escape onto Connudatus Street.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+<<set $eventskip to 1>>
+<<link [[Next|Connudatus Street]]>><</link>>
+
+<<elseif $enemyhealth lte 0>>
+
+<<tearful>> you successfully shove Whitney away from you, and make a break for it onto Connudatus Street. <<His>> friends watch your escape, and seem unwilling to stop you.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+<<set $eventskip to 1>>
+<<link [[Next|Connudatus Street]]>><</link>>
+
+<<else>>
+
+You double over in pain, collapsing onto the floor. You look up at Whitney, now towering over you. <<He>> nods, and <<he>> and <<his>> friends reach towards you, grabbing and pulling.
+
+<<if $exposed lt 2>><<clothesruined>>
+They tear off your clothing and toss it up onto a nearby roof. You're left helpless, with your <<lewdness>> on display.
+<br><br>
+<</if>>
+"Next time," Whitney says. "When I tell you to do something, you do it." <<He>> saunters from the alley. <<His>> friends follow close behind.
+<br><br>
+
+<<tearful>> you climb to your feet.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+<<set $eventskip to 1>>
+<<link [[Next|Connudatus Street]]>><</link>>
+
+<</if>>
+
+:: Bully Toilets
+<<effects>>
+<<person1>>
+<<set $whitney_toilet to 1>>
+
+Whitney shoves you into the <<if $player.gender is "m">>girls'<<elseif $player.gender is "h">><<nnpc_gendery "Whitney">>s'<<else>>boys'<</if>> toilets.
+<br><br>
+"The rest of you make sure <<pshe>> follows the rule," <<he>> says, turning to <<his>> friends. "Got it?" <<His>> friends nod, casting lecherous looks up and down your body. "Then it's settled." <<He>> turns back to you. "See you later, slut."
+<br><br>
+Not waiting for your response, <<he>> and <<his>> friends continue down the hallway, laughing and joking with each other.
+<br><br>
+
+<<endevent>>
+<<link [[Next|Hallways]]>><</link>>
+<br>
+
+:: Bully Toilets Sex
+
+<<if $molestationstart is 1>>
+<<set $molestationstart to 0>>
+<<controlloss>>
+<<violence 1>>
+<<neutral 1>>
+<<molested>>
+<<maninit>>
+<<set $enemyanger += 30>><<set $enemytrust -= 50>>
+Whitney shoves you into the cubicle. <<His>> hands find you as soon as the door shuts.
+<<elseif $sexstart is 1>>
+	<<set $sexstart to 0>>
+	<<consensual>>
+	<<set $consensual to 1>>
+	<<neutral 1>>
+	<<maninit>>
+	You go along with it, and enter the cubicle with Whitney. <<His>> hands find you as soon as the door shuts.
+	<<promiscuity2>>
+<</if>>
+
+<<effects>>
+
+Whitney's friends jostle to peek over the cubicle door.
+<br><br>
+
+<<effectsman>><<man>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyhealth lte 0>>
+<span id="next"><<link [[Next|Bully Toilets Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+<span id="next"><<link [[Next|Bully Toilets Sex Finish]]>><</link>></span><<nexttext>>
+<<else>>
+<span id="next"><<link [[Next|Bully Toilets Sex]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Bully Toilets Sex Finish
+<<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+<<ejaculation>>
+
+"Later slut," Whitney says, pulling a cigarette from <<his>> pocket. <<His>> friends cheer as <<he>> leaves the cubicle.
+<br><br>
+
+<<tearful>> you stagger to your feet.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+	<<if $bus is "boys">>
+		<<link [[Next|School Boy's Toilets]]>><<set $eventskip to 1>><</link>>
+	<<else>>
+		<<link [[Next|School Girl's Toilets]]>><<set $eventskip to 1>><</link>>
+	<</if>>
+
+<<else>>
+
+You shove Whitney onto the toilet and flee the cubicle. <<His>> bemused friends let you past.
+<br><br>
+
+<<tearful>> you stagger away from the toilets.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|School Toilets]]>><</link>>
+
+<</if>>
+
+:: Bully Toilets Fight
+<<if $fightstart is 1>>
+<<set $fightstart to 0>>
+
+<<neutral 1>>
+<<maninit>>
+<<set $enemytrust -= 100>>
+<<set $enemyanger += 200>>
+<<npcidlegenitals>>
+
+<</if>>
+
+<<effects>>
+<<effectsman>><<man>>
+
+<<audience>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyhealth lte 0>>
+<span id="next"><<link [[Next|Bully Toilets Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+<span id="next"><<link [[Next|Bully Toilets Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $pain gte 100 and $willpowerpain is 0>>
+<span id="next"><<link [[Next|Bully Toilets Fight Finish]]>><</link>></span><<nexttext>>
+<<else>>
+<span id="next"><<link [[Next|Bully Toilets Fight]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Bully Toilets Fight Finish
+<<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+<<ejaculation>>
+
+Whitney falls to the floor, gasping. <<tearful>> you push past <<his>> bemused friends and away from the toilets.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|School Toilets]]>><</link>>
+
+<<elseif $enemyhealth lte 0>>
+
+You shove Whitney into a cubicle and flee. <<His>> bemused friends let you past.
+<br><br>
+
+<<tearful>> you stagger away from the toilets.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|School Toilets]]>><</link>>
+
+<<else>>
+
+You fall to the ground, too hurt to resist.
+<br><br>
+
+Whitney's friends surround you and deliver blows with their feet. You curl up to protect yourself, until the bullies grow bored.
+<<gtrauma>><<gstress>><<trauma 6>><<stress 6>>
+<br><br>
+
+<<tearful>> you stagger to your feet.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+	<<if $bus is "boys">>
+		<<link [[Next|School Boy's Toilets]]>><<set $eventskip to 1>><</link>>
+	<<else>>
+		<<link [[Next|School Girl's Toilets]]>><<set $eventskip to 1>><</link>>
+	<</if>>
+
+<</if>>
+
+:: Bully Friends Rape
+
+<<if $molestationstart is 1>>
+<<set $molestationstart to 0>>
+<<controlloss>>
+<<violence 1>>
+<<neutral 1>>
+<<molested>>
+<<maninit>>
+	<<if $phase is 1>>
+		You drop to your knees. "P-please be gentle," you say. They glance in surprise at each other, but you think it had the desired effect<<set $enemytrust += 50>>
+		<br><br>
+	<<else>>
+		<<set $enemytrust -= 50>><<set $enemyanger += 20>>
+	<</if>>
+<</if>>
+
+<<effects>>
+
+<<effectsman>><<man>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyhealth lte 0>>
+<span id="next"><<link [[Next|Bully Friends Rape Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+<span id="next"><<link [[Next|Bully Friends Rape Finish]]>><</link>></span><<nexttext>>
+<<else>>
+<span id="next"><<link [[Next|Bully Friends Rape]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Bully Friends Rape Finish
+<<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+<<ejaculation>>
+
+Whitney's friends laugh as they leave the toilets, leaving you lying on the floor.
+<br><br>
+
+<<tearful>> you stagger to your feet.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+	<<if $bus is "boys">>
+		<<link [[Next|School Boy's Toilets]]>><<set $eventskip to 1>><</link>>
+	<<else>>
+		<<link [[Next|School Girl's Toilets]]>><<set $eventskip to 1>><</link>>
+	<</if>>
+
+<<else>>
+
+You shove the <<person1>><<person>> into a cubicle and flee the room. <<tearful>> you hide in a cupboard. Whitney's friends pass right by in their pursuit.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<link [[Next|School Toilets]]>><</link>>
+
+<</if>>
+
+:: Bully Friends Threaten
+<<effects>>
+
+"Whitney said you could do whatever you want to me?" you say.
+<br><br>
+The <<person>> nods. "Anything."
+<br><br>
+"That doesn't sound like Whitney." you say. "But you'd know better. I guess I'll tell them what you did after. Just to make sure."
+<br><br>
+Anger flahes across the <<persons>> face. <<He>> pushes <<his>> arms against your back, shoving you against the mirror. "You've a smart mouth," <<he>> hisses. "You're lucky Whitney's soft for you. We'd be tugging you around like a chew toy if it were up to me."
+<br><br>
+You laugh. You don't feel threatened despite the force against your back. The <<person>> releases you, and the three of them leave the room.
+<br><br>
+
+<<endevent>>
+<<if $bus is "boys">>
+	<<link [[Next|School Boy's Toilets]]>><<set $eventskip to 1>><</link>>
+<<else>>
+	<<link [[Next|School Girl's Toilets]]>><<set $eventskip to 1>><</link>>
+<</if>>
+
+:: Bully Hair
+
+<<effects>>
+Whitney leans closer. <<He>> licks the side of your face from chin to cheekbone. <<His>> friends laugh harder.
+<br><br>
+"Tastes good," Whitney says, shoving you away. "Later slut." <<He>> and <<his>> friends saunter away, leaving you to unruffle your hair.
+<br><br>
+<<endevent>>
+<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
+<br>
+
+:: Bully Hair Shove
+
+<<effects>>
+You twist around and shove Whitney away from you, enduring the pain as <<his>> hand tugs free of your hair. <<His>> friends' laughter redoubles. "You're lucky I'm in a good mood," <<he>> says.
+<br><br>
+<<He>> and <<his>> friends walk down the hallway, leaving you to unruffle your hair.
+<br><br>
+<<endevent>>
+<<link [[Next|Hallways]]>><<set $eventskip to 1>><</link>>
+<br>
+
+:: Bully Trip
+<<effects>>
+You jump to your feet and kick Whitney in the back of the leg, sending <<him>> sprawling to the ground.
+<br><br>
+<<if $rng gte 50>>
+	You're around the corner before <<he>> can recover. <<His>> curses fade into the background as you run.
+	<br><br>
+	<<link [[Next|Hallways]]>><<endevent>><<set $eventskip to 1>><</link>>
+<<else>>
+	<<He>> recovers fast, grasping your leg on <<his>> way back up. "You're gonna pay for that one, <<bitch>>."
+	<br><br>
+	<<link [[Next|Bully Fight]]>><<set $fightstart to 1>><</link>>
+<</if>>
+
+:: School Leave Whitney Mask
+<<effects>>
+
+Whitney pulls your mask aside.
+<<if $skin.left_cheek.special is "Whitney">>
+	<<He>> leans in and licks your left cheek, right on the <<tattoo left_cheek>>. "Just wanted to make sure you were still labelled." <<He>> gives your <<bottom>> a smack before returning to <<his>> friends.
+	<<gstress>><<garousal>><<glust>><<stress 6>><<arousal 600>><<npcincr Whitney lust 5>>
+	<br><br>
+	<<link [[Next|Oxford Street]]>><<endevent>><</link>>
+	<br>
+<<elseif $skin.right_cheek.special is "Whitney">>
+	<<He>> leans in and licks your right cheek, right on the <<tattoo right_cheek>>. "Just wanted to make sure you were still labelled." <<He>> gives your <<bottom>> a smack before returning to <<his>> friends.
+	<<gstress>><<garousal>><<glust>><<stress 6>><<arousal 600>><<npcincr Whitney lust 5>>
+	<br><br>
+	<<link [[Next|Oxford Street]]>><<endevent>><</link>>
+	<br>
+<<elseif $skin.left_cheek.pen is "pen" or $skin.left_cheek.pen is "lipstick" or $skin.left_cheek.pen is "mud">>
+	<<bodywriting_clear left_cheek>>
+	<<He>> leans in and licks your left cheek, right on the <<tattoo left_cheek>>. <<He>> rubs it with <<his>> sleeve, then pulls a pen from <<his>> pocket. "Time for a proper label. Hold still."
+	<br><br>
+
+	<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 1>><<npcincr Whitney love 1>><</link>><<glove>><<gbodywriting>>
+	<br>
+	<<link [[Push Whitney's arm away|School Leave Whitney Writing Push]]>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>><</link>><<llove>><<ldom>>
+	<br>
+<<elseif $skin.right_cheek.pen is "pen" or $skin.right_cheek.pen is "lipstick" or $skin.right_cheek.pen is "mud">>
+	<<bodywriting_clear right_cheek>>
+	<<He>> leans in and licks your right cheek, right on the <<tattoo right_cheek>>. <<He>> rubs it with <<his>> sleeve, then pulls a pen from <<his>> pocket. "Time for a proper label. Hold still."
+	<br><br>
+
+	<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 2>><<npcincr Whitney love 1>><</link>><<glove>><<gbodywriting>>
+	<br>
+	<<link [[Push Whitney's arm away|School Leave Whitney Writing Push]]>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>><</link>><<llove>><<ldom>>
+	<br>
+<<elseif !$skin.left_cheek.pen>>
+	<<He>> pulls a pen from <<his>> pocket. "Gonna let everyone know who you belong to. Hold still."
+	<br><br>
+
+	<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 2>><<npcincr Whitney love 1>><</link>><<glove>><<gbodywriting>>
+	<br>
+	<<link [[Push Whitney's arm away|School Leave Whitney Writing Push]]>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>><</link>><<llove>><<ldom>>
+	<br>
+<<elseif !$skin.right_cheek.pen>>
+	<<He>> pulls a pen from <<his>> pocket. "Gonna let everyone know who you belong to. Hold still."
+	<br><br>
+
+	<<link [[Allow it|School Leave Whitney Writing]]>><<set $phase to 2>><<npcincr Whitney love 1>><</link>><<glove>><<gbodywriting>>
+	<br>
+	<<link [[Push Whitney's arm away|School Leave Whitney Writing Push]]>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>><</link>><<llove>><<ldom>>
+	<br>
+<<else>>
+	<<if random(1, 2) is 2>>
+		<<He>> leans in and licks your left cheek, right on the <<tattoo left_cheek>> "Didn't think it would come off," <<he>> says as <<he>> pulls away. "Oh well. Later slut." <<He>> smacks your <<bottom>> as <<he>> returns to <<his>> friends.
+		<<gstress>><<garousal>><<glust>><<stress 6>><<arousal 600>><<npcincr Whitney lust 5>>
+		<br><br>
+	<<else>>
+		<<He>> leans in and licks your right cheek, right on the <<tattoo right_cheek>> "Didn't think it would come off," <<he>> says as <<he>> pulls away. "Oh well. Later slut." <<He>> smacks your <<bottom>> as <<he>> returns to <<his>> friends.
+		<<gstress>><<garousal>><<glust>><<stress 6>><<arousal 600>><<npcincr Whitney lust 5>>
+	<</if>>
+	<br><br>
+
+	<<link [[Next|Oxford Street]]>><<endevent>><</link>>
+	<br>
+<</if>>
+
+:: School Leave Whitney Mask Push
+<<effects>>
+
+You shove Whitney away. Some of <<his>> friends laugh. <<He>> silences them with a look.
+<br><br>
+
+"I don't like your attitude," <<he>> says, turning back to you. "But you can make it up to me later." <<He>> smacks your <<bottom>> as <<he>> returns to <<his>> friends.
+<br><br>
+
+<<link [[Next|Oxford Street]]>><<endevent>><</link>>
+<br>
+
+:: School Leave Whitney Writing
+<<effects>>
+
+<<if $phase is 1>>
+
+	<<He>> scrawls on your cheek, then steps back to observe <<his>> handiwork. <<He>> snatches a mirror from one of <<his>> friends and holds it up to you. Your cheek now reads: <<bodywriting_npc_whitney left_cheek>>
+	<br><br>
+	"Like it?" <<he>> asks. "Of course you do." <<He>> chucks the mirror back to <<his>> friend. "No one has any excuse now. Later slut." <<He>> smacks your <<bottom>> as <<he>> walks away.
+<<else>>
+
+	<<He>> scrawls on your cheek, then steps back to observe <<his>> handiwork. <<He>> snatches a mirror from one of <<his>> friends and holds it up to you. Your cheek now reads: <<bodywriting_npc_whitney right_cheek>>
+	<br><br>
+	"Like it?" <<he>> asks. "Of course you do." <<He>> chucks the mirror back to <<his>> friend. "No one has any excuse now. Later slut." <<He>> smacks your <<bottom>> as <<he>> walks away.
+<</if>>
+<br><br>
+
+<<link [[Next|Oxford Street]]>><<endevent>><</link>>
+<br>
+
+:: School Leave Whitney Writing Push
+<<effects>>
+
+You shove Whitney away. Some of <<his>> friends laugh. <<He>> silences them with a look.
+<br><br>
+
+"I don't like your attitude," <<he>> says, turning back to you. "But you can make it up to me later." <<He>> smacks your <<bottom>> as <<he>> returns to <<his>> friends.
+<br><br>
+
+<<link [[Next|Oxford Street]]>><<endevent>><</link>>
+<br>
+
+:: Bully Tattoo Write
+<<effects>>
+
+<<if $skin.forehead.special is "Whitney">>
+	Whitney examines your forehead with a satisfied smile.
+<<elseif !$skin.left_cheek.special is "Whitney">>
+	Whitney examines your cheek with a satisfied smile.
+<<elseif !$skin.right_cheek.special is "Whitney">>
+	Whitney examines your cheek with a satisfied smile.
+<<elseif !$skin.left_shoulder.special is "Whitney">>
+	Whitney examines your shoulder with a satisfied smile.
+<<elseif !$skin.right_shoulder.special is "Whitney">>
+	Whitney examines your shoulder with a satisfied smile.
+<<elseif !$skin.forehead.writing>>
+	Whitney leans forward, pen in hand, and scrawls on your forehead. <<He>> steps back to admire <<his>> handiwork, before snatching a mirror from one of <<his>> friends. <<He>> holds it up for you. Your forehead now reads: <<bodywriting_npc_whitney forehead>>
+<<elseif !$skin.left_cheek.writing>>
+	Whitney leans forward, pen in hand, and scrawls on your cheek. <<He>> steps back to admire <<his>> handiwork, before snatching a mirror from one of <<his>> friends. <<He>> holds it up for you. Your cheek now reads: <<bodywriting_npc_whitney left_cheek>>
+<<elseif !$skin.right_cheek.writing>>
+	Whitney leans forward, pen in hand, and scrawls on your cheek. <<He>> steps back to admire <<his>> handiwork, before snatching a mirror from one of <<his>> friends. <<He>> holds it up for you. Your cheek now reads: <<bodywriting_npc_whitney right_cheek>>
+<<elseif !$skin.left_shoulder.writing>>
+	Whitney leans forward, pen in hand, and scrawls on your shoulder. <<He>> steps back to admire <<his>> handiwork, before snatching a mirror from one of <<his>> friends. <<He>> holds it up for you. Your shoulder now reads: <<bodywriting_npc_whitney left_shoulder>>
+<<else>>
+	Whitney leans forward, pen in hand, and scrawls on your shoulder. <<He>> steps back to admire <<his>> handiwork, before snatching a mirror from one of <<his>> friends. <<He>> holds it up for you. Your shoulder now reads: <<bodywriting_npc_whitney right_shoulder>>
+<</if>>
+<br><br>
+
+<<if $pain gte 100>>
+	"Good," Whitney says. <<He>> grasps your arm and pulls you towards the street. You're too hurt to resist.
+<<else>>
+	"Like it?" Whitney asks. "Good," <<he>> says before you can respond. <<He>> grasps your arm. "Let's make it permanent." <<He>> pulls you towards the street.
+<</if>>
+<br><br>
+
+<<link [[Let it happen (0:20)|Bully Tattoo]]>><<set $submissive += 1>><<npcincr Whitney dom 1>><<trauma 6>><<stress 6>><</link>><<gtrauma>><<gstress>><<gdom>>
+<br>
+<<if $pain lt 100>>
+<<link [[Fight|Bully Outside Fight]]>><<set $submissive -= 1>><<npcincr Whitney dom -1>><<set $fightstart to 1>><</link>><<ldom>>
+<br>
+<</if>>
+
+:: Bully Tattoo
+
+<<effects>><<set $outside to 0>>
+<<pass 10>>
+You're pulled from the playground and into the street by Whitney and <<his>> friends.
+<<if $exposed gte 1>>
+	<<covered>> Whitney's friends maintain a circle formation around you, so you're not sure how much bystanders can see. Your face burns bright with shame.
+<<else>>
+	A few bystanders glance your way, but most seem willing to ignore the delinquents.
+<</if>>
+<br><br>
+
+Whitney drags you to the high street, and into the shopping centre. You come to a stop outside tattoo parlour.
+<br><br>
+
+"Here's what you're gonna do," Whitney says, stroking the ink on your
+<<if $skin.forehead.special is "Whitney" and $skin.forehead.pen isnot "tattoo">>
+	forehead.
+<<elseif $skin.left_cheek.special is "Whitney" and $skin.left_cheek.pen isnot "tattoo" or $skin.right_cheek.special is "Whitney" and $skin.right_cheek.pen isnot "tattoo">>
+	cheek.
+<<else>>
+	shoulder.
+<</if>>
+"You're gonna go in there and get those words tattooed on." <<He>> shoves a crumpled bundle of banknotes against your chest. "I'll even pay for it. Aren't I nice?" <<He>> kicks you through the door.
+<<set $money += 20000>>
+<br><br>
+
+<<generate2>><<person2>>
+The interior is cramped. A <<person>> sits at a desk, reading a magazine. A row of seats runs along the wall behind <<him>>. One of them is occupied.
+<br><br>
+
+"How can I help you?" the <<person>> asks without looking up.
+<br><br>
+
+<<link [[Get the tattoo like Whitney demanded (£200 1:00)|Bully Tattoo Accept]]>><<set $money -= 20000>><<pass 60>><<npcincr Whitney dom 3>><<npcincr Whitney love 3>><<control -25>><<pain 6>><</link>><<gglove>><<ggdom>><<gpain>><<llcontrol>>
+<br>
+<<link [[Tell the artist you're being forced (0:10)|Bully Tattoo Tell]]>><<npcincr Whitney dom -3>><<npcincr Whitney love -3>><<control 25>><</link>><<lllove>><<lldom>><<ggcontrol>>
+<br>
+
+:: Bully Tattoo Accept
+<<effects>>
+
+<<set $tattoo_parlour to {}>>
+<<if $skin.forehead.special is "Whitney">>
+	<<set $skin.forehead.pen to "tattoo">><<set $tattoo_parlour to clone($skin.forehead)>><<set $tattoo_bodypart to "forehead">>
+<<elseif $skin.left_cheek.special is "Whitney">>
+	<<set $skin.left_cheek.pen to "tattoo">><<set $tattoo_parlour to clone($skin.left_cheek)>><<set $tattoo_bodypart to "left_cheek">>
+<<elseif $skin.right_cheek.special is "Whitney">>
+	<<set $skin.right_cheek.pen to "tattoo">><<set $tattoo_parlour to clone($skin.right_cheek)>><<set $tattoo_bodypart to "right_cheek">>
+<<elseif $skin.left_shoulder.special is "Whitney">>
+	<<set $skin.left_shoulder.pen to "tattoo">><<set $tattoo_parlour to clone($skin.left_shoulder)>><<set $tattoo_bodypart to "left_shoulder">>
+<<else>>
+	<<set $skin.right_shoulder.pen to "tattoo">><<set $tattoo_parlour to clone($skin.right_shoulder)>><<set $tattoo_bodypart to "right_shoulder">>
+<</if>>
+
+Blushing, you tell the artist what you want. <<Hes>> unfazed by the request. "Young lovers, eh?" <<he>> says. "Bit of a lewd one, but I won't judge. Please have a seat."
+<br><br>
+You sit as instructed. "This will sting a bit." <<Hes>> not wrong. Your <<bodypart $tattoo_bodypart>> stings the whole way through, but you get used to it, becoming bored instead.
+
+"There we go," <<he>> says at least, reaching for a mirror. You examine your new tattoo,
+
+<span class="lewd"><<if $tattoo_parlour.type is "text">>"<<print $tattoo_parlour.writing>>"<<else>>a <<print $tattoo_parlour.writing>><</if>></span>
+
+now permanently emblazoned on your <<bodypart $tattoo_bodypart>>.
+<br><br>
+The artist explains how to care for your skin while the tattoo is still raw. You get the gist. "Thanks for your custom," <<he>> says at the end.
+<br><br>
+
+<<unset $tattoo_parlour>>
+<<unset $tattoo_bodypart>>
+<<link [[Next|Bully Tattoo Accept 2]]>><</link>>
+<br>
+
+:: Bully Tattoo Accept 2
+<<effects>>
+<<person1>>
+You emerge from the tattoo parlour. Whitney sits on a bench opposite, alone. <<He>> jumps to <<his>> feet as soon as <<he>> sees you.
+<br><br>
+
+"What the fuck took you so long?" <<he>> asks. "Friends were getting bored. I sent them away." <<He>> looks at your new tattoo, the skin around it still red, and beams. "You actually fucking did it. Wait until they hear about this."
+<br><br>
+
+<<He>> pulls <<his>> phone from <<his>> pocket, wraps an arm around your neck, and poses for a shot. "Smile, slut."
+<br><br>
+
+<<if $whitneyromance is 1>>
+	<<link [[Kiss Whitney|Bully Tattoo Kiss]]>><<promiscuous1>><<control 10>><<npcincr Whitney love 1>><<npcincr Whitney dom -1>><<npcincr Whitney lust 1>><</link>><<gcontrol>><<glove>><<ldom>><<glust>>
+	<br>
+<</if>>
+<<link [[Smile|Bully Tattoo Smile]]>><<npcincr Whitney love 1>><<stress 6>><</link>><<glove>><<gstress>>
+<br>
+<<link [[Pull away|Bully Tattoo Pull]]>><<npcincr Whitney love -1>><</link>><<llove>>
+<br>
+
+:: Bully Tattoo Kiss
+<<effects>>
+
+You grasp Whitney's hair and pull <<his>> head to face yours. <<He>> barely has time to look surprised before you push your tongue into <<his>> mouth.
+<<promiscuity1>>
+
+<<He>> kisses back after the initial shock. <<His>> pulse races by the time you pull away.
+
+<<if $submissive gte 1150>>
+"Thanks for paying for my tattoo," you say.
+<br><br>
+
+"D-don't mention it," <<he>> responds, looking flushed. "Anything for my slut."
+<<elseif $submissive lte 850>>
+"Are you blushing?" you tease. "Cute."
+<br><br>
+
+"F-fuck off," <<he>> says, blushing harder. "It's just warm in here."
+<<else>>
+"Thanks for paying for my tattoo," you say.
+<br><br>
+
+"D-don't mention it," <<he>> responds, looking flushed. "Anything for my slut."
+<</if>>
+<<He>> looks at <<his>> watch. "I've got places to be. See you later."
+<br><br>
+
+<<endevent>><<set $eventskip to 1>>
+<<link [[Next|Shopping Centre]]>><</link>>
+<br>
+
+:: Bully Tattoo Smile
+
+<<effects>>
+You smile for the camera. Whitney demands a couple more takes, making sure <<he>> gets the new tattoo displayed prominently. Once satisfied, <<he>> gives your <<bottom>> a celebratory smack.
+<br><br>
+"Nice," <<he>> says. "Later, slut."
+<br><br>
+<<endevent>><<set $eventskip to 1>>
+<<link [[Next|Shopping Centre]]>><</link>>
+<br>
+
+:: Bully Tattoo Pull
+
+<<effects>>
+You pull away from Whitney's grasp. <<He>> hounds you for a few moments, before calling you an ungrateful slut and sauntering off.
+<br><br>
+<<endevent>><<set $eventskip to 1>>
+<<link [[Next|Shopping Centre]]>><</link>>
+<br>
+
+:: Bully Tattoo Tell
+
+<<effects>>
+<<if $trauma gte ($traumamax / 5) * 4>>
+	Despite a terrible fear that this'll only make things worse, you tell the <<person>> about your situation.
+<<else>>
+	You tell the <<person>> about your situation.
+<</if>>
+About how a bully wrote on you, and is coercing you to get it made into a tattoo.
+<<if $pain gte 100>>
+	You can't stop the tears.
+<</if>>
+<br><br>
+<<He>> listens without speaking, but <<his>> expression becomes serious. <<He>> glances up and out the window, where Whitney and <<nnpc_his "Whitney">> friend maintain their vigil.
+<br><br>
+"Please take a seat," <<he>> says. "I'll sort this out."
+<br><br>
+<<link [[Next|Bully Tattoo Tell 2]]>><</link>>
+<br>
+
+:: Bully Tattoo Tell 2
+
+<<effects>>
+<<pass 10>>
+You take a seat as the <<person>> disappears into a back room. <<Hes>> wielding a cricket bat when <<he>> returns. <<He>> marches outside.
+<br><br>
+You watch through the window. The <<person>> shouts, though the words are muffled and inaudible. Whitney laughs and doesn't seem intimidated, but <<person1>><<his>> friends back away. Whitney scowls at them, then follows suit. Together they turn and run.
+<br><br>
+The <<person2>><<person>> enters, looking relieved. "That's that," <<he>> says, placing the bat on <<his>> desk and collapsing on the chair. "I should call your parents. Could you give me their number?"
+<br><br>
+<<if $submissive gte 1150>>
+	"I can't," you say. "I live at the orphanage."
+<<elseif $submissive lte 850>>
+	"No," you say. "I live at the orphanage."
+<<else>>
+	You shake your head. "I live at the orphanage."
+<</if>>
+<br><br>
+"Oh," the <<person>> says. "I'm sorry." There's an awkward pause, broken up only by the buzzing of the other artist at work. "I'll run you there if you like." <<He>> pulls a set of keys from <<his>> pocket. "Won't take me ten minutes."
+<br><br>
+<<link [[Accept (0:05)|Bully Tattoo Journey]]>><<pass 5>><</link>>
+<br>
+<<link [[Decline|Bully Tattoo Decline]]>><</link>>
+<br>
+
+:: Bully Tattoo Journey
+
+<<effects>>
+The <<person>> walks you to <<his>> car, and drives you to the orphanage. It's a short journey. You look out the window and see others returning from school.
+<br><br>
+<<He>> bids you goodbye and drives away.
+<br><br>
+<<endevent>><<set $eventskip to 1>>
+<<link [[Next|Domus Street]]>><</link>>
+<br>
+
+:: Bully Tattoo Decline
+
+<<effects>>
+You refuse the <<persons>> offer, assuring <<him>> you'll be okay.
+<br><br>
+You step into the shopping centre proper.
+<br><br>
+<<endevent>><<set $eventskip to 1>>
+<<link [[Next|Shopping Centre]]>><</link>>
+<br>
+
+:: School Leave Whitney Ride
+<<effects>>
+
+Whitney rides you down Oxford Street, <<his>> amused friends following behind. <<Hes>> not an easy passenger, leaning this way and that, forcing you to adapt lest you teeter over.
+<br><br>
+
+<<He>> gives your thighs a painful kick with <<his>> heels, and insists you enter a sweet shop. <<He>> makes you crouch so <<he>> can reach the penny sweets, before riding you to the bemused cashier.
+<br><br>
+
+"I'm bored," <<he>> says once outside.
+
+<<if $whitneyromance gte 1>>
+	<<He>> climbs from your back, using your hair for purchase. <<He>> maintains <<his>> grip once back on <<his>> feet, and pulls your head back. "Maybe I'll let my friends ride you too." <<He>> pauses, then leans forward and kisses you, tongue-first. <<takeKissVirginity "Whitney" "loveInterest">>
+	<br><br>
+
+	"Later <<girl>>friend," <<he>> says as <<he>> pulls away. <<He>> and <<his>> friends swagger away.
+	<br><br>
+<<else>>
+	<<He>> climbs from your back, using your hair for purchase. "Maybe I'll let my friends ride you sometime. I bet you'd like that."
+	<br><br>
+
+	<<He>> and <<his>> friends swagger away.
+	<br><br>
+<</if>>
+
+<<link [[Next|Oxford Street]]>><<endevent>><<set $eventskip to 1>><</link>>
+<br>
+
+
+
+
+:: School Leave Whitney Control
+<<effects>>
+
+Whitney kicks your thighs and tries to steer you onto Oxford Street. You turn the other way. "Where the fuck do you think you're going?" <<He>> tries to kick your thighs again, but you grasp <<his>> ankles and hold them firm.
+<br><br>
+
+<<if $submissive gte 1150>>
+	You whinny in response, and enter the school, Whitney still on your back.
+<<elseif $submissive lte 850>>
+	"Sorry," you say. "I'm just a dumb horse, right?" You enter the school, Whitney still on your back.
+<<else>>
+	"Time to teach you a lesson," you say, entering the school with Whitney still on your back.
+<</if>>
+
+<<His>> friends follow, their expressions ranging from worry to amusement.
+<br><br>
+
+Other students watch as you pass. Whitney tries to save face, only protesting once you arrive at the deserted pool.
+<br><br>
+
+"Let me down, <<slut>>," <<he>> says. "Let me down right now."
+<br>
+<<if $submissive gte 1150>>
+	You whinny again, turn your back to the water, and throw <<him>> off.
+<<elseif $submissive lte 850>>
+	"You are pretty heavy," you say. "Alright." You turn your back to the water, and throw <<him>> off.
+<<else>>
+	"Okay," you say. You turn your back to the water, and throw <<him>> off.
+<</if>>
+<br><br>
+
+<<link [[Next|School Leave Whitney Control 2]]>><</link>>
+<br>
+
+
+:: School Leave Whitney Control 2
+<<effects>>
+<<earnFeat "Giddy Up">>
+Whitney lands with a splash. <<His>> friends can't contain their laughter. Not while <<hes>> still submerged, anyway. <<He>> hauls <<himself>> out and faces you, <<his>> soaked fringe now covering <<his>> eyes completely.
+<br><br>
+
+<<He>> grasps the hem of <<his>> shirt and bunches it up to squeeze the water out, pulling it tight against the rest of <<his>> body. It's transparent, <<his>> <<if $pronoun is "f">>bra<<else>>chest<</if>> clearly visible beneath, but <<he>> doesn't care.
+<br><br>
+
+<<He>> runs <<his>> hand over <<his>> scalp, slicking back <<his>> hair. "You've done it now." Despite <<his>> words, <<he>> sounds more amused than angry. Impressed, even. "You'd better watch your back."
+<br><br>
+
+<<He>> turns and walks away, <<his>> friends in tow.
+<br><br>
+
+<<link [[Next|Hallways]]>><<endevent>><<set $bullytimeroutside to 0>><<set $eventskip to 1>><</link>>
+<br>
+
+:: School Leave Whitney Throw
+<<effects>>
+
+You rear back. Whitney tries to cling on, but you throw <<him>> to the ground.
+<br><br>
+
+"Stubborn <<bitch>>," <<he>> says, pushing <<himself>> to <<his>> feet. "But it's alright. I'll have fun breaking you in." <<He>> shoves past you, and <<his>> friends follow.
+<br><br>
+
+<<link [[Next|Oxford Street]]>><<endevent>><</link>>
+<br>
+
+:: Whitney Park
+<<set $outside to 0>><<set $location to "park">><<effects>>
+<<set $rng to random(1, 100)>>
+<<npc Whitney>><<person1>>
+
+You approach Whitney, and take shelter from the $weather under the tree.
+<<if $whitneyReunionScene isnot undefined>>
+	<<unset $whitneyReunionScene>>
+	<<He>> doesn't notice you at first. When <<he>> does, <<his>> eyes go wide and <<he>> almost drops <<his>> cigarette.
+	<br><br>
+	
+	<<He>> grabs you and shoves you against the tree, the shock in <<his>> eyes giving way to anger. "There you are, bitch," Whitney says, looking aggravated. "What? You didn’t think I’d notice when my favourite slut goes missing?" You’re unable to respond as <<he>> presses <<his>> lips against your mouth, kissing you.<<takeKissVirginity "Whitney" "loveInterest">>
+	<br><br>
+
+	<<He>> pulls you back, <<his>> arm wrapped around your waist as <<he>> holds the back of your head still. <<He>> leans forward, forcing you to bend backward.
+	<br><br>
+
+	Whitney glares at you, <<his>> grip the only thing keeping you from falling. You swear you see the faintest trace of a tear in <<his>> eye. Before it goes any further, <<he>> drops you on the floor.
+	<br><br>
+
+	Whitney’s breathing is heavier. <<He>> speaks, "Only... I get to kidnap you. Got it?" <<He>> marches out of the park, sparing you one more glance over <<his>> shoulder.<<npcincr Whitney dom 3>><<stress 6>><<gstress>><<ggdom>>
+	<br><br>
+	
+	<<endevent>>
+	<<whitneyexit>>
+<<elseif $NPCName[$NPCNameList.indexOf("Whitney")].love gte 20 and $whitneyromance isnot 1 and $NPCName[$NPCNameList.indexOf("Whitney")].state isnot "dungeon" and $pillory_tenant.special.name isnot "Whitney">>
+	<<set $whitneyromance to 1>>
+	<<He>> suddenly grabs you and bends you backwards over the fountain, letting the $weather fall on your face. <<He>> looks more angry than usual.
+	<br><br>
+	"Stupid slut," <<he>> says. <<He>> nearly lets you drop into the fountain. "You've been asking for this, don't try to deny it." <<He>> pulls you up and kisses you with surprising tenderness. "You're my <<if $player.gender_appearance is "m">>boy<<else>>girl<</if>>friend now. You better be grateful." <<He>> kisses you again, this time biting your lip. <<He>> pulls away and leaves the park without looking back.
+	<<npcincr Whitney lust 5>><<glust>>
+	<br>
+	<<takeKissVirginity "Whitney" "loveInterest">>
+	<br><br>
+
+	<<tearful>> you steady yourself.
+	<<gstress>><<garousal>><<stress 6>><<arousal 600>>
+	<br><br>
+
+	<<if $loveInterest.primary is "None">>
+		<<set $loveInterest.primary to "Whitney">>
+		<span class = "gold">Whitney is now your love interest! It seems you don't have a choice in the matter.</span>
+	<<else>>
+		<span class = "gold">Whitney can now be claimed as your love interest! It seems you don't have a choice in the matter.
+		<br>
+		You can change your love interest in the "Attitudes" menu.</span>
+	<</if>>
+	<<endevent>>
+	<br><br>
+	<<whitneyexit>>
+
+<<elseif $whitney_text gte 3>>
+	<br><br>
+	"That's it, I warned you!" <<He>> closes <<his>> umbrella and grabs you.
+	<br><br>
+	<<link[[Next|Whitney Park Fight]]>><<set $fightstart to 1>><</link>>
+	<br>
+<<else>>
+	<br><br>
+	<<whitneyoptions>>
+<</if>>
+
+:: Whitney Chat
+<<set $outside to 0>><<effects>>
+<<if $whitneyromance is 1>>
+	You talk with Whitney.
+	<<if $rng gte 91>>
+		<<if $worn.face.type.includes("mask")>>
+			<<He>> looks to you. "Trying to hide from someone? You're doing a pretty shit job of it," <<he>> says, touching your $worn.face.name.
+			"Or maybe you're just up to no good. You did come right up to me, after all." <<He>> lets you go, but not before ruffling your hair.
+			<br><br>
+		<<elseif $skin.left_cheek.special is "Whitney">>
+			<<He>> rubs <<his>> thumb on your left cheek, right on the <<tattoo left_cheek>>. "Looking good."
+		<<elseif $skin.right_cheek.special is "Whitney">>
+			<<He>> rubs <<his>> thumb on your right cheek, right on the <<tattoo right_cheek>>. "Perfect."
+		<<elseif $skin.forehead.special is "Whitney">>
+			<<He>> rubs <<his>> thumb on your forehead, right on the <<tattoo forehead>>. "Make sure everyone sees that."
+		<<else>>
+			<<He>> steps closer, making sure you're covered by <<his>> umbrella.
+		<</if>>
+	<<elseif $rng gte 81>>
+		<<if $NPCName[$NPCNameList.indexOf("Robin")].init is 1 and $robinmissing isnot 1 and $NPCName[$NPCNameList.indexOf("Robin")].trauma lt 80 and $season is "winter">>
+			You see <<his>> gaze drift to the other side of the park,
+			<<if $weekday is 7 and $hour gte 9 and $hour lte 16 or $weekday is 1 and $hour gte 9 and $hour lte 16>>
+				at Robin's hot chocolate stand. "Sometimes I just want to trash that fucking eyesore," <<he>> says.
+				"But <<nnpc_his "Robin">> stuff is really good." <<He>> takes a drag of <<his>> cigarette.
+				"If you ever tell <<nnpc_him "Robin">> I said that, they'll never find your body."
+			<<else>>
+				at where Robin usually sets up <<nnpc_his "Robin">> hot chocolate stand. "Could really go for some of <<nnpc_his "Robin">> stuff right now."
+			<</if>>
+		<<elseif $NPCName[$NPCNameList.indexOf("Robin")].init is 1 and $season is "winter">>
+			You see <<his>> gaze drift to the other side of the park, at where Robin used to set up <<nnpc_his "Robin">> hot chocolate stand. The emotion on <<his>> face is hard to read.
+		<<else>>
+			"Might hit up the pub later," <<he>> says. "You'd better not follow me."
+		<</if>>
+	<<elseif $rng gte 61>>
+		"You're getting way too comfortable around me," <<he>> says behind a smile.
+	<<elseif $rng gte 41>>
+		"Do you ever stop talking?" <<he>> asks. A few moments of silence pass. "It was a question, not a request, idiot!"
+		<<gstress>><<stress 1>>
+	<<elseif $rng gte 21>>
+		"Keep bothering me and I'll dunk you in the fountain," <<he>> says in between drags. "Sure would like to see your clothes go see-through."
+	<<else>>
+		<<He>> stays silent, but seems to be listening.
+	<</if>>
+<br><br>
+<<whitneyoptions>>
+<<else>>
+	<<if $rng gte 65>>
+		<<athleticsdifficulty 650 1000 true>>
+		Before you can react, Whitney grabs you. <<He>> starts running towards the fountain with you in tow.
+		<<if $athleticsSuccess>>
+			However, <span class="green">you steady yourself,</span> and manage to stop <<him>> from dunking you. <<He>> gives you one last frustrated pull before releasing you.
+			<br><br>
+			"You're no fun." <<He>> walks back to <<his>> spot under the tree.
+			<br><br>
+			<<whitneyoptions>>
+		<<else>>
+			You <span class="red">trip up, and <<he>> pushes you over the edge.</span> You fall right in, <<if $season is "winter">>breaking through the ice and<</if>> getting drenched.
+			<<water>>
+			<br><br>
+			"You only speak to me when I speak to you first." <<He>> leaves you in the fountain, laughing as <<he>> exits the park.
+			<br><br>
+			<<whitneyexit>>
+		<</if>>
+	<<elseif $rng gte 50>>
+	You ask Whitney to talk to you. "The fuck makes you think I want to?"
+	<br><br>
+	<<whitneyoptions>>
+	<<elseif $rng gte 40>>
+	You try to make small talk. <<He>> pretends you aren't there.
+	<br><br>
+	<<whitneyoptions>>
+	<<elseif $rng gte 20>>
+	You try to talk to Whitney. <<He>> gives you a threatening glare.
+	<br><br>
+	<<whitneyoptions>>
+	<<else>>
+	You try to chat with Whitney, but <<he>> keeps smoking, not uttering a word.
+	<br><br>
+	<<whitneyoptions>>
+	<</if>>
+<</if>>
+
+:: Whitney Flirt
+<<set $outside to 0>><<effects>>
+<<if $submissive gte 1150>>
+	"I can... try to cheer you up..." you say,
+<<elseif $submissive lte 850>>
+	"Come on, quit sulking, I know how to cheer you up," you say,
+<<else>>
+	"I know what'll make you feel better," you say,
+<</if>>
+as you take a series of provocative poses in front of <<him>>.
+<<promiscuity1>><<set _whitney_attention to 1>>
+<<whitneyoptions>>
+
+:: Whitney Flirt 2
+<<set $outside to 0>><<effects>>
+You press forward, putting your hands on <<his>> waist and pulling yourself close.
+<<if $submissive gte 1150>>
+	"I... really need you right now..." you whisper as you put your head on <<his>> shoulder.
+<<elseif $submissive lte 850>>
+	"Hey! Hey! Hey! Pay attention to me!" you prod on.
+<<else>>
+	"Are you really going to pass up this opportunity?" you ask, trailing your hands up <<his>> body.
+<</if>>
+<<promiscuity2>>
+<<if $NPCName[$NPCNameList.indexOf("Whitney")].lust gte 40>>
+	Whitney smiles as <<he>> eyes you with hunger.
+	<<if $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 16>>
+		<<He>> grabs your arm and pulls you to the bench behind <<him>>. <<He>> sits you down on top of <<him>>, and easily removes your
+		<<if $worn.over_upper.name isnot "naked">>
+			$worn.over_upper.name and $worn.upper.name.<<overupperstrip>><<upperstrip>>
+		<<elseif $worn.upper.name isnot "naked">>
+			$worn.upper.name.<<upperstrip>>
+		<<else>>
+			$worn.lower.name.<<lowerstrip>>
+		<</if>>
+	<<elseif $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 8>>
+		"How can I say no?" <<He>> grabs your hand, pulling you to the bench. <<takeHandholdingVirginity "Whitney" "romantic">>
+	<<else>>
+		"Sit. Now," <<he>> says, pointing to the bench behind <<him>>. You comply, and <<he>> straddles you.
+	<</if>>
+	<<garousal>><<arousal 400>>
+	<br><br>
+	<<link [[Next|Whitney Park Sex]]>><<set $sexstart to 1>><</link>><br>
+<<elseif $NPCName[$NPCNameList.indexOf("Whitney")].lust gte 20>>
+	Whitney looks you over for a moment, tossing <<his>> cigarette aside.
+	<<if $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 16>>
+		<<He>> grabs you by the wrists, pulling you along as <<he>> walks backwards towards the bench. <<He>> sits, pulling you down on top of <<him>>.
+		"You look even better this close up," <<he>> says before pulling you in for a kiss. <<garousal>><<arousal 400>>
+		<br><br>
+		You feel <<his>> hands on your <<bottom>>, and <<he>> begins to grind you against <<his>>
+		<<if $NPCList[0].penis isnot "none">>
+			<<print $NPCList[0].penisdesc>>.
+		<<else>>
+			pussy.
+		<</if>>
+		You <<if $player.penisExist>><<peniletext>><<else>><<vaginaltext>><</if>> begin to move on your own, being pushed on by the heat rising in you. <<ggarousal>><<arousal 1000>>
+		<br><br>
+		<<if ($player.penisExist and $penileskill gte random(200, 600)) or ($player.vaginaExist and $vaginalskill gte random(200, 600))>>
+			You can feel Whitney approaching <<his>> peak as <<his>> pace increases, and you increase yours to match. In a matter of moments, <<hes>> fully pressed together with you, convulsing.
+			It pushes you over the edge. <<orgasm>>
+			<br><br>
+			Whitney gasps, and kisses you again. "Not bad, slut," <<he>> says as <<he>> pulls away. <<npcincr Whitney love 1>><<npcincr Whitney dom -1>><<npcincr Whitney lust -10>><<glove>><<ldom>><<llust>>
+			<br><br>
+			<<He>> gently lifts you and helps you stand. "Look what you did, now I have to go home and clean up," <<he>> says with a hint of sarcasm, gesturing to <<his>> lower half. "See you around, <<bitch>>." <<He>> leaves the park.
+			<br><br>
+			<<whitneyexit>>
+		<<else>>
+			Whitney can feel your peak approaching, and <<he>> increases <<his>> pace. It pushes you over the edge. <<orgasm>>
+			<br><br>
+			<<He>> stifles your gasping with a kiss. "Good <<girl>>," <<he>> says as <<he>> pulls away. <<npcincr Whitney dom 1>><<npcincr Whitney lust 5>><<gdom>><<glust>>
+			<br><br>
+			<<He>> gently lifts you and helps you stand. "Satisfied now? Can you piss off and leave me alone?"
+			<br><br>
+			<<whitneyoptions>>
+		<</if>>
+	<<elseif $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 8>>
+		<<He>> lightly pushes you away, and turns to the bench behind <<him>>. <<He>> clears it off with <<his>> hand and sits, motioning for you to do the same.
+		Without warning, <<he>> runs <<his>> hand up your leg.
+		<<if !$worn.genitals.type.includes("chastity")>>
+			<<He>> reaches your <<genitals>>, but doesn't let it stop <<him>> as <<his>> hand slips into your <<if $worn.under_lower.name isnot "naked">>$worn.under_lower.name<<else>>$worn.lower.name<</if>>.
+		<<else>>
+			<<He>> reaches your groin, and slips <<his>> hand into your <<if $worn.under_lower.name isnot "naked">>$worn.under_lower.name<<else>>$worn.lower.name<</if>>.
+		<</if>>
+		<<if !$genderknown.includes("Whitney") and ($player.gender is "h") or ($player.gender_appearance is "m" and $player.gender isnot "m") or ($player.gender_appearance is "f" and $player.gender isnot "f")>>
+			<<set $genderknown.pushUnique("Whitney")>>
+			For a moment, <<he>> seems surprised by what <<he>> feels, but <<he>> smiles anyway.
+			<br><br>
+		<</if>>
+		<<He>> quickly grabs your <<genitals>> and
+		<<if $player.gender is "h">>
+			starts to jerk you off with one hand, plunging a finger from <<his>> other hand into your <<pussy>>.
+		<<elseif $player.penisExist>>
+			starts to jerk you off, paying extra attention to the tip of your <<penis>>.
+		<<else>>
+			plunges a finger into your <<pussy>>, swirling it around.
+		<</if>>
+		<<arousal 5000>><<ggarousal>>
+		<<if $arousal gte $arousalmax>>
+			<<orgasm>><<He>> smiles.
+			<br><br>
+			<<whitneyoptions>>
+		<<else>>
+			"Come on, hurry up and finish already you useless shit."
+			<br><br>
+			<<He>> locks eyes with you, and the speed of <<his>> assault increases.
+			<<if $player.gender is "h">>
+				<<He>> uses <<his>> thumb to rub your tip in circles, while sliding a second finger into your <<pussy>>.
+			<<elseif $player.penisExist>>
+				<<He>> uses <<his>> thumb to rub your tip in circles<<if $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 16 and $analdisable is "f">>, and slowly slides a finger into your <<bottom>>. <<He>> grins as <<he>> reaches your prostate<<else>>, and uses <<his>> other hand to focus on your shaft<</if>>.
+			<<else>>
+				<<He>> plunges a second finger into your <<pussy>>, and uses <<his>> other hand to fondle your <<breasts>>.
+			<</if>>
+			<<He>> kisses you, muffling your involuntary moans. Someone on the far side of the park seems to notice you two, and they quickly turn away.
+			<br><br>
+			<<set $arousal to 10000>>
+			<<if $arousal gte $arousalmax>>
+				<<orgasm>>
+			<</if>>
+		<<He>> smiles, not even giving you a chance to steady yourself before pulling you to your feet. "Now fuck off." <<npcincr Whitney dom 1>><<npcincr Whitney lust 1>><<gdom>><<glust>>
+		<br><br>
+		<<whitneyoptions>>
+		<</if>>
+	<<else>>
+		"Sit," <<he>> says, pointing to the bench behind <<him>>. You comply, and <<he>> proceeds to sit on your lap, using you as a cushion.
+		"You make a nice bench," <<he>> says before turning around for a kiss. <<garousal>><<arousal 400>>
+		<br><br>
+		<<He>> moves your hands to be wrapped around <<his>> waist, and <<he>> begins to grind on you.
+		You <<if $player.penisExist>><<peniletext>><<else>><<vaginaltext>><</if>> begin to help <<him>> move, being pushed on by the heat rising in you. <<ggarousal>><<arousal 1000>>
+		<br><br>
+		<<if ($player.penisExist and $penileskill gte random(200, 600)) or ($player.vaginaExist and $vaginalskill gte random(200, 600))>>
+			You can feel Whitney approaching <<his>> peak as <<his>> pace increases, and you increase yours to match. In a matter of moments, <<hes>> fully pressed against you, convulsing.
+			It pushes you over the edge. <<orgasm>>
+			<br><br>
+			Whitney gasps, and kisses you again. "You're good," <<he>> says as <<he>> pulls away. <<npcincr Whitney love 1>><<npcincr Whitney dom -1>><<npcincr Whitney lust -10>><<glove>><<ldom>><<llust>>
+			<br><br>
+			<<He>> gets up and helps you stand. "Look what you did, now I have to go home and clean up," <<he>> says with a hint of sarcasm, gesturing to <<his>> lower half. "See you around, <<bitch>>." <<He>> leaves the park.
+			<br><br>
+			<<whitneyexit>>
+		<<else>>
+			Whitney can feel your peak approaching, and <<he>> increases <<his>> pace. It pushes you over the edge. <<orgasm>>
+			<br><br>
+			<<He>> stifles your gasping with a kiss. "Good <<girl>>," <<he>> says as <<he>> pulls away. <<npcincr Whitney dom 1>><<npcincr Whitney lust 5>><<gdom>><<glust>>
+			<br><br>
+			<<He>> gets up and you and helps you stand. "Satisfied now? Can you piss off and leave me alone?"
+			<br><br>
+			<<whitneyoptions>>
+		<</if>>
+	<</if>>
+<<else>>
+	Whitney lets out a sigh. "Not today, you needy little shit. Not in the mood."
+	<br><br>
+	<<whitneyoptions>>
+<</if>>
+
+:: Whitney Ask
+<<set $outside to 0>><<effects>>
+<<if $submissive gte 1150>>
+	"Y...you're not usually alone. What's wrong?"
+<<elseif $submissive lte 850>>
+	"You're awful quiet, for once. Is something troubling you?"
+<<else>>
+	"What's got you so down?"
+<</if>>
+<br><br>
+<<if $NPCName[$NPCNameList.indexOf("Whitney")].state is "rescued" and $whitneyRescueTalk is undefined>>
+	<<set $whitneyRescueTalk to 1>>
+	<<He>> throws <<his>> cigarette to the ground, and steps on it. "Why?" <<He>> looks you right in the eyes.
+	<br><br>
+	<<if $submissive gte 1150>>
+		"W...well, I was just worr-"
+	<<elseif $submissive lte 850>>
+		"Most people don't mope under a tree in weather like this without a reas-"
+	<<else>>
+		"I was just concer-"
+	<</if>><<He>> grabs you, cutting you short.
+	<br><br>
+	"Why the fuck did you save me? After everything I did to you?" You think you can see tears welling in <<his>> eyes. "I tied you up, and got ready to sell you. You could have just let them take me, but you fucking didn't.
+	What the fuck is wrong with you? Any sane person would have..."
+	<br><br>
+	<<He>> stops <<himself>>, and slowly lets you go. <<He>> turns, and starts to quickly walk away. "Honestly. You don't make any fucking sense." <<npcincr Whitney love 3>><<gglove>>
+	<br><br>
+	<<whitneyexit>>
+<<elseif $NPCName[$NPCNameList.indexOf("Whitney")].love gte 12 or $NPCName[$NPCNameList.indexOf("Whitney")].state is "rescued">>
+	<<He>> looks at you for a moment, before walking out from under the tree and closer to the fountain. <<He>> gestures for you to follow <<him>>.
+	<<if $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 16>>
+		When you approach, <<he>> quickly grabs you and pulls you closer. "You're no use to me if you get sick."
+	<<elseif $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 8>>
+		You walk alongside <<him>>, and you can't help but notice how different the park's atmosphere is with so few people around.
+	<<else>>
+		"Make sure I don't get wet," <<he>> says, handing you the umbrella.
+	<</if>>
+	It's only a few steps to the fountain.
+	<<if $weather is "snow">>
+		Snow slowly builds on the surface of the ice, and <<he>> reaches for an area that hasn't frozen over.
+	<<else>>
+		Rain drops shake the surface of the water.
+	<</if>>
+	Whitney begins to pilfer coins from the bottom. <<if $kylarSeen.includes("fountainIntro") is 1>>"There's a lot more coins than there used to be. Losers."<<else>>"Can't believe people just throw these away. Superstitious morons."<</if>> <<He>> faintly smiles.
+	<br><br>
+	<<link [[Join in|Whitney Ask 2]]>><<set $phase to 0>><<npcincr Whitney love 1>><</link>><<crime>><<glove>><br>
+	<<link [[Watch|Whitney Ask 2]]>><<set $phase to 1>><</link>><br>
+	<<link [[Interfere|Whitney Ask 2]]>><<set $phase to 2>><<npcincr Whitney dom -1>><</link>><<ldom>><br>
+<<else>>
+	<<set _shoveChance to random (0,100)>>
+	<<if _shoveChance gte 65>>
+		<<athleticsdifficulty 650 1000 true>>
+		Before you can react, Whitney grabs you. <<He>> starts running towards the fountain with you in tow.
+		<<if $athleticsSuccess>>
+			However, <span class="green">you steady yourself,</span> and manage to stop <<him>> from dunking you. <<He>> gives you one last frustrated pull before releasing you.
+			<br><br>
+			"You're no fun." <<He>> walks back to <<his>> spot under the tree.
+			<br><br>
+			<<whitneyoptions>>
+		<<else>>
+			You <span class="red">trip up, and <<he>> pushes you over the edge.</span> You fall right in, <<if $season is "winter">>breaking through the ice and<</if>> getting drenched.
+			<<water>>
+			<br><br>
+			"You know what? There's absolutely nothing wrong. I feel a lot better now. Thanks, <<bitch>>." <<He>> leaves you in the fountain, laughing as <<he>> exits the park.
+			<br><br>
+			<<whitneyexit>>
+		<</if>>
+	<<else>>
+		"Wouldn't you like to know?" <<He>> looks away dismissively. "Get the fuck out of my sight."
+		<br><br>
+		<<whitneyoptions>>
+	<</if>>
+<</if>>
+
+:: Whitney Ask 2
+<<set $outside to 0>><<pass 20>><<effects>>
+<<if $phase is 0>>
+	<<if $submissive gte 1150>>
+		"I guess there's no harm in it," you murmur, looking around to make sure no one's watching.
+	<<elseif $submissive lte 850>>
+		"Yeah, what a bunch of idiots," you say.
+	<<else>>
+		"They wouldn't have thrown these away if they wanted them," you say.
+	<</if>>
+	You stick your hand in the<<if $season is "winter">> freezing<</if>> water, hunting for the most valuable coins. You manage to find <<if $kylarSeen.includes("fountainIntro")>><<moneyGain 6 true true>><<else>><<moneyGain 3 true true>><</if>>.
+	<br><br>
+	Whitney pulls <<his>> hands out of the water, looking <<print either("proud", "disappointed", "annoyed", "blankly")>> at <<his>> haul. <<He>> dries <<his>> hands off on your <<if $worn.over_upper.name isnot "naked">>$worn.over_upper.name<<elseif $worn.upper.name isnot "naked">>$worn.upper.name<<elseif $worn.under_upper.name isnot "naked">>$worn.under_upper.name<<else>>$worn.lower.name<</if>>.
+<<elseif $phase is 1>>
+	You watch as Whitney snatches coins from the fountain.
+	<<if $submissive gte 1150>>
+		"That... doesn't answer my question..." you say softly.
+	<<elseif $submissive lte 850>>
+		"I asked you a question, are those cigs fucking up your ears too?" you spit.
+	<<else>>
+		"Just gonna ignore my question?" you say.
+	<</if>>
+	<br><br>
+	<<He>> flips you off in response, before pulling <<his>> other hand out of the water, looking <<print either("proud", "disappointed", "annoyed", "blankly")>> at <<his>> haul.
+<<else>>
+	<<if $submissive gte 1150>>
+		"Hey, stealing is wrong!" you say<<if $crime gte 1000>>, trying not to think about your own criminal endeavors<</if>>.
+	<<elseif $submissive lte 850>>
+		"Stealing from a fountain is pretty low, even for you," you taunt.
+	<<else>>
+		"This is wrong," you say<<if $crime gte 1000>>, trying not to think about your own criminal endeavors<</if>>.
+	<</if>>
+	<br><br>
+	<<if $submissive gte 1150>>
+		"Stealing is wrong!"
+	<<elseif $submissive lte 850>>
+		"Stealing from a fountain is pretty low!"
+	<<else>>
+		"This is wrong!"
+	<</if>>
+	<<he>> says back in a mocking tone. "Fucking killjoy." <<He>> stops and looks at you for a moment, and drops the few coins <<he>> picked up back into the fountain.
+<</if>>
+<br><br>
+The two of you walk back to the bench under the tree. <<He>> lights another cigarette, staying silent for the next few minutes.
+<br><br>
+<<if $whitneyromance is 1>>
+	"<<print either(
+		"This town's fucked,",
+		"Nice to be alone every now and then,",
+		"I really like the $weather,",
+		"I don't smoke indoors unless I know it'll piss someone off,",
+		"Needed a break from some noise pollution,"
+	)>>" <<he>> says. "To answer your question."
+	<br><br>
+	<<whitneyoptions>>
+<<else>>
+	"Mind your own business, slut," <<he>> finally answers. "And stop bothering me." <<He>> throws <<his>> cigarette into the fountain, and walks away, leaving you alone under the tree.
+	<br><br>
+	<<whitneyexit>>
+<</if>>
+
+
+:: Whitney Park Fight
+<<if $fightstart is 1>>
+	<<set $fightstart to 0>>
+
+	<<neutral 1>>
+
+	<<maninit>>
+	<<set $enemytrust -= 100>>
+	<<set $enemyanger += 200>>
+	<<npcidlegenitals>>
+<</if>>
+
+<<effects>>
+<<effectsman>><<man>>
+
+<<if $alarm is 1>>
+	<<set $alarm to 0>>
+No one comes to your aid.
+	<br><br>
+<</if>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Whitney Park Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Whitney Park Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $alarm is 1 and $rescue is 1>>
+	<span id="next"><<link [[Next|Whitney Park Fight Finish]]>><</link>></span><<nexttext>>
+<<elseif $pain gte 100 and $willpowerpain is 0>>
+	<span id="next"><<link [[Next|Whitney Park Fight Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Whitney Park Fight]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Whitney Park Fight Finish
+<<if $enemyhealth lte 0>>
+
+You push <<him>> into the fountain<<if $season is "winter">>, the ice giving way under <<him>><</if>>. "You fucking <<bitch>>!" <<He>> yells. You take the opportunity to escape. When you turn around, you see <<him>> fleeing the park.
+<<npcincr Whitney love -1>><<npcincr Whitney dom -1>><<llove>><<ldom>>
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<whitneyexit>>
+
+<<elseif $enemyarousal gte $enemyarousalmax>>
+<<ejaculation>>
+
+"Apology... accepted," <<he>> pants, leaning against the fountain. <<tearful>> you escape to safety. When you turn around, you see <<him>> leaving the park, covering <<his>> lower half with <<his>> umbrella.
+<<llust>><<npcincr Whitney lust -20>>
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<whitneyexit>>
+
+<<else>>
+
+Whitney brings you to your knees. "All I wanted was some fucking peace and quiet." <<He>> lifts you, and pushes you back <span class="red">directly into the fountain.</span>
+<<if $season is "winter">>The ice gives way under you, dropping you into the freezing water. <<stress 20>><<ggstress>><</if>>
+<<water>>
+<br><br>
+"Stupid <<bitch>>."
+<<if $whitneyromance is 1>>
+	<<He>> grabs you by the arm, effortlessly lifting you out of the fountain. "Go dry yourself off before you get sick. Fucking idiot." <<He>> walks away without another word.
+<<else>>
+	<<He>> leaves you soaked in the fountain as <<he>> walks out of the park.
+<</if>>
+<<clotheson>>
+<<endcombat>>
+<br><br>
+<<whitneyexit>>
+
+<</if>>
+
+:: Whitney Park Sex
+<<if $sexstart is 1>>
+	<<set $sexstart to 0>>
+	<<consensual>>
+	<<set $consensual to 1>>
+	<<neutral 1>>
+
+	<<maninit>>
+	<<prop bench>>
+<</if>>
+<<if $rng gte 98>>
+	A <<if $malechance lte random(1,100)>>man<<else>>woman<</if>> walking by takes notice, and quickly reverses their direction. Whitney gives them a smug smile.
+<</if>>
+
+<<effects>>
+<<effectsman>><<man>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Whitney Park Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Whitney Park Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $finish is 1>>
+	<span id="next"><<link [[Next|Whitney Park Sex Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Whitney Park Sex]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Whitney Park Sex Finish
+<<effects>><<set $location to "park">>
+<<if $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>><<npcincr Whitney lust -20>>
+
+	<<if $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 10 and $orgasmcurrent is 0 and !$worn.genitals.type.includes("chastity")>>
+		"Don't think I wouldn't return the favour, slut."
+		<<if !$genderknown.includes("Whitney") and ($player.gender is "h") or ($player.gender_appearance is "m" and $player.gender isnot "m") or ($player.gender_appearance is "f" and $player.gender isnot "f")>>
+			<<set $genderknown.pushUnique("Whitney")>>
+			<<His>> hand trails down, until it makes contact with your <<genitals>>. For a moment, <<he>> seems surprised by what <<he>> feels, but <<he>> smiles anyway.
+			<br><br>
+		<</if>>
+		<<He>> quickly grabs your <<genitals>> and
+		<<if $player.gender is "h">>
+			starts to jerk you off with one hand, plunging a finger from <<his>> other hand into your <<pussy>>.
+		<<elseif $player.penisExist>>
+			starts to jerk you off, paying extra attention to the tip of your <<penis>>.
+		<<else>>
+			plunges a finger into your <<pussy>>, swirling it around.
+		<</if>>
+		<<arousal 5000>>
+		<<if $arousal gte $arousalmax>>
+			<<orgasm>><<He>> smiles.
+		<<else>>
+			"Can't have you leaving without a little gift."
+			<br><br>
+			<<He>> locks eyes with you, and the speed of <<his>> assault increases.
+			<<if $player.gender is "h">>
+				<<He>> uses <<his>> thumb to rub your tip in circles, while sliding a second finger into your <<pussy>>.
+			<<elseif $player.penisExist>>
+				<<He>> uses <<his>> thumb to rub your tip in circles<<if $NPCName[$NPCNameList.indexOf("Whitney")].dom gte 16 and $analdisable is "f">>, and slowly slides a finger into your <<bottom>>. <<He>> grins as <<he>> reaches your prostate<<else>>, giving your <<bottom>> a slap with <<his>> other hand<</if>>.
+			<<else>>
+				<<He>> plunges a second finger into your <<pussy>>, and uses <<his>> other hand to fondle your <<breasts>>.
+			<</if>>
+			<<He>> kisses you, muffling your involuntary moans. Someone on the far side of the park seems to notice you two, and they quickly turn away.
+			<br><br>
+			<<set $arousal to 10000>>
+			<<if $arousal gte $arousalmax>>
+				<<orgasm>>
+			<</if>>
+		Whitney gives you a wicked smile.
+		<</if>>
+	<</if>>
+
+	<<clotheson>>
+
+	<<tearful>> Whitney helps you stand from the bench. <<He>> pulls a cigarette out of <<his>> shirt pocket, still holding you with <<his>> other arm.
+	<<llust>>
+	<br><br>
+
+	<<endcombat>>
+	<<npc Whitney>><<person1>>
+	<<if $exposed gte 1>>
+		<br><br>
+		<<He>> notices your exposure, and <<his>> eyes widen. "Oh, shit, whoops. Can't have you getting sick, or anyone getting any funny ideas. Come on."
+		<<He>> takes you by the hand and holds you close, walking you out of the park.
+		<br><br>
+		<<link [[Next (0:20)|Whitney Park Sex Exposed]]>><</link>><br>
+	<<else>>
+		<<whitneyoptions>>
+	<</if>>
+<<elseif $enemyhealth lte 0>>
+
+	You shove Whitney off you. <<tearful>> you flee the area. When you look back, Whitney is already gone.
+	<<llove>><<ldom>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>>
+	<br><br>
+
+	<<clotheson>>
+	<<endcombat>>
+
+	<<whitneyexit>>
+
+<<else>>
+
+	"You're such a shitty tease," Whitney mumbles as <<he>> shoves you away.
+	<<llove>><<ldom>><<npcincr Whitney love -1>><<npcincr Whitney dom -1>>
+	<br><br>
+
+	<<clotheson>>
+	<<endcombat>>
+
+	<<tearful>> you leave the same way as Whitney, but don't see them anywhere.
+	<br><br>
+
+	<<whitneyexit>>
+
+<</if>>
+
+:: Whitney Park Sex Exposed
+<<set $outside to 1>><<effects>><<pass 15>><<set $location to "town">>
+Whitney continues to hold you as the two of you walk to the orphanage. <<He>> needs frequent directions.
+Whenever you happen across a passerby, <<he>> holds <<his>> umbrella to the side to conceal you.
+<br><br>
+Before long, you're home.
+<<if $submissive gte 1150>>
+	"Th...thanks for the safe trip," you say.
+<<elseif $submissive lte 850>>
+	"I didn't need your help, but thanks anyways," you say.
+<<else>>
+	"Thanks," you say.
+<</if>>
+"Shut the fuck up," <<he>> says, as <<he>> suddenly pulls you into a deep kiss. <<He>> holds you there for a moment, before releasing you.
+"I hope all your friends saw that." <<He>> walks away without another word. <<gstress>><<garousal>><<stress 6>><<arousal 600>>
+<br><br>
+<<link [[Hurry inside|Orphanage]]>><</link>>
+<br>

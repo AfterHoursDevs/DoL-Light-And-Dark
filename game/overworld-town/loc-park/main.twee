@@ -1,0 +1,1139 @@
+:: Widgets Passout Park [widget]
+<<widget "passoutpark">>
+/*ToDo: Pregnancy, remove $pregnancyTesting to properly enable*/
+<<if $sexStats.vagina.pregnancy.waterBreaking is true and $pregnancyTesting>>
+	<<pregnancyWatersBrokenPassout "park">>
+<<else>>
+	[[Everything fades to black...->Passout park]]
+<</if>>
+<</widget>>
+
+:: Passout park
+You've pushed yourself too much.
+<br><br>
+<<passout>>
+<<set $bus to "park">>
+<<set $dangerpark to 0>>
+<<set $safepark to 0>>
+<<set $danger to random(1, 10000)>>
+
+<<if $danger gte (9900 - $allure)>>
+<<set $dangerpark to random(1, 100)>>
+
+<<elseif $danger lt (9900 - $allure)>>
+<<set $safepark to random(1, 100)>>
+<</if>>
+
+<<if $dangerpark gte 81>>
+<<link [[Wake up|Abduction]]>><<set $molestationstart to 1>><</link>>
+<<elseif $dangerpark gte 1>>
+<<link [[Wake up|Dog Park]]>><<set $molestationstart to 1>><</link>>
+<!--
+	<<link [[Wake up|Abduction]]>><<set $molestationstart to 1>><</link>>
+-->
+<</if>>
+
+<<if $safepark gte 1>><<ambulance>><</if>>
+
+<<pass 1 hour>>
+
+<<trauma 6>><<set $stress -= 2000>>
+
+:: Dog Park
+<<if $molestationstart is 1>>
+<<set $molestationstart to 0>>
+<<controlloss>>
+<<violence 1>>
+<<neutral 1>>
+<<molested>>
+<<beastNEWinit 1 dog>>
+	<<beastCombatInit>>
+You awaken to find yourself being dragged behind a bush by a strange <<beasttype>>.
+<</if>>
+
+<<effects>>
+<<effectsman>>
+<br>
+<<beast $enemyno>>
+<br><br>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $alarm is 1>>
+
+	No one comes to your aid.
+	<<set $alarm to 0>>
+	<<if $drugged gte 1>>The drugs inhibit you, you couldn't cry very convincingly.<</if>>
+	<br><br>
+	<<if $enemyarousal gte $enemyarousalmax>>
+		<span id="next"><<link [[Next->Dog Park Ejaculation]]>><</link>></span><<nexttext>>
+	<<elseif $enemyhealth lte 0>>
+		<span id="next"><<link [[Next->Dog Park Escape]]>><</link>></span><<nexttext>>
+	<<else>>
+		<span id="next"><<link [[Next->Dog Park]]>><</link>></span><<nexttext>>
+	<</if>>
+
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next->Dog Park Ejaculation]]>><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[Next->Dog Park Escape]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next->Dog Park]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Park Woman
+<<if $molestationstart is 1>>
+	<<set $molestationstart to 0>>
+	<<controlloss>>
+	<<violence 1>>
+	<<neutral 1>>
+	<<molested>>
+	<<strangewoman1init>>
+<</if>>
+
+<<effects>>
+<<effectsman>><<man>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $alarm is 1>>
+
+	No one comes to your aid.
+	<<set $alarm to 0>>
+	<<if $drugged gte 1>>The drugs inhibit you, you couldn't cry very convincingly.<</if>>
+	<br><br>
+	<<if $enemyarousal gte $enemyarousalmax>>
+		<span id="next"><<link [[Next->Park Woman Ejaculation]]>><</link>></span><<nexttext>>
+	<<elseif $enemyhealth lte 0>>
+		<span id="next"><<link [[Next->Park Woman Escape]]>><</link>></span><<nexttext>>
+	<<else>>
+		<span id="next"><<link [[Next->Park Woman]]>><</link>></span><<nexttext>>
+	<</if>>
+
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next->Park Woman Ejaculation]]>><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[Next->Park Woman Escape]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next->Park Woman]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Park Woman Ejaculation
+<<effects>>
+
+<<He>> tenses and presses <<his>> mouth against your neck to muffle the sound of <<his>> climax.
+<br><br>
+
+<<ejaculation>>
+
+<<if $enemyanger gte ($enemyangermax / 5) * 3>>
+<<He>> gives you a hard bite then leaves you without a word<<violence 3>>
+<br><br>
+<<elseif $enemyanger gte 1>>
+Without a word, <<he>> gets up and leaves you lying on the grass.
+<br><br>
+<<else>>
+Smiling, <<he>> kisses you on the cheek. "This is for you." <<He>> leaves you lying on the grass.
+<br>
+You've gained <<moneyGain 5>>.
+<br><br>
+<</if>>
+
+<<tearful>> you struggle to your feet. You know you're not out of danger yet.
+<br><br>
+
+<<clotheson>>
+
+<<endcombat>>
+
+<<parkeventend>>
+
+:: Park Woman Escape
+<<effects>>
+
+<<He>> recoils in pain, giving you the chance you need to escape. <<tearful>> you run, giving little heed to prying eyes, before collapsing in a bed of flowers. You're safe.
+<br><br>
+
+<<clotheson>>
+<<endcombat>>
+
+<<parkeventend>>
+
+:: Dog Park Ejaculation
+<<beastejaculation>>
+
+<<if $enemyanger gte ($enemyangermax / 5) * 3>>
+<<bHe>> bites you on the thigh, then leaves you lying on the grass.
+<<violence 3>>
+<br><br>
+<<elseif $enemyanger gte 1>>
+<<bHe>> barks, then leaves you lying on the grass.
+<br><br>
+<<else>>
+<<bHe>> licks your <<genitals>> then darts away.
+<<neutral 5>>
+<br><br>
+<</if>>
+
+<<tearful>> you rise to your feet.
+<br><br>
+
+<<clotheson>>
+
+<<endcombat>>
+<<set $stress -= 1000>><<set $eventskip to 1>>
+<<destination>>
+
+:: Dog Park Escape
+<<effects>>
+
+The <<beasttype>> whimpers and flees into a bush. <<tearful>> you gather yourself.
+<br><br>
+
+<<clotheson>>
+
+<<endcombat>>
+<<set $stress -= 1000>><<set $eventskip to 1>>
+<<destination>>
+
+:: Widgets Park [widget]
+<<widget "park">>
+<<if $nextPassageCheck is "Park">>
+	<<add_link "<span class='nextLink'><<parkicon>><<link [[Park (0:05)|Park]]>><<pass 5>><</link>></span><br>">>
+<<else>>
+	<<add_link "<<parkicon>><<link [[Park (0:05)|Park]]>><<pass 5>><</link>><br>">>
+<</if>>
+<<hideDisplay true>>
+<</widget>>
+
+<<widget "parkquick">>
+
+<<link [[Park|Park]]>><</link>>
+
+<</widget>>
+
+<<widget "parkeventend">>
+
+<<link [[Next|Park]]>><<set $eventskip to 1>><</link>>
+
+<</widget>>
+
+<<widget "parkrun">>
+
+<<if $rng gte $famepark>>
+	<<set $rng to random(1, 100)>>
+	<<if $rng gte 91>>
+		While running, you have to pass through some bushes.
+		<<if $worn.lower.type.includes("naked")>>
+			As you push through, a branch whips back into your <<undies>>, stinging you.
+		<<else>>
+			As you push through, a clump of thorns catch on your exposed <<if $breastsize is 0>>chest<<else>>breasts<</if>>.
+			<<gpain>>
+		<</if>>
+		<<set $pain += 20>>
+		<br><br>
+	<<link [[Next|Park]]>><<set $eventskip to 1>><</link>>
+	<<elseif $rng gte 81>>
+	<<generate1>><<person1>>You run past a <<person>>. <<He>> smiles at you across a
+
+		<<if $worn.upper.type.includes("naked")>>
+		shoulder-high hedge separating you. <<He>> doesn't realise you're so exposed.
+		<<else>>
+		waist-high hedge separating you, keeping your <<undies>> concealed. <<He>> doesn't realise you're so exposed.
+		<</if>>
+		<br><br>
+
+	<<link [[Smile back|Park]]>><<set $eventskip to 1>><<endevent>><</link>>
+	<br>
+	<<if $exhibitionism gte 15>>
+	<<link [[Admit your secret|Park Run Secret]]>><</link>><<exhibitionist2>>
+	<br>
+	<</if>>
+
+	<<elseif $rng gte 71>><<generate1>><<generate2>>
+	<<print either("Under a tree,","Between some bushes,","In plain view of the entrance,","In a park gazebo,","Right under a streetlight,","On a swing, in the empty children's play area,")>>
+	a <<person1>><<person>> is <<if $NPCList[1].pronoun is "m">>sucking off <<his>> boyfriend.<<else>>eating out <<his>> girlfriend.<</if>>
+	The receiver, <<if $NPCList[0].description == $NPCList[1].description && $NPCList[0].pronoun == $NPCList[1].pronoun>>another<<else>>a<</if>> <<person2>><<person>>, gazes at you as you run past. <<He>> has a look of blissful satiation on <<his>> face as <<his>>
+	<<if $NPCList[0].pronoun is "m">>boyfriend's<<else>>girlfriend's<</if>> <<if $pronoun is "m">>head bobs between his legs.<<else>>head nuzzles between her legs.<</if>>
+	<br><br>
+
+	<<endevent>>
+	<<link [[Next|Park]]>><<set $eventskip to 1>><</link>>
+	<<elseif $rng gte 61>>
+	You encounter a stray dog. It runs at the sound of your footsteps.
+	<br><br>
+
+	<<link [[Next|Park]]>><<set $eventskip to 1>><</link>>
+	<<elseif $rng gte 51>>
+		<<if $weather is "rain">>
+			<<generatef1>><<person1>>In the heavy rain, a <<person>> slips and falls into a puddle. The water instantly soaks through <<his>>
+			<<print either("t-shirt","casual blouse","summer dress","top","tank-top")>> exposing <<his>> $NPCList[0].breastsdesc to all.
+			<br>
+			<<if $rng % 2>>
+			Humiliated, <<he>> covers up with <<his>> arms and runs from the park.
+			<<else>>
+			<<He>> either doesn't notice or doesn't care. The <<person>> carries on with <<his>> run, to the entertainment of all nearby.
+			<</if>>
+		<<else>>
+			You hide behind a tree as a <<generate1>><<person1>><<person>> and <<generate2>><<person2>><<person>> run by.
+		<</if>>
+		<<endevent>>
+
+		<br><br>
+		<<link [[Next|Park]]>><<set $eventskip to 1>><</link>>
+	<<elseif $rng gte 41>>
+		<<if $weather is "rain" or $weather is "snow">> /*10% chance if running naked in the park at night during rain or snow.*/
+			As you pass <<print either("near a storm-drain","the bridge over the lake","the lake","some trees by the lake","some bushes by the storm-drain")>>
+			something grabs your leg, dragging you down.
+			<!-- Modified for Monster People -->
+			<<beastNEWinit 1 lizard>>
+			<br>
+			<<if $monster is 1 or $bestialitydisable is "f">>
+				Before you can react, a giant sewer <<beasttype>> has clambered upon you.
+				<br><br>
+				<<link [[Next|Park Lizard Rape]]>><<set $molestationstart to 1>><</link>>
+				<br>
+			<<else>>
+				It's a giant lizard.
+				<br>
+				You narrowly manage to squirm free from the giant lizard's claws and dash away. Glancing behind, you can just make it out scurrying back toward the sewer.<<beastescape>>
+				<br><br>
+				<<link [[Next|Park]]>><<endevent>><<set $eventskip to 1>><</link>>
+			<</if>>
+		<<else>>You don't encounter anyone.
+		<br><br>
+		<<link [[Next|Park]]>><<set $eventskip to 1>><</link>>
+		<</if>>
+	<<elseif $rng gte 31>>
+	You hear footsteps behind you. A <<generate1>><<person1>><<person>> crosses the path. <<He>> doesn't turn or notice you. You were so close to being seen.
+	<<ltrauma>><<trauma -1>><<garousal>><<arousal 100>>
+	<br><br>
+
+	<<endevent>>
+	<<link [[Next|Park]]>><<set $eventskip to 1>><</link>>
+	<<elseif $rng gte 21>>
+	You almost run straight into a group of teenagers smoking under an old shelter. You skirt around them.
+	<br><br>
+
+	<<link [[Next|Park]]>><<set $eventskip to 1>><</link>>
+	<<elseif $rng gte 15>>
+		<<set $rng to random(1, 100)>>
+		<<if ndef $park_run_seen_by>><<set $park_run_seen_by to []>><</if>>
+		<<if $rng gte 81 and ($NPCName[$NPCNameList.indexOf("Whitney")].init is 1) and ($NPCName[$NPCNameList.indexOf("Whitney")].state isnot "dungeon") and $pillory_tenant.special.name isnot "Whitney">>
+			You almost run straight into a group of teenagers smoking under an old shelter. As the central figure lights up, you recognise them. It's Whitney.
+			<br>
+			<<npc Whitney>><<person1>>Eyes closed, <<he>> exhales a cloud of smoke.
+			<<set $phase to 1>>
+		<<elseif $rng gte 61 and $NPCName[$NPCNameList.indexOf("Leighton")].init is 1 and $pillory_tenant.special.name isnot "Leighton">>
+			A figure lurks in the shadows near some kind of gazebo. As they move near a light you recognise them. It's Leighton.
+			<br>
+			<<npc Leighton>><<person1>><<He>> seems to be looking for something. Or someone.
+			<<set $phase to 2>>
+		<<elseif $rng gte 41 and $NPCName[$NPCNameList.indexOf("Doren")].init is 1>>
+			Another runner passes under a streetlight ahead. It's Doren.
+			<br>
+			<<npc Doren>><<person1>><<set $phase to 3>>
+		<<elseif $rng gte 21 and $NPCName[$NPCNameList.indexOf("Harper")].init is 1>>
+			As you pass through the area near the hospital, you recognise Dr Harper sat on a bench ahead.
+			<br>
+			<<npc Harper>><<person1>>Deep in thought, <<he>> reads through some paperwork.
+			<<set $phase to 4>>
+		<<elseif $NPCName[$NPCNameList.indexOf("Bailey")].init is 1>>
+			You skid to a halt hearing a familiar voice nearby.
+			<br>
+			"... back in one piece. Understood?"
+			<br>
+			<span class="purple">It's Bailey.</span>
+			<br><br>
+			"Sure," Another voice. "And thanks, <<print either("this one's cute. But it's okay,","this is quite a treat. But don't worry,","this one's feisty, but")>> we'll be gentle."
+			<br>
+			"The money."
+			<br>
+			"Oh yes. Yes, here you go. It's all there."
+			<br>
+			"Good."
+			<br>
+			<<npc Bailey>><<person1>>Bailey emerges from some nearby bushes counting money.
+			<<set $phase to 5>>
+		<<else>>/*Here in case Bailey is ever dropped out of the intro scene.*/
+			For a heart-stopping moment you think you see a familiar face. It turns out to be a random stranger.
+			<br>
+			<<set $phase to 6>>
+		<</if>>
+		<<if $phase isnot 6>>
+			<<He>> hasn't seen you. Yet.
+			<br><br>
+			<<link [[Stay hidden|Park Run NPC Hide]]>><</link>>
+			<br>
+			<<if $exhibitionism gte 15>>
+				<<link [[Show yourself|Park Run NPC Show]]>><<endevent phaseless>><</link>><<exhibitionist2>>
+				<br>
+			<</if>>
+		<<else>>
+		<<endevent>>
+			<<link [[Continue|Park]]>><<set $eventskip to 1>><</link>>
+		<</if>>
+	<<elseif $rng gte 7>>
+	An old couple up ahead walk slowly, hand-in-hand through the park. You pass quietly behind them. You wonder how they'd respond if they knew you were there.
+	<br><br>
+	<<link [[Next|Park]]>><<set $eventskip to 1>><</link>>
+	<<else>>
+	You sneak behind a <<generate1>><<generate2>><<person1>><<person>> and <<person2>><<person>> sat on a bench. You're so close they could reach out and grab you.
+	<<garousal>><<arousal 600>>
+	<br><br>
+	<<endevent>>
+	<<link [[Next|Park]]>><<set $eventskip to 1>><</link>>
+	<</if>>
+<<else>>
+<<set $rng to random(1, 100)>>
+	<<if $rng gte 81>>
+	<<generate1>><<person1>>A light flashes. A <<person>> lies beneath a bush, holding a camera pointed up at you. It flashes again, taking evidence of your <<nudity>>. <<covered>>
+	<br><br>
+
+	<<if $exhibitionism gte 75>>
+	<<link [[Pose|Park Run Pose]]>><<fameexhibitionism 20 pic>><</link>><<exhibitionist5>>
+	<br>
+	<</if>>
+	<<link [[Run away|Park Run Away]]>><<fameexhibitionism 10 pic>><</link>>
+	<br>
+	<<set $skulduggerydifficulty to 300>>
+	<<link [[Steal camera|Park Run Steal]]>><<crimeup 10>><</link>><<crime>><<skulduggerydifficulty>>
+	<br>
+	<<elseif $rng gte 61>>
+	<<generate1>><<generate2>><<person1>>A <<person>> and <<person2>><<person>> emerge from a bush up ahead. They walk toward you. <<covered>> "It's <<phim>>." the <<person1>><<person>> says. "The pervert."
+	<br><br>
+
+	"We can do whatever we want to a <<girl>> like this," the <<person2>><<person>> says. "No one will believe <<phim>>." They quicken their pace.
+	<br><br>
+
+	<<link [[Fight|Park Run Rape]]>><<set $phase to 1>><<set $molestationstart to 1>><</link>>
+	<br>
+	<<link [[Run|Park Run Escape]]>><</link>><<athleticsdifficulty 1 1000>>
+	<br>
+
+	<<elseif $rng gte 41>>
+	A stray dog chases you for a while.
+	<<gstress>><<stress 3>>
+	<br><br>
+
+	<<link [[Next|Park]]>><<set $eventskip to 1>><</link>>
+	<br>
+	<<elseif $rng gte 21>>
+	You overhear a <<generate1>><<person1>><<person>> dressed as a police officer talking to a pedestrian on the other side of a bush. "That's right," <<he>> says. "A <<girl>> about this high. Being lewd in the park. You sure you haven't seen anything?" You run in the opposite direction.
+	<<gstress>><<stress 3>>
+	<br><br>
+	<<endevent>>
+	<<link [[Next|Park]]>><<set $eventskip to 1>><</link>>
+	<br>
+
+	<<else>>
+	The park is busy, despite the hour. You crouch low to keep your vulnerables hidden by the bushes.
+	<<garousal>><<arousal 600>>
+	<br><br>
+
+	<<link [[Next|Park]]>><<set $eventskip to 1>><</link>>
+	<br>
+	<</if>>
+<</if>>
+
+<</widget>>
+
+:: Men's Toilets
+<<set $outside to 0>><<set $location to "park">><<effects>><<set $bus to "parkmens">>
+
+You are in the men's toilets in the park.
+<<storeon "parkmens" "check">>
+<<if _store_check is 1>>
+Your clothes are stored beneath the sinks.
+<</if>>
+<br><br>
+
+<<if $stress gte $stressmax>>
+<<passoutpark>>
+<<else>>
+
+<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+	<<if $danger gte (9900 - $allure) and $player.gender_appearance is "f" and $eventskip is 0>>
+		<<eventstoilets>>
+	<<else>>
+		<<storeactions "parkmens">>
+		<<if $exhibitionism gte 55>>
+		<span class="lewd">A lewd idea strikes you.</span> You could strip and wait in one of the stalls for an unsuspecting passerby to see you.
+			<<if $daystate is "dusk" or $daystate is "night">>
+				<br><br>
+				<<link [[Strip and wait in a stall (0:20)|Toilets Stall]]>><<pass 20>><</link>><<exhibitionist4>>
+				<br>
+			<<else>>
+				<span class="blue">However, it would be best to wait until night falls.</span>
+				<br><br>
+			<</if>>
+		<</if>>
+		<<link [[Look in the mirror (0:02)|Simple Mirror]]>><<pass 2>><<set $previousPassage = $passage>><</link>>
+		<br>
+		<<link [[Masturbate|Men's Toilets Masturbation]]>><<set $masturbationstart to 1>><</link>>
+		<br>
+		<<if $player.bodyliquid.face.semen gte 1 or $player.bodyliquid.face.goo gte 1 or $skin.left_cheek.pen is "pen" or $skin.right_cheek.pen is "pen" or $skin.forehead.pen is "pen" or $skin.left_cheek.pen is "mud" or $skin.right_cheek.pen is "mud" or $skin.forehead.pen is "mud" or $skin.left_cheek.pen is "lipstick" or $skin.right_cheek.pen is "lipstick" or $skin.forehead.pen is "lipstick">>
+			<<link [[Wash face (0:05)|Men's Toilets Wash]]>><<pass 5>><</link>>
+			<br>
+		<</if>>
+		<<if $player.bodyliquid.mouth.semen gte 1 or $player.bodyliquid.mouth.goo gte 1>>
+			<<link [[Rinse mouth (0:05)|Men's Toilets Rinse]]>><<pass 5>><</link>>
+			<br>
+		<</if>>
+		<<pregnancyTest "Men's Toilets">>
+		<<if _store_check isnot 1>>
+			<<link [[Leave|Park]]>><</link>>
+		<<elseif $exposed gte 2 and $exhibitionism gte 35>>
+			<<link [[Sneak out|Park Toilets Sneak]]>><<set $phase to 2>><</link>><<exhibitionist3>>
+		<<elseif $exposed is 1>>
+			<<link [[Sneak out|Park Toilets Sneak]]>><<set $phase to 1>><</link>><<exhibitionist1>>
+		<<elseif $exposed lte 0>>
+			<<link [[Leave|Park]]>><</link>>
+		<</if>>
+	<</if>>
+<</if>>
+
+<<set $eventskip to 0>>
+<<storecleanup>>
+
+:: Men's Toilets Wash
+<<effects>>
+
+<<if $player.bodyliquid.face.semen gte 1 or $player.bodyliquid.face.goo gte 1>>
+	<<if $skin.left_cheek.pen is "pen" or $skin.right_cheek.pen is "pen" or $skin.forehead.pen is "pen">>
+		Bending over the sink, you wash the lewd fluid and ink from your face.
+	<<elseif $skin.left_cheek.pen is "lipstick" or $skin.right_cheek.pen is "lipstick" or $skin.forehead.pen is "lipstick">>
+		Bending over the sink, you wash the lewd fluid and lipstick from your face.
+	<<elseif $skin.left_cheek.pen is "mud" or $skin.right_cheek.pen is "mud" or $skin.forehead.pen is "mud">>
+		Bending over the sink, you wash the lewd fluid and mud from your face.
+	<<else>>
+		Bending over the sink, you wash the lewd fluid from your face.
+	<</if>>
+<<elseif $skin.left_cheek.pen is "lipstick" or $skin.right_cheek.pen is "lipstick" or $skin.forehead.pen is "lipstick">>
+	Bending over the sink, you wash the lipstick from your face.
+<<elseif $skin.left_cheek.pen is "mud" or $skin.right_cheek.pen is "mud" or $skin.forehead.pen is "mud">>
+	Bending over the sink, you wash the mud from your face.
+<<else>>
+	Bending over the sink, you wash the ink from your face.
+<</if>>
+<<wash_face>>
+<br><br>
+
+<<link [[Next|Men's Toilets]]>><</link>>
+<br>
+
+:: Men's Toilets Rinse
+<<effects>>
+
+You bend over a sink and rinse out your mouth.
+<<wash_mouth>>
+<br><br>
+
+<<link [[Next|Men's Toilets]]>><</link>>
+<br>
+
+:: Women's Toilets
+<<set $outside to 0>><<set $location to "park">><<effects>><<set $bus to "parkwomens">>
+
+You are in the women's toilets in the park.
+
+<<storeon "parkwomens" "check">>
+<<if _store_check is 1>>
+Your clothes are stored beneath the sinks.
+<</if>>
+
+<br><br>
+
+<<if $stress gte $stressmax>>
+<<passoutpark>>
+<<else>>
+<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+	<<if $danger gte (9900 - $allure) and $player.gender_appearance is "m" and $eventskip isnot 1>>
+		<<eventstoilets>>
+	<<else>>
+		<<storeactions "parkwomens">>
+		<<if $exhibitionism gte 55>>
+		<span class="lewd">A lewd idea strikes you.</span> You could strip and wait in one of the stalls for an unsuspecting passerby to see you.
+			<<if $daystate is "dusk" or $daystate is "night">>
+				<br><br>
+				<<link [[Strip and wait in a stall (0:20)|Toilets Stall]]>><<pass 20>><</link>><<exhibitionist4>>
+				<br>
+			<<else>>
+				<span class="blue">However, it would be best to wait until night falls.</span>
+				<br><br>
+			<</if>>
+		<</if>>
+		<<link [[Look in the mirror (0:02)|Simple Mirror]]>><<pass 2>><<set $previousPassage = $passage>><</link>>
+		<br>
+		<<link [[Masturbate|Women's Toilets Masturbation]]>><<set $masturbationstart to 1>><</link>>
+		<br>
+		<<if $player.bodyliquid.face.semen gte 1 or $player.bodyliquid.face.goo gte 1 or $skin.left_cheek.pen is "pen" or $skin.right_cheek.pen is "pen" or $skin.forehead.pen is "pen" or $skin.left_cheek.pen is "mud" or $skin.right_cheek.pen is "mud" or $skin.forehead.pen is "mud" or $skin.left_cheek.pen is "lipstick" or $skin.right_cheek.pen is "lipstick" or $skin.forehead.pen is "lipstick">>
+			<<link [[Wash face (0:05)|Women's Toilets Wash]]>><<pass 5>><</link>>
+			<br>
+		<</if>>
+		<<if $player.bodyliquid.mouth.semen gte 1 or $player.bodyliquid.mouth.goo gte 1>>
+			<<link [[Rinse mouth (0:05)|Women's Toilets Rinse]]>><<pass 5>><</link>>
+			<br>
+		<</if>>
+		<<pregnancyTest "Women's Toilets">>
+		<<if _store_check isnot 1>>
+			<<link [[Leave|Park]]>><</link>>
+		<<elseif $exposed gte 2 and $exhibitionism gte 35>>
+			<<link [[Sneak out|Park Toilets Sneak]]>><<set $phase to 2>><</link>><<exhibitionist3>>
+		<<elseif $exposed is 1>>
+			<<link [[Sneak out|Park Toilets Sneak]]>><<set $phase to 1>><</link>><<exhibitionist1>>
+		<<elseif $exposed lte 0>>
+			<<link [[Leave|Park]]>><</link>>
+		<</if>>
+	<</if>>
+<</if>>
+
+<<set $eventskip to 0>>
+<<storecleanup>>
+
+:: Women's Toilets Wash
+<<effects>>
+
+<<if $player.bodyliquid.face.semen gte 1 or $player.bodyliquid.face.goo gte 1>>
+	<<if $skin.left_cheek.pen is "pen" or $skin.right_cheek.pen is "pen" or $skin.forehead.pen is "pen">>
+		Bending over the sink, you wash the lewd fluid and ink from your face.
+	<<elseif $skin.left_cheek.pen is "lipstick" or $skin.right_cheek.pen is "lipstick" or $skin.forehead.pen is "lipstick">>
+		Bending over the sink, you wash the lewd fluid and lipstick from your face.
+	<<elseif $skin.left_cheek.pen is "mud" or $skin.right_cheek.pen is "mud" or $skin.forehead.pen is "mud">>
+		Bending over the sink, you wash the lewd fluid and mud from your face.
+	<<else>>
+		Bending over the sink, you wash the lewd fluid from your face.
+	<</if>>
+<<elseif $skin.left_cheek.pen is "lipstick" or $skin.right_cheek.pen is "lipstick" or $skin.forehead.pen is "lipstick">>
+	Bending over the sink, you wash the lipstick from your face.
+<<elseif $skin.left_cheek.pen is "mud" or $skin.right_cheek.pen is "mud" or $skin.forehead.pen is "mud">>
+	Bending over the sink, you wash the mud from your face.
+<<else>>
+	Bending over the sink, you wash the ink from your face.
+<</if>>
+<<wash_face>>
+<br><br>
+
+<<link [[Next|Women's Toilets]]>><</link>>
+<br>
+
+:: Women's Toilets Rinse
+<<effects>>
+
+You bend over a sink and rinse out your mouth.
+<<wash_mouth>>
+<br><br>
+
+<<link [[Next|Women's Toilets]]>><</link>>
+<br>
+
+:: Widgets Events Toilets [widget]
+<<widget "eventstoilets">>
+
+<<generate1>><<person1>>You enter the toilets, and hear a voice shout behind you. "I saw you go in there, pervert!" A <<person>> storms in, eyes livid. "I'll give exactly what you deserve!"
+<br><br>
+
+<<link [[Next|Toilets Molestation]]>><<set $molestationstart to 1>><</link>>
+
+<<if $player.gender_appearance isnot $player.gender>><<set $toiletsmistake to 1>><</if>>
+
+<</widget>>
+
+<<widget "eventstoiletssafe">>
+
+<<if $weather is "rain">>
+Rain hammers against the small windows.
+<br><br>
+<<else>>
+Wind rattles the small windows.
+<br><br>
+<</if>>
+
+<<if $bus is "parkmens">>
+<<link [[Next|Men's Toilets]]>><<set $eventskip to 1>><</link>>
+<br>
+<<else>>
+<<link [[Next|Women's Toilets]]>><<set $eventskip to 1>><</link>>
+<br>
+<</if>>
+
+<</widget>>
+
+:: Toilets Stall
+<<effects>><<set $danger to random(1, 10000)>><<set $phase to 0>>
+<<if $danger gte (8900 - ($allure / 3))>>
+	<<set $toiletsrape to 1>>
+<</if>>
+<<if $exposed gte 2>>
+	Already exposed, you enter a stall and keep the door open.
+<<else>>
+	<<set _redress to 1>>
+	<<overlowerstrip>><<overupperstrip>><<lowerstrip>><<upperstrip>><<underlowerstrip>><<underupperstrip>><<legsstrip>><<feetstrip>>
+	<<exposure>>
+	You enter the stall, keeping the door open. You take off your clothes, making a bundle on the floor.
+<</if>>
+You sit on the toilet, and wait.
+<br><br>
+<<if ($bus is "parkmens" and $malechance is 0) or ($bus is "parkwomens" and $malechance gte 100)>>
+	Much time passes, and no one enters the restroom. You decide to get up.
+	<<if _redress is 1>><<clotheson>><</if>><<unset $toiletsrape>>
+	<br><br>
+	<<if $bus is "parkmens">>
+		<<link [[Next|Men's Toilets]]>><<set $eventskip to 1>><</link>>
+		<br>
+	<<else>>
+		<<link [[Next|Women's Toilets]]>><<set $eventskip to 1>><</link>>
+		<br>
+	<</if>>
+<<else>>
+	<<if $rng gte 65>>
+		<<set $phase2 to 1>>
+		<<fameexhibitionism 10>>
+		<<if $bus is "parkmens">>
+			<<generatem1>><<generatem2>>
+		<<else>>
+			<<generatef1>><<generatef2>>
+		<</if>>
+		You hear footsteps approaching, followed by laughter and some banter.
+	<<else>>
+		<<set $phase2 to 2>>
+		<<fameexhibitionism 5>>
+		<<if $bus is "parkmens">>
+			<<generatem1>>
+		<<else>>
+			<<generatef1>>
+		<</if>>
+		You hear footsteps approaching.
+	<</if>>
+	A <<person1>><<person>> walks into view and starts to wash <<his>> hands, only stopping when <<he>> sees you in the mirror.
+	<<He>> pauses for a moment, clearly surprised to see an exposed <<girl>> already there.
+	<<exhibitionism4>>
+
+	<<if ($bus is "parkmens" and $player.gender_appearance is "f") or ($bus is "parkwomens" and $player.gender_appearance is "m")>>
+		<<if $toiletsrape is 1>>
+			<<unset $toiletsrape>>
+			<<if $player.gender_appearance isnot $player.gender>>
+				<<set $toiletsmistake to 1>>
+			<</if>>
+			"Wrong bathroom, you fucking pervert." <<He>> marches up to you and grabs you!
+			<<if $phase2 is 1>>
+				"Come help me punish this brat," <<he>> calls out to someone else. A <<person2>><<person>> quickly runs over, and <<his>> eyes turn wicked.
+			<<else>>
+				"I'll show you what happens to <<girls>> like you."
+			<</if>>
+			<br><br>
+			<<link [[Next|Toilets Molestation]]>><<set $molestationstart to 1>><</link>>
+			<br>
+		<<else>>
+			<<set $toiletswrong to 1>>
+			"This is, uh... the wrong restroom." <<He>> tries to avert <<his>> gaze, but you can see <<his>> eyes sticking to your <<genitals>>.
+			<<if $phase2 is 1>>
+				"Hey, what's going on-" a <<person2>><<person>> steps in, and has a similar reaction.
+			<</if>>
+			<br><br>
+			<<link [[Tease|Toilets Stall 2]]>><<set $phase to 1>><</link>><br>
+			<<link [[Masturbate|Toilets Stall 2]]>><<set $phase to 2>><</link>><<exhibitionist4>><br>
+			<<if $promiscuity gte 35>>
+				<<link [[Offer oral|Toilets Stall 2]]>><<set $phase to 3>><</link>><<promiscuous3>><br>
+			<</if>>
+			<<if $phase2 is 1 and $promiscuity gte 75 and ($NPCList[0].penis isnot "none" and $NPCList[1].penis isnot "none") and ($player.gender isnot "m" or $analdisable is "f")>>
+				<<link [[Offer spitroast|Toilets Stall 2]]>><<set $phase to 4>><</link>><<promiscuous5>><br>
+			<<elseif $promiscuity gte 75>>
+				<<link [[Offer yourself|Toilets Stall 2]]>><<set $phase to 5>><</link>><<promiscuous5>><br>
+			<</if>>
+		<</if>>
+	<<else>>
+		"What are you doing?" <<he>> questions as <<he>> quickly comes back to <<his>> senses.
+		<<if $phase2 is 1>>
+			"Who are you talking to?" a <<person2>><<person>> steps in, and quickly averts <<his>> eyes upon seeing you.
+		<</if>>
+		<br><br>
+		<<link [[Tease|Toilets Stall 2]]>><<set $phase to 1>><</link>><br>
+		<<link [[Masturbate|Toilets Stall 2]]>><<set $phase to 2>><</link>><<exhibitionist4>><br>
+		<<if $promiscuity gte 35>>
+			<<link [[Offer oral|Toilets Stall 2]]>><<set $phase to 3>><</link>><<promiscuous3>><br>
+		<</if>>
+		<<if $phase2 is 1 and $promiscuity gte 75 and ($NPCList[0].penis isnot "none" and $NPCList[1].penis isnot "none") and ($player.gender isnot "m" or $analdisable is "f")>>
+			<<link [[Offer spitroast|Toilets Stall 2]]>><<set $phase to 4>><</link>><<promiscuous5>><br>
+		<<elseif $promiscuity gte 75>>
+			<<link [[Offer yourself|Toilets Stall 2]]>><<set $phase to 5>><</link>><<promiscuous5>><br>
+		<</if>>
+	<</if>>
+<</if>>
+
+:: Toilets Stall 2
+<<effects>>
+<<switch $phase>>
+	<<case 1>>
+		<<if $toiletswrong is 1>>
+			<<if $submissive gte 1150>>
+				"Oh, s...sorry! I must have been mistaken,"
+			<<elseif $submissive lte 850>>
+				"Whoops. Sorry <<if $phase2 is 1>><<if $bus is "parkmens">>boys<<else>>girls<</if>><</if>>, guess I wandered into the wrong room,"
+			<<else>>
+				"Oh! I wandered into the wrong restroom, silly me,"
+			<</if>>
+		<<else>>
+			<<if $submissive gte 1150>>
+				"Oh, s...sorry! I must have dozed off,"
+			<<elseif $submissive lte 850>>
+				"Whoops. Sorry <<if $phase2 is 1>><<if $bus is "parkmens">>boys<<else>>girls<</if>><</if>>, just showing off a little,"
+			<<else>>
+				"Don't mind me, just enjoying some alone time,"
+			<</if>>
+		<</if>>
+		you say as you stand up. You make sure to rub right up against the <<person1>><<person>> as you exit the stall.
+		<br><br>
+	<<case 2>>
+		<<if $submissive gte 1150>>
+			"P...please... I want you to watch me,"
+		<<elseif $submissive lte 850>>
+			"Don't worry about it. Just enjoy the show,"
+		<<else>>
+			"I wanted an audience,"
+		<</if>>
+		you say to <<if $phase2 is 1>><<him>><<else>>them<</if>> as you lower your hands to your <<genitals>>.
+		<<exhibitionism4>>
+	<<case 3>>
+		You move your hand to your mouth, making a very suggestive gesture.
+		<<if $submissive gte 1150>>
+			"Please, I need someone to use my mouth,"
+		<<elseif $submissive lte 850>>
+			"Need someone to shut me up for a while,"
+		<<else>>
+			"How about we have some fun?"
+		<</if>>
+		you say.
+		<<promiscuity3>>
+	<<case 4>>
+		You spread your legs, pointing at your <<if $player.gender is "m">><<bottom>><<else>><<genitals>><</if>> with one hand and mouth with the other.
+		<<if $submissive gte 1150>>
+			"Please, I need you both to use me,"
+		<<elseif $submissive lte 850>>
+			"Need you two to shut me up for a while,"
+		<<else>>
+			"How about we all have some fun?"
+		<</if>>
+		you say.
+		<<promiscuity5>>
+	<<case 5>>
+		You spread your legs.
+		<<if $submissive gte 1150>>
+			"Please, do whatever you want with me,"
+		<<elseif $submissive lte 850>>
+			"Need someone to make me scream,"
+		<<else>>
+			"How about we have some fun?"
+		<</if>>
+		you say.
+		<<promiscuity5>>
+	<<default>>
+<</switch>>
+<<saveNPC 0 toilets_1>>
+<<if $phase2 is 1>>
+	<<saveNPC 1 toilets_2>>
+<</if>>
+<<if $toiletsrape is 1>>
+	<<unset $toiletsrape>>
+	<<if $phase is 2>>
+		<<person1>><<He>> smiles<<if $phase2 is 1>> and turns to the <<person2>><<person>><</if>>. "Right, as if <<if $phase2 is 1>>we<<else>>I<</if>> could just watch!" <<if $phase2 is 1>>They jump<<else>><<He>> jumps<</if>> at you.
+	<<else>>
+		<<person1>><<He>> suddenly looks angry. "You slut, you think this is funny? I guess <<if $phase2 is 1>>we<<else>>I<</if>>'ll have to teach you a lesson in modesty." <<if $phase2 is 1>>They jump<<else>><<He>> jumps<</if>> at you.
+	<</if>>
+	<br><br>
+	<<link [[Next|Toilets Molestation]]>><<set $molestationstart to 1>><</link>>
+	<br>
+<<else>>
+	<<if $phase is 1>>
+		<<flaunting>> <<if $phase2 is 1>>they eye<<else>><<he>> eyes<</if>> you closely as you
+		<<storeon $bus "check">>
+		<<if _store_check is 1>>
+			<<storeon $bus>>
+			retrieve your clothes, and slowly dress in front of <<if $phase2 is 1>>them<<else>><<him>><</if>>,
+		<<else>>
+			look at yourself in the mirror, giving <<if $phase2 is 1>>one of them<<else>><<him>><</if>> a wink and
+		<</if>>giving your <<bottom>> a wiggle as you do so. They make no other moves towards you.
+		<<clotheson>>
+		<<link [[Leave|Park]]>><<set $eventskip to 1>><<endevent>><</link>>
+		<br>
+	<<elseif $phase is 2>>
+		<<person1>><<He>> smiles<<if $phase2 is 1>> and turns to the <<person2>><<person>><</if>>. "Well... if you insist."
+		<br><br>
+		<<link [[Next|Toilets Watched Masturbation]]>><<set $masturbationstart to 1>><</link>>
+		<br>
+	<<else>>
+		<<person1>><<He>> smiles<<if $phase2 is 1>> and turns to the <<person2>><<person>><</if>>. "Hey, <<if $phase2 is 1>>we<<else>>I<</if>> won't say no to such an offer." <<if $phase2 is 1>>They approach<<else>><<He>> approaches<</if>> you.
+		<br><br>
+		<<link [[Next|Toilets Sex]]>><<set $sexstart to 1>><</link>>
+		<br>
+	<</if>>
+<</if>>
+<<unset $toiletswrong>>
+<br>
+
+:: Toilets Sex
+<<if $sexstart is 1>>
+	<<set $sexstart to 0>>
+	<<consensual>>
+	<<set $consensual to 1>>
+	<<neutral 1>>
+	<<maninit>>
+	<<set $enemytrust += 100>>
+	<<switch $phase>>
+		<<case 3>>
+			<<npcoral>>
+		<<case 4>>
+			<<npc_attempt_sex>>
+			<<set $NPCList[1].penis to "mouthentrance">><<submission 5>><<set $mouthstate to "entrance">><<set $mouthuse to "penis">><<set $mouthtarget to 1>>
+			The <<person2>><<person>> presses <<his>> penis against your lips as the <<person1>><<person>> approaches your entrance.
+		<<case 5>>
+			<<npc_attempt_sex>>
+		<<default>>
+	<</switch>>
+<</if>>
+<<effects>>
+<<effectsman>><<man>>
+<<stateman>>
+<br><br>
+<<actionsman>>
+<<if $alarm is 1>>
+	Your cries echo against the tiles, but no one comes.
+	<br><br>
+<</if>>
+<<if $finish is 1>>
+	<span id="next"><<link [[Next|Toilets Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Toilets Sex Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Toilets Sex Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Toilets Sex]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Toilets Sex Finish
+
+<<effects>>
+<<if $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>>
+	<<if $enemyanger gte ($enemyangermax / 5) * 3>>
+		<<He>> gives you one last smack to the face, and <<if $phase2 is 1>>they leave<<else>><<he>> leaves<</if>> you lying on the cold tiles.
+		<<violence 3>>
+		<br><br>
+	<<elseif $enemyanger gte 1>>
+		"Thanks slut," <<he>> says. <<if $phase2 is 1>>They get up and leave<<else>><<He>> gets up and leaves<</if>> you lying on the cold tiles.
+		<br><br>
+	<<else>>
+		Smiling, the <<person1>><<person>> kisses you on the cheek. "This is for you,"<<if $phase2 is 1>> the <<person2>><<person>> says<<else>> <<he>> says<</if>>, thumbing through <<his>> wallet. <<if $phase2 is 1>>They get up, and each extend <<else>><<He>> gets up, and extends <</if>>you a hand, helping you to your feet.
+		<br>
+		You've gained <<moneyGain 10>>.
+		<br><br>
+	<</if>>
+	<<clearNPC toilets_1>>
+	<<if $phase2 is 1>>
+		<<clearNPC toilets_2>>
+	<</if>>
+	<<clotheson>>
+	<<endcombat>>
+	<<if $bus is "parkmens">>
+		<<link [[Next|Men's Toilets]]>><<set $eventskip to 1>><</link>>
+		<br>
+	<<else>>
+		<<link [[Next|Women's Toilets]]>><<set $eventskip to 1>><</link>>
+		<br>
+	<</if>>
+<<elseif $enemyhealth lte 0>>
+	<<He>> falls back against the sinks, giving you the chance you need. <<tearful>> you flee the scene.
+	<br><br>
+	<<storeon $bus "check">>
+	<<if _store_check is 1>>
+		<<storeon $bus>>
+		Your clothes are tossed out behind you.
+	<</if>>
+	<<clearNPC toilets_1>>
+	<<if $phase2 is 1>>
+		<<clearNPC toilets_2>>
+	<</if>>
+	<<clotheson>>
+	<<endcombat>>
+	<<link [[Next|Park]]>><<set $eventskip to 1>><</link>>
+<<elseif $finish is 1>>
+	<<if $phase2 is 1>>They stop<<else>><<He>> stops<</if>> touching you and let you leave the stall.
+	<<if $phase2 is 1>>They leave the restrooms shortly after, sharing awkward glances with each other.<<else>><<He>> leaves the restroom shortly after.<</if>>
+	<br><br>
+	<<clearNPC toilets_1>>
+	<<if $phase2 is 1>>
+		<<clearNPC toilets_2>>
+	<</if>>
+	<<clotheson>>
+	<<endcombat>>
+	<<if $bus is "parkmens">>
+		<<link [[Next|Men's Toilets]]>><<set $eventskip to 1>><</link>>
+		<br>
+	<<else>>
+		<<link [[Next|Women's Toilets]]>><<set $eventskip to 1>><</link>>
+		<br>
+	<</if>>
+<</if>>
+
+
+
+:: Toilets Molestation
+<<if $molestationstart is 1>>
+<<set $molestationstart to 0>>
+<<controlloss>>
+<<violence 1>>
+<<neutral 1>>
+<<molested>>
+
+<<maninit>><<set $enemyanger += 150>>
+<</if>>
+
+<<effects>>
+<<effectsman>><<man>>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $alarm is 1>>
+	Your cries echo against the tiles, but no one comes.
+	<br><br>
+<</if>>
+<<if $enemyarousal lt $enemyarousalmax and $enemyhealth gt 0>>
+	<span id="next"><<link [[Next|Toilets Molestation]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link [[Next|Toilets Molestation Finish]]>><</link>></span><<nexttext>>
+<</if>>
+
+:: Toilets Molestation Finish
+<<effects>>
+
+<<if $enemyhealth lte 0>>
+
+	<<He>> falls back against the sinks, giving you the chance you need. <<tearful>> you flee the scene.
+	<br><br>
+	<<if $phase2>>
+		<<storeon $bus "check">>
+		<<if _store_check is 1>>
+			<<storeon $bus>>
+			Your clothes are tossed out behind you.
+		<</if>>
+		<<clearNPC toilets_1>>
+		<<if $phase2 is 1>>
+			<<clearNPC toilets_2>>
+		<</if>>
+	<</if>>
+	<<clotheson>>
+	<<endcombat>>
+
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<<ejaculation>>
+
+	<<if $player.gender is $player.gender_appearance and $toiletsmistake is 1>>
+		"This is your fault for looking like <<if $player.gender_appearance is "f">>a boy<<else>>a girl<</if>>." <<He>> shoves you out the door.
+		<br><br>
+	<<else>>
+		"Let that be a lesson for you." <<He>> shoves you out the door.
+		<br><br>
+	<</if>>
+
+	<<tearful>> you struggle to your feet.
+	<br><br>
+	<<if $phase2>>
+		<<storeon $bus "check">>
+		<<if _store_check is 1>>
+			<<storeon $bus>>
+			Your clothes are tossed out behind you.
+		<</if>>
+		<<clearNPC toilets_1>>
+		<<if $phase2 is 1>>
+			<<clearNPC toilets_2>>
+		<</if>>
+	<</if>>
+	<<clotheson>>
+	<<endcombat>>
+<</if>>
+<<unset $toiletsmistake>>
+<<set $eventskip to 1>>
+<<parkquick>>
+
+:: Park Toilets Sneak
+<<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "park">>
+
+You <<nervously>> poke your head outside. There's no one around. You leave the safety of the building, your <<lewdness>> on display.
+
+<<if $phase is 1>>
+<<exhibitionism1>>
+<<elseif $phase is 2>>
+<<exhibitionism3>>
+<</if>>
+<br><br>
+
+<<link [[Next|Park]]>><</link>>
+<br>
+
+<<set $eventskip to 1>>
+
+:: Park Lizard Rape
+<<if $molestationstart is 1>>
+<<set $molestationstart to 0>>
+<<controlloss>>
+<<violence 1>>
+<<neutral 1>>
+<<molested>>
+	<<beastCombatInit>>
+
+<</if>>
+
+<<effects>>
+<<effectsman>>
+<br><br>
+<<beast $enemyno>>
+<br><br>
+
+<<stateman>>
+<br><br>
+<<actionsman>>
+
+<<if $enemyhealth lte 0>>
+	<span id="next"><<link [[Next|Park Lizard Rape Finish]]>><</link>></span><<nexttext>>
+<<elseif $enemyarousal gte $enemyarousalmax>>
+	<span id="next"><<link [[Next|Park Lizard Rape Finish]]>><</link>></span><<nexttext>>
+<<else>>
+	<span id="next"><<link "Next">><<script>>state.display(state.active.title, null)<</script>><</link>></span><<nexttext>>
+<</if>>
+
+:: Park Lizard Rape Finish
+<<effects>>
+
+<<if $enemyarousal gte $enemyarousalmax>>
+<<set _itsgender to $NPCList[0].gender>>
+<<beastejaculation>>
+
+<<if _itsgender is "m">><<bHis>> seed deposited,<<else>><<bHis>> needs satisfied,<</if>> the <<beasttype>> loses interest in you and shuffles back toward the sewer.
+<br><br>
+
+<<tearful>> you gather yourself.
+<br><br>
+
+<<endcombat>>
+<<link [[Next|Park]]>><<set $eventskip to 1>><</link>>
+<br>
+
+<<else>>
+
+<<bHe>> hisses and flees toward the sewer.
+<br><br>
+
+<<tearful>> you gather yourself.
+<br><br>
+
+<<endcombat>>
+<<link [[Next|Park]]>><<set $eventskip to 1>><</link>>
+<br>
+
+<</if>>

@@ -1,0 +1,1439 @@
+:: School Boy Changing Room
+<<set $outside to 0>><<set $location to "pool">><<set $bus to "boys">><<schooleffects>><<effects>>
+
+You are in the boys' changing room.
+<<if $arousal gte $arousalmax>>
+	<<orgasmLocation "boyChangingRoom">>
+<</if>>
+<<if $changingroomstate is "own">>
+	<<if $player.gender_appearance is "m">>
+		It's full of boys in various states of undress.
+		<<eventsschoolchangingroomsboys>>
+		<<if $player.gender is "f" and $schoolrep.crossdress gte 3>>
+			Some of the boys looks at you uncomfortably, and some of them glued their eyes to you. <span class = "pink"> They suspect the rumours of you crossdressing are true.</span> <<gstress>>
+		<<elseif $player.gender is "f" and $schoolrep.crossdress lte 3>>
+			No one gives you a second glance, not realising you're a girl. You feel naughty.
+		<<elseif $player.gender is "h">>
+			<<if $schoolrep.herm gte 4>>
+				Some glance at your crotch. <span class="pink">They've heard the rumours.</span>
+			<<else>>
+				No one gives you a second glance, unaware of your hermaphroditism.
+			<</if>>
+		<</if>>
+		<br><br>
+		<<if $exposed gte 2>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<elseif $exposed is 1>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<else>>
+			<<link [[Leave|School Pool Entrance]]>><</link>>
+		<</if>>
+		<br>
+		<<if $exposed gte 2 and $exhibitionism gte 75>>
+			<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>><<if $swimall isnot 1>><<gdelinquency>><</if>>
+		<<elseif $exposed gte 2>>
+			<span class="pink">You can't enter the pool while so exposed!</span>
+		<<else>>
+			<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>>
+		<</if>>
+		<br>
+		<<schoolpoolclothes "schoolBoys">>
+		<<link [[Locker|School Boy Wardrobe]]>><</link>>
+	<<else>><!-- $player.gender_appearance is "f" -->
+		<<if $exposed gte 2 and $malechance isnot 0>>
+			You peek around the corner. You see boys in various states of undress. They'd spot you if you tried to enter.
+			<br><br>
+			<<link [[Watch (0:05)|School Boy's Watch]]>><<pass 5>><</link>><<promiscuous1>>
+			<br>
+			<<if $exhibitionism gte 35>>
+				<<link [[Masturbate (0:01)|School Boy's Masturbation]]>><<pass 1>><<set $masturbationstart to 1>><</link>><<exhibitionist3>>
+				<br>
+			<</if>>
+			<<if $exhibitionism gte 75>>
+				<<link [[Enter (0:05)|School Boy's Exhibitionism]]>><<generatesm1>><<pass 5>><<detention 3>><</link>><<gdelinquency>><<exhibitionist5>>
+				<br>
+			<</if>>
+			<<link [[Leave|School Pool Entrance]]>><</link>>
+			<br>
+		<<elseif $boysroomentered is $hour and $malechance isnot 0>>
+			<<generatesm1>><<person1>>
+			<<if $player.gender is "m">>
+				It's full of boys in various states of undress who, thinking you're a girl, hastily cover up as you enter. Many look angry. A <<person>> drops <<his>> bag and steps forward. "You pervert," <<he>> says. "You can't keep barging in here." <<He>> grabs your arm.
+				<<detention 3>><<gdelinquency>>
+				<br><br>
+			<<else>>
+				It's full of boys in various states of undress who hastily cover up as you enter. Many look angry. A <<person>> drops <<his>> bag and steps forward. "You pervert," <<he>> says. "You can't keep barging in here." <<He>> grabs your arm.
+				<<detention 3>><<gdelinquency>>
+				<br><br>
+			<</if>>
+			<<link [[Try to escape|School Boy's Escape]]>><</link>><<physiquedifficulty 4000 14000>>
+			<br>
+			<<link [[Flirt|School Boy's Flirt]]>><</link>><<promiscuous1>>
+			<br>
+			<<link [[Apologise|School Boy's Apologise]]>><</link>>
+			<br>
+		<<else>>
+			<<set $boysroomentered to $hour>>
+			<<if $player.gender is "m">>
+				It's full of boys in various states of undress who, thinking you're a girl, hastily cover up as you enter. Many look about to die from embarrassment, but some are angry and shoo you out.
+				<<detention 3>><<gdelinquency>>
+				<br><br>
+			<<else>>
+				It's full of boys in various states of undress who hastily cover up as you enter. Many look about to die from embarrassment, but some are angry and shoo you out.
+				<<detention 3>><<gdelinquency>>
+				<br><br>
+			<</if>>
+			<<link [[Next|School Pool Entrance]]>><</link>>
+		<</if>>
+	<</if>>
+<<elseif $changingroomstate is "other">>
+	<<if $player.gender_appearance is "m">>
+		It's full of boys in various states of undress.
+		<<eventsschoolchangingroomsboys>>
+		<<if $player.gender is "f" and $schoolrep.crossdress gte 3>>
+			Some of the boys looks at you uncomfortably, and some of them glued their eyes to you. <span class = "pink"> They suspect the rumours of you crossdressing are true.</span> <<gstress>>
+		<<elseif $player.gender is "f" and $schoolrep.crossdress lte 3>>
+			No one gives you a second glance, not realising you're a girl. You feel naughty.
+		<<elseif $player.gender is "h">>
+			<<if $schoolrep.herm gte 4>>
+				Some glance at your crotch. <span class="pink">They've heard the rumours.</span>
+			<<else>>
+				No one gives you a second glance, unaware of your hermaphroditism.
+			<</if>>
+		<</if>>
+		<br><br>
+		<<if $exposed gte 2>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<elseif $exposed is 1>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<else>>
+			<<link [[Leave|School Pool Entrance]]>><</link>>
+		<</if>>
+		<br>
+		<<if $exposed gte 2 and $exhibitionism gte 75>>
+			<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>><<if $swimall isnot 1>><<gdelinquency>><</if>>
+		<<elseif $exposed gte 2>>
+			<span class="pink">You can't enter the pool while so exposed!</span>
+		<<else>>
+			<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>>
+		<</if>>
+		<br>
+		<<schoolpoolclothes "schoolBoys">>
+		<<link [[Locker|School Boy Wardrobe]]>><</link>>
+	<<else>><!-- $player.gender_appearance is "f" -->
+		<<if $exposed gte 2 and $malechance isnot 0>>
+			You peek around the corner. You see boys in various states of undress. They'd spot you if you tried to enter.
+			<br><br>
+			<<link [[Watch (0:05)|School Boy's Watch]]>><<pass 5>><</link>><<promiscuous1>>
+			<br>
+			<<if $exhibitionism gte 35>>
+				<<link [[Masturbate (0:01)|School Boy's Masturbation]]>><<pass 1>><<set $masturbationstart to 1>><</link>><<exhibitionist3>>
+				<br>
+			<</if>>
+			<<if $exhibitionism gte 75>>
+				<<link [[Enter (0:05)|School Boy's Exhibitionism]]>><<generatesm1>><<pass 5>><<detention 3>><</link>><<gdelinquency>><<exhibitionist5>>
+				<br>
+			<</if>>
+			<<link [[Leave|School Pool Entrance]]>><</link>>
+			<br>
+		<<elseif $boysroomentered is $hour and $malechance isnot 0>>
+			<<generatesm1>><<person1>>
+			<<if $player.gender is "m">>
+				It's full of boys in various states of undress who, thinking you're a girl, hastily cover up as you enter. Many look angry. A <<person>> drops <<his>> bag and steps forward. "You pervert," <<he>> says. "You can't keep barging in here." <<He>> grabs your arm.
+				<<detention 3>><<gdelinquency>>
+				<br><br>
+			<<else>>
+				It's full of boys in various states of undress, who hastily cover up as you enter. Many look angry. A <<person>> drops <<his>> bag and steps forward. "You pervert," <<he>> says. "You can't keep barging in here." <<He>> grabs your arm.
+				<<detention 3>><<gdelinquency>>
+				<br><br>
+			<</if>>
+			<<link [[Try to escape|School Boy's Escape]]>><</link>><<physiquedifficulty 4000 14000>>
+			<br>
+			<<link [[Flirt|School Boy's Flirt]]>><</link>><<promiscuous1>>
+			<br>
+			<<link [[Apologise|School Boy's Apologise]]>><</link>>
+			<br>
+		<<else>>
+			<<set $boysroomentered to $hour>>
+			<<if $player.gender is "m">>
+				It's full of boys in various states of undress who, thinking you're a girl, hastily cover up as you enter. Many look about to die from embarrassment, but some are angry and shoo you out.
+				<<detention 3>><<gdelinquency>>
+				<br><br>
+			<<else>>
+				It's full of boys in various states of undress, who hastily cover up as you enter. Many look about to die from embarrassment, but some are angry and shoo you out.
+				<<detention 3>><<gdelinquency>>
+				<br><br>
+			<</if>>
+			<<link [[Next|School Pool Entrance]]>><</link>>
+		<</if>>
+	<</if>>
+<<elseif $poolroomstate is "own">><!-- $changingroomstate is "empty" -->
+	It's currently empty, though you can hear activity in the pool proper. Your lesson is in session.
+	<<if $player.gender_appearance is "m">>
+		<br><br>
+		<<if $exposed gte 2>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<elseif $exposed is 1>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<else>>
+			<<link [[Leave|School Pool Entrance]]>><</link>>
+		<</if>>
+		<br>
+		<<if $swimall isnot 1>>
+			<<if $exposed gte 2 and $exhibitionism gte 75>>
+				<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>><<gdelinquency>>
+			<<elseif $exposed gte 2>>
+				<span class="pink">You can't enter the pool while so exposed!</span>
+			<<else>>
+				<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>>
+			<</if>>
+		<<else>>
+			<<if $exposed gte 2>>
+				<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>>
+			<<else>>
+				<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>>
+			<</if>>
+		<</if>>
+		<br>
+		<<school_pool_swap>>
+		<<boy_lockers>>
+		<<schoolpoolclothes "schoolBoys">>
+		<<link [[Locker|School Boy Wardrobe]]>><</link>>
+	<<else>><!-- $player.gender_appearance is "f" -->
+		<<if $player.gender is "f">>
+			Even alone, being here makes you feel naughty, as well as worried you'll be caught.
+		<</if>>
+		<br><br>
+		<<if $exposed gte 2>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<elseif $exposed is 1>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<else>>
+			<<link [[Leave|School Pool Entrance]]>><</link>>
+		<</if>>
+		<br>
+		<<if $exposed gte 2 and $exhibitionism gte 75>>
+			<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>><<if $swimall isnot 1>><<gdelinquency>><</if>>
+		<<elseif $exposed gte 2>>
+			<span class="pink">You can't enter the pool while so exposed!</span>
+		<<else>>
+			<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>>
+		<</if>>
+		<br>
+		<<school_pool_swap>>
+		<<boy_lockers>>
+		<<schoolpoolclothes "schoolBoys">>
+		<<link [[Locker|School Boy Wardrobe]]>><</link>>
+	<</if>>
+<<elseif $poolroomstate is "other">><!-- $changingroomstate is "empty" -->
+	It's currently empty, though you can hear activity in the pool proper.
+	<<if $player.gender_appearance is "m">>
+		<br><br>
+		<<if $exposed gte 2>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<elseif $exposed is 1>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<else>>
+			<<link [[Leave|School Pool Entrance]]>><</link>>
+		<</if>>
+		<br>
+		<<if $exposed gte 2 and $exhibitionism gte 75>>
+			<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>><<if $swimall isnot 1>><<gdelinquency>><</if>>
+		<<elseif $exposed gte 2>>
+			<span class="pink">You can't enter the pool while so exposed!</span>
+		<<else>>
+			<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>>
+		<</if>>
+		<br>
+		<<school_pool_swap>>
+		<<boy_lockers>>
+		<<schoolpoolclothes "schoolBoys">>
+		<<link [[Locker|School Boy Wardrobe]]>><</link>>
+	<<else>><!-- $player.gender_appearance is "f" -->
+		<<if $player.gender is "f">>
+			Even alone, being here makes you feel naughty, as well as worried you'll be caught.
+		<</if>>
+		<br><br>
+		<<if $exposed gte 2>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<elseif $exposed is 1>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<else>>
+			<<link [[Leave|School Pool Entrance]]>><</link>>
+		<</if>>
+		<br>
+		<<if $exposed gte 2 and $exhibitionism gte 75>>
+			<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>><<gdelinquency>>
+		<<elseif $exposed gte 2>>
+			<span class="pink">You can't enter the pool while so exposed!</span>
+		<<else>>
+			<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>>
+		<</if>>
+		<br>
+		<<school_pool_swap>>
+		<<boy_lockers>>
+		<<schoolpoolclothes "schoolBoys">>
+		<<link [[Locker|School Boy Wardrobe]]>><</link>>
+	<</if>>
+<<else>><!-- $poolroomstate is "empty" and $changingroomstate is "empty" -->
+	<<if $player.gender is "m">>
+		It's empty.
+		<br><br>
+		<<link [[Leave|School Pool Entrance]]>><</link>>
+		<br>
+		<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>>
+		<br>
+		<<schoolpoolclothes "schoolBoys">>
+		<<link [[Locker|School Boy Wardrobe]]>><</link>>
+		<br>
+	<<else>>
+		It's empty. Even so, being here makes you feel naughty.
+		<br><br>
+		<<link [[Leave|School Pool Entrance]]>><</link>>
+		<br>
+		<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>>
+		<br>
+		<<schoolpoolclothes "schoolBoys">>
+		<<link [[Locker|School Boy Wardrobe]]>><</link>>
+		<br>
+	<</if>>
+<</if>>
+
+:: School Girl Changing Room
+
+<<set $outside to 0>><<set $location to "pool">><<set $bus to "girls">><<schooleffects>><<effects>>
+
+<<if $hour is 15 and $time lte ($hour * 60 + 4) and $schoolday is 1>>
+	<<set $schoolstate to "fifth">><<set $schoollesson to 1>>
+<</if>>
+
+You are in the girls' changing room.
+
+<<if $arousal gte $arousalmax>>
+	<<orgasmLocation "girlChangingRoom">>
+<</if>>
+<<if $changingroomstate is "own">>
+	<<if $player.gender_appearance is "m">>
+		<<if $exposed gte 2 and $malechance isnot 100>>
+			You peek around the corner. You see girls in various states of undress. They'd spot you if you tried to enter.
+			<br><br>
+			<<link [[Watch (0:05)|School Girl's Watch]]>><<pass 5>><</link>><<promiscuous1>>
+			<br>
+			<<if $exhibitionism gte 35>>
+				<<link [[Masturbate (0:01)|School Girl's Masturbation]]>><<pass 1>><<set $masturbationstart to 1>><</link>><<exhibitionist3>>
+				<br>
+			<</if>>
+			<<if $exhibitionism gte 75>>
+				<<link [[Enter (0:05)|School Girl's Exhibitionism]]>><<generatesf1>><<pass 5>><<detention 3>><</link>><<gdelinquency>><<exhibitionist5>>
+				<br>
+			<</if>>
+			<<link [[Leave|School Pool Entrance]]>><</link>>
+			<br>
+		<<elseif $girlsroomentered is $hour and $malechance isnot 100>>
+			<<generatesf1>><<person1>>
+			<<if $player.gender is "m">>
+				It's full of girls in various states of undress who, thinking you're a boy, hastily cover up as you enter. Many look angry. A <<person>> drops <<his>> bag and steps forward. "You pervert," <<he>> says. "You can't keep barging in here." <<He>> grabs your arm.
+				<<detention 3>><<gdelinquency>>
+				<br><br>
+			<<else>>
+				It's full of girls in various states of undress who hastily cover up as you enter. Many look angry. A <<person>> drops <<his>> bag and steps forward. "You pervert," <<he>> says. "You can't keep barging in here." <<He>> grabs your arm<<detention 3>><<gdelinquency>>
+				<br><br>
+			<</if>>
+			<<link [[Try to escape|School Girl's Escape]]>><</link>><<physiquedifficulty 4000 14000>>
+			<br>
+			<<link [[Flirt|School Girl's Flirt]]>><</link>><<promiscuous1>>
+			<br>
+			<<link [[Apologise|School Girl's Apologise]]>><</link>>
+			<br>
+		<<else>>
+			<<set $girlsroomentered to $hour>>
+			<<if $player.gender is "f">>
+				It's full of girls in various states of undress who, thinking you're a boy, hastily cover up as you enter. Many look about to die from embarrassment, but some are angry and shoo you out.
+				<<detention 3>><<gdelinquency>>
+				<br><br>
+			<<else>>
+				It's full of girls in various states of undress who hastily cover up as you enter. Many look about to die from embarrassment, but some are angry and shoo you out.
+				<<detention 3>><<gdelinquency>>
+				<br><br>
+			<</if>>
+			<<link [[Next|School Pool Entrance]]>><</link>>
+		<</if>>
+	<<else>><!-- $player.gender_appearance is "f" -->
+		It's full of girls in various states of undress.
+		<<if $player.gender is "m" and $schoolrep.crossdress gte 3>>
+			Some of the girls looks at you uncomfortably, and some of them glued their eyes to you. <span class = "pink"> They suspect the rumours of you crossdressing are true.</span> <<gstress>>
+			<br><br>
+			<<elseif $player.gender is "m" and $schoolrep.crossdress lte 3>>
+					No one gives you a second glance, not realising you're a boy. You feel naughty.
+					<br><br>
+		<<elseif $player.gender is "h">>
+			<<if $schoolrep.herm gte 4>>
+				Some glance at your crotch. <span class="pink">They've heard the rumours.</span>
+			<<else>>
+				No one gives you a second glance, unaware of your hermaphroditism.
+			<</if>>
+		<</if>>
+		<br><br>
+		<<if $exposed gte 1>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<else>>
+			<<link [[Leave|School Pool Entrance]]>><</link>>
+		<</if>>
+		<br>
+		<<if $exposed gte 2 and $exhibitionism gte 75>>
+			<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>><<if $swimall isnot 1>><<gdelinquency>><</if>>
+		<<elseif $exposed gte 2>>
+			<span class="pink">You can't enter the pool while so exposed!</span>
+		<<else>>
+			<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>>
+		<</if>>
+		<br>
+		<<schoolpoolclothes "schoolGirls">>
+		<<link [[Locker|School Girl Wardrobe]]>><</link>>
+	<</if>>
+<<elseif $changingroomstate is "other">>
+	<<if $player.gender_appearance is "m">>
+		<<if $exposed gte 2 and $malechance isnot 100>>
+			You peek around the corner. You see girls in various states of undress. They'd spot you if you tried to enter.
+			<br><br>
+			<<link [[Watch (0:05)|School Girl's Watch]]>><<pass 5>><</link>><<promiscuous1>>
+			<br>
+			<<if $exhibitionism gte 35>>
+				<<link [[Masturbate (0:01)|School Girl's Masturbation]]>><<pass 1>><<set $masturbationstart to 1>><</link>><<exhibitionist3>>
+				<br>
+			<</if>>
+			<<if $exhibitionism gte 75>>
+				<<link [[Enter (0:05)|School Girl's Exhibitionism]]>><<generatesf1>><<pass 5>><<detention 3>><</link>><<gdelinquency>><<exhibitionist5>>
+				<br>
+			<</if>>
+			<<link [[Leave|School Pool Entrance]]>><</link>>
+			<br>
+		<<elseif $girlsroomentered is $hour and $malechance isnot 100>>
+			<<generatesf1>><<person1>>
+			<<if $player.gender is "m">>
+				It's full of girls in various states of undress who, thinking you're a boy, hastily cover up as you enter. Many look angry. A <<person>> drops <<his>> bag and steps forward. "You pervert," <<he>> says. "You can't keep barging in here." <<He>> grabs your arm.
+				<<detention 3>><<gdelinquency>>
+				<br><br>
+			<<else>>
+				It's full of girls in various states of undress who hastily cover up as you enter. Many look angry. A <<person>> drops <<his>> bag and steps forward. "You pervert," <<he>> says. "You can't keep barging in here." <<He>> grabs your arm.
+				<<detention 3>><<gdelinquency>>
+				<br><br>
+			<</if>>
+			<<link [[Try to escape|School Girl's Escape]]>><</link>><<physiquedifficulty 4000 14000>>
+			<br>
+			<<link [[Flirt|School Girl's Flirt]]>><</link>><<promiscuous1>>
+			<br>
+			<<link [[Apologise|School Girl's Apologise]]>><</link>>
+			<br>
+		<<else>>
+			<<set $girlsroomentered to $hour>>
+			<<if $player.gender is "f">>
+				It's full of girls in various states of undress who, thinking you're a boy, hastily cover up as you enter. Many look about to die from embarrassment, but some are angry and shoo you out.
+				<<detention 3>><<gdelinquency>>
+				<br><br>
+			<<else>>
+				It's full of girls in various states of undress, who hastily cover up as you enter. Many look about to die from embarrassment, but some are angry and shoo you out.
+				<<detention 3>><<gdelinquency>>
+				<br><br>
+			<</if>>
+			<<link [[Next|School Pool Entrance]]>><</link>>
+		<</if>>
+	<<else>><!-- $player.gender_appearance is "f" -->
+		It's full of girls in various states of undress.
+		<<if $player.gender is "m" and $schoolrep.crossdress gte 3>>
+			Some of the girls looks at you uncomfortably, and some of them glued their eyes to you. <span class = "pink"> They suspect the rumours of you crossdressing are true.</span> <<gstress>>
+			<br><br>
+			<<elseif $player.gender is "m" and $schoolrep.crossdress lte 3>>
+					No one gives you a second glance, not realising you're a boy. You feel naughty.
+					<br><br>
+			<br><br>
+		<<elseif $player.gender is "h">>
+			<<if $schoolrep.herm gte 4>>
+				Some glance at your crotch. <span class="pink">They've heard the rumours.</span>
+			<<else>>
+				No one gives you a second glance, unaware of your hermaphroditism.
+			<</if>>
+		<</if>>
+		<br><br>
+		<<if $exposed gte 2>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<elseif $exposed is 1>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<else>>
+			<<link [[Leave|School Pool Entrance]]>><</link>>
+		<</if>>
+		<br>
+		<<if $exposed gte 2 and $exhibitionism gte 75>>
+			<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>><<if $swimall isnot 1>><<gdelinquency>><</if>>
+		<<elseif $exposed gte 2>>
+			<span class="pink">You can't enter the pool while so exposed!</span>
+		<<else>>
+			<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>>
+		<</if>>
+		<br>
+		<<schoolpoolclothes "schoolGirls">>
+		<<link [[Locker|School Girl Wardrobe]]>><</link>>
+	<</if>>
+<<elseif $poolroomstate is "own">><!-- $changingroomstate is "empty" -->
+	It's currently empty, though you can hear activity in the pool proper. Your lesson is in session.
+	<<if $player.gender_appearance is "m">>
+		<<if $player.gender is "m">>
+			Even alone, being here makes you feel naughty, as well as worried you'll be caught.
+		<</if>>
+		<br><br>
+		<<if $exposed gte 2>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<elseif $exposed is 1>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<else>>
+			<<link [[Leave|School Pool Entrance]]>><</link>>
+		<</if>>
+		<br>
+		<<if $exposed gte 2 and $exhibitionism gte 75>>
+			<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>><<if $swimall isnot 1>><<gdelinquency>><</if>>
+		<<elseif $exposed gte 2>>
+			<span class="pink">You can't enter the pool while so exposed!</span>
+		<<else>>
+			<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>>
+		<</if>>
+		<br>
+		<<school_pool_swap>>
+		<<girl_lockers>>
+		<<schoolpoolclothes "schoolGirls">>
+		<<link [[Locker|School Girl Wardrobe]]>><</link>>
+	<<else>><!-- $player.gender_appearance is "f" -->
+		<br><br>
+		<<if $exposed gte 2>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<elseif $exposed is 1>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<else>>
+			<<link [[Leave|School Pool Entrance]]>><</link>>
+		<</if>>
+		<br>
+		<<if $swimall isnot 1>>
+			<<if $exposed gte 2 and $exhibitionism gte 75>>
+				<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>><<gdelinquency>>
+			<<elseif $exposed gte 2>>
+				<span class="pink">You can't enter the pool while so exposed!</span>
+			<<else>>
+				<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>>
+			<</if>>
+		<<else>>
+			<<if $exposed gte 2>>
+				<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>>
+			<<else>>
+				<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>><<gdelinquency>>
+			<</if>>
+		<</if>>
+		<br>
+		<<school_pool_swap>>
+		<<girl_lockers>>
+		<<schoolpoolclothes "schoolGirls">>
+		<<link [[Locker|School Girl Wardrobe]]>><</link>>
+	<</if>>
+<<elseif $poolroomstate is "other">><!-- $changingroomstate is "empty" -->
+	It's currently empty, though you can hear activity in the pool proper.
+	<<if $player.gender_appearance is "m">>
+		<<if $player.gender is "m">>
+			Even alone, being here makes you feel naughty, as well as worried you'll be caught.
+		<</if>>
+		<br><br>
+		<<if $exposed gte 2>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<elseif $exposed is 1>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<else>>
+			<<link [[Leave|School Pool Entrance]]>><</link>>
+		<</if>>
+		<br>
+		<<if $exposed gte 2 and $exhibitionism gte 75>>
+			<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>><<if $swimall isnot 1>><<gdelinquency>><</if>>
+		<<elseif $exposed gte 2>>
+			<span class="pink">You can't enter the pool while so exposed!</span>
+		<<else>>
+			<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>>
+		<</if>>
+		<br>
+		<<school_pool_swap>>
+		<<girl_lockers>>
+		<<schoolpoolclothes "schoolGirls">>
+		<<link [[Locker|School Girl Wardrobe]]>><</link>>
+	<<else>><!-- $player.gender_appearance is "f" -->
+		<br><br>
+		<<if $exposed gte 2>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<elseif $exposed is 1>>
+			<<link [[Leave|School Pool Entrance Exhibitionism]]>><</link>>
+		<<else>>
+			<<link [[Leave|School Pool Entrance]]>><</link>>
+		<</if>>
+		<br>
+		<<if $exposed gte 2 and $exhibitionism gte 75>>
+			<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>><<if $swimall isnot 1>><<gdelinquency>><</if>>
+		<<elseif $exposed gte 2>>
+			<span class="pink">You can't enter the pool while so exposed!</span>
+		<<else>>
+			<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>>
+		<</if>>
+		<br>
+		<<school_pool_swap>>
+		<<girl_lockers>>
+		<<schoolpoolclothes "schoolGirls">>
+		<<link [[Locker|School Girl Wardrobe]]>><</link>>
+	<</if>>
+<<else>><!-- $poolroomstate is "empty" and $changingroomstate is "empty" -->
+	<<if $player.gender is "m">>
+		It's empty. Even so, being here makes you feel naughty.
+		<br><br>
+		<<link [[Leave|School Pool Entrance]]>><</link>>
+		<br>
+		<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>>
+		<br>
+		<<schoolpoolclothes "schoolGirls">>
+		<<link [[Locker|School Girl Wardrobe]]>><</link>>
+		<br>
+	<<else>>
+		It's empty.
+		<br><br>
+		<<link [[Leave|School Pool Entrance]]>><</link>>
+		<br>
+		<<swimmingicon>><<link [[Enter the pool room|School Pool]]>><</link>>
+		<br>
+		<<schoolpoolclothes "schoolGirls">>
+		<<link [[Locker|School Girl Wardrobe]]>><</link>>
+		<br>
+	<</if>>
+<</if>>
+
+:: School Pool Entrance Exhibitionism
+
+<<set $outside to 0>><<set $location to "school">><<schooleffects>><<effects>>
+You peek around the corner, out of the changing rooms and into the hall outside. There's no one there. Conscious of your <<lewdness>>, you step out, and shiver.
+<br><br>
+<<link [[Next|School Pool Entrance]]>><</link>>
+<br>
+
+
+:: School Changing Swap
+<<effects>>
+
+<<earnFeat "Wrong Size">>
+
+The locks prove no obstacle. You dash between the changing rooms, carrying armfuls of clothes, making sure the coast is clear each time. You've soon replaced every student's clothing.
+<br><br>
+
+<<if $schoolrep.crossdress gte 2>>
+	<span class="green">The rumours of your crossdressing won't seem so interesting now.</span>
+<<else>>
+	<span class="green">Word of your crossdressing exploits are sure to be drowned out.</span>
+<</if>>
+<br><br>
+
+The students continue their lesson, unaware of what awaits.
+<br><br>
+
+<<link [[Wait to witness the results|School Changing Wait]]>><<control 25>><<trauma -12>><<stress -12>><</link>><<ggcontrol>><<lltrauma>><<llstress>>
+<br>
+<<link [[Leave|School Pool Entrance]]>><</link>>
+<br>
+
+
+:: School Changing Wait
+<<effects>>
+
+<<set _temp_minute to (60 - $minute)>>
+<<pass _temp_minute>>
+
+You wait outside the changing rooms, until the sound of lockers opening and closing fills the room. They become more rapid and panicked. It isn't long before you hear murmurs.
+<br><br>
+
+<<link [[Peek on the boys|School Changing Swap Boys]]>><</link>>
+<br>
+<<link [[Peek on the girls|School Changing Swap Girls]]>><</link>>
+<br>
+
+
+
+:: School Changing Swap Boys
+<<effects>>
+
+You slip into the changing room. They're so bewildered they don't notice you hide inside an empty locker.
+<br><br>
+"I think someone misplaced their clothes. Wait. This is a skirt. What the hell?"
+<br>
+"Hey, have you seen my trousers?"
+<br>
+"This shirt is way too small for me, did it shrink?"
+<br><br>
+An uproar builds. Most of the boys seem flustered, but a couple seem fascinated.
+<br><br>
+"What are we supposed to do now? We can't walk through the halls in our swim trunks!"
+<br>
+One of the smaller boys speaks up. "Well-" he swallows. "These clothes follow the dress code. We shouldn't get in trouble if we-"
+<br><br>
+He's cut off as a larger boy shoves him against a closed locker.
+<br><br>
+
+<<link [[Next|School Changing Swap Boys 2]]>><</link>>
+<br>
+
+:: School Changing Swap Boys 2
+<<effects>>
+
+"If you're so eager," the larger boy says. "You first."
+<br><br>
+The smaller boy stammers for a moment. All eyes are on him. You stifle a giggle as he pulls a skirt over his swim trunks. One of the boys encourages him, and then another joins. The tension in the room drops.
+<br><br>
+"Hey, you don't look half bad in that." A firm slap to the rear reddens his face even further. He is pushed towards the door. "Wh-what about the rest of you?"
+<br>
+"You have to keep watch. Make sure no one comes in."
+<br><br>
+The other boys begin to get dressed. Some of them take to it better than others. The largest boy looks ridiculous. Another rips three shirts before finding a fit.
+<br><br>
+One by one, the boys exit the changing room. They are hesitant at first, but soon enough, you are left alone in the room.
+<br><br>
+
+<<link [[Next|Hallways]]>><</link>>
+<br>
+
+:: School Changing Swap Girls
+<<effects>>
+
+You slip into the changing room. They're so bewildered they don't notice you hide inside an empty locker.
+<br><br>
+"Where's my skirt?"
+<br>
+"Are these boys' trousers?"
+<br>
+"I don't remember my shirt being this big on me."
+<br>
+One of the girls screams. "Those pervs stole our clothes and replaced them!"
+<br>
+"Can we tell Mason?"
+<br>
+"We can't just walk out in our swimsuits!"
+<br><br>
+The girls continue to discuss their next course of action.
+<br><br>
+
+<<link [[Next|School Changing Swap Girls 2]]>><</link>>
+<br>
+
+:: School Changing Swap Girls 2
+<<effects>>
+
+
+"If it's only for a few minutes," one girl says. "We might be able to get away with wearing these clothes outside-"
+<br>
+"Are you kidding? The guys are probably right outside, waiting to take pictures of us!"
+<br>
+"I don't have time for this. I have a date tonight."
+<br><br>
+One of the girls pulls on a pair of boys' trousers a few sizes too big for her, along with a mismatched shirt. She waddles over to the door, holding the trousers by the waist. The other girls watch in stunned silence as she strides out the locker room. A few moments later she speaks from the hallway.
+<br><br>
+"No one's out here. It's empty."
+<br><br>
+The remaining girls look at each other, waiting to see who will make the next move.
+<br><br>
+"Screw it. Better than just a towel."
+<br>
+One by one, they wear the boys' clothing. After a few more moments of silence, they exit the changing room in a group.
+<br><br>
+
+<<link [[Next|Hallways]]>><</link>>
+<br>
+
+
+
+:: School Boy Locker
+<<schooleffects>><<effects>>
+
+You successfully pick one of the lockers, and rummage inside.
+
+<<if $skulduggery lt 100>>
+	<<skulduggeryskilluse>><<set $skulduggery += 5>>
+<<else>>
+	<span class="blue">There's nothing more you can learn from locks this simple.</span>
+<</if>>
+<br><br>
+
+<<if $locker_suspicion is undefined>>
+	<<set $locker_suspicion to 0>>
+	<<set $panties_held to 0>>
+<</if>>
+
+<<set _colour to either("blue","green","red","black","pink","purple","yellow","white","orange","striped","dotted")>>
+<<if $rng gte 91>>
+	You find a pair of _colour panties. You're not sure what they're doing in a boy's locker.
+	<br>
+	<<link [[Take|School Pool Locker Take]]>><<crimeup 10>><<locker_suspicion 1>><<set $panties_held += 1>><<set $stat_panties_stolen += 1>><</link>><<crime>><<gsuspicion>>
+	<br>
+<<elseif $rng gte 61>>
+	You find a pair of _colour briefs.
+	<br>
+	<<link [[Take|School Pool Locker Take]]>><<crimeup 10>><<locker_suspicion 1>><<set $panties_held += 1>><<set $stat_panties_stolen += 1>><</link>><<crime>><<gsuspicion>>
+	<br>
+<<elseif $rng gte 41>>
+	You find a pair of _colour boxer shorts.
+	<br>
+	<<link [[Take|School Pool Locker Take]]>><<crimeup 10>><<locker_suspicion 1>><<set $panties_held += 1>><<set $stat_panties_stolen += 1>><</link>><<crime>><<gsuspicion>>
+	<br>
+<<elseif $rng gte 31>>
+	You find a _colour g-string.<<garousal>><<arousal 600>>
+	<br>
+	<<link [[Take|School Pool Locker Take]]>><<crimeup 10>><<locker_suspicion 1>><<set $panties_held += 1>><<set $stat_panties_stolen += 1>><</link>><<crime>><<gsuspicion>>
+	<br>
+<<elseif $rng gte 11>>
+	You find a pair of _colour boxer briefs.
+	<br>
+	<<link [[Take|School Pool Locker Take]]>><<crimeup 10>><<locker_suspicion 1>><<set $panties_held += 1>><<set $stat_panties_stolen += 1>><</link>><<crime>><<gsuspicion>>
+	<br>
+<<else>>
+	There's no underwear here. The owner must have arrived without any.<<garousal>><<arousal 600>>
+<</if>>
+<br><br>
+
+<<link [[Leave|School Boy Changing Room]]>><</link>>
+<br>
+
+:: School Girl Locker
+<<schooleffects>><<effects>>
+
+You successfully pick one of the lockers, and rummage inside.
+
+<<if $skulduggery lt 100>>
+	<<skulduggeryskilluse>><<set $skulduggery += 5>>
+<<else>>
+	<span class="blue">There's nothing more you can learn from locks this simple.</span>
+<</if>>
+<br><br>
+
+<<if $locker_suspicion is undefined>>
+	<<set $locker_suspicion to 0>>
+	<<set $panties_held to 0>>
+<</if>>
+
+<<set _colour to either("blue","green","red","black","pink","purple","yellow","white","orange","striped","dotted")>>
+<<if $rng gte 91>>
+	You find a pair of _colour boxer shorts. You're not sure what they're doing in a girl's locker.
+	<br>
+	<<link [[Take|School Pool Locker Take]]>><<crimeup 10>><<locker_suspicion 1>><<set $panties_held += 1>><<set $stat_panties_stolen += 1>><</link>><<crime>><<gsuspicion>>
+	<br>
+<<elseif $rng gte 81>>
+	You find a pair of _colour briefs.
+	<br>
+	<<link [[Take|School Pool Locker Take]]>><<crimeup 10>><<locker_suspicion 1>><<set $panties_held += 1>><<set $stat_panties_stolen += 1>><</link>><<crime>><<gsuspicion>>
+	<br>
+<<elseif $rng gte 61>>
+	You find a pair of _colour boyshorts.
+	<br>
+	<<link [[Take|School Pool Locker Take]]>><<crimeup 10>><<locker_suspicion 1>><<set $panties_held += 1>><<set $stat_panties_stolen += 1>><</link>><<crime>><<gsuspicion>>
+	<br>
+<<elseif $rng gte 51>>
+	You find a pair of _colour lace panties.<<garousal>><<arousal 600>>
+	<br>
+	<<link [[Take|School Pool Locker Take]]>><<crimeup 10>><<locker_suspicion 1>><<set $panties_held += 1>><<set $stat_panties_stolen += 1>><</link>><<crime>><<gsuspicion>>
+	<br>
+<<elseif $rng gte 41>>
+	You find a _colour thong.<<garousal>><<arousal 600>>
+	<br>
+	<<link [[Take|School Pool Locker Take]]>><<crimeup 10>><<locker_suspicion 1>><<set $panties_held += 1>><<set $stat_panties_stolen += 1>><</link>><<crime>><<gsuspicion>>
+	<br>
+<<elseif $rng gte 31>>
+	You find a _colour bikini bottom. Someone must be planning on a swim after school.
+	<br>
+	<<link [[Take|School Pool Locker Take]]>><<crimeup 10>><<locker_suspicion 1>><<set $panties_held += 1>><<set $stat_panties_stolen += 1>><</link>><<crime>><<gsuspicion>>
+	<br>
+<<elseif $rng gte 11>>
+	You find a pair of _colour panties.
+	<br>
+	<<link [[Take|School Pool Locker Take]]>><<crimeup 10>><<locker_suspicion 1>><<set $panties_held += 1>><<set $stat_panties_stolen += 1>><</link>><<crime>><<gsuspicion>>
+	<br>
+<<else>>
+	There's no underwear here. The owner must have arrived without any.<<garousal>><<arousal 600>>
+<</if>>
+<br><br>
+
+<<link [[Leave|School Girl Changing Room]]>><</link>>
+<br>
+
+
+:: School Pool Locker Take
+<<effects>>
+
+
+<<if $locker_suspicion gte random(21, 30) and $locker_mason isnot 1>>
+	<<set $locker_mason to 2>>
+	<span class="red">You hear the door to the pool open</span> as you snatch the goods, followed by wet footsteps. There's no time to hide anywhere else. You enter the locker, closing it behind you.
+	<br><br>
+	<<npc Mason>><<person1>>
+	You peer through the slits. Mason walks into view.  Water drips from <<his>> sleek body.
+	<<He>> stops beside a locker several feet away, unlocks it, and throws it open. <<He>> repeats this with the next, and the next. <span class="red"><<Hes>> going to find you.</span>
+	<br><br>
+
+	<<link [[Run|School Pool Locker Run]]>><</link>><<athleticsdifficulty 1 1000>>
+	<br>
+	<<if $promiscuity gte 15>>
+		<<link [[Ambush|School Pool Locker Ambush]]>><<detention 7>><<npcincr Mason lust 5>><</link>><<promiscuous2>><<ggdelinquency>><<glust>>
+		<br>
+	<</if>>
+<<elseif $locker_suspicion gte random(11, 20) and $locker_mason isnot 1>>
+	<<set $locker_mason to 1>>
+	<span class="red">You hear the door to the pool open</span> as you snatch the goods, followed by wet footsteps. There's no time to hide anywhere else. You enter the locker, closing it behind you.
+	<br><br>
+
+	<<npc Mason>><<person1>>
+	You peer through the slits. Mason walks into view. Water drips from <<his>> sleek body.
+	<<He>> walks right past you, towards the entrance, and looks around the corner. "Thought I'd catch the thief this time," <<he>> mutters as <<he>> turns back. <<He>> enters the pool, closing the door behind <<him>>.
+	<br><br>
+
+	You emerge from your hiding place. <span class="pink">Your thieving has been noticed.</span>
+	<br><br>
+
+	<<endevent>>
+	<<destination_pool>>
+<<else>>
+	You snatch the goods, and close the locker.
+	<br><br>
+	<<destination_pool>>
+<</if>>
+
+
+:: School Pool Locker Run
+<<effects>>
+
+<<if $athleticsSuccess>>
+	You burst from the locker and sprint for the exit. "Stop!" You hear Mason pursue, <span class="green">but <<he>> can only run so fast with bare wet feet.</span> You run into the hallways, and hide beneath a stairwell. You don't think <<he>> saw your face.
+	<br><br>
+
+	Leighton emerges from <<nnpc_his Leighton>> office a moment later, almost bumping into the swimming teacher.
+	<br><br>
+
+	<<if $NPCName[$NPCNameList.indexOf("Mason")].pronoun is $NPCName[$NPCNameList.indexOf("Leighton")].pronoun and $homochance is 0>>
+		"Did a student run by?" Mason asks.
+		<br>
+		"No," Leighton replies. "You're getting the floor wet."
+		<br>
+		"S-sorry." Mason scurries back to the pool.
+		<br><br>
+	<<else>>
+		<<if $pronoun is "m">>
+			"Did a student-" Mason begins. <<He>> follows Leighton's leering eyes, and covers <<his>> trunks with <<his>> hands as if <<he>> were naked.
+		<<else>>
+			"Did a student-" Mason begins. <<He>> follows Leighton's leering eyes, and covers <<his>> swimsuit with <<his>> hands as if <<he>> were naked.
+		<</if>>
+		"I, ah, sorry to bother you <<if $NPCName[$NPCNameList.indexOf("Leighton")].pronoun is "f">>maam<<else>>sir<</if>>." The headteacher leers at Mason's ass as <<he>> scurries back to the pool.
+		<br><br>
+	<</if>>
+	You wait until Leighton disappears around a corner, then return to the changing rooms.
+	<br><br>
+	<<endevent>>
+	<<destination_pool>>
+<<else>>
+	You burst from the locker and sprint for the exit. "Stop!" You hear Mason pursue. <span class="red"><<Hes>> fast,</span> even with bare wet feet, <span class="red">and cuts you off before the exit.</span>
+	<br><br>
+
+	 You run into <<him>>, but <<he>> steadies you with toned arms. "Got you," <<he>> pants. "The legendary underwear thief. What do you have to say for yourself?"<<gdelinquency>><<detention 6>>
+	 <br><br>
+
+	 <<if $exposed gte 1>>
+		<<covered>> <<He>> notices your state of dress, and just how close your body is. <<He>> steps back and averts <<his>> eyes, blushing.<<glust>><<npcincr Mason lust 5>>
+		<br><br>
+	 <</if>>
+
+	 <<link [[Apologise|School Pool Locker Apologise]]>><<sub 1>><<detention -1>><</link>><<ldelinquency>>
+	 <br>
+	 <<link [[Argue|School Pool Locker Argue]]>><<def 1>><</link>>
+	 <br>
+	 <<link [[Say nothing|School Pool Locker Nothing]]>><</link>>
+	 <br>
+<</if>>
+
+
+:: School Pool Locker Apologise
+<<effects>>
+
+<<if $submissive gte 1150>>
+	"I-I'm very sorry," you say. "I'll be good from now on."
+<<elseif $submissive lte 850>>
+	"You got me," you say. "You won't catch me up to no good again."
+<<else>>
+	"Sorry," you say. "I won't steal anymore."
+<</if>>
+<br><br>
+
+"I'll have to tell the head," Mason replies.
+
+<<if $exposed gte 1>>
+	<<if $genderknown.includes("Mason")>>
+		<<if $player.gender is "m" and $bus is "girls">>
+			"Y-you should go back to the boys' room, and get dressed."
+		<<elseif $player.gender is "f" and $bus is "boys">>
+			"Y-you should go back to the girls' room, and get dressed."
+		<<else>>
+			"Y-you should get dressed."
+		<</if>>
+	<<else>>
+		<<if $player.gender_appearance is "m" and $bus is "girls">>
+			"Y-you should go back to the boys' room, and get dressed."
+		<<elseif $player.gender_appearance is "f" and $bus is "boys">>
+			"Y-you should go back to the girls' room, and get dressed."
+		<<else>>
+			"Y-you should get dressed."
+		<</if>>
+	<</if>>
+<<else>>
+	<<if $genderknown.includes("Mason")>>
+		<<if $player.gender is "m" and $bus is "girls">>
+			"Let's not meet in the girls' changing room again."
+		<<elseif $player.gender is "f" and $bus is "boys">>
+			"Let's not meet in the boys' changing room again."
+		<<else>>
+			"I hope <<nnpc_he Leighton>> goes easy on you."
+		<</if>>
+	<<else>>
+		<<if $player.gender_appearance is "m" and $bus is "girls">>
+			"Let's not meet in the girls' changing room again."
+		<<elseif $player.gender_appearance is "f" and $bus is "boys">>
+			"Let's not meet in the boys' changing room again."
+		<<else>>
+			"I hope <<nnpc_he Leighton>> goes easy on you."
+		<</if>>
+	<</if>>
+<</if>>
+<<He>> returns to <<his>> class.
+<br><br>
+
+<<endevent>>
+<<destination_pool>>
+
+
+:: School Pool Locker Argue
+<<effects>>
+
+<<if $submissive gte 1150>>
+	"I-I'm not stealing anything," you plead. "H-honest."
+<<elseif $submissive lte 850>>
+	"You have no proof," you say.
+<<else>>
+	"How do you know I'm the thief?" you say.
+<</if>>
+<br><br>
+Mason seems unconvinced.
+<<if $exposed gte 1>>
+	<<if $genderknown.includes("Mason")>>
+		<<if $player.gender is "m" and $bus is "girls">>
+			"Y-you shouldn't be in the girls' room in the first place, least of all dressed like that. Go get changed."
+		<<elseif $player.gender is "f" and $bus is "boys">>
+			"Y-you shouldn't be in the boys' room in the first place, least of all dressed like that. Go get changed."
+		<<else>>
+			"Y-you should get dressed."
+		<</if>>
+	<<else>>
+		<<if $player.gender_appearance is "m" and $bus is "girls">>
+			"Y-you shouldn't be in the girls' room in the first place, least of all dressed like that. Go get changed."
+		<<elseif $player.gender_appearance is "f" and $bus is "boys">>
+			"Y-you shouldn't be in the boys' room in the first place, least of all dressed like that. Go get changed."
+		<<else>>
+			"Y-you should get dressed."
+		<</if>>
+	<</if>>
+<<else>>
+	<<if $genderknown.includes("Mason")>>
+		<<if $player.gender is "m" and $bus is "girls">>
+			"You shouldn't be in the girls' room in the first place."
+		<<elseif $player.gender is "f" and $bus is "boys">>
+			"You shouldn't be in the boys' room in the first place."
+		<<else>>
+			"I hope <<nnpc_he Leighton>> goes easy on you."
+		<</if>>
+	<<else>>
+		<<if $player.gender_appearance is "m" and $bus is "girls">>
+			"Let's not meet in the girls' changing room again."
+		<<elseif $player.gender_appearance is "f" and $bus is "boys">>
+			"Let's not meet in the boys' changing room again."
+		<<else>>
+			"I hope <<nnpc_he Leighton>> goes easy on you."
+		<</if>>
+	<</if>>
+<</if>>
+<<He>> returns to <<his>> class.
+<br><br>
+
+<<endevent>>
+<<destination_pool>>
+
+:: School Pool Locker Nothing
+<<effects>>
+
+<<if $submissive gte 1150>>
+	You avert your eyes, but say nothing.
+<<elseif $submissive lte 850>>
+	You glare at Mason, but say nothing.
+<<else>>
+	You stare at Mason, but say nothing.
+<</if>>
+<br><br>
+
+
+"I'll have to tell the head," Mason says.
+
+<<if $exposed gte 1>>
+	<<if $genderknown.includes("Mason")>>
+		<<if $player.gender is "m" and $bus is "girls">>
+			"Y-you should go back to the boys' room, and get dressed."
+		<<elseif $player.gender is "f" and $bus is "boys">>
+			"Y-you should go back to the girls' room, and get dressed."
+		<<else>>
+			"Y-you should get dressed."
+		<</if>>
+	<<else>>
+		<<if $player.gender_appearance is "m" and $bus is "girls">>
+			"Y-you should go back to the boys' room, and get dressed."
+		<<elseif $player.gender_appearance is "f" and $bus is "boys">>
+			"Y-you should go back to the girls' room, and get dressed."
+		<<else>>
+			"Y-you should get dressed."
+		<</if>>
+	<</if>>
+<<else>>
+	<<if $genderknown.includes("Mason")>>
+		<<if $player.gender is "m" and $bus is "girls">>
+			"Let's not meet in the girls' changing room again."
+		<<elseif $player.gender is "f" and $bus is "boys">>
+			"Let's not meet in the boys' changing room again."
+		<<else>>
+			"I hope <<nnpc_he Leighton>> goes easy on you."
+		<</if>>
+	<<else>>
+		<<if $player.gender_appearance is "m" and $bus is "girls">>
+			"Let's not meet in the girls' changing room again."
+		<<elseif $player.gender_appearance is "f" and $bus is "boys">>
+			"Let's not meet in the boys' changing room again."
+		<<else>>
+			"I hope <<nnpc_he Leighton>> goes easy on you."
+		<</if>>
+	<</if>>
+<</if>>
+<<He>> returns to <<his>> class.
+<br><br>
+
+<<endevent>>
+<<destination_pool>>
+
+:: School Pool Locker Ambush
+<<effects>>
+
+Mason throws open your locker, but you're ready. "Aha," <<he>> says. "Got y-" You grasp <<his>> shoulders, and pull <<him>> against you. The door shuts behind <<him>>.
+<<promiscuity2>>
+
+It's a tight fit.
+<<if $NPCList[0].penis isnot "none">>
+	<<if $NPCList[0].pronoun is "m">>
+		Your <<breasts>> press against Mason's chest.
+	<<else>>
+		Mason's <<print $NPCList[0].breastsdesc>> press against your chest.
+	<</if>>
+	<<He>> gropes for the door, but you raise a leg in <<his>> way, and <<he>> gropes your thigh by mistake.
+	<br><br>
+
+	<<if $NPCName[$NPCNameList.indexOf("Mason")].lust gte 40>>
+		You glance between <<his>> legs. <span class="lewd"><<His>> <<if $pronoun is "f">>swimsuit strains<<else>>trunks strain<</if>> to contain <<his>> erection.</span><<garousal>><<arousal 600>>
+		<br><br>
+
+		<<link [[Let Mason go|School Pool Locker Go]]>><</link>>
+		<br>
+		<<if $promiscuity gte 55>>
+			<<link [[Grab it|School Pool Locker Penis]]>><<detention -7>><</link>><<promiscuous4>><<lldelinquency>>
+			<br>
+		<</if>>
+	<<else>>
+		<<He>> reaches for the door again, this time with more care, and manages to open it. <<His>> body rubs against yours as <<he>> squeezes out.
+		<br><br>
+
+		<<link [[Next|School Pool Locker End]]>><</link>>
+		<br>
+	<</if>>
+<<else>>
+	The teacher's ass presses against your crotch, and <<his>> chest against the locker wall. <<He>> tries to reach for the door, but it's an awkward and compromising position.
+	<br><br>
+
+	<<if $NPCName[$NPCNameList.indexOf("Mason")].lust gte 40>>
+		You look over <<his>> shoulder, <span class="pink">at the wetness between <<his>> thighs.</span> That's not just water.<<garousal>><<arousal 600>>
+		<br><br>
+
+		<<link [[Let Mason go|School Pool Locker Go]]>><</link>>
+		<br>
+		<<if $promiscuity gte 55>>
+			<<link [[Finger Mason's pussy|School Pool Locker Pussy]]>><<detention -7>><</link>><<promiscuous4>><<lldelinquency>>
+			<br>
+		<</if>>
+	<<else>>
+		<<He>> reaches for the door again, and this time manages to push it open. <<His>> body rubs against yours as <<he>> squeezes out.
+		<br><br>
+
+		<<link [[Next|School Pool Locker End]]>><</link>>
+		<br>
+	<</if>>
+<</if>>
+
+
+:: School Pool Locker End
+<<effects>>
+
+"Th-this is unacceptable behaviour," <<he>> says, blushing. "Stealing is bad enough."
+<br><br>
+<<if $exposed gte 1>>
+	<<covered>> <<He>> notices your state of dress. <<He>> averts <<his>> eyes, blushing harder.<<glust>><<npcincr Mason lust 5>>
+	<br><br>
+<</if>>
+
+<<link [[Apologise|School Pool Locker Apologise]]>><<sub 1>><<detention -1>><</link>><<ldelinquency>>
+<br>
+<<link [[Argue|School Pool Locker Argue]]>><<def 1>><</link>>
+<br>
+<<link [[Say nothing|School Pool Locker Nothing]]>><</link>>
+<br>
+
+
+:: School Pool Locker Go
+<<effects>>
+
+You emerge from the locker behind Mason. "Th-this is unacceptable behaviour," <<he>> says, blushing. "Stealing is bad enough."
+<br><br>
+<<if $exposed gte 1>>
+	<<covered>> <<He>> notices your state of dress. <<He>> averts <<his>> eyes, blushing harder.<<glust>><<npcincr Mason lust 5>>
+	<br><br>
+<</if>>
+
+<<link [[Apologise|School Pool Locker Apologise]]>><<sub 1>><<detention -1>><</link>><<ldelinquency>>
+<br>
+<<link [[Argue|School Pool Locker Argue]]>><<def 1>><</link>>
+<br>
+<<link [[Say nothing|School Pool Locker Nothing]]>><</link>>
+<br>
+
+
+:: School Pool Locker Penis
+<<effects>>
+
+You lower your hand beneath your raised thigh, and touch <<his>> <<print $NPCList[0].penisdesc>>. <<He>> tries to squirm away, but there's nowhere to go.
+
+<<if $submissive gte 1150>>
+	"Following a student into a locker," you tease. "Then getting hard! Naughty teacher."
+<<elseif $submissive lte 850>>
+	"Being bullied by a student makes you hard?" you tease. "You're such a pervy teacher."
+<<else>>
+	"Hard already?" you tease. "And with a student! Naughty teacher."
+<</if>>
+<br><br>
+
+"I-it's not like that," <<he>> says, fumbling for the door handle. <span class="pink">You hear footsteps.</span> Mason freezes.
+<br><br>
+
+<<link [[Next|School Pool Locker Penis 2]]>><</link>>
+<br>
+
+
+:: School Pool Locker Penis 2
+<<effects>>
+
+
+<<if $bus is "boys">>
+	<<generateym2>><<person2>>
+<<else>>
+	<<generateyf2>><<person2>>
+<</if>>
+You watch through the slits as a <<person>> rushes in, and opens the locker next door. <<He>> must be late for the lesson.
+<br><br>
+
+
+
+<<if $submissive gte 1150>>
+	"What would <<he>> think if <<he>> caught you molesting a student?" you whisper. The <<person>> glances at your locker, before continuing to undress. "I-I'll be good." You
+	<<person1>>
+	<<if $pronoun is "m">>
+		tug down Mason's trunks,
+	<<else>>
+		pull aside Mason's swimsuit,
+	<</if>>
+	<span class="pink">releasing <<his>> <<print $NPCList[0].penisdesc>>.</span> "If you are."
+<<elseif $submissive lte 850>>
+	"Best be a good <<nnpc_gendery "Mason">>, and keep quiet," you whisper. You
+	<<person1>>
+	<<if $pronoun is "m">>
+		tug down Mason's trunks,
+	<<else>>
+		pull aside Mason's swimsuit,
+	<</if>>
+	<span class="pink">releasing <<his>> <<print $NPCList[0].penisdesc>>.</span> "You wouldn't want to be caught molesting a student, would you?"
+<<else>>
+	"We'll be in trouble if we're caught," you whisper. You
+	<<person1>>
+	<<if $pronoun is "m">>
+		tug down Mason's trunks,
+	<<else>>
+		pull aside Mason's swimsuit,
+	<</if>>
+	<span class="pink">releasing <<his>> <<print $NPCList[0].penisdesc>>.</span> "Don't worry. I'll be discreet."
+<</if>>
+<br><br>
+
+<<link [[Next|School Pool Locker Penis 3]]>><</link>>
+<br>
+
+
+:: School Pool Locker Penis 3
+<<effects>>
+
+Mason struggles to remain silent as you pump <<his>> cock with your hand.
+
+<<if $player.vaginaExist>>
+	<<if $submissive gte 1150>>
+		"I'm so helpless," you tease. "Trapped in here with teacher's thing so close." You angle <<his>> cock towards your pussy. "I couldn't stop you ravaging me."
+	<<elseif $submissive lte 850>>
+		"How's that feel?" you say. "Or do you want to fuck me properly?" You angle <<his>> cock towards your pussy. "Would you like that? Being forced to defile a student's womb?"
+	<<else>>
+		"You're getting me all warm," you say, angling <<his>> cock towards your pussy. "Just knowing you could grasp my hips and force my pussy onto your cock is driving me wild."
+	<</if>>
+<<else>>
+	<<if $submissive gte 1150>>
+		"I'm so helpless," you tease. "Trapped in here with teacher. Being forced to perform such a depraved act."
+	<<elseif $submissive lte 850>>
+		"Imagine what the school would think," you tease. "If they knew you liked being bullied by a student like this."
+	<<else>>
+		"Imagine what the school would think," you tease. "If they knew you made students service you in such depraved ways."
+	<</if>>
+<</if>>
+<br><br>
+
+At that, Mason's body shudders, and <<his>> <<print $NPCList[0].penisdesc>> twitches in your palm. <span class="lewd">Thick ropes of cum</span> erupt from the tip, splattering against the locker wall.<<lllust>><<npcincr Mason lust -10>>
+<br><br>
+
+<<link [[Next|School Pool Locker Hand End]]>><</link>>
+<br>
+
+:: School Pool Locker Pussy
+<<effects>>
+
+You reach around Mason's waist, and touch <<his>> pussy through <<his>> <<if $pronoun is "m">>trunks<<else>>swimsuit<</if>>. <<He>> tries to squirm away, but there's nowhere to go.
+
+<<if $submissive gte 1150>>
+	"Following a student into a locker," you tease. "Then getting wet! Naughty teacher."
+<<elseif $submissive lte 850>>
+	"Being bullied by a student makes you wet?" you tease. "You're such a pervy teacher."
+<<else>>
+	"Wet already?" you tease. "And with a student! Naughty teacher."
+<</if>>
+<br><br>
+
+"I-it's not like that," <<he>> says, fumbling for the door handle. <span class="pink">You hear footsteps.</span> Mason freezes.
+<br><br>
+
+<<link [[Next|School Pool Locker Pussy 2]]>><</link>>
+<br>
+
+
+
+:: School Pool Locker Pussy 2
+<<effects>>
+
+
+<<if $bus is "boys">>
+	<<generateym2>><<person2>>
+<<else>>
+	<<generateyf2>><<person2>>
+<</if>>
+You watch through the slits as a <<person>> rushes in, and opens the locker next door. <<He>> must be late for the lesson.
+<br><br>
+
+
+<<if $submissive gte 1150>>
+	"What would <<he>> think if <<he>> caught you molesting a student?" you whisper. The <<person>> glances at your locker, before continuing to undress. "I-I'll be good." You
+	<<person1>>
+	<<if $pronoun is "m">>
+		tug down Mason's trunks,
+	<<else>>
+		pull aside Mason's swimsuit,
+	<</if>>
+	<span class="pink">revealing <<his>> pussy.</span> "If you are."
+<<elseif $submissive lte 850>>
+	"Best be a good <<nnpc_gendery "Mason">>, and keep quiet," you whisper. You
+	<<person1>>
+	<<if $pronoun is "m">>
+		tug down Mason's trunks,
+	<<else>>
+		pull aside Mason's swimsuit,
+	<</if>>
+	<span class="pink">revealing <<his>> pussy.</span> "You wouldn't want to be caught molesting a student, would you?"
+<<else>>
+	"We'll be in trouble if we're caught," you whisper. You
+	<<person1>>
+	<<if $pronoun is "m">>
+		tug down Mason's trunks,
+	<<else>>
+		pull aside Mason's swimsuit,
+	<</if>>
+	<span class="pink">revealing <<his>> pussy.</span> "Don't worry. I'll be discreet."
+<</if>>
+<br><br>
+
+<<link [[Next|School Pool Locker Pussy 3]]>><</link>>
+<br>
+
+
+:: School Pool Locker Pussy 3
+<<effects>>
+
+Mason struggles to remain silent as you slide a finger into <<his>> slit.
+
+<<if $player.penisExist>>
+	<<if $submissive gte 1150>>
+		"I'm so helpless," you tease. "Trapped in here with teacher. Forced to do perverted things." You thrust your pelvis against <<his>> butt. "What would people think?"
+	<<elseif $submissive lte 850>>
+		"How's that feel?" you say. "Or do you want to fuck me properly?" You thrust your pelvis against <<his>> butt. "Are you desperate for a student's cum?"
+	<<else>>
+		"You're getting me all warm," you say, thrusting your pelvis against <<his>> butt. "Just knowing you could take my cock inside you at any moment is driving me wild."
+	<</if>>
+<<else>>
+	<<if $submissive gte 1150>>
+		"I'm so helpless," you tease. "Trapped in here with teacher. Being forced to perform such a depraved act."
+	<<elseif $submissive lte 850>>
+		"Imagine what the school would think," you tease. "If they knew you liked being bullied by a student like this."
+	<<else>>
+		"Imagine what the school would think," you tease. "If they knew you made students service you in such depraved ways."
+	<</if>>
+<</if>>
+<br><br>
+
+At that, Mason's body shudders, <span class="lewd">and lewd fluid runs over your finger.</span> A soft moan escapes <<his>> lips. You're reminded that <<hes>> not much older than you.<<lllust>><<npcincr Mason lust -10>>
+<br><br>
+
+<<link [[Next|School Pool Locker Hand End]]>><</link>>
+<br>
+
+
+
+:: School Pool Locker Hand End
+<<effects>>
+<<earnFeat "Mason's Shame">>
+<<person2>>
+The <<person>> finishes changing, and rushes to the pool.
+<<person1>>
+With the way clear, Mason stumbles from the locker, and rests against a bench. <<His>> face is bright red.
+<br><br>
+
+<<if $submissive gte 1150>>
+	"I'll be a good <<girl>>," you say. "I won't tell anyone how naughty you are."
+<<elseif $submissive lte 850>>
+	"Best keep this to yourself," you say. "You wouldn't want the school knowing how perverted you are."
+<<else>>
+	"Let's keep this between us," you say. "Including my thieving."
+<</if>>
+<br><br>
+Mason can't bring <<himself>> to meet your gaze. "You're terrible," <<he>> says. <<He>> sounds conflicted. "I'll let you off with a warning." <<He>> adjusts <<his>> swimwear, and returns to <<his>> class.
+<br><br>
+
+<<endevent>>
+<<destination_pool>>

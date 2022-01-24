@@ -1,0 +1,32 @@
+:: Churchyard
+<<location "forest">><<effects>>
+
+You are the in the forest cemetery. An old manor looms from a hill, surrounded by stone ruins.
+
+<<if $daystate is "night">>
+	<<if $moonstate is "evening" or $moonstate is "morning">>
+		The graves cast disturbing shadows in the red moonlight.
+	<<else>>
+		<<if $weather is "clear">>
+			The moonlight-cast shadows seem to move.
+		<<elseif $weather is "rain">>
+			The patter of rain on stone drowns out all else.
+		<<elseif $weather is "snow">>
+			Snow rests on the headstones.
+		<<else>>
+			You're careful not to trip in the dark.
+		<</if>>
+	<</if>>
+<<elseif $daystate is "dawn">>
+	Shadows loom in the morning light.
+<<elseif $daystate is "dusk">>
+	Shadows loom in the evening light.
+<<else>>
+	The surrounding forest encroaches.
+<</if>>
+<br><br>
+
+
+<<link [[Leave|Forest]]>><<set $forest to 30>><<set $eventskip to 1>><</link>>
+<br>
+

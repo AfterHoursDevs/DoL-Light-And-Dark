@@ -1,0 +1,98 @@
+:: High Street
+
+<<set $outside to 1>><<set $location to "town">><<effects>><<set $bus to "high">><<getTarget true>>
+You are on the High Street, centre of the town's commercial activity. The shopping centre is located here, where you can buy new clothes.
+<<if $daystate is "day">>
+	<<if $weather is "rain">>
+		The street is busy despite the rain.
+	<<elseif $weather is "snow">>
+		The street is busy despite the cold.
+	<<else>>
+		The street is packed with people, walking in all directions.
+	<</if>>
+	<<if $police_high is 1>>
+		<span class="purple">There's a heavy police presence,</span> due to the recent street brawl.
+	<</if>>
+<<elseif $daystate is "dawn">>
+	Some shops are open already.
+	<<if $police_high is 1>>
+		<span class="purple">There's a heavy police presence,</span> due to the recent street brawl.
+	<</if>>
+<<elseif $daystate is "dusk">>
+	Some shops are closed, but others remain open.
+	<<if $police_high is 1>>
+		<span class="purple">There's a heavy police presence,</span> due to the recent street brawl.
+	<</if>>
+<<elseif $daystate is "night">>
+	A few people still walk down the street, despite almost everything being closed.
+	<<if $exposed gte 2 and $exhibitionism gte 75 or $exposed gte 1 and $exhibitionism gte 35 and $ex_high isnot 1>>
+		A service station remains open. <span class="lewd">A lewd idea strikes you.</span> The thought makes you shiver.
+	<</if>>
+<</if>>
+<<streeteffects>>
+<br><br>
+<<if $exposed gte 1>>
+	<<exhibitionism "street">>
+<</if>>
+<<if $arousal gte $arousalmax>>
+	<<orgasmstreet>>
+<</if>>
+<<if $stress gte $stressmax and !$possessed>>
+	<<passoutstreet>>
+<<else>>
+	<<set $danger to random(1, 10000)>><<set $dangerevent to 0>>
+	<<if ($danger gte (9900 - $allure) or $eventforced) and $eventskip is 0>>
+		<<eventsstreet>>
+	<<else>>
+		<<if $map.top is true>>
+			<<map "high">>
+			<br>
+		<</if>>
+		Places of interest
+		<br>
+		<<if $daystate is "night" and $hour isnot 21>>
+			<<shoppingcentreicon>><<link [[Shopping centre|Shopping Centre Sneak]]>><</link>>
+			<br>
+		<<elseif $hour is 21>>
+			<span class="blue">People are leaving the shopping centre.</span> It must be closing time.
+			<br>
+		<<else>>
+			<<shoppingcentreicon>><<link [[Shopping centre (0:02)|Shopping Centre]]>><<pass 2>><</link>>
+			<br>
+		<</if>>
+		<<if $daystate is "day" and $exposed is 0 and $photo and $photo.street is "ready">>
+			<<link [[Modelling job (3:00)|Model Silly]]>><</link>><<gtiredness>>
+			<br>
+		<</if>>
+		<<if $daystate is "night" and $exposed gte 2 and $exhibitionism gte 75 and $ex_high isnot 1>>
+			<<link [[Buy sweets from a service station (0:05)|Service Naked]]>><<pass 5>><<set $ex_high to 1>><</link>><<exhibitionist5>>
+			<br>
+		<<elseif $daystate is "night" and $exposed gte 1 and $exhibitionism gte 35 and $ex_high isnot 1>>
+			<<link [[Buy sweets from a service station (0:05)|Service Undies]]>><<pass 5>><<set $ex_high to 1>><</link>><<exhibitionist3>>
+			<br>
+		<</if>>
+		<br>
+		<<if $exposed gte 1 and $daystate isnot "night">>
+		<<else>>
+			<<add_link "Travel<br>">><<hideDisplay>>
+			<<cliff>>
+			<<wolf>>
+			<<starfish>>
+			<<nightingale>>
+			<<if $exposed lte 0>>
+				<<buswait>>
+			<</if>>
+			<<loiter>>
+		<</if>>
+		<<add_link "<br>Alternate routes<br>">><<hideDisplay>>
+		<<commercial>>
+		<<park>>
+		<<stormdrain>>
+		<<displayLinks>>
+		<<if $map.top isnot true>>
+			<br>
+			<<map "high">>
+		<</if>>
+	<</if>>
+<</if>>
+<<set $eventskip to 0>>
