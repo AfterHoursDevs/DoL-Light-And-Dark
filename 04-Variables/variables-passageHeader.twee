@@ -1,0 +1,35 @@
+:: PassageHeader
+<<set $passagePrev to $passage ? $passage : "none">>
+<<set $passage to passage()>><<set $tags to tags()>>
+
+<<if !["Start", "Start2", "Clothes Testing", "Renderer Test Page", "Tips"].includes($passage)>>
+
+/* Run stuff on every save load */
+	<<if onLoadUpdateCheck>>
+		<<set $saveVersion to ($saveVersions ? $saveVersions.last() : "ancient")>> /*update save version */
+	<</if>>
+
+/* Run stuff on every page refresh, save load, or version mismatch */
+	<<if versionUpdateCheck or onLoadUpdateCheck or !$saveVersions or $saveVersions.last() isnot StartConfig.version>>
+		<<set versionUpdateCheck to false>>
+		<<set onLoadUpdateCheck to false>>
+		<<if saveUpdateCheck>>
+			<<set saveUpdateCheck to false>>
+			<<run prepareSaveDetails($prepareSaveDetails)>>
+		<</if>>
+
+		/* convert game version to numeric value for use in <<backComp>> */
+		<<set _version to ($saveVersions ? $saveVersions.last().replace(/[^0-9.]+/g, "").split(".") : 0)>>
+		<<set _version to (_version ? _version[0]*1000000 + _version[1]*10000 + _version[2]*100 + _version[3]*1 : 0)>>
+		<<backComp>>
+
+		<<updatehistorycontrols>>
+		<<set _preventUpdate to true>> /*prevent rewriting autosaves */
+		<<if $reducedLineHeight is true>><<addclass "#passages" "reducedLineHeight">><</if>>
+		<<if $zoom isnot 100>><<run zoom($zoom)>><</if>>
+	<</if>>
+
+/* Variables that you need to check on every passage */
+	<<set $link_table to []>>
+	<<set $map.hideLinksCheck to []>>
+<</if>>
